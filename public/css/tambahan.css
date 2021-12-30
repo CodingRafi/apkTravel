@@ -6,3 +6,12 @@
 .pcoded .pcoded-main-container .pcoded-hasmenu:hover .waves-dark .svg-hotel{
     fill: #fff;
 }
+
+.pcoded .pcoded-main-container .pcoded-hasmenu.active .waves-dark .svg-hotel{
+    fill: #fff;
+}
+
+.card-dashboard:hover{
+    cursor: pointer;
+}
+
