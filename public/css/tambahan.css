@@ -1,0 +1,8 @@
+.pcoded .pcoded-main-container .pcoded-hasmenu .waves-dark .svg-hotel{
+    fill: #37474f;
+    width: 1rem;
+}
+
+.pcoded .pcoded-main-container .pcoded-hasmenu:hover .waves-dark .svg-hotel{
+    fill: #fff;
+}
