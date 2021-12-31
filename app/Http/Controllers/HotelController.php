@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -15,7 +16,10 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return view("dashboard.hotel.index");
+        return view("dashboard.hotel.index", [
+            "categories" => Category::all(),
+            "title" => "Hotel"
+        ]);
     }
 
     /**
@@ -25,7 +29,10 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view("dashboard.hotel.tambah");
+        return view("dashboard.hotel.tambah",[
+            "categories" => Category::all(),
+            "title" => "Hotel"
+        ]);
     }
 
     /**

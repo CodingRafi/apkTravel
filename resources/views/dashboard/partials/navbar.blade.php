@@ -123,9 +123,23 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="/dashboard/destinasi" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[0]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Destinasi</span>
+                            <span class="pcoded-mtext">Wisata Alam</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[1]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Wisata Buatan</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[2]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Wisata Budaya</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -170,9 +184,23 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="/dashboard/makanan" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[3]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Makanan</span>
+                            <span class="pcoded-mtext">Resto</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[4]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Kuliner</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[5]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Kafe</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -280,7 +308,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="/dashboard/oleh-oleh" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[6]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Oleh Oleh</span>
                             <span class="pcoded-mcaret"></span>

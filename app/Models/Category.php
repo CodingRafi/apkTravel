@@ -13,7 +13,7 @@ class Category extends Model
         "id"
     ];
 
-    public function category(){
+    public function campuran(){
         return $this->hasMany(Campuran::class);
     }
 }

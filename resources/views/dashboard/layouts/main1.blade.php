@@ -146,7 +146,36 @@
                 
                   @include('dashboard.partials.navbar')
 
-                  @yield('container')
+                  <div class="pcoded-content">
+                    <!-- Page-header start -->
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">{{ $title }}</h5>
+                                        <p class="m-b-0">Welcome to Kota Depok</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="#!">Dashboard</a>
+                                        </li>
+                                        @if ($title != "Dashboard")
+                                            <li class="breadcrumb-item"><a href="#!">{{ $title }}</a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page-header end -->
+                    @yield('container')
+                </div>
 
               </div>
           </div>
