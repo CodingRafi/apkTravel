@@ -2,14 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Material Able bootstrap admin template by Codedthemes</title>
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <!-- Meta -->
+    <title>Registrasi</title>
+
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -90,60 +84,48 @@
       </div>
   </div>
   <!-- Pre-loader end -->
-
-    <section class="login-block">
+  <section class="login-block">
         <!-- Container-fluid starts -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 mt-5">
-                    <!-- Authentication card start -->
-
-                        <form action="/login" method="POST" class="md-float-material form-material">
-                            @csrf
-                            <div class="auth-box card">
-                                <div class="card-block">
-                                    @if (session()->has('loginGagal')) 
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('loginGagal') }}
-                                        <button type="button" class="close m-0" data-dismiss="alert" aria-label="Close">
-                                          <span aria-hidden="true" style="font-size: 25px">&times;</span>
-                                        </button>
-                                      </div>
-                                    @endif
-                                    <div class="row m-b-20">
-                                        <div class="col-md-12">
-                                            <h3 class="text-center">Sign In</h3>
+                    <form action="/registrasi" method="post" class="md-float-material form-material">
+                        @csrf
+                        <div class="auth-box card">
+                            <div class="card-block">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">Sign up</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group form-primary">
+                                    <label for="username" style="color:#69A1FF; @error('username')color:#dc3545 @enderror" >Username</label>
+                                    <input type="text" class="form-control is-invalid" id="username" name="username" @error('username') style="border-color:#dc3545" @enderror value="{{ old('username') }}" required>
+                                    <span class="form-bar" @error('username') style="border-color:#dc3545" @enderror></span>
+                                    @error('username')   
+                                        <div class="invalid-feedback d-block">
+                                            {{ $message }}
                                         </div>
-                                    </div>
-                                    <div class="form-group form-primary">
-                                        <label for="username" style="color:#69A1FF; @error('username')color:#dc3545 @enderror" >Username</label>
-                                        <input type="text" class="form-control is-invalid" id="username" name="username" @error('username') style="border-color:#dc3545" @enderror value="{{ old('username') }}" required autofocus>
-                                        <span class="form-bar" @error('username') style="border-color:#dc3545" @enderror></span>
-                                        @error('username')   
-                                            <div class="invalid-feedback d-block">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group form-primary">
-                                        <label for="password"  style="color:#69A1FF; @error('password')color:#dc3545 @enderror" >Password</label>
-                                        <input type="password" class="form-control is-invalid" id="password" name="password" @error('password') style="border-color:#dc3545" @enderror required>
-                                        <span class="form-bar" @error('password') style="border-color:#dc3545" @enderror></span>
-                                        @error('password')   
-                                            <div class="invalid-feedback d-block">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="row m-t-30">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                    @enderror
+                                </div>
+                                <div class="form-group form-primary">
+                                    <label for="password"  style="color:#69A1FF; @error('password')color:#dc3545 @enderror" >Password</label>
+                                    <input type="password" class="form-control is-invalid" id="password" name="password" @error('password') style="border-color:#dc3545" @enderror required>
+                                    <span class="form-bar" @error('password') style="border-color:#dc3545" @enderror></span>
+                                    @error('password')   
+                                        <div class="invalid-feedback d-block">
+                                            {{ $message }}
                                         </div>
+                                    @enderror
+                                </div>
+                                <div class="row m-t-30">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now</button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <!-- end of form -->
+                        </div>
+                    </form>
                 </div>
                 <!-- end of col-sm-12 -->
             </div>
@@ -153,8 +135,7 @@
     </section>
     <!-- Warning Section Starts -->
     <!-- Older IE warning message -->
-   
-
+    
 <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
 <script type="text/javascript" src="/js/jquery-ui/jquery-ui.min.js "></script>
 <script type="text/javascript" src="/js/popper.js/popper.min.js"></script>

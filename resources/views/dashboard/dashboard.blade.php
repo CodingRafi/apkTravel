@@ -8,6 +8,16 @@
         <div class="page-wrapper">
             <!-- Page-body start -->
             <div class="page-body">
+                @if (session()->has('success'))   
+                    <div class="container-fluid p-0">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close m-0" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" style="font-size: 25px;">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="row">
                     <!-- order-visitor start -->
 

@@ -1,13 +1,17 @@
 <?php
 
+use \App\Models\Berita;
+use \App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\MakananController;
+use App\Http\Controllers\olehOlehController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DestinasiController;
-use App\Http\Controllers\olehOlehController;
-use \App\Models\Category;
+use App\Http\Controllers\RegistrasiController;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +23,22 @@ use \App\Models\Category;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/registrasi', [RegistrasiController::class, 'create'])->middleware('auth');
+Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/dashboard/berita/checkSlug', [BeritaController::class, "checkSlug"])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/{category:slug}', function(Category $category){
-    return view("dashboard.category.index", [
+    return view("dashboard.campuran.index", [
         "categories" => Category::all(),
         "campuran" => $category->campuran,
         "title" => $category->nama
     ]);
-});
+})->middleware('auth');
+
+Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 
 Route::get('/', function(){return view('home');});

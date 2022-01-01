@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Material Able bootstrap admin template by Codedthemes</title>
+    <title>Dashboard | {{ $title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,6 +23,15 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="/css/tambahan.css">
+    {{-- Trix editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -122,14 +131,17 @@
                       <ul class="nav-right">
                           <li class="user-profile header-notification">
                               <a href="#!" class="waves-effect waves-light">
-                                  <img src="/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                  <span>John Doe</span>
+                                  <span>{{ auth()->user()->username }}</span>
                                   <i class="ti-angle-down"></i>
                               </a>
                               <ul class="show-notification profile-notification">
                                   <li class="waves-effect waves-light">
+                                      <form action="/logout" method="post">
+                                          @csrf
+                                          <button type="submit" class="dropdown-item d-flex btn p-0" style="align-items: center;"><svg style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span style="font-size: 20px;margin-left: 10px;">Logout</span></button>
+                                      </form>
                                       <a href="auth-normal-sign-in.html">
-                                          <i class="ti-layout-sidebar-left"></i> Logout
+                                          
                                       </a>
                                   </li>
                               </ul>
@@ -181,6 +193,7 @@
           </div>
       </div>
   </div>
+
     
     <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
     <script type="text/javascript" src="/js/jquery-ui/jquery-ui.min.js "></script>
@@ -202,6 +215,7 @@
         if($(".fixed-button")){
             $(".fixed-button").css("display", "none");
         }
+        
     </script>
 </body>
 

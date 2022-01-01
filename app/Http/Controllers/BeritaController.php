@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreBeritaRequest;
 use App\Http\Requests\UpdateBeritaRequest;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BeritaController extends Controller
 {
@@ -15,7 +18,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +28,10 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.berita.tambah", [
+            "categories" => Category::all(),
+            "title" => "Tambah Berita"
+        ]);
     }
 
     /**
@@ -36,7 +42,12 @@ class BeritaController extends Controller
      */
     public function store(StoreBeritaRequest $request)
     {
-        //
+        $validatedData = $request->valiate([
+            'judul' => 'required|max:255',
+            'slug' => 'required|unique:berita',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
     }
 
     /**
@@ -82,5 +93,10 @@ class BeritaController extends Controller
     public function destroy(Berita $berita)
     {
         //
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Berita::class, 'slug', $request->judul);
+        return response()->json(['slug' => $slug]);
     }
 }
