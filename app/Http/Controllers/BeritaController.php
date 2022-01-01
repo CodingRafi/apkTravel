@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
-use App\Models\Category;
+use App\Models\Berita;
 use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 
-class HotelController extends Controller
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return view("dashboard.hotel.index", [
-            "categories" => Category::all(),
-            "title" => "Hotel"
-        ]);
+        //
     }
 
     /**
@@ -29,10 +24,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view("dashboard.hotel.tambah",[
-            "categories" => Category::all(),
-            "title" => "Hotel"
-        ]);
+        //
     }
 
     /**
@@ -49,10 +41,10 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show(Berita $berita)
     {
         //
     }
@@ -60,10 +52,10 @@ class HotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hotel $hotel)
+    public function edit(Berita $berita)
     {
         //
     }
@@ -72,10 +64,10 @@ class HotelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, Berita $berita)
     {
         //
     }
@@ -83,12 +75,11 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Berita $berita)
     {
         //
     }
-
 }

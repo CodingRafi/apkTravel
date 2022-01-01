@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Berita extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,8 @@ class Category extends Model
         "id"
     ];
 
-    public function campuran(){
-        return $this->hasMany(Campuran::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
-    public function berita(){
-        return $this->hasMany(Berita::class);
-    }
 }

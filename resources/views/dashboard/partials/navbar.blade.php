@@ -69,7 +69,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="/dashboard/hotel" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[8]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Hotel</span>
                             <span class="pcoded-mcaret"></span>
@@ -258,7 +258,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[9]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Travel</span>
                             <span class="pcoded-mcaret"></span>
@@ -358,9 +358,30 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[10]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Berita</span>
+                            <span class="pcoded-mtext">{{ $categories[10]->nama }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[11]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">{{ $categories[11]->nama }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[12]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">{{ $categories[12]->nama }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="/dashboard/{{ $categories[13]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">{{ $categories[13]->nama }}</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

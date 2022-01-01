@@ -53,5 +53,35 @@ class CategorySeeder extends Seeder
             'nama' => "Berita",
             "slug" => "Berita"
         ]);
+
+        Category::create([
+            'nama' => "Hotel",
+            "slug" => "hotel"
+        ]);
+
+        Category::create([
+            'nama' => "Travel",
+            "slug" => "travel"
+        ]);
+
+        Category::create([
+            'nama' => "Berita Pembangunan",
+            "slug" => "berita-pembangunan"
+        ]);
+
+        Category::create([
+            'nama' => "Berita Ekonomi",
+            "slug" => "berita-ekonomi"
+        ]);
+
+        Category::create([
+            'nama' => "Berita Kesos",
+            "slug" => "berita-kesos"
+        ]);
+
+        Category::create([
+            'nama' => "Berita Pemerintahan",
+            "slug" => "berita-pemerintahan"
+        ]);
     }
 }

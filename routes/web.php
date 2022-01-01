@@ -22,7 +22,6 @@ use \App\Models\Category;
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
-Route::resource('/dashboard/hotel', HotelController::class);
 Route::get('/dashboard/{category:slug}', function(Category $category){
     return view("dashboard.category.index", [
         "categories" => Category::all(),
