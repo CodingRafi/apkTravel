@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('container')
-    home
+    makanan
 @endsection

@@ -1,0 +1,25 @@
+/* || General styles */
+:root {
+    --main-font: 'Nunito', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+body * {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+body {
+    background: skyblue;
+}
+
+/* || welcome screen styles */
+.grid-home {
+    background-color: red;
+}
