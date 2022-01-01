@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreBeritaRequest;
+use App\Http\Requests\UpdateBeritaRequest;
 
 class BeritaController extends Controller
 {
@@ -30,10 +31,10 @@ class BeritaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreBeritaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBeritaRequest $request)
     {
         //
     }
@@ -63,11 +64,11 @@ class BeritaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateBeritaRequest  $request
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(UpdateBeritaRequest $request, Berita $berita)
     {
         //
     }
