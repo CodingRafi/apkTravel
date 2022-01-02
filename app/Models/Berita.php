@@ -10,6 +10,7 @@ class Berita extends Model
 {
     use HasFactory,Sluggable;
 
+    
     protected $guarded =[
         "id"
     ];

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campuran;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCampuranRequest;
 use App\Http\Requests\UpdateCampuranRequest;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CampuranController extends Controller
 {
@@ -23,9 +26,13 @@ class CampuranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category)
     {
-        //
+        return view("dashboard.campuran.tambah", [
+            "categories" => Category::all(),
+            "title" => $category->nama,
+            "slug" => $category->slug
+        ]);
     }
 
     /**
@@ -36,7 +43,7 @@ class CampuranController extends Controller
      */
     public function store(StoreCampuranRequest $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -82,5 +89,11 @@ class CampuranController extends Controller
     public function destroy(Campuran $campuran)
     {
         //
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Campuran::class, 'slug', $request->nama);
+        // dd($slug);
+        return response()->json(['slug' => $slug]);
     }
 }

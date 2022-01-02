@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBeritaRequest;
 use App\Http\Requests\UpdateBeritaRequest;
@@ -18,7 +19,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -42,12 +43,19 @@ class BeritaController extends Controller
      */
     public function store(StoreBeritaRequest $request)
     {
-        $validatedData = $request->valiate([
+        $validatedData = $request->validate([
             'judul' => 'required|max:255',
-            'slug' => 'required|unique:berita',
+            'slug' => 'required|unique:beritas',
             'category_id' => 'required',
             'body' => 'required'
         ]);
+        // dd($request);
+        
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+
+        Berita::create($validatedData);
+
+        return redirect('/dashboard')->with('success', 'Berita baru telah ditambahkan');
     }
 
     /**

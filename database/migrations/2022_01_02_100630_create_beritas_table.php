@@ -13,12 +13,13 @@ class CreateBeritasTable extends Migration
      */
     public function up()
     {
-        Schema::create('Beritas', function (Blueprint $table) {
+        Schema::create('beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('judul')->unique();
+            $table->foreignId('category_id');
+            $table->string('judul');
             $table->string('slug')->unique();
-            $table->string('category_id');
-            $table->string('image');
+            $table->text('excerpt');
+            $table->string('image')->nullable();
             $table->text('body');
             $table->timestamps();
         });

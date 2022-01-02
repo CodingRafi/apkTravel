@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | {{ $title }}</title>
+    <title>Dashboard | {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}{{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,8 +24,9 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="/css/tambahan.css">
     {{-- Trix editor --}}
-    <link rel="stylesheet" type="text/css" href="/css/trix.css">
-    <script type="text/javascript" src="/js/trix.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/trix/trix.css">
+    <script type="text/javascript" src="/js/trix/trix.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script> --}}
 
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
@@ -165,7 +166,11 @@
                             <div class="row align-items-center">
                                 <div class="col-md-8">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">{{ $title }}</h5>
+                                        <h5 class="m-b-10">
+                                           {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}
+                                           {{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}
+                                           {{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}
+                                        </h5>
                                         <p class="m-b-0">Welcome to Kota Depok</p>
                                     </div>
                                 </div>
@@ -202,6 +207,11 @@
     <!-- jquery slimscroll js -->
     <script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+    <!-- waves js -->
+    <script src="/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+
     <!-- slimscroll js -->
     <script src="/js/jquery.mCustomScrollbar.concat.min.js "></script>
 
@@ -210,13 +220,30 @@
     <script src="/js/vertical/vertical-layout.min.js "></script>
 
     <script type="text/javascript" src="/js/script.js "></script>
+    <script src="/tinymce/tinymce.min.js"></script>
 
     <script>
         if($(".fixed-button")){
             $(".fixed-button").css("display", "none");
         }
         
+        document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+        })
+
+        tinymce.init({
+            selector:'textarea',
+            branding: false
+        });
+
+        
+
+        // $(document).ready(function() {
+        //     CKEDITOR.config.removePlugins = 'image,about,elementspath';
+        // });
     </script>
+
+    
 </body>
 
 </html>

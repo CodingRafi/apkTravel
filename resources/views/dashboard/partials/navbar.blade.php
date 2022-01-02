@@ -75,8 +75,8 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
-                        <a href="/dashboard/hotel/create" class="waves-effect waves-dark">
+                    <li class="{{ Request::is('dashboard/hotel/create') ? 'active' : '' }}">
+                        <a href="/dashboard/{{ $categories[8]->slug }}/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Hotel</span>
                             <span class="pcoded-mcaret"></span>
@@ -84,7 +84,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pcoded-hasmenu {{ (Request::is('dashboard/wisata-alam') || Request::is('dashboard/wisata-buatan') || Request::is('dashboard/wisata-budaya')) ? 'active' : '' }}">
+            <li class="pcoded-hasmenu {{ (Request::is('dashboard/wisata-alam') || Request::is('dashboard/wisata-buatan') || Request::is('dashboard/wisata-budaya') || Request::is('dashboard/destinasi/create') ) ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -143,7 +143,7 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="{{ Request::is('dashboard/destinasi/create') ? "active" : "" }}">
                         <a href="/dashboard/destinasi/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Destinasi</span>
@@ -152,7 +152,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pcoded-hasmenu {{ (Request::is('dashboard/resto') || Request::is('dashboard/kafe') || Request::is('dashboard/kuliner')) ? 'active' : '' }}">
+            <li class="pcoded-hasmenu {{ (Request::is('dashboard/resto') || Request::is('dashboard/kafe') || Request::is('dashboard/kuliner') || Request::is('dashboard/kuliner') || Request::is('dashboard/makanan/create')) ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -204,7 +204,7 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="{{ Request::is('dashboard/makanan/create') ? "active" : ""}}">
                         <a href="/dashboard/makanan/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Makanan</span>
@@ -264,8 +264,8 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                    <li class="{{ Request::is('dashboard/travel/create') ? 'active' : '' }}">
+                        <a href="/dashboard/{{ $categories[9]->slug }}/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Travel</span>
                             <span class="pcoded-mcaret"></span>
@@ -314,8 +314,8 @@
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="">
-                        <a href="/dashboard/oleh-oleh" class="waves-effect waves-dark">
+                    <li class="{{ Request::is('dashboard/oleh-oleh/create') ? 'active' : '' }}">
+                        <a href="/dashboard/{{ $categories[6]->slug }}/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Oleh Oleh</span>
                             <span class="pcoded-mcaret"></span>

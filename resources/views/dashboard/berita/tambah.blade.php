@@ -17,28 +17,38 @@
                                 <h5>Tambah Berita</h5>
                             </div>
                             <div class="card-block">
-                                <form method="POST" action="/dashboard/berita" enctype="multipart/form-data">
+                                <form action="/dashboard/berita" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Judul Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Judul Berita" name="judul" id="judul">
+                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" required autofocus value="{{ old('judul') }}">
+                                            @error('judul')   
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Slug Berita" name="slug" id="slug">
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" required value="{{ old('slug') }}">
+                                            @error('slug')   
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Kategori Berita</label>
                                         <div class="col-sm-10">
-                                            <select name="kategory" class="form-control">
-                                                <option value="11">Berita Pembangunan</option>
-                                                <option value="12">Berita Ekonomi</option>
-                                                <option value="13">Berita Kesos</option>
-                                                <option value="14">Berita Pemerintahan</option>
+                                            <select name="category_id" class="form-control">
+                                                <option value="11" {{ (old('kategory') === '11') ? 'selected' : '' }}>Berita Pembangunan</option>
+                                                <option value="12" {{ (old('kategory') === '12') ? 'selected' : '' }}>Berita Ekonomi</option>
+                                                <option value="13" {{ (old('kategory') === '13') ? 'selected' : '' }}>Berita Kesos</option>
+                                                <option value="14" {{ (old('kategory') === '14') ? 'selected' : '' }}>Berita Pemerintahan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -49,10 +59,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Content Berita</label>
+                                        <label class="col-sm-2 col-form-label" for="body">Content Berita</label>
                                         <div class="col-sm-10">
-                                            <input id="body" type="hidden" name="body">
-                                            <trix-editor input="body"></trix-editor>
+                                            @error('body')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                            <textarea rows="5" cols="5" class="form-control" placeholder="Content Berita" id="body" style="width: 100%" name="body"></textarea>
                                         </div>
                                     </div>
                                     <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
@@ -86,9 +98,7 @@
         .then(data => slug.value = data.slug)
     })
 
-    document.addEventListener('trix-file-accept', function(e){
-        e.preventDefault();
-    })
+    // CKEDITOR.replace( 'body' );
 
 </script>
 

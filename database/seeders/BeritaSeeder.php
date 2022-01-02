@@ -14,10 +14,14 @@ class BeritaSeeder extends Seeder
      */
     public function run()
     {
-    
         Berita::create([
             "judul" => "Pemkot Depok Pasang 10.696 Lampu PJU Sepanjang Tahun 2021",
             "slug" => "pemkot-depok-pasang-10696-lampu-pju-sepanjang-tahun-2021",
+            "excerpt" => "berita.depok.go.id- Sepanjang tahun 2021, Dinas Perhubungan (Dishub) Kota Depok telah memasang sebanyak 10.696 lampu Penerangan Jalan Umum (PJU). Lampu PJU ini tersebar pada Jalan Protokol di 11 kecamatan se-Kota Depok. Kepala Dishub Kota Depok, Eko Herwiyanto mengatakan, tahun 2020, lampu PJU yang terpasang di Kota Depok sebanyak 10.696 lampu PJU. 
+            
+            “Berdasarkan kajian, Kota Depok membutuhkan 23 ribu lampu PJU untuk menerangi seluruh titik jalan, sehingga masih menyisakan kurang lebih 12 ribu yang belum terpasang,” ucapnya kepada berita.depok.go.id, Jumat (31/12/21).
+            
+            Dirinya menjelaskan, untuk 12 ribu lampu PJU yang belum terpasang juga sudah dipetakan.",
             "category_id" => "14",
             "image" => "img.png",
             "body" => "berita.depok.go.id- Sepanjang tahun 2021, Dinas Perhubungan (Dishub) Kota Depok telah memasang sebanyak 10.696 lampu Penerangan Jalan Umum (PJU). Lampu PJU ini tersebar pada Jalan Protokol di 11 kecamatan se-Kota Depok. Kepala Dishub Kota Depok, Eko Herwiyanto mengatakan, tahun 2020, lampu PJU yang terpasang di Kota Depok sebanyak 10.696 lampu PJU. 
@@ -38,6 +42,5 @@ class BeritaSeeder extends Seeder
             
             “Belasan petugas yang bersiaga itu dibagi berdasarkan wilayah timur dan barat. Sebanyak 15 orang dibagi dua wilayah, barat di Pancoran Mas, Sawangan, Limo, Bojongsari, dan Cinere. Kalau timur itu Sukmajaya, Cilodong, Tapos, dan Cimanggis,” tutupnya. (JD03/ED02/EUD02)"
         ]);
-
     }
 }
