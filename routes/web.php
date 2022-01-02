@@ -1,17 +1,11 @@
 <?php
 
-use \App\Models\Berita;
-use \App\Models\Category;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HotelController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\MakananController;
-use App\Http\Controllers\olehOlehController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\RegistrasiController;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +17,17 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
