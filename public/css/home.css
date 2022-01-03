@@ -17,6 +17,7 @@ body * {
 
 body {
     background: skyblue;
+    height: 100vh;
 }
 
 /* || home screen styles */
@@ -95,6 +96,5 @@ h1 {
 }
 
 img {
-    width: 33%;
-    height: 33%;
+    display: none;
 }
