@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Berita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
@@ -39,15 +40,19 @@ Route::get('/dashboard/campuran/checkSlug', [CampuranController::class, "checkSl
 Route::get('/dashboard/{category:slug}', function(Category $category){
     return view("dashboard.campuran.index", [
         "categories" => Category::all(),
-        "title" => $category->nama
+        "campuran" => $category->campuran,
+        "beritas" => $category->berita,
+        "title" => $category->nama,
+        "slug" => $category->slug
     ]);
 })->middleware('auth');
 
-Route::get('/dashboard/berita/create', [BeritaController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/berita/{berita:slug}', [BeritaController::class, 'show']);
+Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 Route::get('/dashboard/destinasi/create', [CampuranController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [CampuranController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [CampuranController::class, 'create'])->middleware('auth');
 
+
 Route::resource('/dashboard/campuran', CampuranController::class)->middleware('auth');
-Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 

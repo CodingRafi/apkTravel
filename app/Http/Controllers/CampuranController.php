@@ -54,7 +54,7 @@ class CampuranController extends Controller
      */
     public function show(Campuran $campuran)
     {
-        //
+       //
     }
 
     /**
