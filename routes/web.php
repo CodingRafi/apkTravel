@@ -51,8 +51,10 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
     ]);
 })->middleware('auth');
 
-Route::get('/dashboard/berita/{berita:slug}', [BeritaController::class, 'show']);
+
+
 Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
+// Route::get('/dashboard/berita/{berita:slug}', [BeritaController::class, 'show']);
 Route::get('/dashboard/destinasi/create', [CampuranController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [CampuranController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [CampuranController::class, 'create'])->middleware('auth');
