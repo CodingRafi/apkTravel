@@ -23,7 +23,11 @@ use App\Http\Controllers\RegistrasiController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', function(){return view('home');});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
