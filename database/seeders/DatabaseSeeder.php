@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use \App\Models\Hotel;
+use \App\Models\Berita;
+use \App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+       
+        User::create([
+            'username' => "admin",
+            'email' => 'muhamadrafi1408@gmail.com',
+            "password" => bcrypt('admin')
+        ]);
+
     }
 }

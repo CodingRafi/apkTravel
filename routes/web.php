@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Category;
+use App\Models\Berita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\CampuranController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegistrasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,33 +20,40 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
-
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', function(){return view('home');});
 
-Route::get('/home', function(){
-    return view('home');
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/hotel', function(){
-    return view('hotel');
-});
+// require __DIR__.'/auth.php';
 
-Route::get('/destinasi', function(){
-    return view('destinasi');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/registrasi', [RegistrasiController::class, 'create'])->middleware('auth');
+Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
-Route::get('/makanan', function(){
-    return view('makanan');
-});
+Route::get('/dashboard/berita/checkSlug', [BeritaController::class, "checkSlug"])->middleware('auth');
+Route::get('/dashboard/campuran/checkSlug', [CampuranController::class, "checkSlug"])->middleware('auth');
+Route::get('/dashboard/{category:slug}', function(Category $category){
+    return view("dashboard.campuran.index", [
+        "categories" => Category::all(),
+        "campuran" => $category->campuran,
+        "beritas" => $category->berita,
+        "title" => $category->nama,
+        "slug" => $category->slug
+    ]);
+})->middleware('auth');
 
-Route::get('/travel', function(){
-    return view('travel');
-});
+Route::get('/dashboard/berita/{berita:slug}', [BeritaController::class, 'show']);
+Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
+Route::get('/dashboard/destinasi/create', [CampuranController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/makanan/create', [CampuranController::class, 'create'])->middleware('auth');
+Route::get('/dashboard/{category:slug}/create', [CampuranController::class, 'create'])->middleware('auth');
 
-Route::get('/ekraf', function(){
-    return view('ekraf');
-});
+
+Route::resource('/dashboard/campuran', CampuranController::class)->middleware('auth');
+
+

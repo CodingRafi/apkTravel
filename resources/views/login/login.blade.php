@@ -3,13 +3,6 @@
 
 <head>
     <title>Material Able bootstrap admin template by Codedthemes</title>
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <!-- Meta -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,21 +11,21 @@
       <meta name="author" content="Codedthemes" />
       <!-- Favicon icon -->
 
-      <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
       <!-- Google font-->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
       <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="/css/bootstrap/css/bootstrap.min.css">
       <!-- waves.css -->
-      <link rel="stylesheet" href="pages/waves/css/waves.min.css" type="text/css" media="all">
+      <link rel="stylesheet" href="/pages/waves/css/waves.min.css" type="text/css" media="all">
       <!-- themify-icons line icon -->
-      <link rel="stylesheet" type="text/css" href="icon/themify-icons/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="/icon/themify-icons/themify-icons.css">
       <!-- ico font -->
-      <link rel="stylesheet" type="text/css" href="icon/icofont/css/icofont.css">
+      <link rel="stylesheet" type="text/css" href="/icon/icofont/css/icofont.css">
       <!-- Font Awesome -->
-      <link rel="stylesheet" type="text/css" href="icon/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="/icon/font-awesome/css/font-awesome.min.css">
       <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
 
   <body themebg-pattern="theme1">
@@ -95,35 +88,51 @@
         <!-- Container-fluid starts -->
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 mt-5">
                     <!-- Authentication card start -->
 
-                        <form class="md-float-material form-material">
-                            <div class="text-center">
-                                <img src="images/logo.png" alt="logo.png">
-                            </div>
+                        <form action="/login" method="POST" class="md-float-material form-material">
+                            @csrf
                             <div class="auth-box card">
                                 <div class="card-block">
+                                    @if (session()->has('loginGagal')) 
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('loginGagal') }}
+                                        <button type="button" class="close m-0" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true" style="font-size: 25px">&times;</span>
+                                        </button>
+                                      </div>
+                                    @endif
                                     <div class="row m-b-20">
                                         <div class="col-md-12">
                                             <h3 class="text-center">Sign In</h3>
                                         </div>
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input type="text" name="email" class="form-control">
-                                        <span class="form-bar"></span>
-                                        <label class="float-label">Your Email Address</label>
+                                        <label for="username" style="color:#69A1FF; @error('username')color:#dc3545 @enderror" >Username</label>
+                                        <input type="text" class="form-control is-invalid" id="username" name="username" @error('username') style="border-color:#dc3545" @enderror value="{{ old('username') }}" required autofocus>
+                                        <span class="form-bar" @error('username') style="border-color:#dc3545" @enderror></span>
+                                        @error('username')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input type="password" name="password" class="form-control">
-                                        <span class="form-bar"></span>
-                                        <label class="float-label">Password</label>
+                                        <label for="password"  style="color:#69A1FF; @error('password')color:#dc3545 @enderror" >Password</label>
+                                        <input type="password" class="form-control is-invalid" id="password" name="password" @error('password') style="border-color:#dc3545" @enderror required>
+                                        <span class="form-bar" @error('password') style="border-color:#dc3545" @enderror></span>
+                                        @error('password')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="row m-t-25 text-left">
                                         <div class="col-12">
                                             <div class="checkbox-fade fade-in-primary d-">
                                                 <label>
-                                                    <input type="checkbox" value="">
+                                                    <input type="checkbox" id="remember_me" name="remember_me" value="remember_me">
                                                     <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                                                     <span class="text-inverse">Remember me</span>
                                                 </label>
@@ -135,17 +144,7 @@
                                     </div>
                                     <div class="row m-t-30">
                                         <div class="col-md-12">
-                                            <button type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                            <p class="text-inverse text-left"><a href="index.html"><b>Back to website</b></a></p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <img src="images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                                            <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
                                         </div>
                                     </div>
                                 </div>
@@ -161,58 +160,17 @@
     </section>
     <!-- Warning Section Starts -->
     <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-<!-- Warning Section Ends -->
-<!-- Required Jquery -->
-<script type="text/javascript" src="js/jquery/jquery.min.js "></script>
-<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js "></script>
-<script type="text/javascript" src="js/popper.js/popper.min.js"></script>
-<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js "></script>
+   
+
+<script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
+<script type="text/javascript" src="/js/jquery-ui/jquery-ui.min.js "></script>
+<script type="text/javascript" src="/js/popper.js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js "></script>
 <!-- waves js -->
-<script src="pages/waves/js/waves.min.js"></script>
+<script src="/pages/waves/js/waves.min.js"></script>
 <!-- jquery slimscroll js -->
-<script type="text/javascript" src="js/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/common-pages.js"></script>
+<script type="text/javascript" src="/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="/js/common-pages.js"></script>
 </body>
 
 </html>
