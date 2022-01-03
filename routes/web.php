@@ -56,3 +56,4 @@ Route::get('/dashboard/{category:slug}/create', [CampuranController::class, 'cre
 
 Route::resource('/dashboard/campuran', CampuranController::class)->middleware('auth');
 
+

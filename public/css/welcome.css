@@ -1,0 +1,53 @@
+/* || General styles */
+:root {
+    --main-font: 'Nunito', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+body * {
+    margin: 0;
+    font-family: var(--main-font);
+}
+
+body {
+    background: skyblue;
+}
+
+/* || welcome screen styles */
+.flex-welcome {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+    gap: 20rem;
+}
+
+.logo {
+    background-color: whitesmoke;
+}
+
+.welcome {
+    text-align: center;
+    color: white;
+}
+
+.welcome button {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50px;
+    border: .1rem solid white;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: .5rem 3rem;
+}
+
+.welcome a {
+    text-decoration: none;
+}
