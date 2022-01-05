@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -27,17 +28,17 @@
     <div class="content grid">
         <div class="sambutan-frame">
             <div class="sambutan-video">
-
+                <img src="images/home-screen/video.jpg">
             </div>
         </div>
         <div class="peta-frame flex">
             <div class="peta-img">
-
+                <img src="images/home-screen/depok-map.jpg">
             </div>
             <div class="peta-body">
                 <h2>Peta Kota Depok</h2>
                 <p>Kecamatan Beji</p>
-                <ul>
+                <ul class="legenda">
                     <li>Situ Jatijajar</li>
                     <li>Margo City</li>
                     <li>Stasiun Depok Baru</li>
