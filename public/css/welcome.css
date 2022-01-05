@@ -9,14 +9,14 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: rgba(47, 55, 144, 1);
+}
+
 body,
 body * {
     margin: 0;
     font-family: var(--main-font);
-}
-
-body {
-    background: skyblue;
 }
 
 /* || welcome screen styles */

@@ -1,100 +1,191 @@
-/* || General styles */
+/*** 0.0 - general style ***/
+/*** 0.1 - preset ***/
 :root {
     --main-font: 'Nunito', sans-serif;
+    --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --box-shadow-footer: rgba(99, 99, 99, 0.2) 0px -2px 8px 0px;
+    --theme-color: rgba(47, 55, 144, 1);
+    --card-color: rgb(245, 245, 245);
+    --card-transparent-color: rgba(245, 245, 245, 0.7);
+    --card-gradient-color: linear-gradient(var(--card-color),rgba(234, 234, 234, 1));
+    font-size: 12px;
 }
+.flex {display: flex;}
+.grid {display: grid;}
 
+/*** 0.2 - general ***/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: rgb(202, 212, 218);
+}
 body,
 body * {
     margin: 0;
     font-family: var(--main-font);
 }
 
-body {
-    background: skyblue;
-    height: 100vh;
-}
-
-/* || home screen styles */
-header {
-    display: flex;
-}
-
+/*** 1.0 - header ***/
+/*** 1.1 - logo ***/
 .logo-frame {
-    background-color: white;
-    border-radius: 0 50px 50px 0;
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
+    box-shadow: var(--box-shadow-header);
+    height: 56px;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+.logo-frame > * {
+    margin-block: auto;
 }
 
-.running {
-    background-color: whitesmoke;
-    border-radius: 0 50px 50px 0;
+/*** 0.2 - running text ***/
+.marquee-frame {
+    background-color: var(--card-transparent-color);
+    border-radius: 0 0 50px 0;
+    padding-right: 2.5rem;
+    padding-block: 1rem;
+    display: none;
+    position: fixed;
+    width: calc(100% - 2rem);
+    top: 0;
 }
 
-.grid-home {
-    display: grid;
-    grid-template-rows: repeat(4 ,1fr);
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    height: 70%;
-    padding: 2rem 0;
+/*** 2.0 - content ***/
+/*** 2.1 - content grid ***/
+.content {
+    padding: .5rem .5rem;
+    gap: .5rem;
+    grid-template-columns: 1fr;
+    margin-block: 56px;
+}
+.content > *{
+    border-radius: 10px;
+    padding: .5rem;
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
+    box-shadow: var(--box-shadow-header);
 }
 
-.grid-home-sambutan {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 2;
+/*** 2.2 - sambutan ***/
+
+/*** 2.3 - cuaca ***/
+.cuaca-frame {
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.grid-home-peta {
-    background-color: white;
-    border-radius: 30px;
-    grid-column: span 2;
-    grid-row: span 3;
+.cuaca-body {
+    justify-content: space-around;
+}
+.cuaca-body > * {
+    margin-block: auto;
 }
 
-.grid-home-berita {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 4;
+/*** 2.4 - peta ***/
+.peta-frame {
+    flex-direction: column;
+}
+
+.peta-body > h2 {
+    white-space: nowrap;
+}
+
+/*** 2.5 - kontak serfis ***/
+.kontak-frame {
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 1rem;
+}
+.kontak-frame > * {
+    white-space: nowrap;
+    margin-block: auto;
+}
+
+/*** 2.6 - berita serfis ***/
+
+.berita-item+.berita-item {
+    padding-top: 2rem;
 }
 
 .berita-item {
-    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.grid-home-cuaca {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 2;
-}
-
-.grid-home-kontak {
-    background-color: white;
-    border-radius: 30px;
-    grid-column: span 2;
-}
-
-.menu {
-    bottom: 0px;
-    bottom: 0px;
-    background-color: white;
-}
-
-.menu > * {
-    display: flex;
+/*** 3.0 - footer/menu ***/
+.footer {
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
+    bottom: 0;
+    box-shadow: var(--box-shadow-footer);
+    gap: 1rem;
+    height: 56px;
     justify-content: center;
-    gap: 2rem;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+}
+.footer  * {
+    margin-block: auto;
+    white-space: nowrap;
+    list-style: none;
+    text-decoration: none;
+    color: black;
 }
 
-h1 {
-    font-size: .8rem;
-}
+@media (min-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 32%);
+        gap: 1rem;
+        padding: 3rem 5rem;
+        height: calc(100vh - 112px);
+    }
 
-img {
-    display: none;
+    .logo-frame {
+        justify-content: start;
+        gap: 2rem;
+        border-radius: 0 0 50px 0;
+        width: 30%;
+        z-index: 10;
+    }
+    .marquee-frame {
+        box-shadow: var(--box-shadow-header);
+        display: block;
+    }
+    .peta-frame {
+        grid-column: span 2;
+        grid-row: span 2;
+        flex-direction: row;
+    }
+    .berita-frame {
+        grid-row: span 3;
+    }
+    .cuaca-frame {
+        grid-row: span 2;
+    }
+    .kontak-frame {
+        grid-column: span 2;
+        flex-direction: row;
+    }
+
+    .berita-item {
+        flex-direction: row;
+    }
+
+    .footer {
+        gap: 3rem;
+    }
 }

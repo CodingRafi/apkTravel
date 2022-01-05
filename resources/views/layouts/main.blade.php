@@ -15,86 +15,84 @@
 </head>
 
 <body>
-    {{-- @yield('container') --}}
-
-    <header>
-        <div class="logo-frame">
-          <h1>Kota Depok</h1>
+    <header class="flex">
+        <div class="logo-frame flex">
+            <img src="images/home-screen/logo.png" alt="logo" style="height: 4rem; object-fit: cover;">
+            <h2 style="white-space: nowrap">Kota Depok</h2>
         </div>
-        <div class="running">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, autem praesentium! A, quaerat iure. Incidunt
-              possimus odit doloremque molestias libero.</p>
+        <div class="marquee-frame">
+            <marquee behavior="scroll" direction="left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, praesentium voluptates, ullam, libero ipsa debitis reiciendis nam magnam sapiente eligendi ab amet fugit commodi iure. Nulla doloremque dicta voluptas eaque nihil magni mollitia animi natus praesentium. Quae, modi! Tempore esse ex soluta voluptates. Sint, quia totam sapiente ipsum incidunt, eaque voluptate dolor cupiditate fuga quaerat veniam excepturi quae delectus vero quo distinctio quisquam hic, sed eligendi rerum molestias dignissimos vitae.</marquee>
         </div>
     </header>
+    <div class="content grid">
+        <div class="sambutan-frame">
+            <div class="sambutan-video">
 
-    <div class="grid-home">
-        <div class="grid-home-sambutan">
-            <img src="images/home-screen/video.jpg">
-        </div>
-        <div class="grid-home-peta">
-          <h1>Peta Kota Depok</h1>
-          <img src="images/home-screen/w01.jpg">
-        </div>
-        <div class="grid-home-berita">
-          <h1>Berita</h1>
-          <div class="berita-item">
-            <img src="images/home-screen/berita.jpg">
-            <div>
-              <h1>Komunitas Bank Sampah Kecamatan</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ducimus unde quasi atque saepe minus doloribus rerum soluta mollitia ullam.</p>
             </div>
-          </div>
-          <div class="berita-item">
-            <img src="images/home-screen/berita.jpg">
-            <div>
-              <h1>Komunitas Bank Sampah Kecamatan</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ducimus unde quasi atque saepe minus doloribus rerum soluta mollitia ullam.</p>
-            </div>
-          </div>
-          <div class="berita-item">
-            <img src="images/home-screen/berita.jpg">
-            <div>
-              <h1>Komunitas Bank Sampah Kecamatan</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ducimus unde quasi atque saepe minus doloribus rerum soluta mollitia ullam.</p>
-            </div>
-          </div>
         </div>
-        <div class="grid-home-cuaca">
-          <h1>07:30</h1>
-          <p>22 Desember 2021</p>
-          <h1>20°C</h1>
-          <img src="images/home-screen/rainy-day.png">
+        <div class="peta-frame flex">
+            <div class="peta-img">
+
+            </div>
+            <div class="peta-body">
+                <h2>Peta Kota Depok</h2>
+                <p>Kecamatan Beji</p>
+                <ul>
+                    <li>Situ Jatijajar</li>
+                    <li>Margo City</li>
+                    <li>Stasiun Depok Baru</li>
+                </ul>
+            </div>
         </div>
-        <div class="grid-home-kontak">
-          <h1>Contact Center</h1>
-          <h1>021 - 8212 - 210</h1>
-          <h1>Customer Center</h1>
-          <h1>021 - 8212 - 210</h1>
+        <div class="berita-frame">
+            <div class="berita-item flex">
+                <div>
+                    <div class="berita-img">
+
+                    </div>
+                </div>
+                <div>
+                    <b>Komunitas Bank Sampah Kecamatan Sukmajaya Hasilkan Berbagai Produk Daur Ulang</b>
+                </div>
+            </div>
+        </div>
+        <div class="cuaca-frame flex">
+            <div class="cuaca-head">
+                <center>
+                    <h1>07:00</h1>
+                    <p>22 Desember 2020</p>
+                </center>
+            </div>
+            <div class="flex cuaca-body">
+                <h1>20°C</h1>
+                <div class="cuaca-icon">
+
+                </div>
+            </div>
+        </div>
+        <div class="kontak-frame flex">
+            <div>
+                <center>
+                    <h2>Contact Center</h2>
+                    <h1>021 - 8212 - 210</h1>
+                </center>
+            </div>
+            <div>
+                <center>
+                    <h2>Customer Center</h2>
+                    <h1>021 - 8212 - 210</h1>
+                </center>
+            </div>
         </div>
     </div>
-    <div class="menu">
-      <ul>
+    <ul class="footer flex">
         <li><a href="/home">Home</a></li>
-        <li><a href="/hotel">Hotel</a></li>
-        <li><a href="/destinasi">Destinasi</a></li>
-        <li><a href="/makanan">Makanan</a></li>
-        <li><a href="/travel">Travel</a></li>
-        <li><a href="/ekraf">Ekraf</a></li>
-      </ul>
-    </div>
-
-
-
-    {{-- <div class="footer">
-      <ul>
-        <li><a href="/home">home</a></li>
-        <li><a href="/hotel">hotel</a></li>
-        <li><a href="/destinasi">destinasi</a></li>
-        <li><a href="/makanan">makanan</a></li>
-        <li><a href="/travel">travel</a></li>
-        <li><a href="/ekraf">ekraf</a></li>
-      </ul>
-    </div> --}}
+        <li><a href="#">Hotel</a></li>
+        <li><a href="#">Destinasi</a></li>
+        <li><a href="#">Makanan</a></li>
+        <li><a href="#">Travel</a></li>
+        <li><a href="#">Oleh-Oleh</a></li>
+    </ul>
 </body>
 
 </html>
