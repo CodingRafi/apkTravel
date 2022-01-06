@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\koleksi;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorekoleksiRequest;
 use App\Http\Requests\UpdatekoleksiRequest;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class KoleksiController extends Controller
 {
@@ -25,7 +28,10 @@ class KoleksiController extends Controller
      */
     public function create()
     {
-        //
+        return view("dashboard.koleksi.tambah", [
+            "categories" => Category::all(),
+            "title" => "Tambah Koleksi"
+        ]);
     }
 
     /**
@@ -36,7 +42,22 @@ class KoleksiController extends Controller
      */
     public function store(StorekoleksiRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255',
+            'slug' => 'required|unique:beritas',
+            'jenis' => 'required'
+        ]);
+
+        Koleksi::create($validatedData);
+        if($request->jenis == 'koleksifoto'){
+            return redirect('/dashboard/foto/create')->with([
+                'kategori' => $request->slug
+            ]);
+        }else{
+            return redirect('/dashboard/video/create')->with([
+                'kategori' => $request->slug
+            ]);
+        }
     }
 
     /**
@@ -82,5 +103,10 @@ class KoleksiController extends Controller
     public function destroy(koleksi $koleksi)
     {
         //
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
+        return response()->json(['slug' => $slug]);
     }
 }

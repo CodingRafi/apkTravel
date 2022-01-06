@@ -45,6 +45,19 @@
         .container-previewFotVid{
             display: none;
         }
+
+        .pcoded .pcoded-navbar .mengelolaPcoded:after {
+            background: none;
+        }
+
+        .buttonModalKoleksi:hover{
+            cursor: pointer;
+        }
+
+        .imagePreview{
+            width: 25%;
+            margin: 5px;
+        }
     </style>
 </head>
 

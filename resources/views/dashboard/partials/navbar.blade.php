@@ -31,8 +31,8 @@
             </li>
         </ul>
         <div class="pcoded-navigation-label">Mengelola</div>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu {{ Request::is('dashboard/hotel*') ? 'active' : '' }}" >
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
+            <li class="pcoded-hasmenu {{ Request::is('dashboard/hotel*') ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
@@ -86,6 +86,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ (Request::is('dashboard/wisata-alam') || Request::is('dashboard/wisata-buatan') || Request::is('dashboard/wisata-budaya') || Request::is('dashboard/destinasi/create') ) ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -154,6 +156,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ (Request::is('dashboard/resto') || Request::is('dashboard/kafe') || Request::is('dashboard/kuliner') || Request::is('dashboard/kuliner') || Request::is('dashboard/makanan/create')) ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -215,6 +219,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ Request::is('dashboard/travel*') ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -275,6 +281,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ Request::is('dashboard/oleh*') ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -325,6 +333,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ (Request::is('dashboard/berita-pembangunan') || Request::is('dashboard/berita-ekonomi') || Request::is('dashboard/berita-kesos') || Request::is('dashboard/berita-pemerintahan')) ? 'active' : '' }}">
                 <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
                     <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -394,6 +404,7 @@
                 </ul>
             </li>
         </ul>
+
         <div class="pcoded-navigation-label">Koleksi</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu" >
@@ -430,7 +441,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="" class="waves-effect waves-dark">
+                        <a href="/dashboard/koleksi/foto" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Koleksi Foto</span>
                             <span class="pcoded-mcaret"></span>
@@ -444,7 +455,7 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="#/create" class="waves-effect waves-dark">
+                        <a href="/dashboard/koleksi/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Koleksi</span>
                             <span class="pcoded-mcaret"></span>

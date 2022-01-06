@@ -20,4 +20,8 @@ class Foto extends Model
     public function berita(){
         return $this->belongsTo(Berita::class);
     }
+
+    public function koleksi(){
+        return $this->hasMany(Koleksi::class);
+    }
 }

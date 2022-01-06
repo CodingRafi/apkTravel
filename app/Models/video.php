@@ -12,4 +12,16 @@ class video extends Model
     protected $guarded =[
         "id"
     ];
+
+    public function profilwisata(){
+        return $this->belongsTo(ProfilWisata::class);
+    }
+
+    public function berita(){
+        return $this->belongsTo(Berita::class);
+    }
+
+    public function koleksi(){
+        return $this->hasMany(Koleksi::class);
+    }
 }
