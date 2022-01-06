@@ -224,7 +224,7 @@ class ProfilWisataController extends Controller
         $foto = $data->foto;
         $video = $data->video;
         if(count($foto) > 0){
-            Foto::destroy('id' , $video[0]->id);
+            Foto::destroy('id' , $foto[0]->id);
             Storage::delete($foto[0]->filename);
         }else if(count($video) > 0){
             Video::destroy('id' , $video[0]->id);

@@ -27,7 +27,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Nama {{ $title }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ $title }}" name="nama" id="nama" value="{{ $profilWisata->nama }}">
+                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ $title }}" name="nama" id="nama" value="{{ $profilWisata->nama }}" required>
                                             @error('nama')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -38,7 +38,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug {{ $title }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ $title }}" name="slug" id="slug" value="{{ $profilWisata->slug }}">
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ $title }}" name="slug" id="slug" value="{{ $profilWisata->slug }}" required>
                                             @error('slug')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -49,7 +49,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">No Telepon</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ $profilWisata->no_telp }}">
+                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ $profilWisata->no_telp }}" required>
                                             @error('no_telp')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -90,16 +90,22 @@
                                             <div class="mb-3 col-sm-5 border container-previewFotVid" style="{{ (count($foto) > 0 || count($video) > 0) ? 'display:block;' : '' }}">
                                                 <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000">{{ (count($foto) > 0) ? 'Yang akan di upload : Foto' : '' }}{{ (count($video) > 0) ? 'Yang akan di upload : Video' : '' }}</span>
                                             </div>
-                                            @if (count($foto) > 0)
-                                                <img src="{{ asset('storage/' . $foto[0]->filename) }}" class="img-preview img-fluid mb-3 col-sm-5">
-                                                <video src="" class="video-preview img-fluid mb-3 col-sm-5"></video>
-                                            @elseif(count($video) > 0)
-                                                <img class="img-preview img-fluid mb-3 col-sm-5">
-                                                <video src="{{ asset('storage/' . $video[0]->filename) }}" class="video-preview img-fluid mb-3 col-sm-5"></video>
-                                            @else
-                                                <img class="img-preview img-fluid mb-3 col-sm-5">
-                                                <video src="" class="video-preview img-fluid mb-3 col-sm-5"></video>
-                                            @endif
+                                            <div class="container2Prev">
+                                                @if (count($foto) > 0)
+                                                    <img src="{{ asset('storage/' . $foto[0]->filename) }}" class="img-preview img-fluid mb-3 col-sm-5" style="display: block">
+                                                    <video width="320" height="180" controls class="videoContainer mb-3">
+                                                        <source class="video-preview img-fluid col-sm-5">
+                                                    </video>
+                                                @elseif(count($video) > 0)
+                                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                                    <video width="320" height="180" controls class="videoContainer mb-3" style="display: block">
+                                                        <source src="{{ asset('storage/' . $video[0]->filename) }}" type="video/{{ explode('.', explode('/', $video[0]->filename)[1])[1] }}" class="video-preview img-fluid  col-sm-5">
+                                                    </video>
+                                                @else
+                                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                                    <video src="" class="video-preview img-fluid mb-3 col-sm-5"></video>
+                                                @endif
+                                            </div>
                                             <input type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" id="filename" onchange="previewImage()">
                                             @error('filename')   
                                             <div class="invalid-feedback d-block">
@@ -247,6 +253,8 @@
         const imgPreview = document.querySelector('.img-preview');
         const videoPreview = document.querySelector('.video-preview');
         const previewFotVid = document.querySelector('.previewFotVid');
+        const videoContainer = document.querySelector('.videoContainer');
+        const container2Prev = document.querySelector('.container2Prev');
         const containerPreviewFotVid = document.querySelector('.container-previewFotVid');
 
         imgPreview.style.display = "block";
@@ -257,12 +265,10 @@
         oFReader.onload = function(oFREvnet){
             let data = oFReader.result;
             let hasilSplit = data.split(';base64,');
-            console.log(videoPreview)
-            imgPreview.src = "";
-            videoPreview.src = "";
+            console.log();
             previewFotVid.innerHTML = "";
             imgPreview.style.display = "none";
-            videoPreview.style.display = "none";
+            videoContainer.style.display = 'none';
             containerPreviewFotVid.style.display = 'none';
             if(hasilSplit[0] == 'data:image/png' || hasilSplit[0] == 'data:image/jpg' || hasilSplit[0] == 'data:image/jpeg'){
                 imgPreview.style.display = "block";
@@ -270,10 +276,15 @@
                 previewFotVid.innerHTML = 'Yang akan di upload : Foto'
                 imgPreview.src = oFREvnet.target.result;
             }else if(hasilSplit[0] == 'data:video/mp4' || hasilSplit[0] == 'data:video/mp3'){
-                videoPreview.style.display = "block";
+                videoContainer.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
-                previewFotVid.innerHTML = 'Yang akan di upload : video'
-                videoPreview.src = oFREvnet.target.result;
+                container2Prev.innerHTML = "";
+                container2Prev.innerHTML = `
+                                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                                            <video width="320" height="180" controls class="videoContainer mb-3" style="display: block">
+                                                <source src="${oFREvnet.target.result}" type="video/${hasilSplit[0].split(':')[1].split('/')[1]}" class="video-preview img-fluid  col-sm-5">
+                                            </video>`;
+                previewFotVid.innerHTML = 'Yang akan di upload : video';
             }else{
                 ""
             }

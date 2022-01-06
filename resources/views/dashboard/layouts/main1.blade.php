@@ -27,19 +27,18 @@
     <link rel="stylesheet" type="text/css" href="/css/trix/trix.css">
     <script type="text/javascript" src="/js/trix/trix.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script> --}}
-    {{-- loading --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    
 
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
             display: none;
         }
 
-        .video-preview{
+        .videoContainer{
             display: none;
         }
 
-        .foto-preview{
+        .img-preview{
             display: none;
         }
 
@@ -105,6 +104,16 @@
       </div>
   </div>
   <!-- Pre-loader end -->
+
+  {{-- Upload loading --}}
+    {{-- <div class="container-progress" style="position: absolute;z-index: 9999;width: 100vw;background: #fff;height: 100vh;opacity: .5;">
+      <div class="prog2">
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+      </div>
+    </div> --}}
+  {{-- Akhir upload loading --}}
   <div id="pcoded" class="pcoded">
       <div class="pcoded-overlay-box"></div>
       <div class="pcoded-container navbar-wrapper">
@@ -250,8 +259,6 @@
             selector:'textarea',
             branding: false
         });
-
-        
 
         // $(document).ready(function() {
         //     CKEDITOR.config.removePlugins = 'image,about,elementspath';
