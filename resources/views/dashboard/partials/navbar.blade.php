@@ -1,3 +1,5 @@
+
+
 <nav class="pcoded-navbar">
     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
     <div class="pcoded-inner-navbar main-menu">
@@ -69,14 +71,14 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="{{ Request::is('dashboard/hotel') ? 'active' : '' }}">
-                        <a href="/dashboard/{{ $categories[8]->slug }}" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[7]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Hotel</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="{{ Request::is('dashboard/hotel/create') ? 'active' : '' }}">
-                        <a href="/dashboard/{{ $categories[8]->slug }}/create" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[7]->slug }}/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Hotel</span>
                             <span class="pcoded-mcaret"></span>
@@ -258,14 +260,14 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="{{ Request::is('dashboard/travel') ? 'active' : '' }}">
-                        <a href="/dashboard/{{ $categories[9]->slug }}" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[8]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Travel</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="{{ Request::is('dashboard/travel/create') ? 'active' : '' }}">
-                        <a href="/dashboard/{{ $categories[9]->slug }}/create" class="waves-effect waves-dark">
+                        <a href="/dashboard/{{ $categories[8]->slug }}/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Travel</span>
                             <span class="pcoded-mcaret"></span>
@@ -330,58 +332,55 @@
                         preserveAspectRatio="xMidYMid meet">
                        
                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                       stroke="none">
-                       <path d="M1532 4950 c-285 -39 -505 -248 -558 -531 -30 -154 1 -330 81 -464
-                       41 -69 148 -181 217 -228 26 -18 48 -35 48 -39 0 -5 -238 -8 -530 -8 -499 0
-                       -533 -1 -580 -19 -66 -25 -112 -61 -151 -117 -53 -77 -59 -120 -59 -419 0
-                       -261 1 -272 22 -315 14 -26 37 -53 58 -65 34 -20 52 -20 1098 -23 l1062 -2 0
-                       320 0 320 320 0 320 0 0 -320 0 -320 1063 2 c1045 3 1063 3 1097 23 21 12 44
-                       39 57 65 22 43 23 54 23 315 0 299 -6 342 -59 419 -39 56 -85 92 -151 117 -47
-                       18 -81 19 -580 19 -292 0 -530 3 -530 8 0 4 22 21 48 39 69 47 176 159 217
-                       228 154 257 112 598 -100 810 -125 125 -283 188 -470 188 -116 0 -223 -25
-                       -320 -76 -133 -70 -304 -283 -434 -544 -117 -232 -161 -375 -169 -545 -2 -60
-                       -8 -108 -12 -108 -4 0 -10 48 -12 108 -8 171 -52 313 -170 547 -131 261 -284
-                       455 -420 532 -122 70 -286 102 -426 83z m215 -332 c111 -41 238 -200 353 -441
-                       96 -202 152 -402 129 -463 -32 -88 -409 32 -700 224 -161 107 -229 196 -245
-                       318 -31 254 222 452 463 362z m1838 8 c68 -18 103 -37 148 -82 138 -138 140
-                       -343 6 -489 -24 -26 -91 -79 -148 -117 -294 -194 -667 -312 -701 -223 -23 59
-                       34 261 130 461 177 373 347 509 565 450z"/>
-                       <path d="M322 1403 l3 -998 23 -51 c42 -93 135 -164 241 -184 34 -6 353 -10
-                       852 -10 l799 0 0 1120 0 1120 -960 0 -960 0 2 -997z"/>
-                       <path d="M2880 1280 l0 -1120 799 0 c499 0 818 4 852 10 106 20 199 91 241
-                       184 l23 51 3 998 2 997 -960 0 -960 0 0 -1120z"/>
+                        stroke="none">
+                       <path d="M1205 4950 c-16 -11 -38 -34 -47 -52 -17 -31 -18 -155 -18 -2203 -1
+                       -2318 1 -2244 -49 -2376 -12 -30 -37 -81 -56 -113 -19 -32 -35 -60 -35 -62 0
+                       -2 785 -4 1746 -4 1932 0 1811 -4 1959 65 181 84 317 236 383 430 l27 80 3
+                       2070 c2 1476 -1 2078 -9 2096 -6 15 -24 40 -40 55 l-30 29 -1902 2 c-1881 3
+                       -1902 3 -1932 -17z m2982 -846 c90 -43 104 -166 28 -233 l-36 -31 -1049 0
+                       -1049 0 -35 30 c-61 54 -71 136 -24 195 44 56 -1 54 1106 55 931 0 1027 -1
+                       1059 -16z m-25 -844 c46 -13 93 -66 102 -114 11 -56 -23 -119 -78 -145 -42
+                       -21 -53 -21 -1048 -21 -553 0 -1020 3 -1038 6 -41 9 -96 63 -105 104 -10 43 1
+                       90 28 123 46 58 13 56 1102 57 649 0 1013 -4 1037 -10z m35 -870 c67 -40 87
+                       -110 51 -180 -44 -86 43 -80 -1123 -80 -1003 0 -1031 1 -1062 20 -92 56 -94
+                       177 -4 237 l34 23 1036 0 c1009 0 1037 -1 1068 -20z m-10 -846 c90 -43 104
+                       -166 28 -233 l-36 -31 -1049 0 -1049 0 -35 30 c-61 54 -71 136 -24 195 44 56
+                       -1 54 1106 55 931 0 1027 -1 1059 -16z"/>
+                       <path d="M68 4383 c-14 -9 -36 -33 -47 -54 l-21 -37 2 -1914 c3 -1859 4 -1914
+                       22 -1958 55 -130 153 -223 273 -260 207 -64 423 31 516 227 l32 68 3 1923 c2
+                       2126 7 1961 -61 2002 -30 19 -52 20 -362 20 -289 -1 -333 -3 -357 -17z"/>
                        </g>
                        </svg>
-                       <b>BC</b></span>
+                       </span>
                     <span class="pcoded-mtext">Berita</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="{{ Request::is('dashboard/berita-pembangunan') ? 'active' : '' }}">
+                        <a href="/dashboard/{{ $categories[9]->slug }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">{{ $categories[9]->nama }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('dashboard/berita-ekonomi') ? 'active' : '' }}">
                         <a href="/dashboard/{{ $categories[10]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">{{ $categories[10]->nama }}</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('dashboard/berita-ekonomi') ? 'active' : '' }}">
+                    <li class="{{ Request::is('dashboard/berita-kesos') ? 'active' : '' }}">
                         <a href="/dashboard/{{ $categories[11]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">{{ $categories[11]->nama }}</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('dashboard/berita-kesos') ? 'active' : '' }}">
+                    <li class="{{ Request::is('dashboard/berita-pemerintahan') ? 'active' : '' }}">
                         <a href="/dashboard/{{ $categories[12]->slug }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">{{ $categories[12]->nama }}</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class="{{ Request::is('dashboard/berita-pemerintahan') ? 'active' : '' }}">
-                        <a href="/dashboard/{{ $categories[13]->slug }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">{{ $categories[13]->nama }}</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -389,6 +388,65 @@
                         <a href="/dashboard/berita/create" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Tambah Berita</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="pcoded-navigation-label">Koleksi</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcoded-hasmenu" >
+                <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
+                    <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                       
+                       <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                        stroke="none">
+                       <path d="M990 4755 c-62 -19 -123 -74 -155 -139 -22 -45 -30 -90 -55 -307 -16
+                       -140 -30 -266 -30 -281 l0 -28 1663 0 c1842 0 1734 3 1877 -66 99 -49 213
+                       -161 259 -254 70 -144 65 -41 68 -1427 l4 -1251 44 25 c51 28 100 83 115 128
+                       17 54 342 2897 336 2943 -11 81 -69 164 -144 205 -38 20 -76 30 -173 42 -543
+                       66 -3687 425 -3721 424 -24 0 -63 -7 -88 -14z"/>
+                       <path d="M149 3692 c-37 -19 -64 -43 -86 -76 -66 -97 -63 -48 -63 -1148 0
+                       -549 2 -998 4 -998 3 0 213 152 468 337 255 186 492 352 528 370 168 84 361
+                       85 535 4 77 -36 88 -45 540 -440 254 -222 398 -341 435 -359 65 -32 175 -42
+                       245 -22 25 7 390 214 812 460 l768 447 0 609 0 609 -23 51 c-27 60 -89 123
+                       -152 156 l-45 23 -1956 3 -1956 2 -54 -28z m2633 -435 c194 -70 334 -225 378
+                       -417 45 -195 -26 -423 -172 -555 -181 -163 -422 -196 -647 -90 -95 45 -213
+                       160 -259 253 -167 339 23 744 390 827 91 21 225 13 310 -18z"/>
+                       <path d="M2497 2996 c-106 -39 -179 -127 -196 -237 -28 -176 102 -337 279
+                       -347 167 -9 304 111 317 280 9 117 -57 234 -164 288 -59 30 -177 38 -236 16z"/>
+                       <path d="M1180 1961 c-59 -19 -133 -70 -640 -444 l-535 -394 -3 -277 c-1 -170
+                       2 -293 8 -316 16 -60 68 -121 129 -152 l55 -28 1948 0 c1900 0 1950 0 2003 19
+                       71 25 128 71 163 129 l27 47 3 698 c1 383 0 697 -3 697 -3 0 -310 -176 -681
+                       -391 -372 -215 -705 -405 -740 -421 -163 -76 -369 -71 -538 14 -86 43 -81 40
+                       -515 422 -442 388 -457 399 -581 403 -41 1 -86 -1 -100 -6z"/>
+                       </g>
+                       </svg></span>
+                    <span class="pcoded-mtext">Koleksi</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Koleksi Foto</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Koleksi Video</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#/create" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Tambah Koleksi</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Material Able bootstrap admin template by Codedthemes</title>
+    <title>Login</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -109,8 +109,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-primary">
-                                        <label for="username" style="color:#69A1FF; @error('username')color:#dc3545 @enderror" >Username</label>
-                                        <input type="text" class="form-control is-invalid" id="username" name="username" @error('username') style="border-color:#dc3545" @enderror value="{{ old('username') }}" required autofocus>
+                                        {{-- <label for="username" style="color:#69A1FF; @error('username')color:#dc3545 @enderror" >Username</label> --}}
+                                        <input type="text" class="form-control is-invalid" id="username" name="username" @error('username') style="border-color:#dc3545" @enderror value="{{ old('username') }}" required autofocus placeholder="Username">
                                         <span class="form-bar" @error('username') style="border-color:#dc3545" @enderror></span>
                                         @error('username')   
                                             <div class="invalid-feedback d-block">
@@ -119,8 +119,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group form-primary">
-                                        <label for="password"  style="color:#69A1FF; @error('password')color:#dc3545 @enderror" >Password</label>
-                                        <input type="password" class="form-control is-invalid" id="password" name="password" @error('password') style="border-color:#dc3545" @enderror required>
+                                        {{-- <label for="password"  style="color:#69A1FF; @error('password')color:#dc3545 @enderror" >Password</label> --}}
+                                        <input type="password" class="form-control is-invalid" id="password" name="password" @error('password') style="border-color:#dc3545" @enderror required placeholder="Password">
                                         <span class="form-bar" @error('password') style="border-color:#dc3545" @enderror></span>
                                         @error('password')   
                                             <div class="invalid-feedback d-block">

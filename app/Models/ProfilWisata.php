@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
-class Campuran extends Model
+class ProfilWisata extends Model
 {
     use HasFactory,Sluggable;
 
@@ -14,10 +14,26 @@ class Campuran extends Model
         "id"
     ];
 
+    // protected $table = 'multiuploads';
+    // protected $primaryKey = 'id';
+    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }
 
+    public function foto(){
+        return $this->hasMany(Foto::class);
+    }
+
+    public function video(){
+        return $this->hasMany(Video::class);
+    }
+    
     public function sluggable(): array
     {
         return [

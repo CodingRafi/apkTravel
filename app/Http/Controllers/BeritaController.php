@@ -64,10 +64,15 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show(Berita $berita, $slug)
     {
-        dd($berita);
-        // return view();
+        $data = Berita::where('slug', $slug)->get()[0];
+        $title =  Category::where('id', $data->category_id)->get()[0];
+        return view('dashboard.berita.show', [
+            'profilWisata' => $data,
+            'title' => $title->nama,
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -76,9 +81,15 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit(Berita $berita, $slug)
     {
-        //
+        $data = Berita::where('slug', $slug)->get()[0];
+        $title =  Category::where('id', $data->category_id)->get()[0];
+        return view('dashboard.berita.edit', [
+            'berita' => $data,
+            'title' => $title->nama,
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -88,9 +99,25 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBeritaRequest $request, Berita $berita)
+    public function update(UpdateBeritaRequest $request, Berita $berita, $slug)
     {
-        //
+        $data = Berita::where('slug', $slug)->get()[0];
+        $rules = ([
+            'judul' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        if($request->slug != $data->slug){
+            $rules['slug'] = 'required|unique:beritas';
+        }
+
+        $validateData = $request->validate($rules);
+
+        Berita::where('id', $data->id)
+            ->update($validateData);
+        
+        return redirect("/dashboard")->with("success", "Berita berhasil diubah");
     }
 
     /**
@@ -99,9 +126,11 @@ class BeritaController extends Controller
      * @param  \App\Models\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy(Berita $berita, $slug)
     {
-        //
+        $data = Berita::where('slug', $slug)->get();
+        Berita::destroy($data[0]->id);
+        return redirect('/dashboard')->with('success', 'Berita berhasil dihapus');
     }
 
     public function checkSlug(Request $request){

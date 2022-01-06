@@ -27,9 +27,23 @@
     <link rel="stylesheet" type="text/css" href="/css/trix/trix.css">
     <script type="text/javascript" src="/js/trix/trix.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script> --}}
+    {{-- loading --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+
+        .video-preview{
+            display: none;
+        }
+
+        .foto-preview{
+            display: none;
+        }
+
+        .container-previewFotVid{
             display: none;
         }
     </style>
@@ -167,6 +181,7 @@
                                 <div class="col-md-8">
                                     <div class="page-header-title">
                                         <h5 class="m-b-10">
+                                            {{ Request::is('dashboard/profil-wisata/{profil_wisatum:slugrit}/edit') ? 'Edit '.$title : '' }}
                                            {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}
                                            {{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}
                                            {{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}
