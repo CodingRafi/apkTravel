@@ -1,17 +1,23 @@
 /*** 0.0 - general style ***/
 /*** 0.1 - preset ***/
 :root {
-    --main-font: 'Nunito', sans-serif;
-    --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     --box-shadow-footer: rgba(99, 99, 99, 0.2) 0px -2px 8px 0px;
-    --theme-color: rgba(47, 55, 144, 1);
+    --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     --card-color: rgb(245, 245, 245);
+    --card-gradient-color: linear-gradient(var(--card-color), rgba(234, 234, 234, 1));
     --card-transparent-color: rgba(245, 245, 245, 0.8);
-    --card-gradient-color: linear-gradient(var(--card-color),rgba(234, 234, 234, 1));
+    --main-font: 'Nunito', sans-serif;
+    --theme-color: rgba(47, 55, 144, 1);
     font-size: 12px;
 }
-.flex {display: flex;}
-.grid {display: grid;}
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
 
 /*** 0.2 - general ***/
 *,
@@ -26,221 +32,93 @@
 
 body {
     background-color: var(--theme-color);
+    border: 1px dotted black;
+    min-height: 100vh;
 }
+
 body,
 body * {
-    margin: 0;
     font-family: var(--main-font);
+    margin: 0;
 }
 
-/*** 1.0 - header ***/
-/*** 1.1 - logo ***/
-.logo-frame {
-    background-color: var(--card-color);
-    background: var(--card-gradient-color);
-    box-shadow: var(--box-shadow-header);
+/*** 1.0 - content style ***/
+/*** 1.1 - top bar ***/
+.topbar {
     height: 56px;
-    justify-content: space-between;
-    padding: 0 1rem;
-    width: 100%;
     position: fixed;
-    top: 0;
+    width: 100%;
 }
-.logo-frame > * {
+
+.topbar-head > *,
+.topbar-body > * {
     margin-block: auto;
 }
 
-/*** 0.2 - running text ***/
-.marquee-frame {
-    background-color: var(--card-transparent-color);
+.topbar-head {
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
     border-radius: 0 0 50px 0;
-    padding-right: 2.5rem;
-    padding-block: 1rem;
-    display: none;
-    position: fixed;
-    width: calc(100% - 2rem);
-    top: 0;
-}
-
-/*** 2.0 - content ***/
-/*** 2.1 - content grid ***/
-.content {
-    padding: .5rem .5rem;
-    gap: .5rem;
-    grid-template-columns: 1fr;
-    margin-block: 56px;
-}
-.content > *{
-    border-radius: 10px;
-    padding: .5rem;
-    background-color: var(--card-color);
-    background: var(--card-gradient-color);
     box-shadow: var(--box-shadow-header);
-}
-
-/*** 2.2 - sambutan ***/
-.sambutan-video > img {
-    object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-/*** 2.3 - cuaca ***/
-.cuaca-frame {
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.cuaca-body {
-    justify-content: space-around;
-}
-.cuaca-body > * {
-    margin-block: auto;
-}
-
-/*** 2.4 - peta ***/
-.peta-frame {
-    flex-direction: column;
-}
-.peta-img > img {
-    object-fit: scale-down;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.peta-body > h2 {
+    gap: 2rem;
+    height: inherit;
+    padding-inline: 2rem;
+    position: fixed;
     white-space: nowrap;
+    z-index: 1;
 }
 
-.legenda {
-    padding-left: 1.5rem;
+.topbar-head > img {
+    object-fit: scale-down;
+    width: 3rem;
 }
 
-/*** 2.5 - kontak serfis ***/
-.kontak-frame {
-    justify-content: space-around;
-    flex-direction: column;
-    gap: 1rem;
-}
-.kontak-frame > * {
-    white-space: nowrap;
-    margin-block: auto;
+.topbar-body {
+    background: var(--card-transparent-color);
+    border-radius: 0 0 50px 0;
+    box-shadow: var(--box-shadow-header);
+    height: 70%;
+    padding-inline: 2rem;
+    width: calc(100% - 2rem);
 }
 
-/*** 2.6 - berita serfis ***/
+/*** 1.2 - main ***/
 
-.berita-item+.berita-item {
-    padding-top: 2rem;
-}
-
-.berita-item {
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/*** 3.0 - footer/menu ***/
-.footer {
+/*** 1.3 - menu ***/
+.menu {
     background-color: var(--card-color);
     background: var(--card-gradient-color);
+    border-radius: 30% 30% 0 0;
     bottom: 0;
     box-shadow: var(--box-shadow-footer);
     height: 56px;
-    justify-content: center;
-    padding: 0;
     position: fixed;
     width: 100%;
 }
-.footer * {
-    margin-block: auto;
-    white-space: nowrap;
+
+.menu-frame {
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
     list-style: none;
-    text-decoration: none;
+    margin-inline: auto;
+    padding: 0;
+    white-space: nowrap;
+    width: min(90%, 720px);
+}
+
+.menu-frame a {
     color: black;
-    width: 14rem;
+    text-decoration: none;
+}
+
+.menu-icon {
+    flex-direction: column;
     text-align: center;
-    font-size: calc(1rem - 2px);
 }
 
-@media (min-width: 768px) {
-    .content {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(7, 1fr);
-        gap: 1rem;
-        padding: 3rem 5rem;
-    }
-    
-    .logo-frame {
-        justify-content: start;
-        gap: 2rem;
-        border-radius: 0 0 50px 0;
-        width: 30%;
-        z-index: 10;
-    }
-    .marquee-frame {
-        box-shadow: var(--box-shadow-header);
-        display: block;
-    }
-    .sambutan-frame {
-        grid-column: span 2;
-    }
-    .peta-frame {
-        grid-column: span 2;
-        flex-direction: row;
-    }
-    .berita-frame {
-        grid-row: span 1;
-    }
-    .cuaca-frame {
-        grid-row: span 1;
-    }
-    .kontak-frame {
-        grid-column: span 2;
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 1025px) {
-    .content {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 1rem;
-        padding: 3rem 5rem;
-        height: calc(100vh - 112px);
-    }
-
-    .logo-frame {
-        justify-content: start;
-        gap: 2rem;
-        border-radius: 0 0 50px 0;
-        width: 30%;
-        z-index: 10;
-    }
-    .marquee-frame {
-        box-shadow: var(--box-shadow-header);
-        display: block;
-    }
-    .sambutan-frame {
-        grid-column: span 1;
-    }
-    .peta-frame {
-        grid-column: span 2;
-        grid-row: span 2;
-        flex-direction: row;
-    }
-    .berita-frame {
-        grid-row: span 3;
-    }
-    .cuaca-frame {
-        grid-row: span 2;
-    }
-    .kontak-frame {
-        grid-column: span 2;
-        flex-direction: row;
-    }
-
-    .berita-item {
-        flex-direction: row;
-    }
+.menu-icon * {
+    margin-inline: auto;
+    object-fit: scale-down;
+    width: 2rem;
 }
