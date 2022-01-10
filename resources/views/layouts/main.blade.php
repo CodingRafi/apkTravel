@@ -62,16 +62,20 @@
                 </div>
 
             </div>
+
             <div class="cuaca-frame flex">
                 <div class="cuaca">
-                    <img src="icon/home-screen/rainy-day.svg">
-                    <h1>20°C</h1>
+                    <img src="icon/home-screen/rainy-day.svg" style="width: 72px">
+                    <div>
+                        <h3 id="jam"></h3>
+                        <h2>20°C</h2>
+                    </div>
                 </div>
                 <div class="waktu">
-                    <h2 id="jam"></h2>
-                    <p>24 Desember 2020</p>
+                    <h3>24 Desember 2020</h3>
                 </div>
             </div>
+
         </div>
         <div class="column middle flex">
             <div class="peta-frame">
@@ -136,69 +140,55 @@
                 </div>
             </div>
         </div>
+
+        <!-- Kotak Berita -->
         <div class="column flex">
             <div class="berita-frame">
 
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-5">
-                            <img src="images/home-screen/berita.jpg" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content.</p>
-                            </div>
-                        </div>
+                <div class="card pt-3" style="max-width: 540px;">
+                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-5">
-                            <img src="images/home-screen/berita.jpg" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content.</p>
-                            </div>
-                        </div>
+
+                <div class="card pt-3 mt-2" style="max-width: 540px;">
+                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-5">
-                            <img src="images/home-screen/berita.jpg" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content.</p>
-                            </div>
-                        </div>
+
+                <div class="card pt-3 mt-2" style="max-width: 540px;">
+                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-5">
-                            <img src="images/home-screen/berita.jpg" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural
-                                    lead-in to additional content.</p>
-                            </div>
-                        </div>
+
+                <div class="card pt-3 mt-2" style="max-width: 540px;">
+                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+
+                <div class="card pt-3 mt-2" style="max-width: 540px;">
+                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
     <div class="menu">
         <ul class="menu-frame flex">
             <li>
