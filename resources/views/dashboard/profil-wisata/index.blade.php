@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.main1')
 
 @section('container')
-    
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -23,6 +22,11 @@
                     <div class="card-block table-border-style">
                         <div class="table-responsive">
                             @if ($slug == 'berita-pembangunan' || $slug == 'berita-ekonomi' || $slug == 'berita-kesos' || $slug == 'berita-pemerintahan') 
+                                @if (count($beritas) == 0)
+                                <div class="alert alert-primary" role="alert">
+                                    Maaf tidak data ditemukan
+                                </div>
+                                @else 
                                 <table class="table" style="text-align: center">
                                     <thead>
                                         <tr>
@@ -49,7 +53,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @endif
                             @else
+                                @if (count($profilWisatas) == 0)
+                                <div class="alert alert-primary" role="alert">
+                                    Maaf tidak ada data ditemukan
+                                </div>
+                                @else 
                                 <table class="table" style="text-align: center">
                                     <thead>
                                         <tr>
@@ -76,6 +86,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                @endif
                             @endif
                         </div>
                     </div>

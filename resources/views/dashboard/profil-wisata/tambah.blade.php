@@ -48,6 +48,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Logo</label>
+                                        <div class="col-sm-10">
+                                            <div class="container3Prev">
+                                                <img class="img-preview2 img-fluid mb-3 col-sm-5">
+                                            </div>
+                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo" onchange="previewImage1()" accept="image/*">
+                                            @error('logo')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">No Telepon</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ old('no_telp') }}" required>
@@ -253,12 +267,12 @@
         imgPreview.style.display = "block";
 
         const oFReader = new FileReader();
+        console.log(oFReader)
         oFReader.readAsDataURL(filename.files[0]);
 
         oFReader.onload = function(oFREvnet){
             let data = oFReader.result;
             let hasilSplit = data.split(';base64,');
-            console.log();
             previewFotVid.innerHTML = "";
             imgPreview.style.display = "none";
             videoContainer.style.display = 'none';
@@ -266,11 +280,13 @@
             if(hasilSplit[0] == 'data:image/png' || hasilSplit[0] == 'data:image/jpg' || hasilSplit[0] == 'data:image/jpeg'){
                 imgPreview.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
+                container2Prev.style.display = 'block';
                 previewFotVid.innerHTML = 'Yang akan di upload : Foto'
                 imgPreview.src = oFREvnet.target.result;
             }else if(hasilSplit[0] == 'data:video/mp4' || hasilSplit[0] == 'data:video/mp3'){
                 videoContainer.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
+                container2Prev.style.display = 'block';
                 container2Prev.innerHTML = "";
                 container2Prev.innerHTML = `
                                             <img class="img-preview img-fluid mb-3 col-sm-5">
@@ -282,6 +298,22 @@
                 ""
             }
         };
+    }
+
+    function previewImage1(){
+        const container3Prev = document.querySelector('.container3Prev');
+        const imgPreview2 = document.querySelector('.img-preview2');
+        const logo = document.querySelector('#logo');
+        
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(logo.files[0]);
+
+        oFReader.onload = function(oFREvnet){
+            imgPreview2.style.display = "block";
+            container3Prev.style.display = 'block';
+            imgPreview2.src = oFREvnet.target.result;
+        }
     }
 </script>
 

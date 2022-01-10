@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\CampuranController;
@@ -45,18 +46,15 @@ Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
 Route::get('/dashboard/berita/checkSlug', [BeritaController::class, "checkSlug"])->middleware('auth');
 Route::get('/dashboard/profil-wisata/checkSlug', [ProfilWisataController::class, "checkSlug"])->middleware('auth');
+Route::get('/dashboard/koleksi/checkKoleksi', [KoleksiController::class, "ambilData"])->middleware('auth');
 Route::get('/dashboard/koleksi/checkSlug', [KoleksiController::class, "checkSlug"])->middleware('auth');
 Route::get('/dashboard/koleksi/{koleksi:slug}/post', [FotoController::class, 'create']);
 Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 Route::resource('/dashboard/profil-wisata', ProfilWisataController::class)->middleware('auth');
-Route::get('/dashboard/koleksi/foto', function () {
-    return view("dashboard.koleksi.koleksiFoto.index", [
-        "categories" => Category::all(),
-        "title" => 'Koleksi Foto',
-    ]);
-});
 Route::resource('/dashboard/koleksi', KoleksiController::class)->middleware('auth');
+Route::get('/dashboard/foto/{foto:slug}/tambah', [FotoController::class, 'buat'])->middleware('auth');
 Route::resource('/dashboard/foto', FotoController::class)->middleware('auth');
+Route::get('/dashboard/video/{video:slug}/tambah', [VideoController::class, 'buat'])->middleware('auth');
 Route::resource('/dashboard/video', VideoController::class)->middleware('auth');
 
 Route::get('/dashboard/{category:slug}', function(Category $category){

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\video;
+use App\Models\Koleksi;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorevideoRequest;
 use App\Http\Requests\UpdatevideoRequest;
 
@@ -15,7 +19,28 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $koleksi = Koleksi::where('jenis', 'koleksivideo')->get();
+
+        $video = [];
+        for($i = 0; $i < count($koleksi); $i++){
+            if(count($koleksi[$i]->video) == 0){
+                $video[] = [
+                    'videoGada' => '/images/jika.jpg'
+                ];
+            }else{
+                $video[] = [
+                    'videoAda' => $koleksi[$i]->video
+                ];
+            }
+        }
+    
+
+        return view("dashboard.koleksi.koleksiVideo.index", [
+            "categories" => Category::all(),
+            "title" => 'Koleksi Video',
+            "koleksies" => $koleksi,
+            "videos" => $video
+        ]);
     }
 
     /**
@@ -25,7 +50,23 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.koleksi.koleksivideo.tambah', [
+            'title' => 'Koleksi',
+            'next' => 'Uploads',
+            "categories" => Category::all(),
+            'kategori' => session()->get( 'kategori' )
+        ]);
+    }
+
+    public function buat($slug)
+    {
+        return view('dashboard.koleksi.koleksivideo.tambah', [
+            'title' => 'Koleksi',
+            'next' => 'Uploads',
+            "categories" => Category::all(),
+            'kategori' => session()->get( 'kategori' ),
+            'slug' => $slug
+        ]);
     }
 
     /**
@@ -36,7 +77,32 @@ class VideoController extends Controller
      */
     public function store(StorevideoRequest $request)
     {
-        //
+        if(isset($request->slug)){
+            $slug = $request->slug;
+        }else{
+            $slug = $request->kategori;
+        }
+        $koleksi = Koleksi::where('slug', $slug)->get()[0];
+        $validatedFilename = $request->validate([
+            'filename' => 'required',
+            'filename.*' => 'mimes:mp4,mp3|file|max:501760',
+        ]);
+        
+        if ($request->hasfile('filename')) { 
+            foreach ($request->file('filename') as $file) {
+                if ($file->isValid()) {
+                    $filename = $file->store('videoUploads');    
+                    // dd('oke');
+                    Video::create([
+                        'koleksi_id' => $koleksi->id,
+                        'filename' => $filename
+                    ]); 
+                }
+            }          
+            return redirect('/dashboard/video');
+        }else{
+            echo'Gagal';
+        }
     }
 
     /**
@@ -79,8 +145,10 @@ class VideoController extends Controller
      * @param  \App\Models\video  $video
      * @return \Illuminate\Http\Response
      */
-    public function destroy(video $video)
+    public function destroy(video $video, Request $request)
     {
-        //
+        Storage::delete($video->filename);
+        Video::destroy($video->id);
+        return redirect('/dashboard/koleksi/' . $request->slug);
     }
 }

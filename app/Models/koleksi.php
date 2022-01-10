@@ -14,6 +14,11 @@ class koleksi extends Model
         "id"
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function foto(){
         return $this->hasMany(Foto::class);
     }

@@ -2,6 +2,8 @@
 
 @section('container')
 
+{{-- @dd($profilWisata) --}}
+
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -40,6 +42,25 @@
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ $title }}" name="slug" id="slug" value="{{ $profilWisata->slug }}" required>
                                             @error('slug')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Logo</label>
+                                        <div class="col-sm-10">
+                                            <input type="hidden" name="oldLogo" value="{{ $profilWisata->logo }}">
+                                            <div class="container3Prev" style="{{ ($profilWisata->logo) ? 'display:block;' : '' }}">
+                                                @if ($profilWisata->logo)
+                                                <img src="{{ asset('storage/' . $profilWisata->logo) }}" class="img-preview2 img-fluid mb-3 col-sm-5 d-block">
+                                                @else
+                                                <img src="" alt="" class="img-preview2 img-fluid mb-3 col-sm-5">
+                                                @endif
+                                            </div>
+                                            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo" onchange="previewImage1()" accept="image/*">
+                                            @error('logo')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
                                             </div>
@@ -90,20 +111,22 @@
                                             <div class="mb-3 col-sm-5 border container-previewFotVid" style="{{ (count($foto) > 0 || count($video) > 0) ? 'display:block;' : '' }}">
                                                 <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000">{{ (count($foto) > 0) ? 'Yang akan di upload : Foto' : '' }}{{ (count($video) > 0) ? 'Yang akan di upload : Video' : '' }}</span>
                                             </div>
-                                            <div class="container2Prev">
+                                            <div class="container2Prev" style="{{ (count($foto) > 0 || count($video) > 0) ? 'display:block;' : '' }}">
                                                 @if (count($foto) > 0)
+                                                    <input type="hidden" name="oldFoto" value="{{ $foto[0]->filename }}">
                                                     <img src="{{ asset('storage/' . $foto[0]->filename) }}" class="img-preview img-fluid mb-3 col-sm-5" style="display: block">
                                                     <video width="320" height="180" controls class="videoContainer mb-3">
                                                         <source class="video-preview img-fluid col-sm-5">
                                                     </video>
                                                 @elseif(count($video) > 0)
+                                                    <input type="hidden" name="oldVideo" value="{{ $video[0]->filename }}">
                                                     <img class="img-preview img-fluid mb-3 col-sm-5">
                                                     <video width="320" height="180" controls class="videoContainer mb-3" style="display: block">
                                                         <source src="{{ asset('storage/' . $video[0]->filename) }}" type="video/{{ explode('.', explode('/', $video[0]->filename)[1])[1] }}" class="video-preview img-fluid  col-sm-5">
                                                     </video>
                                                 @else
                                                     <img class="img-preview img-fluid mb-3 col-sm-5">
-                                                    <video src="" class="video-preview img-fluid mb-3 col-sm-5"></video>
+                                                    <video src="" class="video-preview img-fluid mb-3 col-sm-5 videoContainer"></video>
                                                 @endif
                                             </div>
                                             <input type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" id="filename" onchange="previewImage()">
@@ -265,19 +288,20 @@
         oFReader.onload = function(oFREvnet){
             let data = oFReader.result;
             let hasilSplit = data.split(';base64,');
-            console.log();
             previewFotVid.innerHTML = "";
             imgPreview.style.display = "none";
             videoContainer.style.display = 'none';
             containerPreviewFotVid.style.display = 'none';
             if(hasilSplit[0] == 'data:image/png' || hasilSplit[0] == 'data:image/jpg' || hasilSplit[0] == 'data:image/jpeg'){
                 imgPreview.style.display = "block";
+                container2Prev.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
                 previewFotVid.innerHTML = 'Yang akan di upload : Foto'
                 imgPreview.src = oFREvnet.target.result;
             }else if(hasilSplit[0] == 'data:video/mp4' || hasilSplit[0] == 'data:video/mp3'){
                 videoContainer.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
+                container2Prev.style.display = "block";
                 container2Prev.innerHTML = "";
                 container2Prev.innerHTML = `
                                             <img class="img-preview img-fluid mb-3 col-sm-5">
@@ -289,6 +313,22 @@
                 ""
             }
         };
+    }
+
+    function previewImage1(){
+        const container3Prev = document.querySelector('.container3Prev');
+        const imgPreview2 = document.querySelector('.img-preview2');
+        const logo = document.querySelector('#logo');
+        
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(logo.files[0]);
+
+        oFReader.onload = function(oFREvnet){
+            imgPreview2.style.display = "block";
+            container3Prev.style.display = 'block';
+            imgPreview2.src = oFREvnet.target.result;
+        }
     }
 </script>
 

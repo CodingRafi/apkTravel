@@ -19,7 +19,27 @@ class FotoController extends Controller
      */
     public function index()
     {
-        //
+        $koleksi = Koleksi::where('jenis', 'koleksifoto')->get();
+            $foto = [];
+            for($i = 0; $i < count($koleksi); $i++){
+                if(count($koleksi[$i]->foto) == 0){
+                    $foto[] = [
+                        'fotoGada' => '/images/jika.jpg'
+                    ];
+                }else{
+                    $foto[] = [
+                        'fotoAda' => $koleksi[$i]->foto
+                    ];
+                }
+            }
+        
+
+        return view("dashboard.koleksi.koleksiFoto.index", [
+            "categories" => Category::all(),
+            "title" => 'Koleksi Foto',
+            "koleksies" => $koleksi,
+            "fotos" => $foto
+        ]);
     }
 
     /**
@@ -27,13 +47,24 @@ class FotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('dashboard.koleksi.koleksifoto.tambah', [
             'title' => 'Koleksi',
             'next' => 'Uploads',
             "categories" => Category::all(),
             'kategori' => session()->get( 'kategori' )
+        ]);
+    }
+
+    public function buat($slug)
+    {
+        return view('dashboard.koleksi.koleksifoto.tambah', [
+            'title' => 'Koleksi',
+            'next' => 'Uploads',
+            "categories" => Category::all(),
+            'kategori' => session()->get( 'kategori' ),
+            'slug' => $slug
         ]);
     }
 
@@ -45,23 +76,30 @@ class FotoController extends Controller
      */
     public function store(StoreFotoRequest $request)
     {
-        $koleksi = Koleksi::where('slug', $request->kategori)->get()[0];
+        if(isset($request->slug)){
+            $slug = $request->slug;
+        }else{
+            $slug = $request->kategori;
+        }
+        $koleksi = Koleksi::where('slug', $slug)->get()[0];
         $validatedFilename = $request->validate([
             'filename' => 'required',
-            'filename.*' => 'mimes:jpg,jpeg,png|max:501760',
+            'filename.*' => 'mimes:jpg,jpeg,png|file|max:5120',
         ]);
 
+        
         if ($request->hasfile('filename')) { 
             foreach ($request->file('filename') as $file) {
                 if ($file->isValid()) {
                     $filename = $file->store('imagesUpload');    
+                    // dd('oke');
                     Foto::create([
                         'koleksi_id' => $koleksi->id,
                         'filename' => $filename
                     ]); 
                 }
             }          
-            echo'Success';
+            return redirect('/dashboard/foto');
         }else{
             echo'Gagal';
         }
@@ -107,8 +145,10 @@ class FotoController extends Controller
      * @param  \App\Models\Foto  $foto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Foto $foto)
+    public function destroy(Foto $foto, Request $request)
     {
-        //
+        Storage::delete($foto->filename);
+        Foto::destroy($foto->id);
+        return redirect('/dashboard/koleksi/' . $request->slug);
     }
 }

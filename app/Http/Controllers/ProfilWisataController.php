@@ -46,9 +46,11 @@ class ProfilWisataController extends Controller
      */
     public function store(StoreProfilWisataRequest $request)
     {
+       
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'slug' => 'required|unique:profil_wisatas',
+            'logo' => 'image|file|max:501760',
             'no_telp' => 'required',
             'deskripsi' => 'required',
             'alamat' => 'required',
@@ -61,10 +63,16 @@ class ProfilWisataController extends Controller
             'whatsapp' => 'max:255',
             'website' => 'max:500'
         ]);
-
+        
+        
         $validatedFilename = $request->validate([
             'filename' => 'mimes:jpg,jpeg,png,mp4,mp3|file|max:501760'
         ]);
+        
+        if($request->file('logo')){
+            $validatedData['logo'] = $request->file('logo')->store('logos');
+        }
+        // dd($validatedData);
         
         ProfilWisata::create($validatedData);
 
@@ -81,6 +89,8 @@ class ProfilWisataController extends Controller
                 Video::create($validatedFilename);
             }
         }
+        
+
         return redirect('/dashboard')->with('success', 'Profile wisata berhasil ditambahkan');
     }
 
@@ -97,7 +107,11 @@ class ProfilWisataController extends Controller
         return view('dashboard.profil-wisata.show', [
             'profilWisata' => $data,
             'title' => $title->nama,
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            'next' => $data->nama,
+            'foto' => $data->foto,
+            'video' => $data->video,
+            'urlBack' => $data->category->slug
         ]);
     }
 
@@ -116,7 +130,8 @@ class ProfilWisataController extends Controller
             'title' => $title->nama,
             "categories" => Category::all(),
             'foto' => $data->foto,
-            'video' => $data->video
+            'video' => $data->video,
+            'next' => $data->nama
         ]);
     }
 
@@ -135,6 +150,7 @@ class ProfilWisataController extends Controller
 
         $rules = ([
             'nama' => 'required|max:255',
+            'logo' => 'image|file|max:501760',
             'no_telp' => 'required',
             'deskripsi' => 'required',
             'alamat' => 'required',
@@ -151,8 +167,15 @@ class ProfilWisataController extends Controller
         if($request->slug != $data->slug){
             $rules['slug'] = 'required|unique:profil_wisatas';
         }
-
+        
         $validateData = $request->validate($rules);
+
+        if($request->file('logo')){
+            if($request->oldLogo){
+                Storage::delete($request->oldLogo);
+            }
+            $validateData['logo'] = $request->file('logo')->store('logos');
+        }
 
         $validatedFilename = $request->validate([
             'filename' => 'mimes:jpg,jpeg,png,mp4,mp3|file|max:501760'
@@ -223,6 +246,11 @@ class ProfilWisataController extends Controller
         $data = ProfilWisata::where('slug', $slug)->get()[0];
         $foto = $data->foto;
         $video = $data->video;
+
+        if($data->logo){
+            Storage::delete($data->logo);
+        }
+
         if(count($foto) > 0){
             Foto::destroy('id' , $foto[0]->id);
             Storage::delete($foto[0]->filename);

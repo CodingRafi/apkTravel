@@ -2,7 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}{{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}</title>
+    <title>
+        @if (Request::is('dashboard'))
+            Dashboard
+        @else
+            Dashboard | {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}{{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}
+        @endif
+    </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -57,6 +63,19 @@
         .imagePreview{
             width: 25%;
             margin: 5px;
+        }
+
+        .videoPreview{
+            width: 30%;
+            margin: 5px;
+        }
+
+        .container2Prev{
+            display: none;
+        }
+
+        .container3Prev{
+            display: none;
         }
     </style>
 </head>
@@ -222,6 +241,10 @@
                                             <li class="breadcrumb-item"><a href="#!">{{ $title }}</a>
                                             </li>
                                         @endif
+                                        @isset($next)
+                                        <li class="breadcrumb-item"><a href="#!">{{ $next }}</a>
+                                        </li>
+                                        @endisset
                                     </ul>
                                 </div>
                             </div>

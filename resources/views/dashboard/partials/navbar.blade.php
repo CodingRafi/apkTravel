@@ -30,6 +30,40 @@
                 </a>
             </li>
         </ul>
+
+        <div class="pcoded-navigation-label">Kelola admin</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcodedRegistrasi">
+                <a href="/registrasi" class="waves-effect waves-dark">
+                    <span class="pcoded-micon">
+
+                        <svg class="ti-layout-grid2-alt svg-registrasi" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 32.000000 32.000000"
+                        preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
+                         stroke="none">
+                        <path d="M46 261 c-12 -13 -15 -27 -11 -40 4 -14 -1 -30 -14 -47 -12 -15 -21
+                        -40 -21 -55 0 -26 4 -29 30 -29 25 0 30 -4 30 -25 l0 -25 100 0 100 0 0 25 c0
+                        21 5 25 30 25 26 0 30 3 30 29 0 15 -9 40 -20 54 -14 17 -19 34 -15 49 7 29
+                        -24 62 -52 55 -15 -4 -14 -5 4 -6 29 -1 49 -37 32 -57 -6 -8 -18 -14 -25 -14
+                        -8 0 -14 -4 -14 -9 0 -5 9 -7 19 -4 25 6 61 -30 61 -62 0 -40 -41 -34 -64 9
+                        -10 19 -25 37 -33 41 -12 4 -13 8 -3 20 33 40 -25 100 -75 77 -27 -13 -44 -57
+                        -27 -74 8 -8 3 -21 -18 -45 -17 -19 -30 -38 -30 -43 0 -6 -11 -10 -25 -10 -20
+                        0 -25 5 -25 25 0 32 36 68 61 62 10 -3 19 -1 19 4 0 5 -6 9 -14 9 -7 0 -19 6
+                        -25 14 -17 20 2 53 31 59 22 4 22 4 2 6 -11 0 -29 -8 -38 -18z m148 -10 c33
+                        -37 -10 -94 -53 -71 -43 22 -28 90 19 90 9 0 25 -9 34 -19z m36 -108 c11 -14
+                        20 -41 20 -59 l0 -34 -90 0 -90 0 0 35 c0 52 33 82 93 82 39 1 50 -3 67 -24z"/>
+                        </g>
+                        </svg> <b>BC</b>
+
+                    </span>
+                    <span class="pcoded-mtext">Registrasi</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
+
         <div class="pcoded-navigation-label">Mengelola</div>
         <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
             <li class="pcoded-hasmenu {{ Request::is('dashboard/hotel*') ? 'active' : '' }}">
@@ -441,23 +475,16 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="/dashboard/koleksi/foto" class="waves-effect waves-dark">
+                        <a href="/dashboard/foto" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Koleksi Foto</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="#" class="waves-effect waves-dark">
+                        <a href="/dashboard/video" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext">Koleksi Video</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="/dashboard/koleksi/create" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext">Tambah Koleksi</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

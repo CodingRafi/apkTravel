@@ -90,9 +90,12 @@ class BeritaController extends Controller
         $data = Berita::where('slug', $slug)->get()[0];
         $title =  Category::where('id', $data->category_id)->get()[0];
         return view('dashboard.berita.show', [
-            'profilWisata' => $data,
+            'berita' => $data,
             'title' => $title->nama,
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            'foto' => $data->foto,
+            'video' => $data->video,
+            'urlBack' => $data->category->slug
         ]);
     }
 

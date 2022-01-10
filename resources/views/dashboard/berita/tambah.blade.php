@@ -22,7 +22,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Judul Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" autofocus value="{{ old('judul') }}">
+                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" autofocus value="{{ old('judul') }}" required>
                                             @error('judul')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -33,7 +33,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" value="{{ old('slug') }}">
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" value="{{ old('slug') }}" required>
                                             @error('slug')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -78,7 +78,7 @@
                                             @error('body')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
-                                            <textarea rows="5" cols="5" class="form-control" placeholder="Content Berita" id="body" style="width: 100%" name="body"></textarea>
+                                            <textarea rows="5" cols="5" class="form-control" placeholder="Content Berita" id="body" style="width: 100%" name="body">{{ old('body') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
@@ -131,19 +131,20 @@
         oFReader.onload = function(oFREvnet){
             let data = oFReader.result;
             let hasilSplit = data.split(';base64,');
-            console.log();
             previewFotVid.innerHTML = "";
             imgPreview.style.display = "none";
             videoContainer.style.display = 'none';
             containerPreviewFotVid.style.display = 'none';
             if(hasilSplit[0] == 'data:image/png' || hasilSplit[0] == 'data:image/jpg' || hasilSplit[0] == 'data:image/jpeg'){
                 imgPreview.style.display = "block";
+                container2Prev.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
                 previewFotVid.innerHTML = 'Yang akan di upload : Foto'
                 imgPreview.src = oFREvnet.target.result;
             }else if(hasilSplit[0] == 'data:video/mp4' || hasilSplit[0] == 'data:video/mp3'){
                 videoContainer.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
+                container2Prev.style.display = "block";
                 container2Prev.innerHTML = "";
                 container2Prev.innerHTML = `
                                             <img class="img-preview img-fluid mb-3 col-sm-5">

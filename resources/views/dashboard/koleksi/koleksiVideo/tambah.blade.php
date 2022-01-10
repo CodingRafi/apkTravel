@@ -14,13 +14,13 @@
                         <!-- Basic Form Inputs card start -->
                         <div class="card">
                             <div class="card-header">
-                                <h5>Uploads foto</h5>
+                                <h5>Uploads Video</h5>
                             </div>
                             <div class="card-block">
-                                <form action="/dashboard/foto" method="post" enctype="multipart/form-data">
+                                <form action="/dashboard/video" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Foto </label>
+                                        <label class="col-sm-2 col-form-label">Video </label>
                                         <div class="col-sm-10">
                                             @isset($slug)
                                                 <input type="hidden" name="slug" value="{{ $slug }}">
@@ -28,11 +28,13 @@
                                             <div class="mb-3 col-sm-5 border container-previewFotVid">
                                                 <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000"></span>
                                             </div>
-                                            <div class="container2Prev">
-                                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                                            <div class="container2Prev d-flex" style="flex-wrap: wrap;">
+                                                <video width="320" height="180" controls class="videoContainer mb-3">
+                                                    <source  class="video-preview img-fluid  col-sm-5">
+                                                </video>
                                             </div>
                                             <input type="hidden" value="{{ $kategori }}" name="kategori">
-                                            <input type="file" class="form-control @error('filename') is-invalid @enderror filename" name="filename[]" id="filename" onchange="previewImage()" multiple accept="image/*">
+                                            <input type="file" class="form-control @error('filename') is-invalid @enderror filename" name="filename[]" id="filename" onchange="previewImage()" multiple accept="video/*">
                                             @error('filename')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -65,34 +67,35 @@
 function previewImage(){
 
         let countFiles = $('.filename')[0].files.length
-        let imgPath = $('.filename')[0].value
-        let extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-        let image_holder = $('.container2Prev');
-        image_holder.empty();
+        let videoPath = $('.filename')[0].value
+        let extn = videoPath.substring(videoPath.lastIndexOf('.') + 1).toLowerCase();
+        // let video_holder = $('.container2Prev');
+        let video_holder = document.querySelector('.container2Prev');
+        video_holder.innerHTML = '';
 
-        if (extn == "png" || extn == "jpg" || extn == "jpeg") {
+        if (extn == "mp4" || extn == "mp3") {
          if (typeof (FileReader) != "undefined") {
 
              for (var i = 0; i < countFiles; i++) {
  
                  var reader = new FileReader();
                  reader.onload = function (e) {
-                     $("<img />", {
-                         "src": e.target.result,
-                             "class": "imagePreview"
-                     }).appendTo(image_holder);
+                    video_holder.innerHTML += `
+                    <video controls class="videoContainer mb-3 videoPreview" style="display:block;">
+                        <source src="${e.target.result}" type="video/${extn}" class="video-preview img-fluid  col-sm-5">
+                    </video>
+                    `
                  }
- 
-                 image_holder.show();
+
                  reader.readAsDataURL($('.filename')[0].files[i]);
              }
  
          } else {
              alert("This browser does not support FileReader.");
          }
-     } else {
-         alert("Pls select only images");
-     }
+        } else {
+            alert("Pls select only images");
+        }
 
         // const oFReader = new FileReader();
         // oFReader.readAsDataURL(filename.files[0]);
