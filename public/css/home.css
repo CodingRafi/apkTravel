@@ -153,6 +153,10 @@ body * {
     padding: .5rem;
 }
 
+.tapos:focus {
+    
+}
+
 /*** 2.3 - berita ***/
 .berita-frame {
     background: var(--card-transparent-color);
@@ -218,9 +222,10 @@ body * {
 
 /*** 2.6 - sub item ***/
 .sub > .card {
-    width: 49%;
+    box-shadow: var(--box-shadow-header);
     margin: 0;
     padding: 0;
+    width: 49%;
 }
 
 .card-img-overlay {

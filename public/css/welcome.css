@@ -46,7 +46,7 @@ body * {
     z-index: -1;
 }
 
-.carousel img {
+.carousel * {
     height: 100vh;
     object-fit: cover;
 }
@@ -62,7 +62,6 @@ body * {
 }
 
 .logo img {
-    box-shadow: var(--box-shadow-header);
     object-fit: scale-down;
     width: 8rem;
 }

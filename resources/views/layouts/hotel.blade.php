@@ -42,42 +42,48 @@
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Jl. Kartini Kelurahan No.38J, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat
                         16431 </p>
                 </div>
-            </div><div class="card bg-dark text-white">
+            </div>
+            <div class="card bg-dark text-white">
                 <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
                 <div class="card-img-overlay">
                     <h5 class="card-title">Card title</h5>
