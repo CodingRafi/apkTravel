@@ -3,18 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 
-class Berita extends Model
+class ProfilWisata extends Model
 {
     use HasFactory,Sluggable;
 
-    
     protected $guarded =[
         "id"
     ];
 
+    // protected $table = 'multiuploads';
+    // protected $primaryKey = 'id';
+    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -26,12 +33,12 @@ class Berita extends Model
     public function video(){
         return $this->hasMany(Video::class);
     }
-
+    
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'judul'
+                'source' => 'nama'
             ]
         ];
     }

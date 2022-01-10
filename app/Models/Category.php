@@ -13,8 +13,8 @@ class Category extends Model
         "id"
     ];
 
-    public function campuran(){
-        return $this->hasMany(Campuran::class);
+    public function profilWisata(){
+        return $this->hasMany(ProfilWisata::class);
     }
 
     public function berita(){

@@ -50,11 +50,6 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'nama' => "Berita",
-            "slug" => "Berita"
-        ]);
-
-        Category::create([
             'nama' => "Hotel",
             "slug" => "hotel"
         ]);

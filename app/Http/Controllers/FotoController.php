@@ -1,0 +1,154 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Foto;
+use App\Models\Koleksi;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreFotoRequest;
+use App\Http\Requests\UpdateFotoRequest;
+
+class FotoController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $koleksi = Koleksi::where('jenis', 'koleksifoto')->get();
+            $foto = [];
+            for($i = 0; $i < count($koleksi); $i++){
+                if(count($koleksi[$i]->foto) == 0){
+                    $foto[] = [
+                        'fotoGada' => '/images/jika.jpg'
+                    ];
+                }else{
+                    $foto[] = [
+                        'fotoAda' => $koleksi[$i]->foto
+                    ];
+                }
+            }
+        
+
+        return view("dashboard.koleksi.koleksiFoto.index", [
+            "categories" => Category::all(),
+            "title" => 'Koleksi Foto',
+            "koleksies" => $koleksi,
+            "fotos" => $foto
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        return view('dashboard.koleksi.koleksifoto.tambah', [
+            'title' => 'Koleksi',
+            'next' => 'Uploads',
+            "categories" => Category::all(),
+            'kategori' => session()->get( 'kategori' )
+        ]);
+    }
+
+    public function buat($slug)
+    {
+        return view('dashboard.koleksi.koleksifoto.tambah', [
+            'title' => 'Koleksi',
+            'next' => 'Uploads',
+            "categories" => Category::all(),
+            'kategori' => session()->get( 'kategori' ),
+            'slug' => $slug
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreFotoRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreFotoRequest $request)
+    {
+        if(isset($request->slug)){
+            $slug = $request->slug;
+        }else{
+            $slug = $request->kategori;
+        }
+        $koleksi = Koleksi::where('slug', $slug)->get()[0];
+        $validatedFilename = $request->validate([
+            'filename' => 'required',
+            'filename.*' => 'mimes:jpg,jpeg,png|file|max:5120',
+        ]);
+
+        
+        if ($request->hasfile('filename')) { 
+            foreach ($request->file('filename') as $file) {
+                if ($file->isValid()) {
+                    $filename = $file->store('imagesUpload');    
+                    // dd('oke');
+                    Foto::create([
+                        'koleksi_id' => $koleksi->id,
+                        'filename' => $filename
+                    ]); 
+                }
+            }          
+            return redirect('/dashboard/foto');
+        }else{
+            echo'Gagal';
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Foto  $foto
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Foto $foto)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Foto  $foto
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Foto $foto)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateFotoRequest  $request
+     * @param  \App\Models\Foto  $foto
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateFotoRequest $request, Foto $foto)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Foto  $foto
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Foto $foto, Request $request)
+    {
+        Storage::delete($foto->filename);
+        Foto::destroy($foto->id);
+        return redirect('/dashboard/koleksi/' . $request->slug);
+    }
+}

@@ -1,7 +1,9 @@
 @extends('dashboard.layouts.main1')
 
 @section('container')
-    
+
+{{-- @dd(); --}}
+
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -17,12 +19,13 @@
                                 <h5>Tambah Berita</h5>
                             </div>
                             <div class="card-block">
-                                <form action="/dashboard/berita" method="post" enctype="multipart/form-data">
+                                <form action="/dashboard/berita/{{ $berita->slug }}" method="post" enctype="multipart/form-data">
+                                    @method('PATCH')
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Judul Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" autofocus value="{{ old('judul') }}" required>
+                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" required autofocus value="{{ old('judul', $berita->judul) }}">
                                             @error('judul')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -33,7 +36,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" value="{{ old('slug') }}" required>
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" required value="{{ old('slug', $berita->slug) }}">
                                             @error('slug')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -45,24 +48,34 @@
                                         <label class="col-sm-2 col-form-label">Kategori Berita</label>
                                         <div class="col-sm-10">
                                             <select name="category_id" class="form-control">
-                                                <option value="10" {{ (old('kategory') === '10') ? 'selected' : '' }}>Berita Pembangunan</option>
-                                                <option value="11" {{ (old('kategory') === '11') ? 'selected' : '' }}>Berita Ekonomi</option>
-                                                <option value="12" {{ (old('kategory') === '12') ? 'selected' : '' }}>Berita Kesos</option>
-                                                <option value="13" {{ (old('kategory') === '13') ? 'selected' : '' }}>Berita Pemerintahan</option>
+                                                <option value="10" {{ (old('category_id', $berita->category_id) == '10') ? 'selected' : '' }}>Berita Pembangunan</option>
+                                                <option value="11" {{ (old('category_id', $berita->category_id) == '11') ? 'selected' : '' }}>Berita Ekonomi</option>
+                                                <option value="12" {{ (old('category_id', $berita->category_id) == '12') ? 'selected' : '' }}>Berita Kesos</option>
+                                                <option value="13" {{ (old('category_id', $berita->category_id) == '13') ? 'selected' : '' }}>Berita Pemerintahan</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Foto / Video</label>
                                         <div class="col-sm-10">
-                                            <div class="mb-3 col-sm-5 border container-previewFotVid">
-                                                <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000"></span>
+                                            <div class="mb-3 col-sm-5 border container-previewFotVid" style="{{ (count($foto) > 0 || count($video) > 0) ? 'display:block;' : '' }}">
+                                                <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000">{{ (count($foto) > 0) ? 'Yang akan di upload : Foto' : '' }}{{ (count($video) > 0) ? 'Yang akan di upload : Video' : '' }}</span>
                                             </div>
-                                            <div class="container2Prev">
-                                                <img class="img-preview img-fluid mb-3 col-sm-5">
-                                                <video width="320" height="180" controls class="videoContainer mb-3">
-                                                    <source src="" type="video/mp4" class="video-preview img-fluid  col-sm-5">
-                                                </video>
+                                            <div class="container2Prev" style="{{ (count($foto) > 0 || count($video) > 0) ? 'display:block;' : '' }}">
+                                                @if (count($foto) > 0)
+                                                    <img src="{{ asset('storage/' . $foto[0]->filename) }}" class="img-preview img-fluid mb-3 col-sm-5" style="display: block">
+                                                    <video width="320" height="180" controls class="videoContainer mb-3">
+                                                        <source class="video-preview img-fluid col-sm-5">
+                                                    </video>
+                                                @elseif(count($video) > 0)
+                                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                                    <video width="320" height="180" controls class="videoContainer mb-3" style="display: block">
+                                                        <source src="{{ asset('storage/' . $video[0]->filename) }}" type="video/{{ explode('.', explode('/', $video[0]->filename)[1])[1] }}" class="video-preview img-fluid  col-sm-5">
+                                                    </video>
+                                                @else
+                                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                                    <video src="" class="video-preview img-fluid mb-3 col-sm-5 videoContainer"></video>
+                                                @endif
                                             </div>
                                             <input type="file" class="form-control @error('filename') is-invalid @enderror" name="filename" id="filename" onchange="previewImage()">
                                             @error('filename')   
@@ -78,7 +91,7 @@
                                             @error('body')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
-                                            <textarea rows="5" cols="5" class="form-control" placeholder="Content Berita" id="body" style="width: 100%" name="body">{{ old('body') }}</textarea>
+                                            <textarea rows="5" cols="5" class="form-control" placeholder="Content Berita" id="body" style="width: 100%" name="body">{{ old('body', $berita->body) }}</textarea>
                                         </div>
                                     </div>
                                     <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
@@ -137,8 +150,8 @@
             containerPreviewFotVid.style.display = 'none';
             if(hasilSplit[0] == 'data:image/png' || hasilSplit[0] == 'data:image/jpg' || hasilSplit[0] == 'data:image/jpeg'){
                 imgPreview.style.display = "block";
-                container2Prev.style.display = "block";
                 containerPreviewFotVid.style.display = 'block';
+                container2Prev.style.display = "block";
                 previewFotVid.innerHTML = 'Yang akan di upload : Foto'
                 imgPreview.src = oFREvnet.target.result;
             }else if(hasilSplit[0] == 'data:video/mp4' || hasilSplit[0] == 'data:video/mp3'){
@@ -157,7 +170,6 @@
             }
         };
     }
-
 </script>
 
 @endsection

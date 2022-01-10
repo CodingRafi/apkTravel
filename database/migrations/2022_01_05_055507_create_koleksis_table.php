@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCampuransTable extends Migration
+class CreateKoleksisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateCampuransTable extends Migration
      */
     public function up()
     {
-        Schema::create('campurans', function (Blueprint $table) {
+        Schema::create('koleksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
             $table->string('nama');
             $table->string('slug')->unique();
-            $table->string('no_telp');
-            $table->text('alamat');
-            $table->string('jam_buka');
-            $table->string('jam_tutup');
-            $table->text('deskripsi');
-            $table->text('foto/video');
+            $table->enum('jenis', ['koleksifoto', 'koleksivideo']);
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ class CreateCampuransTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campurans');
+        Schema::dropIfExists('koleksis');
     }
 }

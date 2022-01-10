@@ -10,9 +10,6 @@
 
       <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
       <meta name="author" content="Codedthemes" />
-      <!-- Favicon icon -->
-
-      <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
       <!-- Google font-->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
       <!-- Required Fremwork -->
@@ -30,6 +27,11 @@
   </head>
 
   <body themebg-pattern="theme1">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" >
+        <a class="navbar-brand ml-auto" href="/dashboard" style="font-size: 17px">Back to home</a>
+      </nav>
+
   <!-- Pre-loader start -->
   <div class="theme-loader">
       <div class="loader-track">
@@ -88,7 +90,7 @@
         <!-- Container-fluid starts -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 mt-5">
+                <div class="col-sm-12 mt-2">
                     <form action="/registrasi" method="post" class="md-float-material form-material">
                         @csrf
                         <div class="auth-box card">
@@ -120,7 +122,7 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up now</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign up</button>
                                     </div>
                                 </div>
                             </div>
