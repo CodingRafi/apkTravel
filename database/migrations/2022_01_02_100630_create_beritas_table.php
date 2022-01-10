@@ -18,8 +18,6 @@ class CreateBeritasTable extends Migration
             $table->foreignId('category_id');
             $table->string('judul');
             $table->string('slug')->unique();
-            $table->text('excerpt');
-            $table->string('image')->nullable();
             $table->text('body');
             $table->timestamps();
         });

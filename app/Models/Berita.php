@@ -19,6 +19,14 @@ class Berita extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function foto(){
+        return $this->hasMany(Foto::class);
+    }
+
+    public function video(){
+        return $this->hasMany(Video::class);
+    }
+
     public function sluggable(): array
     {
         return [

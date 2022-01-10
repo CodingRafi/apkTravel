@@ -2,7 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}{{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}</title>
+    <title>
+        @if (Request::is('dashboard'))
+            Dashboard
+        @else
+            Dashboard | {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}{{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}
+        @endif
+    </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,9 +33,48 @@
     <link rel="stylesheet" type="text/css" href="/css/trix/trix.css">
     <script type="text/javascript" src="/js/trix/trix.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script> --}}
+    
 
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+
+        .videoContainer{
+            display: none;
+        }
+
+        .img-preview{
+            display: none;
+        }
+
+        .container-previewFotVid{
+            display: none;
+        }
+
+        .pcoded .pcoded-navbar .mengelolaPcoded:after {
+            background: none;
+        }
+
+        .buttonModalKoleksi:hover{
+            cursor: pointer;
+        }
+
+        .imagePreview{
+            width: 25%;
+            margin: 5px;
+        }
+
+        .videoPreview{
+            width: 30%;
+            margin: 5px;
+        }
+
+        .container2Prev{
+            display: none;
+        }
+
+        .container3Prev{
             display: none;
         }
     </style>
@@ -91,6 +136,16 @@
       </div>
   </div>
   <!-- Pre-loader end -->
+
+  {{-- Upload loading --}}
+    {{-- <div class="container-progress" style="position: absolute;z-index: 9999;width: 100vw;background: #fff;height: 100vh;opacity: .5;">
+      <div class="prog2">
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+      </div>
+    </div> --}}
+  {{-- Akhir upload loading --}}
   <div id="pcoded" class="pcoded">
       <div class="pcoded-overlay-box"></div>
       <div class="pcoded-container navbar-wrapper">
@@ -167,6 +222,7 @@
                                 <div class="col-md-8">
                                     <div class="page-header-title">
                                         <h5 class="m-b-10">
+                                            {{ Request::is('dashboard/profil-wisata/{profil_wisatum:slugrit}/edit') ? 'Edit '.$title : '' }}
                                            {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ? 'Tambah '. $title : $title }}
                                            {{ Request::is('dashboard/destinasi/create') ? 'Tambah Destinasi' : "" }}
                                            {{ Request::is('dashboard/makanan/create') ? 'Tambah Makanan' : "" }}
@@ -185,6 +241,10 @@
                                             <li class="breadcrumb-item"><a href="#!">{{ $title }}</a>
                                             </li>
                                         @endif
+                                        @isset($next)
+                                        <li class="breadcrumb-item"><a href="#!">{{ $next }}</a>
+                                        </li>
+                                        @endisset
                                     </ul>
                                 </div>
                             </div>
@@ -235,8 +295,6 @@
             selector:'textarea',
             branding: false
         });
-
-        
 
         // $(document).ready(function() {
         //     CKEDITOR.config.removePlugins = 'image,about,elementspath';
