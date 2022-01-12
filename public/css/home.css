@@ -1,100 +1,340 @@
-/* || General styles */
+/*** 0.0 - general style ***/
+/*** 0.1 - preset ***/
 :root {
+    --box-shadow-footer: rgba(99, 99, 99, 0.2) 0px -2px 8px 0px;
+    --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --card-color: rgb(245, 245, 245);
+    --card-gradient-color: linear-gradient(var(--card-color), rgba(234, 234, 234, 1));
+    --card-transparent-color: rgba(245, 245, 245, 0.8);
     --main-font: 'Nunito', sans-serif;
+    --theme-color: rgba(47, 55, 144, 1);
+    font-size: 12px;
 }
 
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+/*** 0.2 - general ***/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-body,
-body * {
-    margin: 0;
-    font-family: var(--main-font);
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
-    background: skyblue;
+    background-image: url(../images/home-screen/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* border: 3px dotted black; */
+    /* height: 100vh; */
 }
 
-/* || home screen styles */
-header {
-    display: flex;
+body,
+body * {
+    font-family: var(--main-font);
+    margin: 0;
+
 }
 
-.logo-frame {
-    background-color: white;
-    border-radius: 0 50px 50px 0;
+/*** 1.0 - top bar ***/
+/*** 1.1 - logo ***/
+.topbar {
+    height: 56px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-.running {
-    background-color: whitesmoke;
-    border-radius: 0 50px 50px 0;
+.topbar-head>*,
+.topbar-body>* {
+    margin-block: auto;
 }
 
-.grid-home {
-    display: grid;
-    grid-template-rows: repeat(4 ,1fr);
-    grid-template-columns: repeat(4, 1fr);
+.topbar-head {
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
+    border-radius: 0 0 50px 0;
+    box-shadow: var(--box-shadow-header);
     gap: 2rem;
+    height: inherit;
+    padding-inline: 2rem;
+    padding-right: 4rem;
+    position: fixed;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.topbar-head>img {
+    object-fit: scale-down;
+    width: 3rem;
+}
+
+/*** 1.2 - running text ***/
+.topbar-body {
+    background: var(--card-transparent-color);
+    border-radius: 0 0 50px 0;
+    box-shadow: var(--box-shadow-header);
     height: 70%;
-    padding: 2rem 0;
+    padding-inline: 2rem;
+    width: calc(100% - 2rem);
 }
 
-.grid-home-sambutan {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 2;
+/*** 2.0 - main ***/
+.main {
+    /* border: 1px solid black; */
+    gap: 1rem;
+    height: calc(100vh - (56px + 56px) - 2rem);
+    margin-block: calc(56px + 1rem);
+    margin-inline: auto;
+    width: 1024px;
 }
 
-.grid-home-peta {
-    background-color: white;
-    border-radius: 30px;
-    grid-column: span 2;
-    grid-row: span 3;
+.main img {
+    border-radius: 10px;
+    display: block;
+    width: 100%;
 }
 
-.grid-home-berita {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 4;
+.main map {
+    width: inherit;
 }
 
-.berita-item {
-    display: flex;
+.column {
+    /* background-color: var(--card-color); */
+    /* background: var(--card-gradient-color); */
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 1rem;
+    height: inherit;
+    width: 50%;
 }
 
-.grid-home-cuaca {
-    background-color: white;
-    border-radius: 30px;
-    grid-row: span 2;
+.middle {
+    width: 100%;
 }
 
-.grid-home-kontak {
-    background-color: white;
-    border-radius: 30px;
-    grid-column: span 2;
+.sub {
+    background-color: var(--card-transparent-color);
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: scroll;
+    padding: .5rem;
+    width: 75%;
 }
 
+.small {
+    width: 25%;
+}
+
+.column>* {
+    background: var(--card-gradient-color);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-header);
+}
+
+/*** 2.1 - sambutan ***/
+.sambutan-frame {
+    background: rgba(255, 255, 255, 0);
+    height: fit-content;
+}
+
+/*** 2.2 - peta ***/
+.peta-frame {
+    height: fit-content;
+    padding: .5rem;
+}
+
+.peta-frame .map-selector {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: #546E7A00;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    transition-property: top, left, right, bottom, color;
+}
+
+.peta-frame .map-selector.hover {
+    color: #546E7A80;
+}
+
+.map-selector:after {
+    content: '';
+    position: absolute;
+    top: inherit;
+    right: inherit;
+    bottom: inherit;
+    left: inherit;
+    background: currentColor;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    transition-property: top, left, right, bottom, background;
+    pointer-events: none;
+}
+
+/*** 2.3 - berita ***/
+.berita-frame {
+    background: var(--card-transparent-color);
+    height: 100%;
+    overflow: scroll;
+    padding: .5rem;
+}
+
+.berita-frame .col-md-5 {
+    margin-top: 1.5rem;
+}
+
+.card {
+    /* border: none; */
+    background: var(--card-gradient-color);
+    border-radius: 10px;
+    border: none;
+    box-shadow: var(--box-shadow-header);
+    font-size: 1rem;
+    padding-inline: .5rem;
+}
+
+/*** 2.4 - cuaca ***/
+.cuaca-frame {
+    flex-direction: column;
+    font-size: 1.5rem;
+    height: 100%;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.cuaca>img {
+    margin-bottom: 2rem;
+    margin-inline: auto;
+    width: 60%;
+}
+
+/*** 2.5 - kontak ***/
+.kontak-frame {
+    align-items: center;
+    background: var(--card-gradient-color);
+    gap: 1rem;
+    height: 100%;
+    justify-content: space-around;
+    padding: .5rem;
+}
+
+.kontak-frame>* {
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem;
+    padding: .5rem;
+    width: 100%;
+}
+
+.kontak-frame img {
+    margin-inline: auto;
+    width: 2.5rem;
+}
+
+/*** 2.6 - sub item ***/
+.sub>.card {
+    box-shadow: var(--box-shadow-header);
+    margin: 0;
+    padding: 0;
+    width: 49%;
+}
+
+.card-img-overlay {
+    background: rgba(0, 0, 0, 0.616);
+    border-radius: 10px;
+    bottom: 0;
+    top: auto;
+}
+
+.card-img-overlay~img {
+    object-fit: scale-down;
+    width: 100%;
+}
+
+/*** 3.0 - menu ***/
 .menu {
-    bottom: 0px;
-    bottom: 0px;
-    background-color: white;
+    background-color: var(--card-color);
+    background: var(--card-gradient-color);
+    border-radius: 30% 30% 0 0;
+    bottom: 0;
+    box-shadow: var(--box-shadow-footer);
+    height: fit-content;
+    min-height: 56px;
+    position: fixed;
+    width: 100%;
+    transition: ease-in-out 1000ms;
 }
 
-.menu > * {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+.menu-frame {
+    align-items: center;
+    height: inherit;
+    justify-content: space-between;
+    list-style: none;
+    margin-inline: auto;
+    margin-top: 1rem;
+    padding: 0;
+    white-space: nowrap;
+    width: min(90%, 720px);
 }
 
-h1 {
-    font-size: .8rem;
+.menu-frame a,
+.menu-frame label {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-img {
-    width: 33%;
-    height: 33%;
+.menu-icon {
+    flex-direction: column;
+    text-align: center;
 }
+
+.menu-icon * {
+    margin-inline: auto;
+    object-fit: scale-down;
+    width: 2rem;
+}
+
+/*** 3.1 - dropdown ***/
+.dropdown {
+    height: 0px;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    transform-origin: top;
+    transform: scale(1, 0);
+    transition: ease-in-out 200ms;
+}
+
+.dropdown li {
+    padding-block: 1rem;
+}
+
+.dropdown a {
+    color: black;
+    text-decoration: none;
+}
+
+.makanan-check,
+.destinasi-check {
+    display: none;
+}
+
+.makanan-check:checked~.dropdown,
+.destinasi-check:checked~.dropdown {
+    height: 100%;
+    transform: scale(1, 1);
+}
+
+/*** 4.0 - responsive ***/

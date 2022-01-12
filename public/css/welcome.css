@@ -1,12 +1,29 @@
-/* || General styles */
+/*** 0.0 - general style ***/
+/*** 0.1 - preset ***/
 :root {
+    --box-shadow-footer: rgba(99, 99, 99, 0.2) 0px -2px 8px 0px;
+    --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --card-color: rgb(245, 245, 245);
+    --card-gradient-color: linear-gradient(var(--card-color), rgba(234, 234, 234, 1));
+    --card-transparent-color: rgba(245, 245, 245, 0.8);
     --main-font: 'Nunito', sans-serif;
+    --theme-color: rgba(47, 55, 144, 1);
+    font-size: 12px;
 }
 
+/*** 0.2 - general ***/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    height: 100vh;
 }
 
 body,
@@ -15,34 +32,50 @@ body * {
     font-family: var(--main-font);
 }
 
-body {
-    background: skyblue;
+/*** 1.0 - background ***/
+.cover {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3289443455385358) 0%, rgba(0, 0, 0, 0.6407420983475246) 50%, rgba(0, 0, 0, 0.8429892893587605) 100%);
+    height: 100vh;
+    width: 100%;
 }
 
-/* || welcome screen styles */
+.carousel {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.carousel * {
+    height: 100vh;
+    object-fit: cover;
+}
+
+/*** 2.0 - title ***/
 .flex-welcome {
     align-items: center;
     display: flex;
     flex-direction: column;
+    gap: 20rem;
     height: 100vh;
     justify-content: space-around;
-    gap: 20rem;
 }
 
-.logo {
-    background-color: whitesmoke;
+.logo img {
+    object-fit: scale-down;
+    width: 8rem;
 }
 
 .welcome {
+    color: var(--card-color);
     text-align: center;
-    color: white;
 }
 
 .welcome button {
     background-color: rgba(0, 0, 0, 0);
     border-radius: 50px;
     border: .1rem solid white;
-    color: white;
+    color: var(--card-color);
     font-size: 1rem;
     margin-top: 1rem;
     padding: .5rem 3rem;
