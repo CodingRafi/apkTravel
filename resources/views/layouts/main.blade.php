@@ -71,7 +71,7 @@
             {{-- cuaca --}}
             <div class="cuaca-frame flex">
                 <div class="cuaca">
-                    <img src="icon/home-screen/rainy-day.svg" style="width: 72px">
+                    <img src="icon/home-screen/cloudy.png" style="width: 72px">
                     <div>
                         <h3 id="jam"></h3>
                         <h2>20°C</h2>
@@ -123,20 +123,23 @@
                         coords="506,263,524,247,529,252,543,238,550,215,542,203,547,177,558,176,570,156,574,138,586,122,606,66,588,66,582,71,507,74,496,64,489,77,453,79,449,74,428,81,430,107,420,118,428,122,426,141,415,137,421,149,413,164,402,192,392,203,392,238,402,242,397,252,400,263,407,261,416,263,418,270,432,273,447,273,456,264,471,268,476,264,483,263,487,254,494,254,496,264"
                         shape="poly">
                 </map>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <div class="peta-detail flex">
+                    <ul>
+                        <li>Wisata Alam kp sindang karsa</li>
+                        <li>Setu Rawabadak Depok Timur</li>
+                        <li>Setu Patinggi Depok Timur</li>
+                    </ul>
+                    <h4>Kecamatan Tapos</h4>
+                </div>
             </div>
             {{-- kontak --}}
             <div class="kontak-frame flex">
                 <div class="kontak flex">
-                    <h3>Contact Center</h3>
-                    <p>021 - 7773 - 610</p>
+                    <h4>Contact Center</h4>
+                    <p>(021) 7773610</p>
                 </div>
                 <div class="customer flex">
-                    <h3>Alamat</h3>
+                    <h4>Alamat</h4>
                     <p>Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
                 </div>
             </div>

@@ -182,6 +182,15 @@ body * {
     pointer-events: none;
 }
 
+.peta-detail {
+    justify-content: space-around;
+    padding-top: 1rem;
+}
+
+.peta-detail>ul {
+    padding: 0;
+}
+
 /*** 2.3 - berita ***/
 .berita-frame {
     background: var(--card-transparent-color);
@@ -227,6 +236,7 @@ body * {
     height: 100%;
     justify-content: space-around;
     padding: .5rem;
+    text-align: center;
 }
 
 .kontak-frame>* {
@@ -235,12 +245,13 @@ body * {
     gap: 1rem;
     padding: .5rem;
     width: 100%;
+    justify-content: center;
 }
 
-.kontak-frame img {
+/* .kontak-frame img {
     margin-inline: auto;
     width: 2.5rem;
-}
+} */
 
 /*** 2.6 - sub item ***/
 .sub>.card {
