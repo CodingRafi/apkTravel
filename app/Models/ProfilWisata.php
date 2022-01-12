@@ -35,7 +35,7 @@ class ProfilWisata extends Model
     }
 
     public function koleksi(){
-        return $this->hasMany(Koleksi::class);
+        return $this->hasMany(koleksi::class);
     }
     
     public function sluggable(): array

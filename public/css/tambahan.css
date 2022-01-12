@@ -41,6 +41,10 @@ trix-toolbar [data-trix-button-group="file-tools"]{
     max-width: 40vw;
 }
 
+.input-group-append.search-btn{
+  display: none;
+}
+
 .container {
     margin-top: 100px;
     padding: 32px;

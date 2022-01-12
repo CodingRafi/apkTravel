@@ -74,7 +74,7 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $profilWisata->nama }}</td>
                                             <td>
-                                                <a href="/dashboard/profil-wisata/{{ $profilWisata->slug }}" class="btn btn-info">See</a>
+                                                <a href="/dashboard/profil-wisata/{{ $profilWisata->slug }}" class="btn btn-info">Lihat</a>
                                                 <a href="/dashboard/profil-wisata/{{ $profilWisata->slug }}/edit" class="btn btn-warning">Edit</a>
                                                 <form action="/dashboard/profil-wisata/{{ $profilWisata->slug }}" method="post" class="d-inline">
                                                     @method('delete')
