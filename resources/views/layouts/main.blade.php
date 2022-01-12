@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    {{-- bootstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    {{-- google font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    {{-- css --}}
     <link rel="stylesheet" href="css/home.css">
 
     <title>Kota Depok</title>
 </head>
 
 <body>
+    {{-- Navbar --}}
     <div class="topbar">
         <div class="topbar-head flex">
             <img src="images/home-screen/logo-depok.png" alt="logo-kota-depok">
@@ -33,10 +38,12 @@
             </marquee>
         </div>
     </div>
+    {{-- Konten --}}
     <div class="main flex">
+        {{-- kolum kiri --}}
         <div class="column flex">
+            {{-- sambutan --}}
             <div class="sambutan-frame">
-
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -60,9 +67,8 @@
                         <span class="sr-only">Next</span>
                     </button>
                 </div>
-
             </div>
-
+            {{-- cuaca --}}
             <div class="cuaca-frame flex">
                 <div class="cuaca">
                     <img src="icon/home-screen/rainy-day.svg" style="width: 72px">
@@ -75,12 +81,13 @@
                     <h3>24 Desember 2020</h3>
                 </div>
             </div>
-
         </div>
+        {{-- kolum tengah --}}
         <div class="column middle flex">
+            {{-- peta --}}
             <div class="peta-frame">
                 <img src="images/home-screen/depok-map.jpg" usemap="#image-map">
-
+                <div class="map-selector"></div>
                 <map name="image-map">
                     <area target="" alt="tapos" title="tapos" href="/tapos" class="tapos"
                         coords="873,884,858,841,858,799,851,781,855,767,868,756,872,736,876,721,879,686,890,649,902,627,909,598,903,571,917,554,924,550,938,552,945,548,953,550,960,541,973,538,973,526,979,519,970,510,974,500,979,498,975,486,986,486,998,481,1001,476,1009,477,1011,469,1062,478,1095,496,1110,498,1129,491,1146,495,1149,503,1152,514,1147,520,1137,526,1122,529,1113,540,1122,549,1135,543,1157,529,1173,530,1207,534,1218,533,1234,535,1229,548,1221,562,1218,573,1218,590,1216,605,1223,611,1210,648,1201,630,1192,640,1175,626,1172,644,1146,670,1130,670,1120,710,1094,704,1097,720,1081,714,1081,728,1068,746,1079,750,1074,760,1058,760,1055,778,1045,774,1045,787,1051,794,1053,808,1040,803,1037,812,1042,822,1029,839,1024,858,1023,886,996,897,979,882,945,885,907,882"
@@ -116,79 +123,72 @@
                         coords="506,263,524,247,529,252,543,238,550,215,542,203,547,177,558,176,570,156,574,138,586,122,606,66,588,66,582,71,507,74,496,64,489,77,453,79,449,74,428,81,430,107,420,118,428,122,426,141,415,137,421,149,413,164,402,192,392,203,392,238,402,242,397,252,400,263,407,261,416,263,418,270,432,273,447,273,456,264,471,268,476,264,483,263,487,254,494,254,496,264"
                         shape="poly">
                 </map>
-
                 <ul>
-                    {{-- <li></li>
                     <li></li>
-                    <li></li> --}}
+                    <li></li>
+                    <li></li>
                 </ul>
             </div>
+            {{-- kontak --}}
             <div class="kontak-frame flex">
                 <div class="kontak flex">
-                    <img src="icon/home-screen/contact.svg">
-                    <div>
-                        <p>Contact Center</p>
-                        <h2>021 - 8212 - 210</h2>
-                    </div>
+                    <h3>Contact Center</h3>
+                    <p>021 - 7773 - 610</p>
                 </div>
                 <div class="customer flex">
-                    <img src="icon/home-screen/customer.svg">
-                    <div>
-                        <p>Customer Center</p>
-                        <h2>021 - 8212 - 210</h2>
-                    </div>
+                    <h3>Alamat</h3>
+                    <p>Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
                 </div>
             </div>
         </div>
-
-        <!-- Kotak Berita -->
+        {{-- kolum kanan --}}
         <div class="column flex">
+            {{-- berita --}}
             <div class="berita-frame">
-
                 <div class="card pt-3" style="max-width: 540px;">
                     <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-
                 <div class="card pt-3 mt-2" style="max-width: 540px;">
                     <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-
                 <div class="card pt-3 mt-2" style="max-width: 540px;">
                     <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-
                 <div class="card pt-3 mt-2" style="max-width: 540px;">
                     <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-
                 <div class="card pt-3 mt-2" style="max-width: 540px;">
                     <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
+    {{-- menu --}}
     <div class="menu">
         <ul class="menu-frame flex">
             <li>
@@ -208,7 +208,8 @@
                     <img src="icon/home-screen/destinasi.svg">
                     Destinasi
                 </label>
-                <input type="checkbox" id="destinasi-check" class="destinasi-check" name="check" onclick="onlyOne(this)">
+                <input type="checkbox" id="destinasi-check" class="destinasi-check" name="check"
+                    onclick="onlyOne(this)">
                 <ul class="dropdown">
                     <li><a href="#">Wisata Alam</a></li>
                     <li><a href="#">Wisata Buatan</a></li>
@@ -242,12 +243,14 @@
         </ul>
     </div>
 
+    {{-- javascript --}}
     <script src="js/home-screen.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imageMapResizer.min.js"></script>
     <script type="text/javascript">
-		$('map').imageMapResize();
-	</script>
+        $('map').imageMapResize();
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
