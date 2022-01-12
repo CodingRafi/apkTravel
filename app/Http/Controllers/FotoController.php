@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreFotoRequest;
@@ -33,12 +35,16 @@ class FotoController extends Controller
                 }
             }
         
+            $profilWisata = ProfilWisata::all();
+            $berita = Berita::all();
 
         return view("dashboard.koleksi.koleksiFoto.index", [
             "categories" => Category::all(),
             "title" => 'Koleksi Foto',
             "koleksies" => $koleksi,
-            "fotos" => $foto
+            "fotos" => $foto,
+            "profilwisatas" => $profilWisata,
+            "beritas" => $berita
         ]);
     }
 

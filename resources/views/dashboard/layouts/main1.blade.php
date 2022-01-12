@@ -34,6 +34,7 @@
     <script type="text/javascript" src="/js/trix/trix.js"></script>
     {{-- <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script> --}}
     
+    
 
     <style>
         trix-toolbar [data-trix-button-group="file-tools"]{
@@ -233,9 +234,9 @@
                                 <div class="col-md-4">
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                            <a href="/dashboard"> <i class="fa fa-home"></i> </a>
                                         </li>
-                                        <li class="breadcrumb-item"><a href="#!">Dashboard</a>
+                                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a>
                                         </li>
                                         @if ($title != "Dashboard")
                                             <li class="breadcrumb-item"><a href="#!">{{ $title }}</a>
@@ -260,7 +261,12 @@
   </div>
 
     
-    <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
+  @if (Request::is('dashboard/foto'))
+      ""
+  @else
+      
+  <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
+  @endif
     <script type="text/javascript" src="/js/jquery-ui/jquery-ui.min.js "></script>
     <script type="text/javascript" src="/js/popper.js/popper.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap/js/bootstrap.min.js "></script>

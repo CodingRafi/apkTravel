@@ -27,6 +27,14 @@ class koleksi extends Model
         return $this->hasMany(Video::class);
     }
 
+    public function profilwisata(){
+        return $this->belongsTo(ProfilWisata::class);
+    }
+
+    public function berita(){
+        return $this->belongsTo(Berita::class);
+    }
+
     public function sluggable(): array
     {
         return [

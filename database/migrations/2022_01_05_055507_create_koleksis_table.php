@@ -15,6 +15,8 @@ class CreateKoleksisTable extends Migration
     {
         Schema::create('koleksis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profilWisata')->nullable();
+            $table->foreignId('berita')->nullable();
             $table->string('nama');
             $table->string('slug')->unique();
             $table->enum('jenis', ['koleksifoto', 'koleksivideo']);

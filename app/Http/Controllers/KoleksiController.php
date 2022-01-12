@@ -45,11 +45,24 @@ class KoleksiController extends Controller
      */
     public function store(StorekoleksiRequest $request)
     {
+        dd($request);
+        $validateData = $request->validate([
+            'kategori' => 'required',
+            'kepemilikan' => 'required'
+        ]);
+
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'slug' => 'required|unique:koleksis',
-            'jenis' => 'required'
+            'jenis' => 'required',
         ]);
+
+        if($request->kategori == 'profilwisata'){
+            dd('oke');
+            $validatedData['profilWisata'] = $request->kepemilikan;
+        }else if($request->kategori == 'barita'){
+            $validatedData['berita'] = $request->kepemilikan;
+        }
 
         Koleksi::create($validatedData);
         if($request->jenis == 'koleksifoto'){

@@ -27,6 +27,10 @@ class Berita extends Model
         return $this->hasMany(Video::class);
     }
 
+    public function koleksi(){
+        return $this->hasMany(Koleksi::class);
+    }
+
     public function sluggable(): array
     {
         return [
