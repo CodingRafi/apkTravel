@@ -33,6 +33,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/hotel', function () {
+    return view('hotel');
+});
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
