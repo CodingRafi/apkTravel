@@ -144,7 +144,7 @@
 
 
 <!-- Modal -->
-<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror @error('kategori') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('kategori') style="display: block;background: rgba(69,90,100, .5);" @enderror>
+<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror @error('kepemilikasi') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('kepemilikasi') style="display: block;background: rgba(69,90,100, .5);" @enderror>
     <div class="modal-dialog">
       <div class="modal-content">
         <form action="/dashboard/koleksi" method="post">
@@ -199,7 +199,7 @@
                         <option value="{{ $item->id }}" class="option1" data-kategori="berita">{{ $item->judul }}</option>
                     @endforeach
                 </select>
-                @error('kategori')   
+                @error('kepemilikasi')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
                     </div>

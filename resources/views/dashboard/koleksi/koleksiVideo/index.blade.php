@@ -147,7 +147,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror>
+<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror @error('kepemilikasi') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('kepemilikasi') style="display: block;background: rgba(69,90,100, .5);" @enderror>
     <div class="modal-dialog">
       <div class="modal-content">
         <form action="/dashboard/koleksi" method="post">
@@ -161,7 +161,7 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="nama">Nama koleksi</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required>
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required value="{{ old('nama') }}">
                 @error('nama')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
@@ -170,7 +170,7 @@
             </div>
             <div class="form-group">
                 <label for="slug">Slug</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required>
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}">
                 @error('slug')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
@@ -189,7 +189,7 @@
                         <option value="{{ $item->id }}" class="option1" data-kategori="berita">{{ $item->judul }}</option>
                     @endforeach
                 </select>
-                @error('kategori')   
+                @error('kepemilikasi')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
                     </div>
@@ -251,7 +251,6 @@
             const kepemilikan = document.querySelector('#kepemilikan');
             const chosensingle = document.querySelector('.chosen-single span');
             const chosensearchinput = document.querySelector('.chosen-search-input');
-            console.log(chosensearchinput)
             chosencontainersingle.style.width = "100%";
             chosencontainersingle.style.marginTop = "8px";
             // chosencontainersingle.style.display = "none";
