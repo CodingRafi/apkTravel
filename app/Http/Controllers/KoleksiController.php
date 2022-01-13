@@ -48,9 +48,17 @@ class KoleksiController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'slug' => 'required|unique:koleksis',
-            'jenis' => 'required'
+            'jenis' => 'required',
+            'parentKategori' => 'required',
+            'kepemilikasi' => 'required'
         ]);
 
+        if($request->parentKategori == 'profilwisata'){
+            $validatedData['profil_wisata_id'] = $request->kepemilikasi;
+        }else if($request->parentKategori == 'berita'){
+            $validatedData['berita_id'] = $request->kepemilikasi;
+        }
+        
         Koleksi::create($validatedData);
         if($request->jenis == 'koleksifoto'){
             return redirect('/dashboard/foto/create')->with([

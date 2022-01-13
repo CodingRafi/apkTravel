@@ -33,6 +33,10 @@ class ProfilWisata extends Model
     public function video(){
         return $this->hasMany(Video::class);
     }
+
+    public function koleksi(){
+        return $this->hasMany(koleksi::class);
+    }
     
     public function sluggable(): array
     {

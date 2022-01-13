@@ -2,6 +2,10 @@
 
 @section('container')
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
+ <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
 @if (session()->has('success'))   
     <div class="container-fluid p-0">
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 93%;margin: auto;margin-top: 15px;margin-bottom: -15px;">
@@ -138,8 +142,9 @@
     </div>
 </div>
 
+
 <!-- Modal -->
-<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror>
+<div class="modalkey modal fade @error('nama') show @enderror @error('slug') show @enderror @error('kategori') show @enderror" id="koleksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" @error('nama') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('slug') style="display: block;background: rgba(69,90,100, .5);" @enderror @error('kategori') style="display: block;background: rgba(69,90,100, .5);" @enderror>
     <div class="modal-dialog">
       <div class="modal-content">
         <form action="/dashboard/koleksi" method="post">
@@ -153,7 +158,7 @@
         <div class="modal-body">
             <div class="form-group">
                 <label for="nama">Nama koleksi</label>
-                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required>
+                <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required value="{{ old('nama') }}">
                 @error('nama')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
@@ -162,12 +167,44 @@
             </div>
             <div class="form-group">
                 <label for="slug">Slug</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required>
+                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug') }}">
                 @error('slug')   
                     <div class="invalid-feedback d-block">
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+            <div class="form-group">
+                <label for="kepemilikan">Kepemilikan</label>
+                {{-- <input type="hidden" name="kategori" class="kepemilikanInput"> --}}
+                <input type="hidden" name="parentKategori" class="parentKategori">
+
+                {{-- <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" style="padding: 6px 30px;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                      Kategori
+                    </a>
+                  
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item profilwisata" href="#">Profil Wisata</a>
+                      <a class="dropdown-item berita" href="#">Berita</a>
+                    </div>
+                </div> --}}
+               
+                <select id="kepemilikan" name="kepemilikasi" style="width: 100%">
+                    <option></option>
+                    @foreach ($profilwisatas as $profilwisata)
+                        <option value="{{ $profilwisata->id }}" class="option1" data-kategori="profilwisata">{{ $profilwisata->nama }}</option>
+                    @endforeach
+                    @foreach ($beritas as $item)
+                        <option value="{{ $item->id }}" class="option1" data-kategori="berita">{{ $item->judul }}</option>
+                    @endforeach
+                </select>
+                @error('kategori')   
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
+                   
             </div>
             <div class="form-group">
                 <label for="jenis">Jenis Koleksi</label>
@@ -185,7 +222,7 @@
       </div>
     </div>
   </div>
- 
+
   <script>
 
           const slug = document.querySelector("#slug");
@@ -196,7 +233,11 @@
           const editKoleksi = document.querySelectorAll('.editKoleksi');
           const slugKoleksi = document.querySelectorAll('.slugKoleksi');
           const modalContent = document.querySelector('.modal-content');
-          
+          const profilWisata = document.querySelector('.profilwisata');
+          const dropdownToggle = document.querySelector('.dropdown-toggle');
+          const parentKategori = document.querySelector('.parentKategori');
+          const berita = document.querySelector('.berita');
+          const option = document.querySelectorAll('option.option1');
     
           close.addEventListener('click', function(){
             modal.classList.remove('show');
@@ -214,8 +255,84 @@
             .then(response => response.json())
             .then(data => slug.value = data.slug)
         })
-      
 
+        $(document).ready(function() {
+            $('#kepemilikan').chosen();
+            const chosencontainersingle = document.querySelector('.chosen-container-single');
+            const kepemilikan = document.querySelector('#kepemilikan');
+            const chosensingle = document.querySelector('.chosen-single span');
+            const chosensearchinput = document.querySelector('.chosen-search-input');
+            console.log(chosensearchinput)
+            chosencontainersingle.style.width = "100%";
+            chosencontainersingle.style.marginTop = "8px";
+            // chosencontainersingle.style.display = "none";
+
+            // dropdownToggle.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            // })
+
+            // profilWisata.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            //     chosencontainersingle.style.display = "block";
+            //     kepemilikan.value = "";
+            //     chosensingle.innerHTML = 'Select an Option';
+            //     parentKategori.value = "";
+            //     parentKategori.value = "profilwisata";
+            // })
+            
+
+            // berita.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            //     chosencontainersingle.style.display = "block";
+            //     kepemilikan.value = "";
+            //     chosensingle.innerHTML = 'Select an Option';
+            //     parentKategori.value = "";
+            //     parentKategori.value = "berita";
+            // })
+
+            chosencontainersingle.addEventListener('click', function(){
+                const activeresult = document.querySelectorAll('li.active-result.option1');
+                activeresult.forEach((e,i) => {
+                    e.addEventListener('click', function(){
+                        if(e.textContent == option[i].textContent){
+                            parentKategori.value = "";
+                            parentKategori.value = option[i].getAttribute('data-kategori');
+                        }
+                    })
+                })
+                // option.forEach((e,i) => {
+                //     if(e.getAttribute('data-kategori') != parentKategori.value){
+                //         if(activeresult[i].textContent == e.textContent){
+                //             activeresult[i].classList.add('d-none')
+                //         }
+                //     }else{
+                //         activeresult[i].classList.add('d-block')
+                //     }
+                // })
+            })
+
+            // chosensearchinput.addEventListener('change', function(){
+            //     console.log('oke')
+            // })
+
+        });
+        
+        // const kepemilikanInput = document.querySelector('.kepemilikanInput');
+        
+
+        //   function ubahInput(key){
+        //     let optionHasil;
+        //       option.forEach(element => {
+        //           if(parentKategori.value == element.getAttribute('data-kategori')){
+        //             if(element.value == key){
+        //                 optionHasil = element
+        //             }
+        //           }
+        //       });
+        //       kepemilikanInput.value = optionHasil.getAttribute('data-kategori');
+        //     }
+
+          
 
 
     // editKoleksi.forEach( (e,i) => {

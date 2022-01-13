@@ -13,6 +13,7 @@ use App\Http\Controllers\CampuranController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\ProfilWisataController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +29,10 @@ use App\Http\Controllers\ProfilWisataController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class, 'index']);
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 Route::get('/hotel', function () {
     return view('hotel');
