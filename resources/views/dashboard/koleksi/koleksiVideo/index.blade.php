@@ -4,6 +4,10 @@
 
 {{-- @dd($videos[2]['videoAda'][0]->filename) --}}
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
+ <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
 @if (session()->has('success'))   
     <div class="container-fluid p-0">
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 93%;margin: auto;margin-top: 15px;margin-bottom: -15px;">
@@ -174,12 +178,30 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="kepemilikan">Kepemilikan</label>
+                <input type="hidden" name="parentKategori" class="parentKategori">
+                <select id="kepemilikan" name="kepemilikasi" style="width: 100%">
+                    <option></option>
+                    @foreach ($profilwisatas as $profilwisata)
+                        <option value="{{ $profilwisata->id }}" class="option1" data-kategori="profilwisata">{{ $profilwisata->nama }}</option>
+                    @endforeach
+                    @foreach ($beritas as $item)
+                        <option value="{{ $item->id }}" class="option1" data-kategori="berita">{{ $item->judul }}</option>
+                    @endforeach
+                </select>
+                @error('kategori')   
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="jenis">Jenis Koleksi</label>
                 <select class="form-control" id="jenis" name="jenis">
                   <option value="koleksifoto" {{ (old('jenis') == 'koleksifoto') ? 'selected' : '' }}>Foto</option>
                   <option value="koleksivideo" {{ (old('jenis') == 'koleksivideo') ? 'selected' : '' }} selected>Video</option>
                 </select>
-              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary tombolClose" data-dismiss="modal">Close</button>
@@ -200,7 +222,11 @@
           const editKoleksi = document.querySelectorAll('.editKoleksi');
           const slugKoleksi = document.querySelectorAll('.slugKoleksi');
           const modalContent = document.querySelector('.modal-content');
-          
+          const profilWisata = document.querySelector('.profilwisata');
+          const dropdownToggle = document.querySelector('.dropdown-toggle');
+          const parentKategori = document.querySelector('.parentKategori');
+          const berita = document.querySelector('.berita');
+          const option = document.querySelectorAll('option.option1');
     
           close.addEventListener('click', function(){
             modal.classList.remove('show');
@@ -219,8 +245,66 @@
             .then(data => slug.value = data.slug)
         })
       
+        $(document).ready(function() {
+            $('#kepemilikan').chosen();
+            const chosencontainersingle = document.querySelector('.chosen-container-single');
+            const kepemilikan = document.querySelector('#kepemilikan');
+            const chosensingle = document.querySelector('.chosen-single span');
+            const chosensearchinput = document.querySelector('.chosen-search-input');
+            console.log(chosensearchinput)
+            chosencontainersingle.style.width = "100%";
+            chosencontainersingle.style.marginTop = "8px";
+            // chosencontainersingle.style.display = "none";
 
+            // dropdownToggle.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            // })
 
+            // profilWisata.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            //     chosencontainersingle.style.display = "block";
+            //     kepemilikan.value = "";
+            //     chosensingle.innerHTML = 'Select an Option';
+            //     parentKategori.value = "";
+            //     parentKategori.value = "profilwisata";
+            // })
+            
+
+            // berita.addEventListener('click', function(){
+            //     chosencontainersingle.style.display = "none";
+            //     chosencontainersingle.style.display = "block";
+            //     kepemilikan.value = "";
+            //     chosensingle.innerHTML = 'Select an Option';
+            //     parentKategori.value = "";
+            //     parentKategori.value = "berita";
+            // })
+
+            chosencontainersingle.addEventListener('click', function(){
+                const activeresult = document.querySelectorAll('li.active-result.option1');
+                activeresult.forEach((e,i) => {
+                    e.addEventListener('click', function(){
+                        if(e.textContent == option[i].textContent){
+                            parentKategori.value = "";
+                            parentKategori.value = option[i].getAttribute('data-kategori');
+                        }
+                    })
+                })
+                // option.forEach((e,i) => {
+                //     if(e.getAttribute('data-kategori') != parentKategori.value){
+                //         if(activeresult[i].textContent == e.textContent){
+                //             activeresult[i].classList.add('d-none')
+                //         }
+                //     }else{
+                //         activeresult[i].classList.add('d-block')
+                //     }
+                // })
+            })
+
+            // chosensearchinput.addEventListener('change', function(){
+            //     console.log('oke')
+            // })
+
+        });
 
     // editKoleksi.forEach( (e,i) => {
     //     e.addEventListener("click", function(){

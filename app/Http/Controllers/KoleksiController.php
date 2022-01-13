@@ -58,7 +58,7 @@ class KoleksiController extends Controller
         }else if($request->parentKategori == 'berita'){
             $validatedData['berita_id'] = $request->kepemilikasi;
         }
-        
+    
         Koleksi::create($validatedData);
         if($request->jenis == 'koleksifoto'){
             return redirect('/dashboard/foto/create')->with([
