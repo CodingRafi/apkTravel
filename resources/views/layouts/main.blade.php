@@ -23,7 +23,7 @@
 
 <body>
     {{-- Navbar --}}
-    {{$berita}}
+    {{-- {{$berita}} --}}
     <div class="topbar">
         <div class="topbar-head flex">
             <img src="images/home-screen/logo-depok.png" alt="logo-kota-depok">
