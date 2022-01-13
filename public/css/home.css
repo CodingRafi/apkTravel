@@ -34,6 +34,7 @@ body {
     background-image: url(../images/home-screen/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     /* border: 3px dotted black; */
     /* height: 100vh; */
 }
@@ -52,6 +53,7 @@ body * {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 10;
 }
 
 .topbar-head>*,
@@ -349,3 +351,73 @@ body * {
 }
 
 /*** 4.0 - responsive ***/
+/*** 4.1 - handphone ***/
+@media (max-width: 1024px) {
+    .main {
+        /* border: 1px solid black; */
+        gap: 1rem;
+        height: calc(100vh - (56px + 56px) - 2rem);
+        margin-block: calc(56px + 1rem);
+        margin-inline: auto;
+        width: 768px;
+    }
+}
+
+/*** 4.2 - tablet ***/
+@media (max-width: 768px) {
+    .main {
+        /* border: 1px solid black; */
+        gap: 1rem;
+        height: max-content;
+        margin-block: calc(56px + 1rem);
+        margin-inline: auto;
+        width: 360px;
+        flex-wrap: wrap;
+    }
+
+    .column {
+        width: auto;
+    }
+
+    .middle {
+        width: auto;
+    }
+
+    .berita-frame {
+        height: 100vh;
+
+    }
+
+    .topbar-head {
+        background-color: var(--card-color);
+        background: var(--card-gradient-color);
+        border-radius: 0 0 0 0;
+        box-shadow: var(--box-shadow-header);
+        gap: 2rem;
+        height: inherit;
+        justify-content: space-between;
+        padding-inline: 2rem;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    .topbar-body {
+        display: none;
+    }
+
+    .menu {
+        border-radius: 0 0 0 0;
+    }
+}
+
+/*** 4.3 - large screen ***/
+@media (min-width: 1600px) {
+    :root {
+        font-size: 16px;
+    }
+
+    .main {
+        height: calc(100vh - (56px + 56px) - 4rem);
+        width: 1400px;
+    }    
+}
