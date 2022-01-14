@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\video;
+use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorevideoRequest;
@@ -34,12 +36,16 @@ class VideoController extends Controller
             }
         }
     
+        $profilWisata = ProfilWisata::all();
+        $berita = Berita::all();
 
         return view("dashboard.koleksi.koleksiVideo.index", [
             "categories" => Category::all(),
             "title" => 'Koleksi Video',
             "koleksies" => $koleksi,
-            "videos" => $video
+            "videos" => $video,
+            "profilwisatas" => $profilWisata,
+            "beritas" => $berita
         ]);
     }
 
