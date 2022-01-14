@@ -1,5 +1,5 @@
 @extends('layouts.sub')
 
 @section('container')
-    hotel
+    category
 @endsection

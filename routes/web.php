@@ -29,16 +29,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/home', [HomeController::class, 'index']);
-// Route::get('/home', function () {
-//     return view('home');
-// });
-
-Route::get('/hotel', function () {
-    return view('hotel');
-});
-
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';
@@ -75,6 +67,7 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
 Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [ProfilWisataController::class, 'create'])->middleware('auth');
+Route::get('/{category:slug}', [HomeController::class, 'show']);
 
 
 
