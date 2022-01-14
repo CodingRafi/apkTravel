@@ -83,6 +83,7 @@ class VideoController extends Controller
      */
     public function store(StorevideoRequest $request)
     {
+        dd($request);
         if(isset($request->slug)){
             $slug = $request->slug;
         }else{
