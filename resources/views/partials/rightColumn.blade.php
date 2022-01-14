@@ -9,7 +9,7 @@
                 <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $data->judul }}</h5>
-                    <p class="card-text">{{ $data->body }}</p>
+                    <p class="card-text">{!! $data->body !!}</p>
                 </div>
             </div>
         @endforeach

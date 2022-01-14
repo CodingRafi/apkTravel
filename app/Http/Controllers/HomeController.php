@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,8 @@ class HomeController extends Controller
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->get();
-        return view("home",['beritas'=>$beritas]);
+        $kecamatan = Kecamatan::all();
+        return view("home",['beritas'=>$beritas,'kecamatan'=>$kecamatan]);
     }
 
     public function show(Request $request, $slug){
@@ -25,7 +27,7 @@ class HomeController extends Controller
             'categories' => $category
         ]);
     }
-
+  
     // public function wisataAlam(){
     //     $katWisataAlam = ProfilWisata::where('category_id', 1)
     //     ->get();
