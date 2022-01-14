@@ -269,14 +269,15 @@ body * {
 /*** 2.6 - sub item ***/
 .sub {
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .sub>.card {
     box-shadow: var(--box-shadow-header);
+    height: fit-content;
     margin: 0;
     padding: 0;
-    width: 49%;
-    height: fit-content;
+    width: 40%;
 }
 
 .card-img-overlay {

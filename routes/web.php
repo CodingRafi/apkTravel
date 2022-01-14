@@ -29,17 +29,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/hotel', [HomeController::class, 'hotel']);
-Route::get('/wisata-alam', [HomeController::class, 'wisataAlam']);
-Route::get('/wisata-buatan', [HomeController::class, 'wisataBuatan']);
-Route::get('/wisata-budaya', [HomeController::class, 'wisataBudaya']);
-Route::get('/resto', [HomeController::class, 'resto']);
-Route::get('/kafe', [HomeController::class, 'kafe']);
-Route::get('/kuliner', [HomeController::class, 'kuliner']);
-Route::get('/travel', [HomeController::class, 'travel']);
-Route::get('/oleh-oleh', [HomeController::class, 'olehOleh']);
 
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';
@@ -76,6 +67,7 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
 Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [ProfilWisataController::class, 'create'])->middleware('auth');
+Route::get('/{category:slug}', [HomeController::class, 'show']);
 
 
 

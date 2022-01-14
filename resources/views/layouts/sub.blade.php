@@ -31,7 +31,7 @@
         @include('partials.subColumn')
 
         {{-- kolum kanan --}}
-        {{-- @include('partials.rightColumn') --}}
+        @include('partials.rightColumn')
         
     </div>
 
