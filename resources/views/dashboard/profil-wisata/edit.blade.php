@@ -83,7 +83,7 @@
                                         <label class="col-sm-2 col-form-label">Kategori {{ $title }}</label>
                                         <div class="col-sm-10">
                                             <select name="category_id" class="form-control">
-                                                @if (Request::is('dashboard/destinasi/create'))
+                                                @if ($profilWisata->category_id == 1 || $profilWisata->category_id == 2 || $profilWisata->category_id == 3)
                                                     <option value="1" {{ (old('category_id', $profilWisata->category_id) == '1') ? 'selected' : '' }}>Wisata Alam</option>
                                                     <option value="2" {{ (old('category_id', $profilWisata->category_id) == '2') ? 'selected' : '' }}>Wisata Buatan</option>
                                                     <option value="3" {{ (old('category_id', $profilWisata->category_id) == '3') ? 'selected' : '' }}>Wisata Budaya</option>
