@@ -138,6 +138,19 @@
   </div>
   <!-- Pre-loader end -->
 
+  {{-- loading uploads --}}
+
+  <div class="bungkusLoading" style="position: absolute;z-index: 9999;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;background: rgba(249,249,249,.5);display: none">
+    {{-- <div class="progress" style="widows: 90%">
+        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div> --}}
+      <progress id="progressBar" value="0" max="100" style="width:100%; display: none;"></progress>
+        <h3 id="status"></h3>
+        <p id="loaded_n_total"></p>
+  </div>
+
+  {{-- akhir loading uploads --}}
+
   {{-- Upload loading --}}
     {{-- <div class="container-progress" style="position: absolute;z-index: 9999;width: 100vw;background: #fff;height: 100vh;opacity: .5;">
       <div class="prog2">
