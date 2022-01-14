@@ -30,14 +30,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [HomeController::class, 'index']);
-// Route::get('/home', function () {
-//     return view('home');
-// });
-
-Route::get('/hotel', function () {
-    return view('hotel');
-});
-
+Route::get('/hotel', [HomeController::class, 'hotel']);
+Route::get('/wisata-alam', [HomeController::class, 'wisataAlam']);
+Route::get('/wisata-buatan', [HomeController::class, 'wisataBuatan']);
+Route::get('/wisata-budaya', [HomeController::class, 'wisataBudaya']);
+Route::get('/resto', [HomeController::class, 'resto']);
+Route::get('/kafe', [HomeController::class, 'kafe']);
+Route::get('/kuliner', [HomeController::class, 'kuliner']);
+Route::get('/travel', [HomeController::class, 'travel']);
+Route::get('/oleh-oleh', [HomeController::class, 'olehOleh']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 

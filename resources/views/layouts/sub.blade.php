@@ -27,14 +27,11 @@
 
     {{-- Konten --}}
     <div class="main flex">
-        {{-- kolum kiri --}}
-        @include('partials.leftColumn')
-
-        {{-- kolum tengah --}}
-        @include('partials.middleColumn')
+        {{-- kolum sub --}}
+        @include('partials.subColumn')
 
         {{-- kolum kanan --}}
-        @include('partials.rightColumn')
+        {{-- @include('partials.rightColumn') --}}
         
     </div>
 
