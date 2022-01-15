@@ -87,7 +87,7 @@
                                                     <option value="1" {{ (old('category_id', $profilWisata->category_id) == '1') ? 'selected' : '' }}>Wisata Alam</option>
                                                     <option value="2" {{ (old('category_id', $profilWisata->category_id) == '2') ? 'selected' : '' }}>Wisata Buatan</option>
                                                     <option value="3" {{ (old('category_id', $profilWisata->category_id) == '3') ? 'selected' : '' }}>Wisata Budaya</option>
-                                                @else
+                                                @elseif($profilWisata->category_id == 4 || $profilWisata->category_id == 5 || $profilWisata->category_id == 6)
                                                     <option value="4" {{ (old('category_id', $profilWisata->category_id) == '4') ? 'selected' : '' }}>Resto</option>
                                                     <option value="5" {{ (old('category_id', $profilWisata->category_id) == '5') ? 'selected' : '' }}>Kuliner</option>
                                                     <option value="6" {{ (old('category_id', $profilWisata->category_id) == '6') ? 'selected' : '' }}>Kafe</option>
