@@ -7,7 +7,6 @@
     --card-gradient-color: linear-gradient(var(--card-color), rgba(234, 234, 234, 1));
     --card-transparent-color: rgba(245, 245, 245, 0.8);
     --main-font: 'Nunito', sans-serif;
-    --theme-color: rgba(47, 55, 144, 1);
     font-size: 12px;
 }
 
@@ -77,7 +76,7 @@ body * {
 
 .topbar-head>img {
     object-fit: scale-down;
-    width: 3rem;
+    width: 36px;
 }
 
 /*** 1.2 - running text ***/
@@ -102,7 +101,6 @@ body * {
 
 .main img {
     border-radius: 10px;
-    display: block;
     width: 100%;
 }
 
@@ -130,7 +128,7 @@ body * {
     flex-wrap: wrap;
     overflow: scroll;
     padding: .5rem;
-    width: 75%;
+    width: calc(100% + 50%);
 }
 
 .small {
@@ -171,17 +169,55 @@ body * {
 }
 
 .map-selector:after {
-    content: '';
-    position: absolute;
-    top: inherit;
-    right: inherit;
-    bottom: inherit;
-    left: inherit;
     background: currentColor;
-    transition-duration: .3s;
-    transition-timing-function: ease-out;
-    transition-property: top, left, right, bottom, background;
+    bottom: inherit;
+    content: '';
+    left: inherit;
     pointer-events: none;
+    position: absolute;
+    right: inherit;
+    top: inherit;
+    transition-duration: .3s;
+    transition-property: top, left, right, bottom, background;
+    transition-timing-function: ease-out;
+}
+
+.peta-frame .map {
+    border-radius: 10px 10px 0 0;
+}
+
+.peta-select {
+    justify-content: center;
+}
+
+.peta-select>* {
+    border: none;
+    display: block;
+    padding: .5rem 2rem;
+    width: 100%;
+    box-shadow: var(--box-shadow-header);
+}
+
+.peta-select>select {
+    /* border: 1px solid rgb(88, 139, 168); */
+    border-radius: 0 0 0 10px ;
+    background: var(--card-gradient-color);
+}
+
+.peta-select>select:focus {
+    outline: none;
+}
+
+.peta-select>button {
+    background: rgb(88, 139, 168);
+    border-radius: 0 0 10px 0 ;
+    color: white;
+    /* padding: .2rem 2rem; */
+    transition: 150ms;
+}
+
+.peta-select>button:active {
+    background: rgb(54, 90, 110);
 }
 
 .peta-detail {
@@ -207,7 +243,7 @@ body * {
     padding-block: .5rem;
 }
 
-.berita-kota-depok > h4 {
+.berita-kota-depok>h4 {
     text-align: center;
 }
 
@@ -277,7 +313,7 @@ body * {
     height: fit-content;
     margin: 0;
     padding: 0;
-    width: 40%;
+    width: 49%;
 }
 
 .card-img-overlay {
@@ -417,7 +453,7 @@ body * {
         width: 100%;
         z-index: 1;
     }
-    
+
     .topbar-body {
         display: none;
     }
@@ -436,5 +472,5 @@ body * {
     .main {
         height: calc(100vh - (56px + 56px) - 4rem);
         width: 1400px;
-    }    
+    }
 }
