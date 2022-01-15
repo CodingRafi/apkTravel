@@ -31,11 +31,51 @@ class HomeController extends Controller
         ->where([['category_id', '<=', '3'],['alamat', 'like', '%CIPAYUNG%']])
         ->get();
 
+        $sawangan = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%SAWANGAN%']])
+        ->get();
+
+        $bojongsari = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%BOJONGSARI%']])
+        ->get();
+
+        $sukmajaya = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%SUKMAJAYA%']])
+        ->get();
+
+        $pancoranmas = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%PANCORANMAS%']])
+        ->get();
+
+        $cimanggis = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CIMANGGIS%']])
+        ->get();
+
+        $beji = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%BEJI%']])
+        ->get();
+
+        $limo = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%limo%']])
+        ->get();
+
+        $cinere = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CINERE%']])
+        ->get();
+
         return view("home",[
             'beritas'=>$beritas,
             'tapos'=>$tapos,
             'cilodong'=>$cilodong,
-            'cipayung'=>$cipayung
+            'cipayung'=>$cipayung,
+            'sawangan'=>$sawangan,
+            'bojongsari'=>$bojongsari,
+            'sukmajaya'=>$sukmajaya,
+            'pancoranmas'=>$pancoranmas,
+            'cimanggis'=>$cimanggis,
+            'beji'=>$beji,
+            'limo'=>$limo,
+            'cinere'=>$cinere
     ]);
     }
 

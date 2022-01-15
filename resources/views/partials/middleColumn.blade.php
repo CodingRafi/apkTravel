@@ -75,14 +75,70 @@
                     @endforeach
                 </ul>
             </div>
-            <div id="Div4" style="display: none;">I'm Div Four</div>
-            <div id="Div5" style="display: none;">I'm Div Four</div>
-            <div id="Div6" style="display: none;">I'm Div Four</div>
-            <div id="Div7" style="display: none;">I'm Div Four</div>
-            <div id="Div8" style="display: none;">I'm Div Four</div>
-            <div id="Div9" style="display: none;">I'm Div Four</div>
-            <div id="Div10" style="display: none;">I'm Div Four</div>
-            <div id="Div11" style="display: none;">I'm Div Four</div>
+            <div id="Div4" style="display: none;">
+                <h4>Sawangan</h4>
+                <ul>
+                    @foreach ($sawangan as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div5" style="display: none;">
+                <h4>Bojongsari</h4>
+                <ul>
+                    @foreach ($bojongsari as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div6" style="display: none;">
+                <h4>Sukmajaya</h4>
+                <ul>
+                    @foreach ($sukmajaya as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div7" style="display: none;">
+                <h4>Pancoranmas</h4>
+                <ul>
+                    @foreach ($pancoranmas as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div8" style="display: none;">
+                <h4>Cimanggis</h4>
+                <ul>
+                    @foreach ($cimanggis as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div9" style="display: none;">
+                <h4>Beji</h4>
+                <ul>
+                    @foreach ($beji as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div10" style="display: none;">
+                <h4>Limo</h4>
+                <ul>
+                    @foreach ($limo as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div id="Div11" style="display: none;">
+                <h4>Cinere</h4>
+                <ul>
+                    @foreach ($cinere as $data)
+                        <li>{{ $data->nama }}</li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
     {{-- kontak --}}
@@ -124,5 +180,8 @@
             }
         }
     }
-
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+        crossorigin="anonymous"></script>
+<script src="mapoid.js"></script>

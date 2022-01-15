@@ -28,14 +28,25 @@
     {{-- cuaca --}}
     <div class="cuaca-frame flex">
         <div class="cuaca">
-            <img src="icon/home-screen/cloudy.png" style="width: 72px">
-            <div>
-                <h3 id="jam"></h3>
-                <h2>20°C</h2>
-            </div>
+            <?php
+            $city_name = 'Depok';
+            $api_key = 'baf203be46efb79bfadbcd96c9e58ecd';
+            $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$api_key;
+            $weather_data = json_decode( file_get_contents($api_url), true);
+            $temperature = $weather_data['main']['temp'];
+            $temperature_in_celc = $temperature - 273.15;
+            $temperature_c_w_icon = $weather_data['weather'][0]['icon'];
+            echo "<img src='http://openweathermap.org/img/wn/".$temperature_c_w_icon."@2x.png' style='width: 100px' />";
+            echo "<div>";
+            echo "<h3 id='jam'></h3>";
+            echo "<h2>";
+            echo round ($temperature_in_celc).'℃';
+            echo "</h2>";
+            echo "</div>";
+            ?>
         </div>
         <div class="waktu">
-            <h3>24 Desember 2020</h3>
+            <h3 id="date"></h3>
         </div>
     </div>
 </div>
