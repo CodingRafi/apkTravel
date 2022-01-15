@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
+{{-- cuaca --}}
 @section('cuaca')
     <div class="cuaca">
         <?php
@@ -24,94 +25,144 @@
     </div>
 @endsection
 
+{{-- detil wisata peta --}}
 @section('peta-detail')
-    <div id="Div0">Klik Peta Untuk Melihat Wisata Kecamatan</div>
+    <div id="Div0">
+        <img src="images/home-screen/clicking.png">
+        <center>
+            <p>Klik peta untuk menampilkan lokasi wisata kecamatan</p>
+        </center>
+    </div>
     <div id="Div1" style="display: none;">
-        <h4>Tapos</h4>
-        <ul>
-            @foreach ($tapos as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Tapos</h4>
+            </div>
+            <ul>
+                @foreach ($tapos as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div2" style="display: none;">
-        <h4>Cilodong</h4>
-        <ul>
-            @foreach ($cilodong as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Cilodong</h4>
+            </div>
+            <ul>
+                @foreach ($cilodong as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div3" style="display: none;">
-        <h4>Cipayung</h4>
-        <ul>
-            @foreach ($cipayung as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Cipayung</h4>
+            </div>
+            <ul>
+                @foreach ($cipayung as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div4" style="display: none;">
-        <h4>Sawangan</h4>
-        <ul>
-            @foreach ($sawangan as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Sawangan</h4>
+            </div>
+            <ul>
+                @foreach ($sawangan as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div5" style="display: none;">
-        <h4>Bojongsari</h4>
-        <ul>
-            @foreach ($bojongsari as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Bojongsari</h4>
+            </div>
+            <ul>
+                @foreach ($bojongsari as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div6" style="display: none;">
-        <h4>Sukmajaya</h4>
-        <ul>
-            @foreach ($sukmajaya as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Sukmajaya</h4>
+            </div>
+            <ul>
+                @foreach ($sukmajaya as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div7" style="display: none;">
-        <h4>Pancoranmas</h4>
-        <ul>
-            @foreach ($pancoranmas as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Pancoranmas</h4>
+            </div>
+            <ul>
+                @foreach ($pancoranmas as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div8" style="display: none;">
-        <h4>Cimanggis</h4>
-        <ul>
-            @foreach ($cimanggis as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Cimanggis</h4>
+            </div>
+            <ul>
+                @foreach ($cimanggis as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div9" style="display: none;">
-        <h4>Beji</h4>
-        <ul>
-            @foreach ($beji as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Beji</h4>
+            </div>
+            <ul>
+                @foreach ($beji as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div10" style="display: none;">
-        <h4>Limo</h4>
-        <ul>
-            @foreach ($limo as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Limo</h4>
+            </div>
+            <ul>
+                @foreach ($limo as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div id="Div11" style="display: none;">
-        <h4>Cinere</h4>
-        <ul>
-            @foreach ($cinere as $data)
-            <li>{{ $data->nama }}</li>
-            @endforeach
-        </ul>
+        <div class="wisata-kecamatan flex">
+            <div>
+                <h4>Cinere</h4>
+            </div>
+            <ul>
+                @foreach ($cinere as $data)
+                <li>{{ $data->nama }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 @endsection

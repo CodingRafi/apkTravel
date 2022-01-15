@@ -73,7 +73,7 @@
 
         {{-- kolum tengah --}}
         <div class="column middle flex">
-
+            
             {{-- peta --}}
             <div class="peta-frame">
                 <img src="images/home-screen/depok-map.jpg" class="map" usemap="#image-map">

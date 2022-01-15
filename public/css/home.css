@@ -120,6 +120,7 @@ body * {
 
 .middle {
     width: 100%;
+    overflow-y: scroll;
 }
 
 .sub {
@@ -151,82 +152,48 @@ body * {
 .peta-frame {
     height: fit-content;
     padding: .5rem;
-}
-
-.peta-frame .map-selector {
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    color: #546E7A00;
-    transition-duration: .3s;
-    transition-timing-function: ease-out;
-    transition-property: top, left, right, bottom, color;
-}
-
-.peta-frame .map-selector.hover {
-    color: #546E7A80;
-}
-
-.map-selector:after {
-    background: currentColor;
-    bottom: inherit;
-    content: '';
-    left: inherit;
-    pointer-events: none;
-    position: absolute;
-    right: inherit;
-    top: inherit;
-    transition-duration: .3s;
-    transition-property: top, left, right, bottom, background;
-    transition-timing-function: ease-out;
+    background: var(--card-transparent-color);
 }
 
 .peta-frame .map {
     border-radius: 10px 10px 0 0;
 }
 
-.peta-select {
-    justify-content: center;
-}
-
-.peta-select>* {
-    border: none;
-    display: block;
-    padding: .5rem 2rem;
-    width: 100%;
-    box-shadow: var(--box-shadow-header);
-}
-
-.peta-select>select {
-    /* border: 1px solid rgb(88, 139, 168); */
-    border-radius: 0 0 0 10px ;
-    background: var(--card-gradient-color);
-}
-
-.peta-select>select:focus {
-    outline: none;
-}
-
-.peta-select>button {
-    background: rgb(88, 139, 168);
-    border-radius: 0 0 10px 0 ;
-    color: white;
-    /* padding: .2rem 2rem; */
-    transition: 150ms;
-}
-
-.peta-select>button:active {
-    background: rgb(54, 90, 110);
-}
-
 .peta-detail {
-    justify-content: space-around;
-    padding-top: 1rem;
+    background: var(--card-gradient-color);
+    border-radius: 0 0 10px 10px;
+    box-shadow: var(--box-shadow-header);
+    padding-block: 1rem;
 }
 
-.peta-detail>ul {
-    padding: 0;
+.peta-detail img {
+    display: block;
+    margin-bottom: 1rem;
+    margin-inline: auto;
+    width: 3rem;
+}
+
+.detail-default p {
+    color: rgba(53, 53, 53, 0.7);
+    text-align: center;
+    height: fit-content;
+}
+
+.wisata-kecamatan {
+    padding: .5rem;
+}
+
+.wisata-kecamatan>div {
+    width: 50%;
+}
+
+.wisata-kecamatan>div>h4 {
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.wisata-kecamatan>ul {
+    padding-left: 20px;
 }
 
 /*** 2.3 - berita ***/
@@ -258,12 +225,13 @@ body * {
     border: none;
     box-shadow: var(--box-shadow-header);
     font-size: 1rem;
-    padding-inline: .5rem;
     margin-bottom: .5rem;
+    padding-inline: .5rem;
 }
 
 /*** 2.4 - cuaca ***/
 .cuaca-frame {
+    background: var(--card-transparent-color);
     flex-direction: column;
     font-size: 1.5rem;
     height: 100%;
@@ -438,7 +406,6 @@ body * {
 
     .berita-frame {
         height: 100vh;
-
     }
 
     .topbar-head {
@@ -460,6 +427,14 @@ body * {
 
     .menu {
         border-radius: 0 0 0 0;
+    }
+
+    .wisata-kecamatan {
+        flex-direction: column;
+    }
+    
+    .wisata-kecamatan>div {
+        width: 100%;
     }
 }
 
