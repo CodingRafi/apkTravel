@@ -154,34 +154,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var divs = ["Div0", "Div1", "Div2", "Div3", "Div4", "Div5", "Div6", "Div7", "Div8", "Div9", "Div10", "Div11"];
-    var visibleDivId = null;
-
-    function divVisibility(divId) {
-        if (visibleDivId === divId) {
-            visibleDivId = null;
-        } else {
-            visibleDivId = divId;
-        }
-        hideNonVisibleDivs();
-    }
-
-    function hideNonVisibleDivs() {
-        var i, divId, div;
-        for (i = 0; i < divs.length; i++) {
-            divId = divs[i];
-            div = document.getElementById(divId);
-            if (visibleDivId === divId) {
-                div.style.display = "block";
-            } else {
-                div.style.display = "none";
-            }
-        }
-    }
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
-        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
-        crossorigin="anonymous"></script>
-<script src="mapoid.js"></script>
