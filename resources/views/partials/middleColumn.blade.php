@@ -42,9 +42,9 @@
         <div id="kecamatan">
             <form action="/getWisata" method="post">
                 Pilih Wisata di Kecamatan <select name="kecamatan" id="">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
+                    <option value="1">Beji</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>
                 <button type="submit">Lihat Objek Wisata</button>
             </form>
