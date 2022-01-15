@@ -140,13 +140,55 @@
 
   {{-- loading uploads --}}
 
-  <div class="bungkusLoading" style="position: absolute;z-index: 9999;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;background: rgba(249,249,249,.5);display: none">
-    {{-- <div class="progress" style="widows: 90%">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-      </div> --}}
-      <progress id="progressBar" value="0" max="100" style="width:100%; display: none;"></progress>
-        <h3 id="status"></h3>
-        <p id="loaded_n_total"></p>
+  <div class="bungkusLoading" style="position: absolute;z-index: 9999;width: 100%;height: 100%;background: rgba(249,249,249,.5);display: flex;justify-content: center;align-items: center;display: none">
+    <div class="preloader-wrapper">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
   </div>
 
   {{-- akhir loading uploads --}}
@@ -273,6 +315,16 @@
       </div>
   </div>
 
+  <script>
+      function uploadss(){
+          const bungkusLoading = document.querySelector('.bungkusLoading');
+          const pcoded = document.querySelector('.pcoded');
+
+          bungkusLoading.style.display = "flex";
+          pcoded.style.height = '100vh';
+          pcoded.style.overflow = 'hidden';
+      }
+</script>
     
   @if (Request::is('dashboard/foto') || Request::is('dashboard/video'))
       ""
@@ -299,6 +351,8 @@
 
     <script type="text/javascript" src="/js/script.js "></script>
     <script src="/tinymce/tinymce.min.js"></script>
+
+    
 
     <script>
         if($(".fixed-button")){

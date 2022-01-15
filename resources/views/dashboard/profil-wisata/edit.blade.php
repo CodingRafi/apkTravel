@@ -237,7 +237,7 @@
                                         @enderror
                                     </div>
                                     <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <button type="submit" class="btn btn-primary" id="upload" id="upload" onclick="uploadss()">Simpan</button>
                                     </div>
                                 </form>
                             </div>
