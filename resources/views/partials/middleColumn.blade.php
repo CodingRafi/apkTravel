@@ -38,12 +38,12 @@
                 coords="506,263,524,247,529,252,543,238,550,215,542,203,547,177,558,176,570,156,574,138,586,122,606,66,588,66,582,71,507,74,496,64,489,77,453,79,449,74,428,81,430,107,420,118,428,122,426,141,415,137,421,149,413,164,402,192,392,203,392,238,402,242,397,252,400,263,407,261,416,263,418,270,432,273,447,273,456,264,471,268,476,264,483,263,487,254,494,254,496,264"
                 shape="poly">
         </map>
-        {{-- <div id="kecamatan">
-            <form action="/getWisata" method="post" class="peta-select flex">
-                <select name="kecamatan" id="">
-                    @foreach ($kecamatan as $data)
-                    <option value="{{ $data->id }}">{{ $data->kecamatan }}</option>
-                    @endforeach
+        <div id="kecamatan">
+            <form action="/getWisata" method="post">
+                Pilih Wisata di Kecamatan <select name="kecamatan" id="">
+                    <option value="1">Beji</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>
                 <button type="submit">Lihat Objek Wisata</button>
             </form>

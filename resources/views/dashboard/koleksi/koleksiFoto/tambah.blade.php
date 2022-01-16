@@ -34,7 +34,7 @@
                                                 <img class="img-preview img-fluid mb-3 col-sm-5">
                                             </div>
                                             <input type="hidden" value="{{ $kategori }}" name="kategori">
-                                            <input type="file" class="form-control @error('filename') is-invalid @enderror filename" name="filename[]" id="filename" onchange="previewImage()" multiple accept="image/*">
+                                            <input type="file" class="form-control @error('filename') is-invalid @enderror filename" name="filename[]" id="filename" onchange="previewImage()" multiple accept="image/*" style="height: 2.7rem;">
                                             @error('filename')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
-                                        <button type="submit" class="btn btn-primary" id="upload">Simpan</button>
+                                        <button type="submit" class="btn btn-primary" id="upload" onclick="uploadss()">Simpan</button>
                                     </div>
                                 </form>
                             </div>
@@ -63,110 +63,6 @@
 
 <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-{{-- <script src="http://malsup.github.com/jquery.form.js"></script> --}}
-
-{{-- <script>
-    function validate(formData, jqForm, options) {
-        console.log(jqForm);
-        var form = jqForm[0];
-        if (!form.file.value) {
-            alert('File not found');
-            return false;
-        }
-    }
-
-    (function() {
- 
-    var bar = $('.bar');
-    var percent = $('.percent');
-    var status = $('#status');
-
-    $('form').ajaxForm({
-        console.log('oke')
-        beforeSubmit: validate,
-        beforeSend: function() {
-            status.empty();
-            var percentVal = '0%';
-            var posterValue = $('input[name=file]').fieldValue();
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        uploadProgress: function(event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        success: function() {
-            var percentVal = 'Wait, Saving';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        complete: function(xhr) {
-            status.html(xhr.responseText);
-            alert('Uploaded Successfully');
-            window.location.href = "/file-upload";
-        }
-    });
-    
-    })();
-</script> --}}
-
-<script>
-
-    var token =  $('input[name="csrfToken"]').attr('value')
-    $.ajaxSetup({
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Csrf-Token', token);
-        }
-    });
-
-    function ambilId(file){
-		return document.getElementById(file);
-	}
-
-	$(document).ready(function(){
-		$("#upload").click(function(){
-            $('#progressBar').css('display', "block");
-            $('.bungkusLoading').css('display', "flex");
-			var file = $('#filename')[0].files;
-
-            if (file!="") {
-                for (let i = 0; i < file.length; i++) {
-                    var formdata = new FormData();
-                    console.log(file[i])
-                    formdata.append('file', file[i]);
-                    console.log(formdata);
-                    var ajax = new XMLHttpRequest();
-                    ajax.upload.addEventListener("progress", progressHandler, false);
-                    ajax.addEventListener("load", completeHandler, false);
-                    ajax.addEventListener("error", errorHandler, false);
-                    ajax.addEventListener("abort", abortHandler, false);
-                    ajax.open("POST", "/dashboard/foto", true);
-                    // console.log(formdata);
-                    ajax.send(formdata);
-                }
-            }
-
-		});
-	});
-
-    function progressHandler(event){
-		ambilId("loaded_n_total").innerHTML = "Uploaded "+event.loaded+" bytes of "+event.total;
-		var percent = (event.loaded / event.total) * 100;
-		ambilId("progressBar").value = Math.round(percent);
-		ambilId("status").innerHTML = Math.round(percent)+"% uploaded... please wait";
-	}
-	function completeHandler(event){
-		ambilId("status").innerHTML = event.target.responseText;
-		ambilId("progressBar").value = 0;
-	}
-	function errorHandler(event){
-		ambilId("status").innerHTML = "Upload Failed";
-	}
-	function abortHandler(event){
-		ambilId("status").innerHTML = "Upload Aborted";
-	}
-</script>
 
 <script>
 

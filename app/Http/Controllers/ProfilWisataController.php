@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Foto;
 use App\Models\Video;
+use App\Models\Koleksi;
+use App\Models\Category;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -104,6 +105,22 @@ class ProfilWisataController extends Controller
     {
         $data = ProfilWisata::where('slug', $slug)->get()[0];
         $title =  Category::where('id', $data->category_id)->get()[0];
+        $koleksi = $data->koleksi;
+
+        $foto = [];
+            for($i = 0; $i < count($koleksi); $i++){
+                if(count($koleksi[$i]->foto) == 0){
+                    $foto[] = [
+                        'fotoGada' => '/images/jika.jpg'
+                    ];
+                }else{
+                    $foto[] = [
+                        'fotoAda' => $koleksi[$i]->foto
+                    ];
+                }
+            }
+        
+
         return view('dashboard.profil-wisata.show', [
             'profilWisata' => $data,
             'title' => $title->nama,
@@ -111,7 +128,9 @@ class ProfilWisataController extends Controller
             'next' => $data->nama,
             'foto' => $data->foto,
             'video' => $data->video,
-            'urlBack' => $data->category->slug
+            'urlBack' => $data->category->slug,
+            'koleksis' => $koleksi,
+            'fotos' => $foto
         ]);
     }
 
@@ -244,8 +263,30 @@ class ProfilWisataController extends Controller
     public function destroy(ProfilWisata $profilWisata, $slug)
     {
         $data = ProfilWisata::where('slug', $slug)->get()[0];
+        $koleksis = $data->koleksi;
         $foto = $data->foto;
         $video = $data->video;
+
+        foreach ($koleksis as $koleksi) {
+            if($koleksi->jenis == 'koleksifoto'){
+                $fotoss = $koleksi->foto;
+                if(count($fotoss) > 0){
+                    foreach ($fotoss as $fotos) {
+                        Storage::delete($fotos->filename);
+                        Foto::destroy('id' , $fotos->id);
+                    }
+                }
+            }else{
+                $videos = $koleksi->video;
+                if(count($videos) > 0){
+                    foreach($videos as $video){
+                        Storage::delete($video->filename);
+                        Video::destroy('id' , $video->id);
+                    }
+                }
+            }
+            Koleksi::destroy($koleksi->id);
+        }
 
         if($data->logo){
             Storage::delete($data->logo);
