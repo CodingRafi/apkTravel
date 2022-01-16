@@ -124,6 +124,7 @@ body * {
 }
 
 .sub {
+    align-content: start;
     background-color: var(--card-transparent-color);
     flex-direction: row;
     flex-wrap: wrap;
@@ -281,7 +282,7 @@ body * {
     height: fit-content;
     margin: 0;
     padding: 0;
-    width: 49%;
+    width: 48%;
 }
 
 .card-img-overlay {
@@ -423,6 +424,10 @@ body * {
 
     .topbar-body {
         display: none;
+    }
+
+    .sub>.card {
+        width: 100%;
     }
 
     .menu {
