@@ -94,3 +94,4 @@ class HomeController extends Controller
     //     return view("wisataAlam",['categories'=>$katWisataAlam]);
     // }
 }
+?>
