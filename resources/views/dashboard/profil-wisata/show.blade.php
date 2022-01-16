@@ -2,7 +2,8 @@
 
 @section('container')
 
-{{-- @dd() --}}
+{{-- @dd($fotos[0]['fotoAda'][0]->filename)   --}}
+{{-- @dd($fotos) --}}
 
 <style>
     strong{
@@ -87,6 +88,42 @@
                                     </video>
                                 @endif
 
+                                <h5 class="mt-3">Koleksi</h5>
+                                <div class="bungkusContainer2" style="width: 100%;height: 13rem;">
+                                    <div class="bungkusContainer3" style="position: absolute;width: 95%; overflow: auto;height: 35vh;">
+                                        <div class="bungkusContainer" style="display: flex;position: absolute">
+                                            @for ($i = 0; $i < count($koleksis); $i++)
+                                            <div class="card" style="width: 180px;margin: 0 10px;">
+                                                @isset($fotos[$i]['fotoAda'])
+                                                    <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                        <img src="{{ asset('storage/'.$fotos[$i]['fotoAda'][0]->filename) }}" class="card-img-top" style="overflow: hidden;">
+                                                    </div>
+                                                @endisset
+                                                    
+                                                @isset($fotos[$i]['fotoGada'])
+                                                    <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                        <img src="{{ $fotos[$i]['fotoGada']}}" class="card-img-top" >
+                                                    </div>
+                                                @endisset
+                                                <div class="card-body">
+                                                    <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">{{ $koleksis[$i]->nama }}</h5>
+                                                    <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">Total : 
+                                                    @isset($fotos[$i]['fotoAda'])
+                                                        <span>{{ count($fotos[$i]['fotoAda']) }}</span>
+                                                    @endisset
+                                                        
+                                                    @isset($fotos[$i]['fotoGada'])
+                                                        <span>0</span>
+                                                    @endisset
+                                                    </h5>
+                                                    <a href="/dashboard/koleksi/{{ $koleksis[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
+                                                </div>
+                                            </div>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <h5 class="mt-3">Deskripsi</h5>
                                 {!! $profilWisata->deskripsi !!}
 
@@ -117,6 +154,10 @@
                                 @isset($profilWisata->website)
                                 <span class="d-block mt-3"><strong style="font-weight: 700">Website : </strong> {!! $profilWisata->website !!}</span>
                                 @endisset
+
+                               
+                                {{-- <div class="bungksuCOntainer3" style="height: 7rem">
+                                </div> --}}
 
                                 <div class="container-fluid d-flex p-0" style="justify-content: flex-end">
                                     <a href="/dashboard/{{ $urlBack }}" class="btn btn-success">Back to home</a>

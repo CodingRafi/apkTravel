@@ -47,6 +47,7 @@
                             <div class="row">
                                     {{-- @dd($fotos) --}}
                                     @for ($i = 0; $i < count($koleksies); $i++)
+                                        
                                         <div class="col-xl-3 col-md-6">
                                             <div class="card" style="box-shadow: 0 0 0;">
                                                 <div class="tampilanAwal" style="height: 19vh;overflow: hidden;">
@@ -69,6 +70,7 @@
                                                             </g>
                                                             </svg>
                                                         </a>
+                                                        {{-- @dd($fotos[$i]['fotoAda'][0]) --}}
                                                         <input type="hidden" name="slugKoleksi" value="{{ $koleksies[$i]->slug }}" class="slugKoleksi">
                                                         <input type="hidden" name="hasilCek" class="hasilCek">
                                                         <div class="bag1" style="height: 100%;width: 100%;display: flex;justify-content: center;align-items: center;color: #fff;font-weight: 600;font-size: 20px;">
@@ -82,7 +84,7 @@
                                                         </div>
                                                     </div>
                                                     @isset($fotos[$i]['fotoAda'])
-                                                        <img src="{{ asset('storage/'.$fotos[$i]['fotoAda'][$i]->filename) }}" class="card-img-top">
+                                                        <img src="{{ asset('storage/'.$fotos[$i]['fotoAda'][0]->filename) }}" class="card-img-top">
                                                     @endisset
                                                         
                                                     @isset($fotos[$i]['fotoGada'])
@@ -262,7 +264,6 @@
             const kepemilikan = document.querySelector('#kepemilikan');
             const chosensingle = document.querySelector('.chosen-single span');
             const chosensearchinput = document.querySelector('.chosen-search-input');
-            console.log(chosensearchinput)
             chosencontainersingle.style.width = "100%";
             chosencontainersingle.style.marginTop = "8px";
             // chosencontainersingle.style.display = "none";
