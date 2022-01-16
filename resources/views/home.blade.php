@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@dd($beritas)
+
 {{-- cuaca --}}
 @section('cuaca')
     <div class="cuaca">
