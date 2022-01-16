@@ -19,7 +19,7 @@ class CreateProfilWisatasTable extends Migration
             $table->string('nama');
             $table->string('slug')->unique();
             $table->string('no_telp');
-            $table->integer('kecamatan_id');
+            $table->foreignId('kecamatan_id');
             $table->text('alamat');
             $table->text('deskripsi');
             $table->text('pengelola');

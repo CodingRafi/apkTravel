@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use \App\Models\Hotel;
 use \App\Models\Berita;
 use \App\Models\User;
+use \App\Models\Kecamatan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,50 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => "admin",
             "password" => bcrypt('admin')
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Tapos'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Cilodong'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Cipayung'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Sawangan'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Bojongsari'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Sukmajaya'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Pancoranmas'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Cimanggis'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Beji'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Limo'
+        ]);
+
+        Kecamatan::create([
+            'nama' => 'Cinere'
         ]);
 
     }
