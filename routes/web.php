@@ -29,52 +29,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
-=======
-
-Route::get('/home', [HomeController::class, 'index']);
-
-// Route::get('/home', function () {
-//     return view('home');
-// });
-
-Route::get('/hotel', function () {
-    return view('hotel');
-});
-
-Route::get('/wisata-alam', function () {
-    return view('wisata-alam');
-});
-
-Route::get('/wisata-buatan', function () {
-    return view('wisata-buatan');
-});
-
-Route::get('/wisata-budaya', function () {
-    return view('wisata-budaya');
-});
-
-Route::get('/kafe', function () {
-    return view('kafe');
-});
-
-Route::get('/kuliner', function () {
-    return view('kuliner');
-});
-
-Route::get('/restoran', function () {
-    return view('restoran');
-});
-
-Route::get('/travel', function () {
-    return view('travel');
-});
-
-Route::get('/oleh-oleh', function () {
-    return view('oleh-oleh');
-});
-
->>>>>>> buat semua halaman
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
