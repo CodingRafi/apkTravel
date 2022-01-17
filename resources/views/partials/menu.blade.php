@@ -2,19 +2,19 @@
     <ul class="menu-frame flex">
         <li>
             <a href="/home" class="menu-icon flex">
-                <img src="icon/home-screen/rumah.svg">
+                <img src="/icon/home-screen/rumah.svg">
                 Home
             </a>
         </li>
         <li>
             <a href="/hotel" class="menu-icon flex">
-                <img src="icon/home-screen/hotel.svg">
+                <img src="/icon/home-screen/hotel.svg">
                 Hotel
             </a>
         </li>
         <li>
             <label class="menu-icon flex" for="destinasi-check">
-                <img src="icon/home-screen/destinasi.svg">
+                <img src="/icon/home-screen/destinasi.svg">
                 Destinasi
             </label>
             <input type="checkbox" id="destinasi-check" class="destinasi-check" name="check" onclick="onlyOne(this)">
@@ -26,7 +26,7 @@
         </li>
         <li>
             <label class="menu-icon flex" for="makanan-check">
-                <img src="icon/home-screen/makanan.svg">
+                <img src="/icon/home-screen/makanan.svg">
                 Makanan
             </label>
             <input type="checkbox" id="makanan-check" class="makanan-check" name="check" onclick="onlyOne(this)">
@@ -38,13 +38,13 @@
         </li>
         <li>
             <a href="/travel" class="menu-icon flex">
-                <img src="icon/home-screen/travel.svg">
+                <img src="/icon/home-screen/travel.svg">
                 Travel
             </a>
         </li>
         <li>
             <a href="/oleh-oleh" class="menu-icon flex">
-                <img src="icon/home-screen/oleh-oleh.svg">
+                <img src="/icon/home-screen/oleh-oleh.svg">
                 Oleh-Oleh
             </a>
         </li>
