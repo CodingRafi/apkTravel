@@ -26,49 +26,19 @@ class HomeController extends Controller
             $foto[] = Foto::where('berita_id', $berita->id)->get();
         }
 
-        $tapos = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%TAPOS%']])
-        ->get();
+        $tapos=$this->homeWisataAlam('TAPOS',3);
+        $cilodong=$this->homeWisataAlam('CILODONG',3);
+        $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
+        $sawangan=$this->homeWisataAlam('SAWANGAN',3);
+        $bojongsari=$this->homeWisataAlam('BOJONGSARI',3);
+        $sukmajaya=$this->homeWisataAlam('SUKMAJAYA',3);
+        $pancoranmas=$this->homeWisataAlam('PANCORANMAS',3);
+        $cimanggis=$this->homeWisataAlam('CIMANGGIS',3);
+        $beji=$this->homeWisataAlam('BEJI',3);
+        $limo=$this->homeWisataAlam('LIMO',3);
+        $cinere=$this->homeWisataAlam('CINERE',3);
+       
 
-        $cilodong = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CILODONG%']])
-        ->get();
-
-        $cipayung = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CIPAYUNG%']])
-        ->get();
-
-        $sawangan = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%SAWANGAN%']])
-        ->get();
-
-        $bojongsari = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%BOJONGSARI%']])
-        ->get();
-
-        $sukmajaya = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%SUKMAJAYA%']])
-        ->get();
-
-        $pancoranmas = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%PANCORANMAS%']])
-        ->get();
-
-        $cimanggis = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CIMANGGIS%']])
-        ->get();
-
-        $beji = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%BEJI%']])
-        ->get();
-
-        $limo = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%limo%']])
-        ->get();
-
-        $cinere = DB::table('profil_wisatas')
-        ->where([['category_id', '<=', '3'],['alamat', 'like', '%CINERE%']])
-        ->get();
 
         return view("home",[
             'beritas'=>$beritas,
@@ -114,10 +84,11 @@ class HomeController extends Controller
         ]);
     }
   
-    // public function wisataAlam(){
-    //     $katWisataAlam = ProfilWisata::where('category_id', 1)
-    //     ->get();
-    //     return view("wisataAlam",['categories'=>$katWisataAlam]);
-    // }
+    public function homeWisataAlam($kecamatan,$category){
+        $city = DB::table('profil_wisatas')
+        ->where([['category_id', '<=', $category],['alamat', 'like', '%'.$kecamatan.'%']])
+        ->get();
+        return $city;
+    }
 }
 ?>
