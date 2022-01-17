@@ -1,3 +1,5 @@
+{{-- @dd($data) --}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,77 +32,166 @@
 
     {{-- Konten --}}
     <div class="main detail">
-        <h2>Berita</h2>
-        <div class="detail-columns flex">
-            <div class="sticky-container">
-                <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
-            </div>
-            <div>
-                <div class="berita-header">
-                    <h2>Lorem ipsum dolor sit amet consectetur.</h2>
-                    <pre>posted on 9 hours ago</pre>
-                    <pre>Kategori Ekonomi</pre>
+        @if ($data[0]->category_id >= 10)
+            <h2>Berita</h2>
+            <div class="detail-columns flex">
+                <div class="sticky-container">
+                    <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
                 </div>
-                <p>Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit. Exercitationem amet id molestiae, autem hic
-                    mollitia repellendus, deserunt at commodi nam debitis unde natus sed eos nobis sunt sit consequuntur
-                    iste
-                    officia possimus odio? Deleniti, explicabo assumenda quis recusandae ab, non at nobis culpa accusamus
-                    porro
-                    fugiat saepe tempore voluptatem nulla? Quam totam quas doloremque sed laudantium ducimus, inventore
-                    nulla
-                    animi neque rem voluptatibus. Consequatur quisquam omnis porro iure voluptas culpa voluptates eius quos,
-                    iusto perferendis est expedita eveniet laudantium eos soluta accusamus repudiandae voluptatum quas
-                    deserunt
-                    distinctio quid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
-                    reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
-                    debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
-                    sequi
-                    accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
-                    sapiente,
-                    ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
-                    doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
-                    deserunt
-                    minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
-                    est.
-                    Quis, deleniti, adipisci voluptate dolorem.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
-                    reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
-                    debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
-                    sequi
-                    accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
-                    sapiente,
-                    ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
-                    doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
-                    deserunt
-                    minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
-                    est.
-                    Quis, deleniti, adipisci voluptate dolorem unde vel.</p>
+                <div>
+                    <div class="berita-header">
+                        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+                        <pre>posted on 9 hours ago</pre>
+                        <pre>Kategori Ekonomi</pre>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet
+                        consectetur, adipisicing elit. Exercitationem amet id molestiae, autem hic
+                        mollitia repellendus, deserunt at commodi nam debitis unde natus sed eos nobis sunt sit consequuntur
+                        iste
+                        officia possimus odio? Deleniti, explicabo assumenda quis recusandae ab, non at nobis culpa accusamus
+                        porro
+                        fugiat saepe tempore voluptatem nulla? Quam totam quas doloremque sed laudantium ducimus, inventore
+                        nulla
+                        animi neque rem voluptatibus. Consequatur quisquam omnis porro iure voluptas culpa voluptates eius quos,
+                        iusto perferendis est expedita eveniet laudantium eos soluta accusamus repudiandae voluptatum quas
+                        deserunt
+                        distinctio quid.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
+                        reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
+                        debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
+                        sequi
+                        accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
+                        sapiente,
+                        ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
+                        doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
+                        deserunt
+                        minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
+                        est.
+                        Quis, deleniti, adipisci voluptate dolorem.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
+                        reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
+                        debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
+                        sequi
+                        accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
+                        sapiente,
+                        ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
+                        doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
+                        deserunt
+                        minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
+                        est.
+                        Quis, deleniti, adipisci voluptate dolorem unde vel.</p>
+                </div>
             </div>
-        </div>
-        <div class="gallery-frame">
-            <h2>Gallery foto</h2>
-            <div class="gallery-scroll flex">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/h1c.jpg">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/h2b.jpeg">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/berita.jpg">
+            <div class="gallery-frame">
+                <h2>Gallery foto</h2>
+                <div class="gallery-scroll flex">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/h1c.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/h2b.jpeg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                </div>
             </div>
-        </div>
 
-        <div class="gallery-frame">
-            <h2>Gallery video</h2>
-            <div class="gallery-scroll flex">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/berita.jpg">
-                <img src="/images/home-screen/berita.jpg">
+            <div class="gallery-frame">
+                <h2>Gallery video</h2>
+                <div class="gallery-scroll flex">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                </div>
             </div>
-        </div>
+        @else
+            <h2>Profil Wisata</h2>
+            <div class="detail-columns flex">
+                @if (count($foto) > 0)   
+                <div class="sticky-container">
+                    <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row">No. Telp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Alamat</th>
+                                <td>Tanah Baru, Beji, Depok City, West Java 16426</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Pengelola</th>
+                                <td>pengelola</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Instagram</th>
+                                <td>@wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">youtube</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">twitter</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Facebook</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Whatsapp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Website</th>
+                                <td>wisata.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @endif
+                <div>
+                    <div class="berita-header">
+                        <h2>{{ $data[0]->nama }}</h2>
+                        <pre>posted on 9 hours ago</pre>
+                    </div>
+                    {!!  !!}
+                </div>
+            </div>
+
+
+            @for ($i = 0; $i < count($koleksis); $i++)
+            {{-- @dd($koleksis[0]) --}}
+                
+            @if ($koleksis[$i]->jenis == 'koleksifoto')
+            <div class="gallery-frame">
+                <h2>Gallery foto</h2>
+                <div class="gallery-scroll flex">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/h1c.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/h2b.jpeg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                </div>
+            </div>
+            @else
+            <div class="gallery-frame">
+                <h2>Gallery video</h2>
+                <div class="gallery-scroll flex">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                    <img src="/images/home-screen/berita.jpg">
+                </div>
+            </div>
+            @endif  
+            @endfor
+            
+        @endif
     </div>
     {{-- menu --}}
 
