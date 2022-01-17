@@ -2,6 +2,8 @@
 
 @section('container')
 
+{{-- @dd($kecamatans) --}}
+
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -28,7 +30,7 @@
                                             {{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}
                                             {{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ?  $title : "" }}{{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}" name="nama" id="nama" value="{{ old('nama') }}" required>
+                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ?  $title : "" }}{{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}" name="nama" id="nama" value="{{ old('nama') }}">
                                             @error('nama')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -39,7 +41,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ?  $title : "" }}{{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ?  $title : "" }}{{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}" name="slug" id="slug" value="{{ old('slug') }}" required>
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ (Request::is('dashboard/hotel/create') || Request::is('dashboard/travel/create') || Request::is('dashboard/oleh-oleh/create')) ?  $title : "" }}{{ Request::is('dashboard/destinasi/create') ? 'Destinasi' : "" }}{{ Request::is('dashboard/makanan/create') ? 'Makanan' : "" }}" name="slug" id="slug" value="{{ old('slug') }}">
                                             @error('slug')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -64,7 +66,26 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">No Telepon</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ old('no_telp') }}" required>
+                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ old('no_telp') }}">
+                                            @error('no_telp')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Kecamatan</label>
+                                        <div class="col-sm-10">
+                                            <select name="kecamatan_id" class="form-control">
+                                                @foreach ($kecamatans as $kecamatan)
+                                                    @if (old('kecamatan_id') == $kecamatan->id)
+                                                        <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->nama }}</option>
+                                                    @else
+                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>   
+                                                    @endif
+                                                @endforeach
+                                            </select>
                                             @error('no_telp')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}

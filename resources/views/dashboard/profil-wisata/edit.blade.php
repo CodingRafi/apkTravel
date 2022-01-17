@@ -29,7 +29,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Nama {{ $title }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ $title }}" name="nama" id="nama" value="{{ $profilWisata->nama }}" required>
+                                            <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama {{ $title }}" name="nama" id="nama" value="{{ $profilWisata->nama }}">
                                             @error('nama')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -40,7 +40,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug {{ $title }}</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ $title }}" name="slug" id="slug" value="{{ $profilWisata->slug }}" required>
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug {{ $title }}" name="slug" id="slug" value="{{ $profilWisata->slug }}">
                                             @error('slug')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
@@ -68,9 +68,28 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Kecamatan</label>
+                                        <div class="col-sm-10">
+                                            <select name="kecamatan_id" class="form-control">
+                                                @foreach ($kecamatans as $kecamatan)
+                                                    @if (old('kecamatan_id', $profilWisata->kecamatan_id) == $kecamatan->id)
+                                                        <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->nama }}</option>
+                                                    @else
+                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>   
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            @error('no_telp')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">No Telepon</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ $profilWisata->no_telp }}" required>
+                                            <input type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telepon" name="no_telp" id="no_telp" value="{{ $profilWisata->no_telp }}">
                                             @error('no_telp')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}

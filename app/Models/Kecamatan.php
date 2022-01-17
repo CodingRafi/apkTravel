@@ -12,4 +12,8 @@ class Kecamatan extends Model
     protected $guarded =[
         "id"
     ];
+
+    public function profilwisata(){
+        return $this->hasMany(ProfilWisata::class);
+    }
 }

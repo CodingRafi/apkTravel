@@ -26,6 +26,10 @@ class ProfilWisata extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function kecamatan(){
+        return $this->belongsTo(Kecamatan::class);
+    }
+
     public function foto(){
         return $this->hasMany(Foto::class);
     }
