@@ -31,11 +31,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index']);
-<<<<<<< HEAD
-=======
 Route::get('/show/{slug}', [HomeController::class, 'show']);
-
->>>>>>> a4bbef311f54140bbe825aee0078fa6e6ea25061
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';
