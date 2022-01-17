@@ -63,22 +63,40 @@ class HomeController extends Controller
     }
 
     public function show(Request $request, $slug){
-        $data = ProfilWisata::where('slug', $slug)->get();
+        if(count(ProfilWisata::where('slug', $slug)->get()) > 0){
+            $data = ProfilWisata::where('slug', $slug)->get();
+        }else{
+            $data = Berita::where('slug', $slug)->get();
+        }
+
         $koleksi = $data[0]->koleksi;
         $foto = $data[0]->foto;
         $video = $data[0]->video;
 
         $fotos = [];
+        $videos = [];
         if(count($koleksi) > 0){
             for($i = 0; $i < count($koleksi); $i++){
-                if(count($koleksi[$i]->foto) == 0){
-                    $fotos[] = [
-                        'fotoGada' => '/images/jika.jpg'
-                    ];
+                if($koleksi[$i]->jenis == 'koleksifoto'){
+                    if(count($koleksi[$i]->foto) == 0){
+                        $fotos[] = [
+                            'fotoGada' => '/images/jika.jpg'
+                        ];
+                    }else{
+                        $fotos[] = [
+                            'fotoAda' => $koleksi[$i]->foto
+                        ];
+                    }
                 }else{
-                    $fotos[] = [
-                        'fotoAda' => $koleksi[$i]->foto
-                    ];
+                    if(count($koleksi[$i]->video) == 0){
+                        $videos[] = [
+                            'videoGada' => "/images/jika.jpg"
+                        ];
+                    }else{
+                        $videos[] = [
+                            'videoAda' => $koleksi[$i]->video
+                        ];
+                    }
                 }
             }
         }
@@ -86,11 +104,12 @@ class HomeController extends Controller
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
         return view('detail.berita', [
             'title' => $title->nama,
-            'profilWisata' => $data,
-            'koleksi' => $koleksi,
+            'data' => $data,
+            'koleksis' => $koleksi,
             'foto' => $foto,
             'video' => $video,
             'fotos' => $fotos,
+            'videos' => $videos,
             "categories" => Category::all(),
             'urlBack' => $title->slug
         ]);
