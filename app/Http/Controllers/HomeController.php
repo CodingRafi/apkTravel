@@ -21,11 +21,15 @@ class HomeController extends Controller
 
         // dd($beritas);
 
+       
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
         $foto = [];
-        foreach($beritas as $berita){
-            $foto[] = Foto::where('berita_id', $berita->id)->get();
+        foreach($wisatas as $wisata){
+            $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
-
         $tapos=$this->homeWisataAlam('TAPOS',3);
         $cilodong=$this->homeWisataAlam('CILODONG',3);
         $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
@@ -42,6 +46,7 @@ class HomeController extends Controller
 
         return view("home",[
             'beritas'=>$beritas,
+            'wisatas'=>$wisatas,
             'tapos'=>$tapos,
             'cilodong'=>$cilodong,
             'cipayung'=>$cipayung,
