@@ -33,7 +33,49 @@
         <h2>Berita</h2>
         <div class="detail-columns flex">
             <div class="sticky-container">
-                <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
+                <div class="sticky-item">
+                    <img src="/images/home-screen/berita.jpg" alt="feature image" style="border-radius: 10px">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row">No. Telp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Alamat</th>
+                                <td>Tanah Baru, Beji, Depok City, West Java 16426</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Pengelola</th>
+                                <td>pengelola</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Instagram</th>
+                                <td>@wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">youtube</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">twitter</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Facebook</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Whatsapp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Website</th>
+                                <td>wisata.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
                 <div class="berita-header">
@@ -45,38 +87,16 @@
                     consectetur, adipisicing elit. Exercitationem amet id molestiae, autem hic
                     mollitia repellendus, deserunt at commodi nam debitis unde natus sed eos nobis sunt sit consequuntur
                     iste
-                    officia possimus odio? Deleniti, explicabo assumenda quis recusandae ab, non at nobis culpa accusamus
+                    officia possimus odio? Deleniti, explicabo assumenda quis recusandae ab, non at nobis culpa
+                    accusamus
                     porro
                     fugiat saepe tempore voluptatem nulla? Quam totam quas doloremque sed laudantium ducimus, inventore
                     nulla
-                    animi neque rem voluptatibus. Consequatur quisquam omnis porro iure voluptas culpa voluptates eius quos,
+                    animi neque rem voluptatibus. Consequatur quisquam omnis porro iure voluptas culpa voluptates eius
+                    quos,
                     iusto perferendis est expedita eveniet laudantium eos soluta accusamus repudiandae voluptatum quas
                     deserunt
                     distinctio quid.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
-                    reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
-                    debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
-                    sequi
-                    accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
-                    sapiente,
-                    ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
-                    doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
-                    deserunt
-                    minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
-                    est.
-                    Quis, deleniti, adipisci voluptate dolorem.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati explicabo possimus, sunt voluptatum
-                    reprehenderit quas corrupti praesentium blanditiis cumque repellendus eos, accusantium necessitatibus
-                    debitis voluptatibus dicta et quaerat qui iure labore sequi nisi quidem! Iusto in necessitatibus quia
-                    sequi
-                    accusamus itaque eos voluptatem vitae dignissimos ducimus. Nam, necessitatibus! Sequi, eum laborum
-                    sapiente,
-                    ad dolorum veniam obcaecati error quae autem cupiditate itaque quasi fugiat amet? Ducimus, similique
-                    doloribus suscipit ipsum ab maiores. Maiores, ex atque, natus illum temporibus magnam dicta quos
-                    deserunt
-                    minima quibusdam reiciendis at quas, ducimus officia blanditiis error? Pariatur quos amet itaque animi
-                    est.
-                    Quis, deleniti, adipisci voluptate dolorem unde vel.</p>
             </div>
         </div>
         <div class="gallery-frame">
