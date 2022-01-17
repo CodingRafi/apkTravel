@@ -1,9 +1,10 @@
 @extends('layouts.main')
 
-@dd($beritas)
-
 {{-- cuaca --}}
 @section('cuaca')
+
+{{-- @dd($foto[0][0]->filename) --}}
+{{-- @dd($foto) --}}
     <div class="cuaca">
         <?php
         $city_name = 'Depok';

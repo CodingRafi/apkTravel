@@ -19,6 +19,13 @@ class HomeController extends Controller
         ->take(4)
         ->get();
 
+        // dd($beritas);
+
+        $foto = [];
+        foreach($beritas as $berita){
+            $foto[] = Foto::where('berita_id', $berita->id)->get();
+        }
+
         $tapos = DB::table('profil_wisatas')
         ->where([['category_id', '<=', '3'],['alamat', 'like', '%TAPOS%']])
         ->get();
@@ -75,7 +82,8 @@ class HomeController extends Controller
             'cimanggis'=>$cimanggis,
             'beji'=>$beji,
             'limo'=>$limo,
-            'cinere'=>$cinere
+            'cinere'=>$cinere,
+            'foto' => $foto
     ]);
     }
 
