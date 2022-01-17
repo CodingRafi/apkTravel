@@ -4,12 +4,7 @@
         <h2>Kota Depok</h2>
     </div>
     <div class="topbar-body flex">
-        <marquee behavior="scroll" direction="left">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perferendis ipsa optio odit, a autem repudiandae totam sapiente debitis illo illum doloribus laborum
-            maxime, quia error soluta, harum recusandae obcaecati id iusto voluptas culpa eius magnam quod.
-            Voluptatibus dignissimos veritatis quo voluptates! Assumenda nobis cupiditate nulla maiores dolor maxime
-            possimus. Deleniti officia illo molestiae necessitatibus, numquam asperiores laudantium repellendus
-            commodi unde, dolores tenetur porro cupiditate incidunt id libero maxime, atque sed.
+        <marquee behavior="scroll" direction="left"><a class="h6 font-weight-light" href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/.html"><span class="position-relative mx-2 badge badge-primary rounded-0">Football</span> World cup 2050 will release in Dubay</a>
         </marquee>
     </div>
 </div>

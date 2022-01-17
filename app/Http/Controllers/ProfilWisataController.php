@@ -310,6 +310,7 @@ class ProfilWisataController extends Controller
     }
 
     public function checkSlug(Request $request){
+        dd($request);
         $slug = SlugService::createSlug(ProfilWisata::class, 'slug', $request->nama);
         return response()->json(['slug' => $slug]);
     }

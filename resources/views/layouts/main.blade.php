@@ -72,13 +72,13 @@
         </div>
 
         {{-- kolum tengah --}}
-        <div class="column middle flex">
+        <div class="column middle flex" style="overflow: hidden;">
             
             {{-- peta --}}
-            <div class="peta-frame">
+            <div class="peta-frame" >
                 <img src="images/home-screen/depok-map.jpg" class="map" usemap="#image-map">
                 <div class="map-selector"></div>
-                <map name="image-map">
+                <map name="image-map" style="overflow: hidden;">
                     <area target="" onclick="divVisibility('Div1');" alt="tapos"
                         coords="873,884,858,841,858,799,851,781,855,767,868,756,872,736,876,721,879,686,890,649,902,627,909,598,903,571,917,554,924,550,938,552,945,548,953,550,960,541,973,538,973,526,979,519,970,510,974,500,979,498,975,486,986,486,998,481,1001,476,1009,477,1011,469,1062,478,1095,496,1110,498,1129,491,1146,495,1149,503,1152,514,1147,520,1137,526,1122,529,1113,540,1122,549,1135,543,1157,529,1173,530,1207,534,1218,533,1234,535,1229,548,1221,562,1218,573,1218,590,1216,605,1223,611,1210,648,1201,630,1192,640,1175,626,1172,644,1146,670,1130,670,1120,710,1094,704,1097,720,1081,714,1081,728,1068,746,1079,750,1074,760,1058,760,1055,778,1045,774,1045,787,1051,794,1053,808,1040,803,1037,812,1042,822,1029,839,1024,858,1023,886,996,897,979,882,945,885,907,882"
                         shape="poly">
@@ -146,66 +146,11 @@
     </div>
 
     {{-- menu --}}
-<<<<<<< HEAD
 
     
     @include('partials.menu')
 
-=======
-    <div class="menu">
-        <ul class="menu-frame flex">
-            <li>
-                <a href="/home" class="menu-icon flex">
-                    <img src="icon/home-screen/rumah.svg">
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="/hotel" class="menu-icon flex">
-                    <img src="icon/home-screen/hotel.svg">
-                    Hotel
-                </a>
-            </li>
-            <li>
-                <label class="menu-icon flex" for="destinasi-check">
-                    <img src="icon/home-screen/destinasi.svg">
-                    Destinasi
-                </label>
-                <input type="checkbox" id="destinasi-check" class="destinasi-check" name="check"
-                    onclick="onlyOne(this)">
-                <ul class="dropdown">
-                    <li><a href="/wisata-alam">Wisata Alam</a></li>
-                    <li><a href="/wisata-buatan">Wisata Buatan</a></li>
-                    <li><a href="/wisata-budaya">Wisata Budaya</a></li>
-                </ul>
-            </li>
-            <li>
-                <label class="menu-icon flex" for="makanan-check">
-                    <img src="icon/home-screen/makanan.svg">
-                    Makanan
-                </label>
-                <input type="checkbox" id="makanan-check" class="makanan-check" name="check" onclick="onlyOne(this)">
-                <ul class="dropdown">
-                    <li><a href="/restoran">Restoran</a></li>
-                    <li><a href="/kafe">Kafe</a></li>
-                    <li><a href="/kuliner">Kuliner</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="/travel" class="menu-icon flex">
-                    <img src="icon/home-screen/travel.svg">
-                    Travel
-                </a>
-            </li>
-            <li>
-                <a href="/oleh-oleh" class="menu-icon flex">
-                    <img src="icon/home-screen/oleh-oleh.svg">
-                    Oleh-Oleh
-                </a>
-            </li>
-        </ul>
-    </div>
->>>>>>> buat semua halaman
+
 
     {{-- javascript --}}
     <script src="js/home-screen.js"></script>
