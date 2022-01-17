@@ -76,7 +76,7 @@
             
             {{-- peta --}}
             <div class="peta-frame" >
-                <img src="images/home-screen/depok-map.jpg" class="map" usemap="#image-map">
+                <img src="images/home-screen/depok-map-select.jpg" class="map" usemap="#image-map">
                 <div class="map-selector"></div>
                 <map name="image-map" style="overflow: hidden;">
                     <area target="" onclick="divVisibility('Div1');" alt="tapos"
