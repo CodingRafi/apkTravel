@@ -155,6 +155,17 @@
 
 
     {{-- javascript --}}
+
+    {{-- <script>
+        const area = document.querySelectorAll('area');
+        area.forEach(element => {
+            element.addEventListener('mouseover', function(){
+                alert('oke');
+                element.style.backgroundColor = "#000";
+            })
+        });
+    </script> --}}
+
     <script src="js/home-screen.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imageMapResizer.min.js"></script>

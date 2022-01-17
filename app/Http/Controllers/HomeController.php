@@ -97,8 +97,18 @@ class HomeController extends Controller
     }
 
     public function show2(){
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+        $foto = [];
+        foreach($wisatas as $wisata){
+            $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
+        }
+        
         return view('category',[
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            'fotos' => $foto                                     
         ]);
     }
   
