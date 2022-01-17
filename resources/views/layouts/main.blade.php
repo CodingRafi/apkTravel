@@ -78,7 +78,7 @@
             <div class="peta-frame" >
                 <img id="gambarPeta" src="images/home-screen/depok-map.jpg" class="map" usemap="#image-map">
                 <div class="map-selector"></div>
-                <map name="image-map" style="overflow: hidden;">
+                <map id="peta-depok" name="image-map" class="map" style="overflow: hidden;">
                     <area target="" data-key="tapos" onclick="divVisibility('Div1');" alt="tapos"
                         coords="873,884,858,841,858,799,851,781,855,767,868,756,872,736,876,721,879,686,890,649,902,627,909,598,903,571,917,554,924,550,938,552,945,548,953,550,960,541,973,538,973,526,979,519,970,510,974,500,979,498,975,486,986,486,998,481,1001,476,1009,477,1011,469,1062,478,1095,496,1110,498,1129,491,1146,495,1149,503,1152,514,1147,520,1137,526,1122,529,1113,540,1122,549,1135,543,1157,529,1173,530,1207,534,1218,533,1234,535,1229,548,1221,562,1218,573,1218,590,1216,605,1223,611,1210,648,1201,630,1192,640,1175,626,1172,644,1146,670,1130,670,1120,710,1094,704,1097,720,1081,714,1081,728,1068,746,1079,750,1074,760,1058,760,1055,778,1045,774,1045,787,1051,794,1053,808,1040,803,1037,812,1042,822,1029,839,1024,858,1023,886,996,897,979,882,945,885,907,882"
                         shape="poly">
@@ -169,7 +169,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imageMapResizer.min.js"></script>
     <script type="text/javascript">
-        $('map').imageMapResize();
+        // $('map').imageMapResize();
+        // $('#peta-depok').imageMapResize();
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -182,6 +183,20 @@
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/imagemapster/1.5.4/jquery.imagemapster.js" integrity="sha512-cpMx2tMC8g9QilwXFVFqVT5TWkvfq/xEaOspfF1FUUUJy5mL6As50+uh3yOoVlu1bKwsJrUthuEzC1m6WquRKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#gambarPeta')
+        .mapster({
+            fillColor: 'ff0000',
+            fillOpacity: 0.3,
+            stroke: true,
+            strokeColor:"3320ff",
+            render_highlight: {
+                strokeWidth: 2
+             },
+            mapKey: 'data-key'
+        })
+        .mapster('set',true,'tapos,cilodong,cipayung,sawangan,bojongsari,sukmajaya,pancoranmas,cimanggis,beji,limo,cinere');
+    </script>
 </body>
 
 </html>
