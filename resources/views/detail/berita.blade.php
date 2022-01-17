@@ -110,6 +110,46 @@
                 @if (count($foto) > 0)   
                 <div class="sticky-container">
                     <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="row">No. Telp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Alamat</th>
+                                <td>Tanah Baru, Beji, Depok City, West Java 16426</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Pengelola</th>
+                                <td>pengelola</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Instagram</th>
+                                <td>@wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">youtube</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">twitter</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Facebook</th>
+                                <td>wisata</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Whatsapp</th>
+                                <td>0878-8111-1808</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Website</th>
+                                <td>wisata.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 @endif
                 <div>
