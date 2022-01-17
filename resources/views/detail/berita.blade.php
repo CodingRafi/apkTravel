@@ -1,1 +1,1 @@
-{{dd($beritas)}}
+@dd($profilWisata)

@@ -63,29 +63,42 @@ class HomeController extends Controller
     }
 
     public function show(Request $request, $slug){
-        $beritas = DB::table('beritas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
+        $data = ProfilWisata::where('slug', $slug)->get();
+        $koleksi = $data[0]->koleksi;
+        $foto = $data[0]->foto;
+        $video = $data[0]->video;
 
-        // dd($beritas);
-
-        $foto = [];
-        foreach($beritas as $berita){
-            $foto[] = Foto::where('berita_id', $berita->id)->get();
+        $fotos = [];
+        if(count($koleksi) > 0){
+            for($i = 0; $i < count($koleksi); $i++){
+                if(count($koleksi[$i]->foto) == 0){
+                    $fotos[] = [
+                        'fotoGada' => '/images/jika.jpg'
+                    ];
+                }else{
+                    $fotos[] = [
+                        'fotoAda' => $koleksi[$i]->foto
+                    ];
+                }
+            }
         }
 
-        $data = Berita::where('slug', $slug)->get()[0];
-        $title =  Category::where('id', $data->category_id)->get()[0];
+        $title =  Category::where('id', $data[0]->category_id)->get()[0];
         return view('detail.berita', [
-            'beritas'=>$beritas,
-            'berita' => $data,
             'title' => $title->nama,
+            'profilWisata' => $data,
+            'koleksi' => $koleksi,
+            'foto' => $foto,
+            'video' => $video,
+            'fotos' => $fotos,
             "categories" => Category::all(),
-            'fotos'=>$foto,
-            'foto' => $data->foto,
-            'video' => $data->video,
-            'urlBack' => $data->category->slug
+            'urlBack' => $title->slug
+        ]);
+    }
+
+    public function show2(){
+        return view('category',[
+            "categories" => Category::all()
         ]);
     }
   

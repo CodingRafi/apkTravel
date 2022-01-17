@@ -141,9 +141,11 @@
 
 
         @include('partials.rightColumn')
-
-
     </div>
+    </div>
+
+
+
 
     {{-- menu --}}
 
@@ -169,7 +171,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous">
     </script>
-    <script src="mapoid.js"></script>
+    {{-- <script src="mapoid.js"></script> --}}
 </body>
 
 </html>

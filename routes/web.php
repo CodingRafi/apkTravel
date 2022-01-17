@@ -68,7 +68,7 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
 Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [ProfilWisataController::class, 'create'])->middleware('auth');
-Route::get('/{category:slug}', [HomeController::class, 'show']);
+Route::get('/{category:slug}', [HomeController::class, 'show2']);
 
 
 
