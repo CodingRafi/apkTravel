@@ -22,7 +22,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Judul Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" autofocus value="{{ old('judul') }}" required>
+                                            <input type="text" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Berita" name="judul" id="judul" autofocus value="{{ old('judul') }}">
                                             @error('judul')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
@@ -33,7 +33,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Slug Berita</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" value="{{ old('slug') }}" required>
+                                            <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Slug Berita" name="slug" id="slug" value="{{ old('slug') }}">
                                             @error('slug')   
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}

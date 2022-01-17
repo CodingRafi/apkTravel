@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Video;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -35,7 +36,8 @@ class ProfilWisataController extends Controller
         return view("dashboard.profil-wisata.tambah", [
             "categories" => Category::all(),
             "title" => $category->nama,
-            "slug" => $category->slug
+            "slug" => $category->slug,
+            "kecamatans" => Kecamatan::all()
         ]);
     }
 
@@ -62,7 +64,8 @@ class ProfilWisataController extends Controller
             'twitter' => 'max:255',
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
-            'website' => 'max:500'
+            'website' => 'max:500',
+            'kecamatan_id' => 'required' 
         ]);
         
         
@@ -130,7 +133,8 @@ class ProfilWisataController extends Controller
             'video' => $data->video,
             'urlBack' => $data->category->slug,
             'koleksis' => $koleksi,
-            'fotos' => $foto
+            'fotos' => $foto,
+            'kecamatan' => Kecamatan::where('id', $data->kecamatan_id)->get()
         ]);
     }
 
@@ -150,7 +154,8 @@ class ProfilWisataController extends Controller
             "categories" => Category::all(),
             'foto' => $data->foto,
             'video' => $data->video,
-            'next' => $data->nama
+            'next' => $data->nama,
+            "kecamatans" => Kecamatan::all()
         ]);
     }
 
@@ -180,7 +185,8 @@ class ProfilWisataController extends Controller
             'twitter' => 'max:255',
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
-            'website' => 'max:500'
+            'website' => 'max:500',
+            'kecamatan_id' => 'required'
         ]);
 
         if($request->slug != $data->slug){
@@ -304,7 +310,6 @@ class ProfilWisataController extends Controller
     }
 
     public function checkSlug(Request $request){
-        dd($request);
         $slug = SlugService::createSlug(ProfilWisata::class, 'slug', $request->nama);
         return response()->json(['slug' => $slug]);
     }
