@@ -5,6 +5,8 @@
     --box-shadow-header: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     --card-color: rgb(245, 245, 245);
     --card-gradient-color: linear-gradient(var(--card-color), rgba(234, 234, 234, 1));
+    --fade-top: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(245,245,245,0) 100%);
+    --fade-bottom: linear-gradient(rgba(255,255,255,1) 0%, rgba(245,245,245,0) 100%);
     --card-transparent-color: rgba(245, 245, 245, 0.8);
     --main-font: 'Nunito', sans-serif;
     font-size: 12px;
@@ -141,6 +143,14 @@ body * {
     background: var(--card-gradient-color);
     border-radius: 10px;
     box-shadow: var(--box-shadow-header);
+}
+
+.detail {
+    background: var(--card-gradient-color);
+    border-radius: 10px;
+    overflow-y: scroll;
+    /* padding: .5rem; */
+    position: relative;
 }
 
 /*** 2.1 - sambutan ***/
@@ -297,6 +307,69 @@ body * {
     width: 100%;
 }
 
+/*** 2.7 - detail item ***/
+.detail>h2 {
+    margin: 1rem;
+}
+
+.detail-columns {
+    gap: 3rem;
+    padding: 1rem;
+}
+
+.detail-columns>* {
+    width: 100%;
+}
+
+.detail-columns p {
+    margin-bottom: 1rem;
+    padding-right: 4.5rem;
+    text-align: justify;
+    text-indent: 30pt;
+}
+
+.berita-header {
+    margin-bottom: 1rem;
+}
+
+.sticky-container>img {
+    height: fit-content;
+    object-fit: cover;
+    width: 100%;
+}
+
+.sticky-item {
+    top: 1rem;
+    position: sticky;
+}
+
+.gallery-frame {
+    background: rgba(234, 234, 234, 1);
+    padding: 2rem;
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.gallery-frame>h2 {
+    margin-bottom: 1rem;
+}
+
+.gallery-frame + .gallery-frame {
+    padding-bottom: 10rem;
+    padding-top: 0;
+}
+
+.gallery-scroll {
+    gap: .5rem;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.gallery-scroll>img {
+    object-fit: scale-down;
+    width: 17rem;
+}
+
 /*** 3.0 - menu ***/
 .menu {
     background-color: var(--card-color);
@@ -430,6 +503,14 @@ body * {
         width: 100%;
     }
 
+    .detail-columns {
+        flex-direction: column;
+    }
+
+    .detail-columns p {
+        padding-right: 0;
+    }
+
     .menu {
         border-radius: 0 0 0 0;
     }
@@ -437,7 +518,7 @@ body * {
     .wisata-kecamatan {
         flex-direction: column;
     }
-    
+
     .wisata-kecamatan>div {
         width: 100%;
     }
