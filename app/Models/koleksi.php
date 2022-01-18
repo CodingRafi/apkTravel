@@ -35,6 +35,10 @@ class koleksi extends Model
         return $this->belongsTo(Berita::class);
     }
 
+    public function configurasi(){
+        return $this->belongsTo(Configurasi::class);
+    }
+
     public function sluggable(): array
     {
         return [

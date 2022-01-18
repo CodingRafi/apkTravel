@@ -63,6 +63,36 @@
                 </a>
             </li>
         </ul>
+        <div class="pcoded-navigation-label">Data Konfigurasi</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcodedRegistrasi {{ Request::is('dashboard/config') ? 'active' : '' }}">
+                <a href="/dashboard/config" class="waves-effect waves-dark">
+                    <span class="pcoded-micon">
+
+                    <svg class="ti-layout-grid2-alt svg-registrasi" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.000000 24.000000"
+                    preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                    Pstroke="none">
+                    <path d="M100 230 c0 -5 -14 -13 -32 -18 -25 -6 -34 -15 -40 -40 -5 -18 -13
+                    -32 -18 -32 -15 0 -12 -30 5 -47 20 -19 45 -1 45 32 0 48 70 73 103 37 35 -38
+                    9 -102 -40 -102 -32 0 -49 -26 -30 -45 17 -17 47 -20 47 -5 0 5 14 13 32 18
+                    25 6 34 15 40 40 5 18 13 32 18 32 6 0 10 9 10 20 0 11 -4 20 -10 20 -5 0 -13
+                    14 -18 32 -6 25 -15 34 -40 40 -18 5 -32 13 -32 18 0 6 -9 10 -20 10 -11 0
+                    -20 -4 -20 -10z"/>
+                    <path d="M87 152 c-10 -10 -17 -28 -17 -39 0 -11 -16 -34 -36 -52 -34 -32 -40
+                    -51 -17 -58 6 -2 26 12 44 31 18 20 42 36 54 36 23 0 55 28 55 49 0 9 -8 11
+                    -25 7 -23 -6 -25 -4 -19 19 8 31 -14 34 -39 7z"/>
+                    </g>
+                    </svg>
+
+
+                    </span>
+                    <span class="pcoded-mtext">Konfigurasi</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
 
         <div class="pcoded-navigation-label">Mengelola</div>
         <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">

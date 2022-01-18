@@ -1,4 +1,4 @@
-{{-- @dd($data) --}}
+{{-- @dd($fotos[0]['fotoAda'][0]->filename) --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,89 +107,98 @@
         @else
             <h2>Profil Wisata</h2>
             <div class="detail-columns flex">
-                @if (count($foto) > 0)   
                 <div class="sticky-container">
-                    <img src="/images/home-screen/berita.jpg" alt="feature image" class="sticky-item">
+                    {{-- @if (count($foto) > 0)    --}}
+                    <img src="/images/home-screen/berita.jpg" alt="feature image" >
+                    {{-- @endif --}}
                     <table class="table table-striped">
                         <tbody>
                             <tr>
+                                <th scope="row">Nama</th>
+                                <td>{{ $data[0]->nama }}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">No. Telp</th>
-                                <td>0878-8111-1808</td>
+                                <td>{{ $data[0]->no_telp }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Alamat</th>
-                                <td>Tanah Baru, Beji, Depok City, West Java 16426</td>
+                                <td>{!! $data[0]->alamat !!}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">Pengelola</th>
-                                <td>pengelola</td>
-                            </tr>
+                            @if ($data[0]->instagram) 
                             <tr>
                                 <th scope="row">Instagram</th>
-                                <td>@wisata</td>
+                                <td>@{{ $data[0]->instagram }}</td>
                             </tr>
+                            @endif
+                            @if ($data[0]->youtube)    
                             <tr>
                                 <th scope="row">youtube</th>
-                                <td>wisata</td>
+                                <td>{{ $data[0]->youtube }}</td>
                             </tr>
+                            @endif
+                            @if ($data[0]->twitter)    
                             <tr>
-                                <th scope="row">twitter</th>
-                                <td>wisata</td>
+                                <th scope="row">Twitter</th>
+                                <td>{{ $data[0]->twitter }}</td>
                             </tr>
+                            @endif
+                            @if ($data[0]->facebook)    
                             <tr>
                                 <th scope="row">Facebook</th>
-                                <td>wisata</td>
+                                <td>{{ $data[0]->facebook }}</td>
                             </tr>
+                            @endif
+                            @if ($data[0]->whatsapp)    
                             <tr>
                                 <th scope="row">Whatsapp</th>
-                                <td>0878-8111-1808</td>
+                                <td>{{ $data[0]->whatsapp }}</td>
                             </tr>
+                            @endif
+                            @if ($data[0]->website)    
                             <tr>
                                 <th scope="row">Website</th>
-                                <td>wisata.com</td>
+                                <td>{{ $data[0]->website }}</td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
-                @endif
+               
                 <div>
                     <div class="berita-header">
                         <h2>{{ $data[0]->nama }}</h2>
                         <pre>posted on 9 hours ago</pre>
                     </div>
-                    {!!  !!}
+                    <h5>Pengelola</h5>
+                    {!! $data[0]->pengelola !!}
+                    <h5>Deskripsi</h5>
+                    {!! $data[0]->deskripsi !!}
                 </div>
             </div>
 
 
-            @for ($i = 0; $i < count($koleksis); $i++)
-            {{-- @dd($koleksis[0]) --}}
-                
-            @if ($koleksis[$i]->jenis == 'koleksifoto')
+            @if (count($koleksiFoto) > 0)
             <div class="gallery-frame">
                 <h2>Gallery foto</h2>
                 <div class="gallery-scroll flex">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/h1c.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/h2b.jpeg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
+                    @foreach ($koleksiFoto as $item)
+                    <img src="{{ asset('storage/'. $fotos[0]['fotoAda'][0]->filename) }}">
+                    @endforeach
                 </div>
             </div>
-            @else
+            @endif 
+            @if (count($koleksiVideo) > 0)  
             <div class="gallery-frame">
                 <h2>Gallery video</h2>
                 <div class="gallery-scroll flex">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
+                    @foreach ($koleksiVideo as $item)
+                    <video src="{{ asset('storage/'. $videos[0]['videoAda'][0]->filename) }}"></video>
+                    @endforeach
                 </div>
             </div>
-            @endif  
-            @endfor
+            @endif
+            
             
         @endif
     </div>

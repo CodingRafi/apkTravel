@@ -366,7 +366,13 @@ body * {
 }
 
 .gallery-scroll>img {
-    object-fit: scale-down;
+    object-fit: cover;
+    height: 136px;
+    width: 17rem;
+}
+.gallery-scroll>video {
+    object-fit: cover;
+    height: 136px;
     width: 17rem;
 }
 

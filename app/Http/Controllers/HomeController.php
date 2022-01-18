@@ -100,12 +100,25 @@ class HomeController extends Controller
                 }
             }
         }
+        
+        $koleksiFoto = [];
+        $koleksiVideo = [];
+
+        foreach ($koleksi as $kolek) {
+            if($kolek->jenis == "koleksifoto"){
+                $koleksiFoto[] = $kolek;
+            }else{
+                $koleksiVideo[] = $kolek;
+            }
+        }
 
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
         return view('detail.berita', [
             'title' => $title->nama,
             'data' => $data,
             'koleksis' => $koleksi,
+            'koleksiFoto' => $koleksiFoto,
+            'koleksiVideo' => $koleksiVideo,
             'foto' => $foto,
             'video' => $video,
             'fotos' => $fotos,

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use \App\Models\Hotel;
 use \App\Models\Berita;
 use \App\Models\User;
+use \App\Models\Configurasi;
 use \App\Models\Kecamatan;
 
 class DatabaseSeeder extends Seeder
@@ -65,6 +66,16 @@ class DatabaseSeeder extends Seeder
 
         Kecamatan::create([
             'nama' => 'Cinere'
+        ]);
+
+        Configurasi::create([
+            "nama" => 'Contact Center',
+            "isi" => '0217773610'
+        ]);
+
+        Configurasi::create([
+            "nama" => 'Alamat',
+            "isi" => 'Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431'
         ]);
 
     }
