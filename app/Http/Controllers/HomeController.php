@@ -138,7 +138,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show2(){
+    public function show2(Request $request, $slug){
+        $joy = DB::table('categories')->where('slug', $slug)->get();
+        $widi = DB::table('profil_wisatas')->where('category_id', $joy[0]->id)->get();
+
         $wisatas = DB::table('profil_wisatas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
@@ -162,7 +165,8 @@ class HomeController extends Controller
             "categories" => Category::all(),
             'fotos' => $foto,
             'beritas'=>$beritas,
-            'wisatas'=>$wisatas,                             
+            'wisatas'=>$wisatas,
+            'wibowo'=>$widi                        
         ]);
     }
   

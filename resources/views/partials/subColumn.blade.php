@@ -1,5 +1,5 @@
 <div class="column sub flex">
-    @foreach ($categories as $data)
+    @foreach ($wibowo as $data)
         <div class="card bg-dark text-white">
             <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
             <div class="card-img-overlay">
