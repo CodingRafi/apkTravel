@@ -72,6 +72,10 @@ class HomeController extends Controller
         $koleksi = $data[0]->koleksi;
         $foto = $data[0]->foto;
         $video = $data[0]->video;
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
 
         $fotos = [];
         $videos = [];
@@ -113,7 +117,13 @@ class HomeController extends Controller
         }
 
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
-        return view('detail.berita', [
+        if($data[0]->category_id >= 10){
+            $halaman = 'detail.berita';
+        }else{
+            $halaman = 'detail.wisata';
+        }
+        return view($halaman, [
+            'beritas'=>$beritas,
             'title' => $title->nama,
             'data' => $data,
             'koleksis' => $koleksi,
