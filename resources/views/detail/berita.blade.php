@@ -157,7 +157,7 @@
                         <h2>{{ $data[0]->nama }}</h2>
                         <pre>posted on 9 hours ago</pre>
                     </div>
-                    {!!  !!}
+                    {!! $data[0]->body !!}
                 </div>
             </div>
 
