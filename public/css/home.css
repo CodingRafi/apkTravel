@@ -15,7 +15,9 @@
 .flex {
     display: flex;
 }
-
+.customer {
+    text-align: left;
+}
 .grid {
     display: grid;
 }

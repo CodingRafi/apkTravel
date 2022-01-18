@@ -17,7 +17,13 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="css/home.css">
-
+    <style>
+        #menutapos {
+            border-color: blueviolet;
+            border: 2px solid;
+            background-color: black;
+        }
+    </style>
     <title>Kota Depok</title>
 </head>
 
@@ -76,12 +82,12 @@
             
             {{-- peta --}}
             <div class="peta-frame" >
-                <img id="gambarPeta" src="images/home-screen/depok-map-select.jpg" class="map" usemap="#image-map">
+
                 <div class="map-selector"></div>
                 <map id="peta-depok" name="image-map" class="map" style="overflow: hidden;">
-                    <area target="" data-key="tapos" onclick="divVisibility('Div1');" alt="tapos"
+                  <a id="menutapos" alt="Tapos" class="linkmap" href="#">  <area  target="" data-key="tapos" onclick="divVisibility('Div1');" alt="tapos"
                         coords="873,884,858,841,858,799,851,781,855,767,868,756,872,736,876,721,879,686,890,649,902,627,909,598,903,571,917,554,924,550,938,552,945,548,953,550,960,541,973,538,973,526,979,519,970,510,974,500,979,498,975,486,986,486,998,481,1001,476,1009,477,1011,469,1062,478,1095,496,1110,498,1129,491,1146,495,1149,503,1152,514,1147,520,1137,526,1122,529,1113,540,1122,549,1135,543,1157,529,1173,530,1207,534,1218,533,1234,535,1229,548,1221,562,1218,573,1218,590,1216,605,1223,611,1210,648,1201,630,1192,640,1175,626,1172,644,1146,670,1130,670,1120,710,1094,704,1097,720,1081,714,1081,728,1068,746,1079,750,1074,760,1058,760,1055,778,1045,774,1045,787,1051,794,1053,808,1040,803,1037,812,1042,822,1029,839,1024,858,1023,886,996,897,979,882,945,885,907,882"
-                        shape="poly">
+                        shape="poly"></a>
                     <area target="" data-key="cilodong" onclick="divVisibility('Div2');" alt="cilodong"
                         coords="854,766,820,773,806,769,797,781,796,794,804,805,813,809,804,832,777,845,761,851,751,846,746,854,753,862,752,873,735,865,735,873,723,879,712,878,702,907,695,911,687,910,696,880,690,873,683,876,671,871,667,859,677,840,685,831,682,817,666,811,646,818,630,815,618,811,631,803,625,795,630,784,625,775,632,767,620,755,639,742,647,737,630,735,633,719,642,713,650,719,653,727,659,718,652,706,656,694,674,688,728,694,737,688,746,694,777,694,788,697,801,697,810,694,810,678,813,667,813,653,825,629,836,612,841,589,838,581,843,570,852,565,855,553,864,551,871,542,879,530,889,540,897,554,903,569,910,597,903,624,889,647,879,683,875,720,868,756"
                         shape="poly">
@@ -127,11 +133,11 @@
 
                 {{-- <div id="kecamatan"></div> --}}
                 <div class="kontak flex">
-                    <h4>Contact Center</h4>
-                    <p>(021) 7773610</p>
+                    <h5>Contact Center</h5>
+                    <h1>(021) 7773610</h1>
                 </div>
                 <div class="customer flex">
-                    <h4>Alamat</h4>
+                    <h5>Alamat</h5>
                     <p>Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
                 </div>
             </div>
@@ -186,13 +192,43 @@
     <script>
         $('#gambarPeta')
         .mapster({
-            fillColor: 'ff0000',
-            fillOpacity: 0.3,
-            stroke: true,
-            strokeColor:"3320ff",
+            areas:[{
+                key: 'tapos',
+                stroke: true,
+                strokeColor:"3320ff",
+                fill:true,
+                fillColor: 'A7DC96',
+            },
+                {
+                    key: 'cilodong',
+                    stroke: true,
+                    fillColor: 'ff7f7f',
+                    strokeColor: 'ff7f7f',
+                    onMouseover: function (evt) {
+                        var parts = evt.key.split('-');
+                        var part = parts[1];
+                        highlightArea(part);
+                    },
+
+                },
+                {
+                    key: 'cipayung',
+                    stroke: true,
+                    fillColor: 'ddde97',
+                    strokeColor: 'ddde97',
+                }
+            ],
+            fill:true,
+            fillColor: '3320ff',
+            fillOpacity: 0.8,
+            
             render_highlight: {
-                strokeWidth: 2
+                fill: true,
+                fillColor: "FF0000",
+                fillOpacity: 1,
+                stroke: false
              },
+            fadeInterval: 50,
             mapKey: 'data-key'
         })
         .mapster('set',true,'tapos,cilodong,cipayung,sawangan,bojongsari,sukmajaya,pancoranmas,cimanggis,beji,limo,cinere');
