@@ -144,13 +144,25 @@ class HomeController extends Controller
         ->take(4)
         ->get();
         $foto = [];
+
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
         
         return view('category',[
             "categories" => Category::all(),
-            'fotos' => $foto                                     
+            'fotos' => $foto,
+            'beritas'=>$beritas,
+            'wisatas'=>$wisatas,                             
         ]);
     }
   
