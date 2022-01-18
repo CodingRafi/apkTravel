@@ -160,7 +160,44 @@
                     {!! $data[0]->body !!}
                 </div>
             </div>
+        </div>
+        <div class="gallery-frame">
+            <h2>Gallery foto</h2>
+            <div class="gallery-scroll flex">
+                {{-- GAMBAR KECIL --}}
 
+                {{-- <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div>
+                <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/w01.jpg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div>
+                <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/h1c.jpg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div>
+                <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/h2b.jpeg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div>
+                <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div>
+                <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
+                    <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
+                    <div class="d-grid gap-2 mt-2">
+                    </div>
+                </div> --}}
+
+                {{-- /GAMBAR KECIL --}}
 
             @for ($i = 0; $i < count($koleksis); $i++)
             {{-- @dd($koleksis[0]) --}}
@@ -193,6 +230,64 @@
             
         @endif
     </div>
+
+
+
+
+    {{-- GAMBAR GEDE --}}
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        style="background: rgba(69,90,100, .7);z-index: 99999;overflow: auto;">
+        <div style="height: 100vh;display: flex;padding: 0;">
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false"
+                style="display: flex;justify-content: flex-end;">
+                <div
+                    style="position: absolute;z-index: 9;width: 50px;height: 50px;margin: 0;display: flex;justify-content: center;align-items: center;padding: 0;border:none;background: #3a3838;background: rgba(58,56,56,.5);">
+                    <button type="button" class="close"
+                        style="padding: 0;margin: 0;font-size: 20px;width: 100%;height: 100%;color: #fff;">
+                        x
+                    </button>
+                </div>
+                <div class="carousel-inner" style="width: 100vw;">
+                    {{-- @if (count($koleksinya) > 0) --}}
+                    {{-- <div class="carousel-item active"> --}}
+                        {{-- <img src="{{ asset('storage/'.$koleksinya[0]->filename) }}" class="d-block w-100"
+                        alt="..."> --}}
+                        {{-- <img src="/images/home-screen/berita.jpg" class="d-block w-100" alt="..."> --}}
+                    {{-- </div> --}}
+                    {{-- @foreach ($koleksinya->skip(1) as $koleksi) --}}
+                    <div class="carousel-item">
+                        {{-- <img src="{{ asset('storage/'.$koleksi->filename) }}" class="d-block w-100" alt="...">
+                        --}}
+                    <img src="/images/home-screen/berita.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/w01.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/h1c.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/h2b.jpeg" class="d-block w-100" alt="...">
+                    </div>
+                    {{-- @endforeach --}}
+                    {{-- @endif --}}
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
+                    data-slide="prev" style="border: none;background: none;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="cursor: pointer;"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls"
+                    data-slide="next" style="border: none;background: none;">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="cursor: pointer;"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {{-- /GAMBAR GEDE --}}
+
     {{-- menu --}}
 
 
@@ -215,6 +310,34 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous">
+    </script>
+    <script>
+        const button = document.querySelector('.close');
+        const modal = document.querySelector('.modal');
+        button.addEventListener('click', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        })
+
+
+        const imagekoleksi = document.querySelectorAll('.imagekoleksi');
+        const carouselItem = document.querySelectorAll('.carousel-item');
+
+        function hapusActive() {
+            carouselItem.forEach(e => {
+                e.classList.remove('active')
+            })
+        }
+
+        imagekoleksi.forEach((e, i) => {
+            e.addEventListener('click', function () {
+                modal.classList.add('show');
+                modal.style.display = 'block';
+                hapusActive();
+                carouselItem[i].classList.add('active');
+            })
+        });
+
     </script>
 </body>
 

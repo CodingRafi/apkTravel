@@ -82,7 +82,7 @@
             
             {{-- peta --}}
             <div class="peta-frame" >
-                <img id="gambarPeta" src="images/home-screen/depok-map-select.jpg"  class="map" usemap="#image-map">
+
                 <div class="map-selector"></div>
                 <map id="peta-depok" name="image-map" class="map" style="overflow: hidden;">
                   <a id="menutapos" alt="Tapos" class="linkmap" href="#">  <area  target="" data-key="tapos" onclick="divVisibility('Div1');" alt="tapos"
