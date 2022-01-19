@@ -26,6 +26,15 @@
     <div class="waktu">
         <h3 id="date"></h3>
     </div>
+    <div class="waktu">
+        <p class="timertext" 
+        style="font-size: 9px;">
+        Tidak Interaksi Selama
+        <span id="idle" class="secs"></span> Detik
+        <br>
+        <p style="font-size: 9px; color: red">* Tidak Interaksi Layar selama 1 menit akan berpindah ke Tampilan Video</p>
+    </p>
+    </div>
 @endsection
 
 {{-- detil wisata peta --}}
@@ -39,11 +48,11 @@
     <div id="Div1" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Tapos</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Tapos</h4>
             </div>
             <ul>
                 @foreach ($tapos as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -51,11 +60,11 @@
     <div id="Div2" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Cilodong</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Cilodong</h4>
             </div>
             <ul>
                 @foreach ($cilodong as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -63,11 +72,11 @@
     <div id="Div3" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Cipayung</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Cipayung</h4>
             </div>
             <ul>
                 @foreach ($cipayung as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -75,11 +84,11 @@
     <div id="Div4" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Sawangan</h4>
+                <h4> <img src="/icon/home-screen/destinasi.svg"> Sawangan</h4>
             </div>
             <ul>
                 @foreach ($sawangan as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -87,11 +96,11 @@
     <div id="Div5" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Bojongsari</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Bojongsari</h4>
             </div>
             <ul>
                 @foreach ($bojongsari as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -99,11 +108,11 @@
     <div id="Div6" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Sukmajaya</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Sukmajaya</h4>
             </div>
             <ul>
                 @foreach ($sukmajaya as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -111,11 +120,11 @@
     <div id="Div7" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Pancoranmas</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Pancoranmas</h4>
             </div>
             <ul>
                 @foreach ($pancoranmas as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -123,11 +132,11 @@
     <div id="Div8" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Cimanggis</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Cimanggis</h4>
             </div>
             <ul>
                 @foreach ($cimanggis as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -135,11 +144,11 @@
     <div id="Div9" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Beji</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Beji</h4>
             </div>
             <ul>
                 @foreach ($beji as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -147,11 +156,11 @@
     <div id="Div10" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Limo</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Limo</h4>
             </div>
             <ul>
                 @foreach ($limo as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>
@@ -159,11 +168,11 @@
     <div id="Div11" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
-                <h4>Cinere</h4>
+                <h4><img src="/icon/home-screen/destinasi.svg"> Cinere</h4>
             </div>
             <ul>
                 @foreach ($cinere as $data)
-                <li>{{ $data->nama }}</li>
+                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
                 @endforeach
             </ul>
         </div>

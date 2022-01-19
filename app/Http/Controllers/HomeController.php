@@ -76,46 +76,7 @@ class HomeController extends Controller
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
-
-        // $fotos = [];
-        // $videos = [];
-        // if(count($koleksi) > 0){
-        //     for($i = 0; $i < count($koleksi); $i++){
-        //         if($koleksi[$i]->jenis == 'koleksifoto'){
-        //             if(count($koleksi[$i]->foto) == 0){
-        //                 $fotos[] = [
-        //                     'fotoGada' => '/images/jika.jpg'
-        //                 ];
-        //             }else{
-        //                 $fotos[] = [
-        //                     'fotoAda' => $koleksi[$i]->foto
-        //                 ];
-        //             }
-        //         }else{
-        //             if(count($koleksi[$i]->video) == 0){
-        //                 $videos[] = [
-        //                     'videoGada' => "/images/jika.jpg"
-        //                 ];
-        //             }else{
-        //                 $videos[] = [
-        //                     'videoAda' => $koleksi[$i]->video
-        //                 ];
-        //             }
-        //         }
-        //     }
-        // }
         
-        // $koleksiFoto = [];
-        // $koleksiVideo = [];
-
-        // foreach ($koleksi as $kolek) {
-        //     if($kolek->jenis == "koleksifoto"){
-        //         $koleksiFoto[] = $kolek;
-        //     }else{
-        //         $koleksiVideo[] = $kolek;
-        //     }
-        // }
-
         $fotos = [];
         $videos = [];
         $koleksiFoto = [];
@@ -166,10 +127,6 @@ class HomeController extends Controller
         ->get();
         $foto = [];
 
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
 
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
@@ -192,6 +149,29 @@ class HomeController extends Controller
         ->where([['category_id', '<=', $category],['alamat', 'like', '%'.$kecamatan.'%']])
         ->get();
         return $city;
+    }
+    public function listHotel(){
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+        $foto = [];
+
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+        foreach($wisatas as $wisata){
+            $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
+        }
+        $hotel = DB::table('profil_wisatas')->where('category_id',8)->get();
+        return view('listDestinasi',[
+            "categories" => Category::all(),
+            'fotos' => $foto,
+            'beritas'=>$beritas,
+            'wisatas'=>$wisatas,
+            'hotels'=>$hotel                             
+        ]);
     }
 }
 ?>
