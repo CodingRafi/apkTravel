@@ -47,6 +47,8 @@ Route::get('/dashboard/berita/checkSlug', [BeritaController::class, "checkSlug"]
 Route::get('/dashboard/profil-wisata/checkSlug', [ProfilWisataController::class, "checkSlug"])->middleware('auth');
 Route::get('/dashboard/koleksi/checkKoleksi', [KoleksiController::class, "ambilData"])->middleware('auth');
 Route::get('/dashboard/koleksi/checkSlug', [KoleksiController::class, "checkSlug"])->middleware('auth');
+Route::post('/dashboard/koleksi/config', [KoleksiController::class, "store2"])->middleware('auth');
+Route::get('/dashboard/config/update', [ConfigurasiController::class, "update"])->middleware('auth');
 Route::get('/dashboard/koleksi/{koleksi:slug}/post', [FotoController::class, 'create']);
 Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 Route::resource('/dashboard/profil-wisata', ProfilWisataController::class)->middleware('auth');

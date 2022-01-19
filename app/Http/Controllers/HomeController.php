@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Berita;
 use App\Models\Category;
 use App\Models\Kecamatan;
+use App\Models\Configurasi;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,13 +20,13 @@ class HomeController extends Controller
         ->take(4)
         ->get();
 
-        // dd($beritas);
-
-       
         $wisatas = DB::table('profil_wisatas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
+
+        $config = Configurasi::all();
+
         $foto = [];
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
@@ -42,8 +43,6 @@ class HomeController extends Controller
         $limo=$this->homeWisataAlam('LIMO',3);
         $cinere=$this->homeWisataAlam('CINERE',3);
        
-
-
         return view("home",[
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
@@ -58,7 +57,8 @@ class HomeController extends Controller
             'beji'=>$beji,
             'limo'=>$limo,
             'cinere'=>$cinere,
-            'fotos' => $foto
+            'fotos' => $foto,
+            'config' => $config
     ]);
     }
 
@@ -69,7 +69,7 @@ class HomeController extends Controller
             $data = Berita::where('slug', $slug)->get();
         }
 
-        $koleksi = $data[0]->koleksi;
+        $koleksis = $data[0]->koleksi;
         $foto = $data[0]->foto;
         $video = $data[0]->video;
         $beritas = DB::table('beritas')
@@ -77,42 +77,62 @@ class HomeController extends Controller
         ->take(4)
         ->get();
 
+        // $fotos = [];
+        // $videos = [];
+        // if(count($koleksi) > 0){
+        //     for($i = 0; $i < count($koleksi); $i++){
+        //         if($koleksi[$i]->jenis == 'koleksifoto'){
+        //             if(count($koleksi[$i]->foto) == 0){
+        //                 $fotos[] = [
+        //                     'fotoGada' => '/images/jika.jpg'
+        //                 ];
+        //             }else{
+        //                 $fotos[] = [
+        //                     'fotoAda' => $koleksi[$i]->foto
+        //                 ];
+        //             }
+        //         }else{
+        //             if(count($koleksi[$i]->video) == 0){
+        //                 $videos[] = [
+        //                     'videoGada' => "/images/jika.jpg"
+        //                 ];
+        //             }else{
+        //                 $videos[] = [
+        //                     'videoAda' => $koleksi[$i]->video
+        //                 ];
+        //             }
+        //         }
+        //     }
+        // }
+        
+        // $koleksiFoto = [];
+        // $koleksiVideo = [];
+
+        // foreach ($koleksi as $kolek) {
+        //     if($kolek->jenis == "koleksifoto"){
+        //         $koleksiFoto[] = $kolek;
+        //     }else{
+        //         $koleksiVideo[] = $kolek;
+        //     }
+        // }
+
         $fotos = [];
         $videos = [];
-        if(count($koleksi) > 0){
-            for($i = 0; $i < count($koleksi); $i++){
-                if($koleksi[$i]->jenis == 'koleksifoto'){
-                    if(count($koleksi[$i]->foto) == 0){
-                        $fotos[] = [
-                            'fotoGada' => '/images/jika.jpg'
-                        ];
-                    }else{
-                        $fotos[] = [
-                            'fotoAda' => $koleksi[$i]->foto
-                        ];
-                    }
-                }else{
-                    if(count($koleksi[$i]->video) == 0){
-                        $videos[] = [
-                            'videoGada' => "/images/jika.jpg"
-                        ];
-                    }else{
-                        $videos[] = [
-                            'videoAda' => $koleksi[$i]->video
-                        ];
-                    }
-                }
-            }
-        }
-        
         $koleksiFoto = [];
         $koleksiVideo = [];
-
-        foreach ($koleksi as $kolek) {
-            if($kolek->jenis == "koleksifoto"){
-                $koleksiFoto[] = $kolek;
+        foreach ($koleksis as $koleksi) {
+            if($koleksi->jenis == 'koleksifoto'){
+                $fotos[] = $koleksi->foto;
             }else{
-                $koleksiVideo[] = $kolek;
+                $videos[] = $koleksi->video;
+            }
+        }
+
+        foreach ($koleksis as $koleksi) {
+            if($koleksi->jenis == "koleksifoto"){
+                $koleksiFoto[] = $koleksi;
+            }else{
+                $koleksiVideo[] = $koleksi;
             }
         }
 
@@ -126,7 +146,7 @@ class HomeController extends Controller
             'beritas'=>$beritas,
             'title' => $title->nama,
             'data' => $data,
-            'koleksis' => $koleksi,
+            'koleksis' => $koleksis,
             'koleksiFoto' => $koleksiFoto,
             'koleksiVideo' => $koleksiVideo,
             'foto' => $foto,
@@ -138,7 +158,8 @@ class HomeController extends Controller
         ]);
     }
 
-    public function show2(){
+    public function show2($slug){
+        // dd($slug);
         $wisatas = DB::table('profil_wisatas')
         ->orderBy('updated_at', 'desc')
         ->take(4)

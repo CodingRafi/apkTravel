@@ -69,13 +69,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Configurasi::create([
-            "nama" => 'Contact Center',
-            "isi" => '0217773610'
-        ]);
-
-        Configurasi::create([
-            "nama" => 'Alamat',
-            "isi" => 'Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431'
+            "contact" => '0217773610',
+            "alamat" => 'Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431'
         ]);
 
     }

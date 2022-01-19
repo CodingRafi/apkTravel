@@ -27,6 +27,9 @@
                                             @isset($slug)
                                                 <input type="hidden" name="slug" value="{{ $slug }}">
                                             @endisset
+                                            @isset($urlBack)
+                                                <input type="hidden" name="urlBack" value="{{ $urlBack }}">
+                                            @endisset
                                             <div class="mb-3 col-sm-5 border container-previewFotVid">
                                                 <span class="col-sm-2 col-form-label previewFotVid m-0 p-0" style="color: #000"></span>
                                             </div>
