@@ -104,6 +104,17 @@ class HomeController extends Controller
                 }
             }
         }
+        
+        $koleksiFoto = [];
+        $koleksiVideo = [];
+
+        foreach ($koleksi as $kolek) {
+            if($kolek->jenis == "koleksifoto"){
+                $koleksiFoto[] = $kolek;
+            }else{
+                $koleksiVideo[] = $kolek;
+            }
+        }
 
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
         if($data[0]->category_id >= 10){
@@ -116,6 +127,8 @@ class HomeController extends Controller
             'title' => $title->nama,
             'data' => $data,
             'koleksis' => $koleksi,
+            'koleksiFoto' => $koleksiFoto,
+            'koleksiVideo' => $koleksiVideo,
             'foto' => $foto,
             'video' => $video,
             'fotos' => $fotos,
@@ -131,13 +144,25 @@ class HomeController extends Controller
         ->take(4)
         ->get();
         $foto = [];
+
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
         
         return view('category',[
             "categories" => Category::all(),
-            'fotos' => $foto                                     
+            'fotos' => $foto,
+            'beritas'=>$beritas,
+            'wisatas'=>$wisatas,                             
         ]);
     }
   

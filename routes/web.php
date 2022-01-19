@@ -5,6 +5,7 @@ use App\Models\Koleksi;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BeritaController;
@@ -12,8 +13,8 @@ use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\CampuranController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\ConfigurasiController;
 use App\Http\Controllers\ProfilWisataController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,7 @@ Route::get('/dashboard/koleksi/{koleksi:slug}/post', [FotoController::class, 'cr
 Route::resource('/dashboard/berita', BeritaController::class)->middleware('auth');
 Route::resource('/dashboard/profil-wisata', ProfilWisataController::class)->middleware('auth');
 Route::resource('/dashboard/koleksi', KoleksiController::class)->middleware('auth');
+Route::resource('/dashboard/config', ConfigurasiController::class)->middleware('auth');
 Route::get('/dashboard/foto/{foto:slug}/tambah', [FotoController::class, 'buat'])->middleware('auth');
 Route::resource('/dashboard/foto', FotoController::class)->middleware('auth');
 Route::get('/dashboard/video/{video:slug}/tambah', [VideoController::class, 'buat'])->middleware('auth');
