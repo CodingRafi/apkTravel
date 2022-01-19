@@ -26,6 +26,15 @@
     <div class="waktu">
         <h3 id="date"></h3>
     </div>
+    <div class="waktu">
+        <p class="timertext" 
+        style="font-size: 9px;">
+        Tidak Interaksi Selama
+        <span id="idle" class="secs"></span> Detik
+        <br>
+        <p style="font-size: 9px; color: red">* Tidak Interaksi Layar selama 1 menit akan berpindah ke Tampilan Video</p>
+    </p>
+    </div>
 @endsection
 
 {{-- detil wisata peta --}}
