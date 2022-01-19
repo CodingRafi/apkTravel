@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Video;
 use App\Models\Berita;
 use App\Models\Category;
 use App\Models\Kecamatan;
@@ -68,7 +69,7 @@ class HomeController extends Controller
         }else{
             $data = Berita::where('slug', $slug)->get();
         }
-
+        
         $koleksis = $data[0]->koleksi;
         $foto = $data[0]->foto;
         $video = $data[0]->video;
@@ -76,7 +77,7 @@ class HomeController extends Controller
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
-        
+
         $fotos = [];
         $videos = [];
         $koleksiFoto = [];
@@ -127,20 +128,37 @@ class HomeController extends Controller
         ->get();
         $foto = [];
 
+        
+        $category = Category::where('slug', $slug)->get()[0];
+        $datas = ProfilWisata::where('category_id', $category->id)->get();
 
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
+
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
+        }
+
+        $fotoData = [];
+
+        for ($i=0; $i < count($datas); $i++) { 
+            $foto1 = Foto::where('profil_wisata_id', $datas[$i]->id)->get();
+            if(count($foto1) == 0){
+                $fotoData[] = 'images/jika.jpg';
+            }else{
+                $fotoData[] = $foto1[$i];
+            }
         }
         
         return view('category',[
             "categories" => Category::all(),
             'fotos' => $foto,
             'beritas'=>$beritas,
-            'wisatas'=>$wisatas,                             
+            'wisatas'=>$wisatas,
+            'datas' => $datas,
+            'fotoData' => $fotoData                          
         ]);
     }
   

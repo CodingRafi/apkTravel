@@ -1,12 +1,17 @@
 <div class="column sub flex">
-    @foreach ($categories as $data)
+    @for ($i = 0; $i < count($datas); $i++)
         <div class="card bg-dark text-white">
-            <img src="images/home-screen/h1c.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">{{ $data->nama }}</h5>
-                <p class="card-text">{{ $data->alamat }}</p>
-            </div>
+            @if ($fotoData[$i] == 'images/jika.jpg')
+                <img src="{{ $fotoData[$i] }}" class="card-img">
+            @else
+                <img src="{{ asset('storage/'. $fotoData[$i] ) }}" class="card-img">
+            @endif
+            <a href="/show/{{ $datas[$i]->slug }}">
+                <div class="card-img-overlay">
+                    <h5 class="card-title">{!! $datas[$i]->nama !!}</h5>
+                    <p class="card-text">{!! $datas[$i]->alamat !!}</p>
+                </div>
+            </a>
         </div>
-    @endforeach
-
+    @endfor
 </div>

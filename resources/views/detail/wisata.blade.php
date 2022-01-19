@@ -29,15 +29,16 @@
 
     @include('partials.topbar')
 
-
     {{-- Konten --}}
     <div class="main detail">
     
             <h2>Profil Wisata</h2>
             <div class="detail-columns flex">
-                @if (count($foto) > 0)   
+                 
                 <div class="sticky-container">
-                    <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
+                    @if (count($foto) > 0)
+                        <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
+                    @endif
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -93,35 +94,26 @@
             </div>
             {{-- {{dd($data[0])}} --}}
 
-            @for ($i = 0; $i < count($koleksis); $i++)
-            
-                
-            @if ($koleksis[$i]->jenis == 'koleksifoto')
-            <div class="gallery-frame">
-                <h2>Gallery foto</h2>
-                <div class="gallery-scroll flex">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/h1c.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/h2b.jpeg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
+            @if (count($koleksis) > 0)  
+                @if ($koleksiFoto)
+                <div class="gallery-frame">
+                    <h2>Gallery foto</h2>
+                    <div class="gallery-scroll flex">
+                        @for ($i = 0; $i < count($koleksiFoto); $i++)
+                            <img src="{{ asset('storage/'. $fotos[$i][0]->filename) }}">
+                        @endfor
+                    </div>
                 </div>
-            </div>
-            @else
-            <div class="gallery-frame">
-                <h2>Gallery video</h2>
-                <div class="gallery-scroll flex">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
-                    <img src="/images/home-screen/berita.jpg">
+                @else
+                <div class="gallery-frame">
+                    <h2>Gallery video</h2>
+                    <div class="gallery-scroll flex">
+                        @for ($i = 0; $i < count($koleksiVideo); $i++)
+                            <video src="{{ asset('storage'. $koleksiVideo[$i]) }}"></video>
+                        @endfor
+                    </div>
                 </div>
-            </div>
             @endif  
-            @endfor
-            
         @endif
     </div>
     {{-- menu --}}
