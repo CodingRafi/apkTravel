@@ -297,11 +297,20 @@ body * {
     width: 48%;
 }
 
+.sub a {
+    color: whitesmoke;
+}
+
 .card-img-overlay {
     background: rgba(0, 0, 0, 0.616);
     border-radius: 10px;
     bottom: 0;
     top: auto;
+    transition: ease-in-out 250ms;
+}
+
+.card-img-overlay:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .card-img-overlay~img {
