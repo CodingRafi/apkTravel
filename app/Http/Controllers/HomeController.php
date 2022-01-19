@@ -145,10 +145,6 @@ class HomeController extends Controller
         ->get();
         $foto = [];
 
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
 
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
@@ -171,6 +167,29 @@ class HomeController extends Controller
         ->where([['category_id', '<=', $category],['alamat', 'like', '%'.$kecamatan.'%']])
         ->get();
         return $city;
+    }
+    public function listHotel(){
+        $wisatas = DB::table('profil_wisatas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+        $foto = [];
+
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+        foreach($wisatas as $wisata){
+            $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
+        }
+        $hotel = DB::table('profil_wisatas')->where('category_id',8)->get();
+        return view('listDestinasi',[
+            "categories" => Category::all(),
+            'fotos' => $foto,
+            'beritas'=>$beritas,
+            'wisatas'=>$wisatas,
+            'hotels'=>$hotel                             
+        ]);
     }
 }
 ?>
