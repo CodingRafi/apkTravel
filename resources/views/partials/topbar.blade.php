@@ -6,7 +6,7 @@
     <div class="topbar-body flex">
         <marquee behavior="scroll" direction="left">
             @foreach ($beritas as $berita)
-            <a class="h6 font-weight-light" href="show/{{ $berita->slug }}"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{$berita->id}}</span> {{$berita->judul}}</a>
+            <a class="h6 font-weight-light" href="{{url('show',$berita->slug)}}"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{$berita->id}}</span> {{$berita->judul}}</a>
             @endforeach
           
         </marquee>
