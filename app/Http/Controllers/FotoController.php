@@ -59,7 +59,8 @@ class FotoController extends Controller
             'title' => 'Koleksi',
             'next' => 'Uploads',
             "categories" => Category::all(),
-            'kategori' => session()->get( 'kategori' )
+            'kategori' => session()->get( 'kategori' ),
+            'urlBack' => session()->get('urlBack')
         ]);
     }
 
@@ -97,15 +98,18 @@ class FotoController extends Controller
         if ($request->hasfile('filename')) { 
             foreach ($request->file('filename') as $file) {
                 if ($file->isValid()) {
-                    $filename = $file->store('imagesUpload');    
-                    // dd('oke');
+                    $filename = $file->store('imagesUpload');
                     Foto::create([
                         'koleksi_id' => $koleksi->id,
                         'filename' => $filename
                     ]); 
                 }
             }          
-            return redirect('/dashboard/foto');
+            if($request->urlBack){
+                return redirect($request->urlBack);
+            }else{
+                return redirect('/dashboard/foto');
+            }
         }else{
             echo'Gagal';
         }

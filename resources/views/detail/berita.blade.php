@@ -169,7 +169,7 @@
                 </div>
             </div>
             @endif 
-            @if (count($koleksiVideo) > 0)  
+            @if (count($kozleksiVideo) > 0)  
             <div class="gallery-frame">
                 <h2>Gallery video</h2>
                 <div class="gallery-scroll flex">

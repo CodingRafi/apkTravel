@@ -17,6 +17,7 @@ class CreateKoleksisTable extends Migration
             $table->id();
             $table->foreignId('profil_wisata_id')->nullable();
             $table->foreignId('berita_id')->nullable();
+            $table->string('keterangan')->nullable();
             $table->string('nama');
             $table->string('slug')->unique();
             $table->enum('jenis', ['koleksifoto', 'koleksivideo']);

@@ -15,8 +15,8 @@ class CreateConfigurasisTable extends Migration
     {
         Schema::create('configurasis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('isi');
+            $table->string('contact');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

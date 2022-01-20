@@ -71,6 +71,29 @@ class KoleksiController extends Controller
         }
     }
 
+    public function store2(Request $request){
+        $validateData = $request->validate([
+            'nama' => 'required|max:255',
+            'slug' => 'required|unique:koleksis',
+            'jenis' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        
+        Koleksi::create($validateData);
+        if($request->jenis == 'koleksifoto'){
+            return redirect('/dashboard/foto/create')->with([
+            'kategori' => $request->slug,
+            'urlBack' => '/dashboard/config'
+            ]);
+        }else{
+            return redirect('/dashboard/video/create')->with([
+                'kategori' => $request->slug,
+                'urlBack' => '/dashboard/config'
+            ]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *

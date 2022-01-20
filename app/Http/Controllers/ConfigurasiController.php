@@ -20,11 +20,36 @@ class ConfigurasiController extends Controller
      */
     public function index()
     {
+        $koleksis = Koleksi::where('keterangan', 'config')->get();
+        $fotos = [];
+        $videos = [];
+        $koleksiFoto = [];
+        $koleksiVideo = [];
+        foreach ($koleksis as $koleksi) {
+            if($koleksi->jenis == 'koleksifoto'){
+                $fotos[] = $koleksi->foto;
+            }else{
+                $videos[] = $koleksi->video;
+            }
+        }
+
+        foreach ($koleksis as $koleksi) {
+            if($koleksi->jenis == "koleksifoto"){
+                $koleksiFoto[] = $koleksi;
+            }else{
+                $koleksiVideo[] = $koleksi;
+            }
+        }
+
         return view('dashboard.config.index', [
             "categories" => Category::all(),
             "title" => "Konfigurasi",
             "data" => Configurasi::all(),
-            "foto"
+            'koleksis' => $koleksis,
+            'fotos' => $fotos,
+            'videos' => $videos,
+            'koleksifoto' => $koleksiFoto,
+            'koleksivideo' => $koleksiVideo
         ]);
     }
 
@@ -80,7 +105,19 @@ class ConfigurasiController extends Controller
      */
     public function update(UpdateConfigurasiRequest $request, Configurasi $configurasi)
     {
-        //
+        $data = Configurasi::where('id', $request->key)->get()[0];
+
+        $rules = ([
+            'contact' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $validateData = $request->validate($rules);
+
+        Configurasi::where('id', $data->id)
+        ->update($validateData);
+
+        return redirect("/dashboard/config")->with("success", "Configurasi berhasil diubah");
     }
 
     /**
