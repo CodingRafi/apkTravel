@@ -31,90 +31,89 @@
 
     {{-- Konten --}}
     <div class="main detail">
-    
-            <h2>Profil Wisata</h2>
-            <div class="detail-columns flex">
-                 
-                <div class="detail-columns-left">
-                    @if (count($foto) > 0)
-                        <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
-                    @endif
-                    {{-- <img src="../images/home-screen/depok-map-select.jpg" alt=""> --}}
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Nama Wisata</th>
-                                <td>{{$data[0]->nama}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">No. Telp</th>
-                                <td>{{$data[0]->no_telp}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Alamat</th>
-                                <td>{!! $data[0]->alamat !!}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Pengelola</th>
-                                <td>{!! $data[0]->pengelola !!}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Instagram</th>
-                                <td>{{$data[0]->instagram}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">youtube</th>
-                                <td>{{$data[0]->youtube}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">twitter</th>
-                                <td>{{$data[0]->twitter}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Facebook</th>
-                                <td>{{$data[0]->facebook}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Whatsapp</th>
-                                <td>{{$data[0]->whatsapp}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Website</th>
-                                <td>{{$data[0]->website}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="detail-columns-right">
-                    <div class="berita-header">
-                        <h2>{{ $data[0]->nama }}</h2>
-                        <pre>posted on 9 hours ago</pre>
-                    </div>
-                    {!! $data[0]->deskripsi !!}
-                </div>
+        <h2>Profil Wisata</h2>
+        <div class="detail-columns flex">
+            <div class="detail-columns-left">
+                @if (count($foto) > 0)
+                <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
+                @endif
+                {{-- <img src="../images/home-screen/depok-map-select.jpg" alt=""> --}}
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Nama Wisata</th>
+                            <td>{{$data[0]->nama}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">No. Telp</th>
+                            <td>{{$data[0]->no_telp}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Alamat</th>
+                            <td>{!! $data[0]->alamat !!}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pengelola</th>
+                            <td>{!! $data[0]->pengelola !!}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Instagram</th>
+                            <td>{{$data[0]->instagram}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">youtube</th>
+                            <td>{{$data[0]->youtube}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">twitter</th>
+                            <td>{{$data[0]->twitter}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Facebook</th>
+                            <td>{{$data[0]->facebook}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Whatsapp</th>
+                            <td>{{$data[0]->whatsapp}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Website</th>
+                            <td>{{$data[0]->website}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            {{-- {{dd($data[0])}} --}}
+            <div class="detail-columns-right">
+                <div class="berita-header">
+                    <h2>{{ $data[0]->nama }}</h2>
+                    <pre>posted on 9 hours ago</pre>
+                </div>
+                {!! $data[0]->deskripsi !!}
+            </div>
+        </div>
 
-            @if (count($koleksis) > 0)  
-                @if ($koleksiFoto)
-                <div class="gallery-frame">
-                    <h2>Gallery foto</h2>
-                    <div class="gallery-scroll flex">
-                        @for ($i = 0; $i < count($koleksiFoto); $i++)
-                            <img src="{{ asset('storage/'. $fotos[$i][0]->filename) }}">
-                        @endfor
-                    </div>
-                </div>
-                @else
-                <div class="gallery-frame">
-                    <h2>Gallery video</h2>
-                    <div class="gallery-scroll flex">
-                        @for ($i = 0; $i < count($koleksiVideo); $i++)
-                            <video src="{{ asset('storage'. $koleksiVideo[$i]) }}"></video>
-                        @endfor
-                    </div>
-                </div>
-            @endif  
+        {{-- GALLERY FOTO & VIDEO --}}
+
+        @if (count($koleksis) > 0)
+        @if ($koleksiFoto)
+        <div class="gallery-frame">
+            <h2>Gallery foto</h2>
+            <div class="gallery-scroll flex">
+                @for ($i = 0; $i < count($koleksiFoto); $i++)
+                <img src="{{ asset('storage/'. $fotos[$i][0]->filename) }}" class="imagekoleksi">
+                @endfor
+            </div>
+        </div>
+        @else
+        <div class="gallery-frame">
+            <h2>Gallery video</h2>
+            <div class="gallery-scroll flex">
+                @for ($i = 0; $i < count($koleksiVideo); $i++)
+                <video src="{{ asset('storage'. $koleksiVideo[$i]) }}" autoplay="false" class="imagekoleksi"></video>
+                @endfor
+            </div>
+        </div>
+        @endif
         @endif
     </div>
     {{-- menu --}}
@@ -122,6 +121,60 @@
 
     @include('partials.menu')
 
+
+    {{-- POP UP IMAGE --}}
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        style="background: rgba(69,90,100, .7);z-index: 99999;overflow: auto;">
+        <div style="height: 100vh;display: flex;padding: 0;">
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false"
+                style="display: flex;justify-content: flex-end;">
+                <div
+                    style="position: absolute;z-index: 9;width: 50px;height: 50px;margin: 0;display: flex;justify-content: center;align-items: center;padding: 0;border:none;background: #3a3838;background: rgba(58,56,56,.5);">
+                    <button type="button" class="close"
+                        style="padding: 0;margin: 0;font-size: 20px;width: 100%;height: 100%;color: #fff;">
+                        x
+                    </button>
+                </div>
+                <div class="carousel-inner" style="width: 100vw;">
+                    {{-- @if (count($koleksinya) > 0) --}}
+                    {{-- <div class="carousel-item active"> --}}
+                    {{-- <img src="{{ asset('storage/'.$koleksinya[0]->filename) }}" class="d-block w-100"
+                    alt="..."> --}}
+                    {{-- <img src="/images/home-screen/berita.jpg" class="d-block w-100" alt="..."> --}}
+                    {{-- </div> --}}
+                    {{-- @foreach ($koleksinya->skip(1) as $koleksi) --}}
+                    <div class="carousel-item">
+                        {{-- <img src="{{ asset('storage/'.$koleksi->filename) }}" class="d-block w-100" alt="...">
+                        --}}
+                        <img src="/images/home-screen/berita.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/w01.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/h1c.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/images/home-screen/h2b.jpeg" class="d-block w-100" alt="...">
+                    </div>
+                    {{-- @endforeach --}}
+                    {{-- @endif --}}
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
+                    data-slide="prev" style="border: none;background: none;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="cursor: pointer;"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls"
+                    data-slide="next" style="border: none;background: none;">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="cursor: pointer;"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {{-- /GAMBAR GEDE --}}
 
     {{-- javascript --}}
     <script src="js/home-screen.js"></script>
@@ -139,6 +192,34 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous">
+    </script>
+    <script>
+        const button = document.querySelector('.close');
+        const modal = document.querySelector('.modal');
+        button.addEventListener('click', function () {
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+        })
+
+
+        const imagekoleksi = document.querySelectorAll('.imagekoleksi');
+        const carouselItem = document.querySelectorAll('.carousel-item');
+
+        function hapusActive() {
+            carouselItem.forEach(e => {
+                e.classList.remove('active')
+            })
+        }
+
+        imagekoleksi.forEach((e, i) => {
+            e.addEventListener('click', function () {
+                modal.classList.add('show');
+                modal.style.display = 'block';
+                hapusActive();
+                carouselItem[i].classList.add('active');
+            })
+        });
+
     </script>
 </body>
 

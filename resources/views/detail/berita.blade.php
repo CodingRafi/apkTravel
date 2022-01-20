@@ -53,6 +53,30 @@
             </div>
         </div>
 
+        {{-- GALLERY FOTO & VIDEO --}}
+
+        @if (count($koleksiFoto) > 0)
+        <div class="gallery-frame">
+            <h2>Gallery foto</h2>
+            <div class="gallery-scroll flex">
+                @foreach ($koleksiFoto as $item)
+                <img src="{{ asset('storage/'. $fotos[0]['fotoAda'][0]->filename) }}"  class="imagekoleksi">
+                @endforeach
+            </div>
+        </div>
+        @endif
+        @if (count($koleksiVideo) > 0)
+        <div class="gallery-frame">
+            <h2>Gallery video</h2>
+            <div class="gallery-scroll flex">
+                @foreach ($koleksiVideo as $item)
+                <video src="{{ asset('storage/'. $videos[0]['videoAda'][0]->filename) }}" autoplay="false" class="imagekoleksi"></video>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
+        {{-- INI KEPAKE FI??? --}}
         @else
         <h2>Profil Wisata</h2>
         <div class="detail-columns flex">
@@ -130,40 +154,8 @@
     <div class="gallery-frame">
         <h2>Gallery foto</h2>
         <div class="gallery-scroll flex">
-            
-            {{-- GAMBAR KECIL --}}
-            {{-- <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div>
-            <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/w01.jpg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div>
-            <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/h1c.jpg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div>
-            <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/h2b.jpeg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div>
-            <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div>
-            <div class="bungkus img-fluid" style="width: 23vw;margin: 5px;cursor: pointer;">
-                <img src="/images/home-screen/berita.jpg" class="card-img-top imagekoleksi img-fluid">
-                <div class="d-grid gap-2 mt-2">
-                </div>
-            </div> --}}
-            {{-- /GAMBAR KECIL --}}
 
+            {{-- GALLERY FOTO & VIDEO --}}
             @if (count($koleksiFoto) > 0)
             <div class="gallery-frame">
                 <h2>Gallery foto</h2>
@@ -196,7 +188,7 @@
         @include('partials.menu')
 
 
-        {{-- GAMBAR GEDE --}}
+        {{-- POP UP IMAGE --}}
         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true"
             style="background: rgba(69,90,100, .7);z-index: 99999;overflow: auto;">
@@ -249,6 +241,7 @@
             </div>
         </div>
         {{-- /GAMBAR GEDE --}}
+
         {{-- javascript --}}
         <script src="js/home-screen.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
