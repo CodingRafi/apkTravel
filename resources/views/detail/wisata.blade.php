@@ -35,10 +35,11 @@
             <h2>Profil Wisata</h2>
             <div class="detail-columns flex">
                  
-                <div class="sticky-container">
+                <div class="detail-columns-left">
                     @if (count($foto) > 0)
                         <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
                     @endif
+                    {{-- <img src="../images/home-screen/depok-map-select.jpg" alt=""> --}}
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -84,7 +85,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div class="detail-columns-right">
                     <div class="berita-header">
                         <h2>{{ $data[0]->nama }}</h2>
                         <pre>posted on 9 hours ago</pre>

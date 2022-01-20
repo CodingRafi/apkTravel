@@ -316,10 +316,15 @@ body * {
 
 .detail-columns {
     gap: 3rem;
-    padding: 1rem;
+    padding: 2rem;
+    width: 100%;
 }
 
-.detail-columns>* {
+.detail-columns-left {
+    width: 100%;
+}
+
+.detail-columns-right {
     width: 100%;
 }
 
@@ -334,15 +339,8 @@ body * {
     margin-bottom: 1rem;
 }
 
-.sticky-container>img {
-    height: fit-content;
-    object-fit: cover;
-    width: 100%;
-}
-
-.sticky-item {
-    top: 1rem;
-    position: sticky;
+.table-striped td {
+    word-wrap: break-word;
 }
 
 .gallery-frame {
@@ -363,7 +361,6 @@ body * {
 
 .gallery-scroll {
     gap: .5rem;
-    justify-content: center;
     overflow-x: scroll;
 }
 
