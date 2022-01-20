@@ -33,6 +33,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/show/{slug}', [HomeController::class, 'show']);
+Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // require __DIR__.'/auth.php';

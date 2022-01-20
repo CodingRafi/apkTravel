@@ -36,7 +36,9 @@
             <h2>Berita</h2>
             <div class="detail-columns flex">
                 <div class="sticky-container">
+                    @if (count($foto) > 0)
                     <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
+                    @endif
                 </div>
                 <div>
                     <div class="berita-header">

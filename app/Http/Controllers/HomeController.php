@@ -161,6 +161,24 @@ class HomeController extends Controller
             'fotoData' => $fotoData                          
         ]);
     }
+
+    // public function showBerita($slug){
+    //     $data = Berita::where('slug', $slug)->get();
+    //     $foto = $data[0]->foto;
+    //     $video = $data[0]->video;
+
+    //     $beritas = DB::table('beritas')
+    //     ->orderBy('updated_at', 'desc')
+    //     ->take(4)
+    //     ->get();
+
+    //     return view('detail.berita', [
+    //         'beritas'=>$beritas,
+    //         'data' => $data,
+    //         'foto' => $foto,
+    //         'video' => $video
+    //     ]);
+    // }
   
     public function homeWisataAlam($kecamatan,$category){
         $city = DB::table('profil_wisatas')
