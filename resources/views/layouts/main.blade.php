@@ -144,11 +144,13 @@
                     {{-- <div id="kecamatan"></div> --}}
                     <div class="kontak flex">
                         <h5>Contact Center</h5>
-                        <h1>{{ $config[0]->contact }}</h1>
+                        <h1>Lorem ipsum dolor sit.</h1>
+                        {{-- <h1>{{ $config[0]->contact }}</h1> --}}
                     </div>
                     <div class="customer flex">
                         <h5>Alamat</h5>
-                        <p>{{ $config[0]->alamat }}</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                        {{-- <p>{{ $config[0]->alamat }}</p> --}}
                     </div>
                 </div>
             </div>

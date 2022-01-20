@@ -12,7 +12,7 @@
                 @if (count($fotos[$i]) > 0)
                     <img src="{{ asset("storage/".$fotos[$i][0]->filename) }}" class="card-img-top" alt="...">
                 @else
-                    <img src="images/home-screen/berita.jpg" class="card-img-top" alt="...">    
+                    <img src="/images/home-screen/berita.jpg" class="card-img-top" alt="...">    
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $wisatas[$i]->nama }}</h5>

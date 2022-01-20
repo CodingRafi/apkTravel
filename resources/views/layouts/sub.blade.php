@@ -20,7 +20,6 @@
 
     <title>Kota Depok</title>
 </head>
-
 <body>
     {{-- Topbar --}}
     @include('partials.topbar')
