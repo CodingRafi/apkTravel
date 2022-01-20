@@ -159,10 +159,10 @@
         </div>
 
         {{-- kolum tengah --}}
-        <div class="column middle flex" style="overflow: hidden;">
+        {{-- <div class="column middle flex" style="overflow: hidden;"> --}}
             
             {{-- peta --}}
-            <div class="peta-frame" >
+            {{-- <div class="peta-frame" >
                 <img id="gambarPeta" src="images/home-screen/depok-map-select.jpg"  class="map" usemap="#image-map">
                 <div class="map-selector"></div>
                 <map id="peta-depok" name="image-map" class="map" style="overflow: hidden;">
@@ -207,27 +207,27 @@
 
 
                 </div>
-            </div>
+            </div> --}}
 
             {{-- kontak --}}
-            <div class="kontak-frame flex">
+            {{-- <div class="kontak-frame flex"> --}}
 
                 {{-- <div id="kecamatan"></div> --}}
-                <div class="kontak flex">
+                {{-- <div class="kontak flex">
                     <h5>Contact Center</h5>
                     <h1>(021) 7773610</h1>
                 </div>
                 <div class="customer flex">
                     <h5>Alamat</h5>
                     <p>Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431</p>
-                </div>
-            </div>
-        </div>
+                </div> --}}
+            {{-- </div> --}}
+        {{-- </div> --}}
 
         {{-- kolum kanan --}}
 
 
-        @include('partials.rightColumn')
+        {{-- @include('partials.rightColumn') --}}
     </div>
     </div>
 
