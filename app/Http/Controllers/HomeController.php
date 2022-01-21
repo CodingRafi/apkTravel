@@ -121,34 +121,34 @@ class HomeController extends Controller
     }
 
     public function show2($slug){
-        // dd($slug);
         $wisatas = DB::table('profil_wisatas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
         $foto = [];
-
+        
         
         $category = Category::where('slug', $slug)->get()[0];
         $datas = ProfilWisata::where('category_id', $category->id)->get();
-
+        
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
-
+        
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
-
+        
         $fotoData = [];
-
+        
         for ($i=0; $i < count($datas); $i++) { 
             $foto1 = Foto::where('profil_wisata_id', $datas[$i]->id)->get();
             if(count($foto1) == 0){
                 $fotoData[] = 'images/jika.jpg';
             }else{
-                $fotoData[] = $foto1[$i];
+                // dd($foto1);
+                $fotoData[] = $foto1[0];
             }
         }
         
