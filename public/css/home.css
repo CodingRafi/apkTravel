@@ -364,15 +364,23 @@ body * {
     overflow-x: scroll;
 }
 
-.gallery-scroll>img {
+.gallery-scroll img {
     object-fit: cover;
     height: 136px;
     width: 17rem;
 }
-.gallery-scroll>video {
+.gallery-scroll video {
     object-fit: cover;
     height: 136px;
     width: 17rem;
+}
+
+.carousel-inner {
+    background: red;
+}
+
+.carousel-inner>img {
+    width: 300px;
 }
 
 /*** 3.0 - menu ***/
