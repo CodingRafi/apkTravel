@@ -39,10 +39,11 @@
             <div class="detail-columns-left">
                 <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item">
             </div>
-            @endif
+            @else
             <div class="detail-columns-left">
                 <img src="../images/home-screen/depok-map-select.jpg" alt="">
             </div>
+            @endif
 
             <div class="detail-columns-right">
                 <div class="berita-header">
