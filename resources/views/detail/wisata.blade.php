@@ -106,7 +106,8 @@
                     @for ($i = 0; $i < count($koleksiFoto[0]->foto); $i++)
                     {{-- {{ dd(count($koleksiFoto[0]->foto)) }} --}}
                     <a href="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}" class="fancybox" data-fancybox="gallery1">
-                        <img src="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}">
+                        <img id="video{{$koleksiFoto[0]->foto[$i]->id}}" src="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}">
+                        <h5 class="card-title" for="foto{{$koleksiFoto[0]->foto[$i]->id}}">Foto {{ $i+1 }}</h5>
                     </a>
                 
                     
@@ -124,8 +125,8 @@
                 {{-- {{$koleksiVideo[$i]}} --}}
                    
                     <a href="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" class="fancybox" data-fancybox="gallery2">
-                        <video src="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" autoplay="false"></video>
-                        
+                        <video id="video{{$koleksiVideo[0]->video[$i]->id}}" src="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" autoplay="false"></video>
+                        <h5 class="card-title" for="video{{$koleksiVideo[0]->video[$i]->id}}">Video {{ $i+1 }}</h5>
                     </a>
                     
                  
