@@ -2,7 +2,7 @@
 
 <div class="column flex" >
     {{-- berita --}}
-    <div class="berita-kota-depok">
+    <div class="header">
         <h4>Wisata Kota Depok</h4>
     </div>
     <div class="berita-frame" >
@@ -23,4 +23,5 @@
 
         @endfor
     </div>
+    <div class="footer">Load More ...</div>
 </div>

@@ -27,10 +27,11 @@ use App\Http\Controllers\ProfilWisataController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     // return view('welcome');
+//    // Route::get('/')
+// });
+Route::get('/', [HomeController::class, 'indexWelcome']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/show/{slug}', [HomeController::class, 'show']);
 Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);

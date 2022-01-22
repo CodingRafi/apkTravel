@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
+        $videoWelcome = Video::where('berita_id',3)->get();
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
@@ -45,6 +46,7 @@ class HomeController extends Controller
         $cinere=$this->homeWisataAlam('CINERE',3);
        
         return view("home",[
+            'videoWelcome'=>$videoWelcome,
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
             'tapos'=>$tapos,
@@ -162,24 +164,7 @@ class HomeController extends Controller
         ]);
     }
 
-    // public function showBerita($slug){
-    //     $data = Berita::where('slug', $slug)->get();
-    //     $foto = $data[0]->foto;
-    //     $video = $data[0]->video;
-
-    //     $beritas = DB::table('beritas')
-    //     ->orderBy('updated_at', 'desc')
-    //     ->take(4)
-    //     ->get();
-
-    //     return view('detail.berita', [
-    //         'beritas'=>$beritas,
-    //         'data' => $data,
-    //         'foto' => $foto,
-    //         'video' => $video
-    //     ]);
-    // }
-  
+   
     public function homeWisataAlam($kecamatan,$category){
         $city = DB::table('profil_wisatas')
         ->where([['category_id', '<=', $category],['alamat', 'like', '%'.$kecamatan.'%']])
@@ -209,5 +194,14 @@ class HomeController extends Controller
             'hotels'=>$hotel                             
         ]);
     }
+     public function indexWelcome(){
+       
+        $video = Video::where('berita_id',3)->get();
+      
+        return view('welcome', [
+            'video' => $video
+        ]);
+    }
+  
 }
 ?>

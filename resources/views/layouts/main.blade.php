@@ -32,6 +32,18 @@
     li {
         list-style:none;
     }
+    .tile{
+	width: 100%;
+	background:#fff;
+	border-radius:5px;
+	box-shadow:0px 2px 3px -1px rgba(151, 171, 187, 0.7);
+	float:left;
+  	transform-style: preserve-3d;
+  	margin: 10px 5px;
+
+}
+
+
     </style>
     <title>Kota Depok</title>
 </head>
@@ -50,18 +62,26 @@
             <div class="column flex">
 
                 {{-- sambutan --}}
-                <div class="sambutan-frame">
+                <div class="wrapper">
+                    <div class="header">Depok Video</div>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
+                        
+                            @foreach ($videoWelcome as $item)
                             <div class="carousel-item active">
+                                {{-- <img src="images/home-screen/video.jpg" class="d-block w-100" alt="..."> --}}
+                                <video class="d-block w-100" autoplay muted loop>
+                                    <source src="{{ asset("storage/".$item->filename) }}" type="video/mp4">
+                                </video>
+                            </div>
+                            @endforeach
+                            
+                            {{-- <div class="carousel-item">
                                 <img src="images/home-screen/video.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
                                 <img src="images/home-screen/video.jpg" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/home-screen/video.jpg" class="d-block w-100" alt="...">
-                            </div>
+                            </div> --}}
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
                             data-slide="prev">
@@ -74,13 +94,16 @@
                             <span class="sr-only">Next</span>
                         </button>
                     </div>
+                    <div class="footer">
+                       
+                    </div>
                 </div>
 
                 {{-- cuaca --}}
                 <div class="cuaca-frame flex">
 
-
                     @yield('cuaca')
+                    
 
 
                 </div>
@@ -144,13 +167,13 @@
                     {{-- <div id="kecamatan"></div> --}}
                     <div class="kontak flex">
                         <h5>Contact Center</h5>
-                        <h1>Lorem ipsum dolor sit.</h1>
-                        {{-- <h1>{{ $config[0]->contact }}</h1> --}}
+                        {{-- <h1>Lorem ipsum dolor sit.</h1> --}}
+                        <h1>{{ $config[0]->contact }}</h1>
                     </div>
                     <div class="customer flex">
                         <h5>Alamat</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        {{-- <p>{{ $config[0]->alamat }}</p> --}}
+                        {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p> --}}
+                        <p>{{ $config[0]->alamat }}</p>
                     </div>
                 </div>
             </div>
