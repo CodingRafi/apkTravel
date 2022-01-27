@@ -9,7 +9,7 @@
         <h4 class="header">Wisata Kota Depok</h4>
         @for ($i = 0; $i < count($wisatas); $i++)
             <div class="card pt-3" style="max-width: 540px;">
-                <a href="show/{{ $wisatas[$i]->slug }}">
+                <a href="show/{{ $wisatas[$i]->slug }}" style="color: #000;text-decoration: none;">
                 @if (count($fotos[$i]) > 0)
                     <img src="{{ asset("storage/".$fotos[$i][0]->filename) }}" class="card-img-top" alt="...">
                 @else

@@ -157,7 +157,8 @@ class HomeController extends Controller
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
             'datas' => $datas,
-            'fotoData' => $fotoData                          
+            'fotoData' => $fotoData,
+            'namaHal' => $category->nama                          
         ]);
     }
 
