@@ -98,25 +98,44 @@
 
         @if (count($koleksis) > 0)
         @if ($koleksiFoto)
+       {{-- {{ dd($koleksiFoto)}} --}}
         <div class="gallery-frame">
             <h2>Gallery foto</h2>
             <div class="gallery-scroll flex">
-                @for ($i = 0; $i < count($koleksiFoto); $i++)
-                <a href="{{ asset('storage/'. $fotos[$i][0]->filename) }}" class="fancybox" data-fancybox="gallery1">
-                    <img src="{{ asset('storage/'. $fotos[$i][0]->filename) }}">
-                </a>
-                @endfor
+                @foreach ($koleksiFoto as $item)
+                    @for ($i = 0; $i < count($koleksiFoto[0]->foto); $i++)
+                    {{-- {{ dd(count($koleksiFoto[0]->foto)) }} --}}
+                    <a href="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}" class="fancybox" data-fancybox="gallery1">
+                        <img id="video{{$koleksiFoto[0]->foto[$i]->id}}" src="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}">
+                        <h5 class="card-title" for="foto{{$koleksiFoto[0]->foto[$i]->id}}">Foto {{ $i+1 }}</h5>
+                    </a>
+                
+                    
+                    @endfor
+                @endforeach
             </div>
         </div>
         @else
+       
         <div class="gallery-frame">
             <h2>Gallery video</h2>
             <div class="gallery-scroll flex">
-                @for ($i = 0; $i < count($koleksiVideo); $i++)
-                <a href="{{ asset('storage'. $koleksiVideo[$i]) }}" class="fancybox" data-fancybox="gallery2">
-                    <video src="{{ asset('storage'. $koleksiVideo[$i]) }}" autoplay="false"></video>
-                </a>
+                @for ($i = 0; $i < count($koleksiVideo[0]->video); $i++)
+                
+                {{-- {{$koleksiVideo[$i]}} --}}
+                   
+                    <a href="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" class="fancybox" data-fancybox="gallery2">
+                        <video id="video{{$koleksiVideo[0]->video[$i]->id}}" src="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" autoplay="false"></video>
+                        <h5 class="card-title" for="video{{$koleksiVideo[0]->video[$i]->id}}">Video {{ $i+1 }}</h5>
+                    </a>
+                    
+                 
+                {{-- <a href="{{ asset('storage/'. $koleksiVideo[$i][0]->filename) }}" class="fancybox" data-fancybox="gallery2">
+                    <video src="{{ asset('storage/'. $koleksiVideo[$i][0]->filename) }}" autoplay="false"></video>
+                    
+                </a> --}}
                 @endfor
+                
             </div>
         </div>
         @endif

@@ -2,10 +2,11 @@
 
 <div class="column flex" >
     {{-- berita --}}
-    <div class="berita-kota-depok">
-        <h4>Wisata Kota Depok</h4>
-    </div>
+    {{-- <div class="header">
+       
+    </div> --}}
     <div class="berita-frame" >
+        <h4 class="header">Wisata Kota Depok</h4>
         @for ($i = 0; $i < count($wisatas); $i++)
             <div class="card pt-3" style="max-width: 540px;">
                 <a href="show/{{ $wisatas[$i]->slug }}">
@@ -22,5 +23,7 @@
             </div>
 
         @endfor
+        <div class="footer">Load More ...</div>
     </div>
+    
 </div>
