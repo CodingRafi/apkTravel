@@ -58,30 +58,42 @@
                             <th scope="row">Pengelola</th>
                             <td>{!! $data[0]->pengelola !!}</td>
                         </tr>
+                        @if ($data[0]->instagram != '')
                         <tr>
                             <th scope="row">Instagram</th>
                             <td>{{$data[0]->instagram}}</td>
                         </tr>
+                        @endif
+                        @if ($data[0]->youtube != '')
                         <tr>
                             <th scope="row">youtube</th>
                             <td>{{$data[0]->youtube}}</td>
                         </tr>
+                        @endif
+                        @if ($data[0]->twitter != '')
                         <tr>
                             <th scope="row">twitter</th>
                             <td>{{$data[0]->twitter}}</td>
                         </tr>
+                        @endif
+                        @if ($data[0]->facebook != '')
                         <tr>
                             <th scope="row">Facebook</th>
                             <td>{{$data[0]->facebook}}</td>
                         </tr>
+                        @endif
+                        @if ($data[0]->whatsapp != '')
                         <tr>
                             <th scope="row">Whatsapp</th>
                             <td>{{$data[0]->whatsapp}}</td>
                         </tr>
+                        @endif
+                        @if ($data[0]->website != '')
                         <tr>
                             <th scope="row">Website</th>
                             <td>{{$data[0]->website}}</td>
                         </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

@@ -301,7 +301,14 @@ body * {
     background: rgba(0, 0, 0, 0.616);
     border-radius: 10px;
     bottom: 0;
+    color: whitesmoke;
     top: auto;
+    transition: ease-in-out 250ms;
+}
+
+.card-img-overlay:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .card-img-overlay~img {
