@@ -22,10 +22,7 @@ class HomeController extends Controller
         ->take(4)
         ->get();
 
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
+        $wisatas = DB::table('profil_wisatas')->whereNotNull('urutan')->get();
 
         $config = Configurasi::all();
 

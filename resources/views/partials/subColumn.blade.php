@@ -1,4 +1,5 @@
 <div class="column sub flex">
+    <h1>{{ $datas[0]->category->nama }}</h1>
     @for ($i = 0; $i < count($datas); $i++)
     {{-- @dd() --}}
         <div class="card bg-dark text-white">
