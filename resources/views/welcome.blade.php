@@ -36,23 +36,33 @@
             <h1>SELAMAT DATANG DI KOTA DEPOK</h1>
             <p>Nikmati wisata & kuliner yang tidak tergantikan</p>
             <a href="/home"><button>Jelajahi Lebih Lanjut</button></a>
-<br>
-<div class="playpause"></div>
-<audio id="myAudio" autoplay>
+            <br>
+            <br>
+            
+<audio id="myAudio" controls >
  
-     <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio> 
+    <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg">
+   Your browser does not support the audio element.
+ </audio> 
+<br>
+            <p style="color:rgb(250, 203, 203)" id='myInfo' >* Tekan Dimana saja di layar Untuk Mendengarkan Background Music </p>
+
 
         </div>
     </div>
 </div>
 <script>
+function isPlaying(audio){ return true}
 function playAudioku(){
-    var aud = document.getElementById("myAudio");
-    aud.onplay = function() {
-     alert("The audio has started to play");
-    };
+     var aud = document.getElementById("myAudio");
+      aud.play();
+      if(isPlaying(aud)==true){
+        $('#myInfo').text("Anda memilih menggunakan music pada video");
+      }else{
+        $('#myInfo').text("* Refresh dan Tekan Dimana saja di layar Untuk Mendengarkan Background Music");
+      }
+         
+
 }
 
 var vid = document.getElementById("myVideo");
