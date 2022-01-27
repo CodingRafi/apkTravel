@@ -11,6 +11,10 @@
     font-size: 12px;
 }
 
+.flex {
+    display: flex;
+}
+
 /*** 0.2 - general ***/
 *,
 *::before,
@@ -62,8 +66,18 @@ body * {
 }
 
 .logo img {
+    display: block;
+    margin-inline: auto;
     object-fit: scale-down;
     width: 8rem;
+}
+
+.logo > div {
+    gap: 2rem;
+}
+
+.logo>div>img {
+    width: 10rem;
 }
 
 .welcome {
