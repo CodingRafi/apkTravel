@@ -52,6 +52,10 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
         ),
+        'V' => 
+        array (
+            'Vedmant\\FeedReader\\' => 19,
+        ),
         'T' => 
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
@@ -199,6 +203,10 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Vedmant\\FeedReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vedmant/laravel-feed-reader/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -521,6 +529,13 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'SimplePie' => 
+            array (
+                0 => __DIR__ . '/..' . '/simplepie/simplepie/library',
+            ),
+        ),
         'M' => 
         array (
             'Mockery' => 
@@ -543,6 +558,7 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\BeritaController' => __DIR__ . '/../..' . '/app/Http/Controllers/BeritaController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
+        'App\\Http\\Controllers\\ConfigurasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConfigurasiController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\FotoController' => __DIR__ . '/../..' . '/app/Http/Controllers/FotoController.php',
@@ -565,6 +581,7 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'App\\Http\\Requests\\StoreBeritaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreBeritaRequest.php',
         'App\\Http\\Requests\\StoreCampuranRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreCampuranRequest.php',
         'App\\Http\\Requests\\StoreCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreCategoryRequest.php',
+        'App\\Http\\Requests\\StoreConfigurasiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreConfigurasiRequest.php',
         'App\\Http\\Requests\\StoreFotoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreFotoRequest.php',
         'App\\Http\\Requests\\StoreProfilWisataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreProfilWisataRequest.php',
         'App\\Http\\Requests\\StorekoleksiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StorekoleksiRequest.php',
@@ -572,6 +589,7 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'App\\Http\\Requests\\UpdateBeritaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateBeritaRequest.php',
         'App\\Http\\Requests\\UpdateCampuranRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateCampuranRequest.php',
         'App\\Http\\Requests\\UpdateCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateCategoryRequest.php',
+        'App\\Http\\Requests\\UpdateConfigurasiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateConfigurasiRequest.php',
         'App\\Http\\Requests\\UpdateFotoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateFotoRequest.php',
         'App\\Http\\Requests\\UpdateProfilWisataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateProfilWisataRequest.php',
         'App\\Http\\Requests\\UpdatekoleksiRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatekoleksiRequest.php',
@@ -589,6 +607,7 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'App\\Policies\\BeritaPolicy' => __DIR__ . '/../..' . '/app/Policies/BeritaPolicy.php',
         'App\\Policies\\CampuranPolicy' => __DIR__ . '/../..' . '/app/Policies/CampuranPolicy.php',
         'App\\Policies\\CategoryPolicy' => __DIR__ . '/../..' . '/app/Policies/CategoryPolicy.php',
+        'App\\Policies\\ConfigurasiPolicy' => __DIR__ . '/../..' . '/app/Policies/ConfigurasiPolicy.php',
         'App\\Policies\\FotoPolicy' => __DIR__ . '/../..' . '/app/Policies/FotoPolicy.php',
         'App\\Policies\\KoleksiPolicy' => __DIR__ . '/../..' . '/app/Policies/KoleksiPolicy.php',
         'App\\Policies\\ProfilWisataPolicy' => __DIR__ . '/../..' . '/app/Policies/ProfilWisataPolicy.php',
@@ -741,6 +760,7 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'Database\\Seeders\\BeritaSeeder' => __DIR__ . '/../..' . '/database/seeders/BeritaSeeder.php',
         'Database\\Seeders\\CampuranSeeder' => __DIR__ . '/../..' . '/database/seeders/CampuranSeeder.php',
         'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
+        'Database\\Seeders\\ConfigurasiSeeder' => __DIR__ . '/../..' . '/database/seeders/ConfigurasiSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\FotoSeeder' => __DIR__ . '/../..' . '/database/seeders/FotoSeeder.php',
         'Database\\Seeders\\KoleksiSeeder' => __DIR__ . '/../..' . '/database/seeders/KoleksiSeeder.php',
@@ -4718,6 +4738,41 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SimplePie' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie.php',
+        'SimplePie_Author' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Author.php',
+        'SimplePie_Cache' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache.php',
+        'SimplePie_Cache_Base' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/Base.php',
+        'SimplePie_Cache_DB' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/DB.php',
+        'SimplePie_Cache_File' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/File.php',
+        'SimplePie_Cache_Memcache' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/Memcache.php',
+        'SimplePie_Cache_Memcached' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/Memcached.php',
+        'SimplePie_Cache_MySQL' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/MySQL.php',
+        'SimplePie_Cache_Redis' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Cache/Redis.php',
+        'SimplePie_Caption' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Caption.php',
+        'SimplePie_Category' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Category.php',
+        'SimplePie_Content_Type_Sniffer' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Content/Type/Sniffer.php',
+        'SimplePie_Copyright' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Copyright.php',
+        'SimplePie_Core' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Core.php',
+        'SimplePie_Credit' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Credit.php',
+        'SimplePie_Decode_HTML_Entities' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Decode/HTML/Entities.php',
+        'SimplePie_Enclosure' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Enclosure.php',
+        'SimplePie_Exception' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Exception.php',
+        'SimplePie_File' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/File.php',
+        'SimplePie_HTTP_Parser' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/HTTP/Parser.php',
+        'SimplePie_IRI' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/IRI.php',
+        'SimplePie_Item' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Item.php',
+        'SimplePie_Locator' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Locator.php',
+        'SimplePie_Misc' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Misc.php',
+        'SimplePie_Net_IPv6' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Net/IPv6.php',
+        'SimplePie_Parse_Date' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Parse/Date.php',
+        'SimplePie_Parser' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Parser.php',
+        'SimplePie_Rating' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Rating.php',
+        'SimplePie_Registry' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Registry.php',
+        'SimplePie_Restriction' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Restriction.php',
+        'SimplePie_Sanitize' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Sanitize.php',
+        'SimplePie_Source' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/Source.php',
+        'SimplePie_XML_Declaration_Parser' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/XML/Declaration/Parser.php',
+        'SimplePie_gzdecode' => __DIR__ . '/..' . '/simplepie/simplepie/library/SimplePie/gzdecode.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',
@@ -5523,6 +5578,9 @@ class ComposerStaticInit0842104e51993434eb9bad66d2efa935
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'Vedmant\\FeedReader\\Facades\\FeedReader' => __DIR__ . '/..' . '/vedmant/laravel-feed-reader/src/Facades/FeedReader.php',
+        'Vedmant\\FeedReader\\FeedReader' => __DIR__ . '/..' . '/vedmant/laravel-feed-reader/src/FeedReader.php',
+        'Vedmant\\FeedReader\\FeedReaderServiceProvider' => __DIR__ . '/..' . '/vedmant/laravel-feed-reader/src/FeedReaderServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
