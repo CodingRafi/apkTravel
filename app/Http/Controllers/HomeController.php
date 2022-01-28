@@ -18,7 +18,6 @@ class HomeController extends Controller
     public function index(){
 
         $rss = app('App\Http\Controllers\RssController')->rss();
-        dd($rss);
         $videoWelcome = Video::where('berita_id',3)->get();
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
