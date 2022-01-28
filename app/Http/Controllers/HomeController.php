@@ -16,16 +16,15 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
+
+        $rss = app('App\Http\Controllers\RssController')->rss();
         $videoWelcome = Video::where('berita_id',3)->get();
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
         ->get();
 
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
+        $wisatas = DB::table('profil_wisatas')->whereNotNull('urutan')->get();
 
         $kecamatans = DB::table('kecamatans')->get();
 
@@ -64,7 +63,8 @@ class HomeController extends Controller
             'limo'=>$limo,
             'cinere'=>$cinere,
             'fotos' => $foto,
-            'config' => $config
+            'config' => $config,
+            'rss' => $rss
     ]);
     }
 
@@ -75,6 +75,8 @@ class HomeController extends Controller
             $data = Berita::where('slug', $slug)->get();
         }
         
+        $rss = app('App\Http\Controllers\RssController')->rss();
+
         $koleksis = $data[0]->koleksi;
         $foto = $data[0]->foto;
         $video = $data[0]->video;
@@ -121,7 +123,8 @@ class HomeController extends Controller
             'fotos' => $fotos,
             'videos' => $videos,
             "categories" => Category::all(),
-            'urlBack' => $title->slug
+            'urlBack' => $title->slug,
+            'rss' => $rss
         ]);
     }
 
@@ -132,7 +135,8 @@ class HomeController extends Controller
         ->get();
         $foto = [];
         
-        
+        $rss = app('App\Http\Controllers\RssController')->rss();
+
         $category = Category::where('slug', $slug)->get()[0];
         $datas = ProfilWisata::where('category_id', $category->id)->get();
         
@@ -163,7 +167,9 @@ class HomeController extends Controller
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
             'datas' => $datas,
-            'fotoData' => $fotoData                          
+            'fotoData' => $fotoData,
+            'namaHal' => $category->nama,
+            'rss' => $rss                          
         ]);
     }
 
@@ -181,6 +187,8 @@ class HomeController extends Controller
         ->get();
         $foto = [];
 
+        $rss = app('App\Http\Controllers\RssController')->rss();
+
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
         ->take(4)
@@ -194,7 +202,8 @@ class HomeController extends Controller
             'fotos' => $foto,
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
-            'hotels'=>$hotel                             
+            'hotels'=>$hotel,
+            'rss' => $rss                             
         ]);
     }
      public function indexWelcome(){

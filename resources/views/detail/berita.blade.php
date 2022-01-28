@@ -45,6 +45,7 @@
             <div class="detail-columns-left">
                 <img src="../images/home-screen/depok-map-select.jpg" alt="">
             </div>
+            @endif
 
             @endif
             

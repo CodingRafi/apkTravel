@@ -1,4 +1,5 @@
 <div class="column sub flex">
+    <h1 style="width: 100%;background: none;box-shadow: none;margin-top: 10px;margin-left: 20px;">{{ $namaHal }}</h1>
     @for ($i = 0; $i < count($datas); $i++)
     {{-- @dd() --}}
         <div class="card bg-dark text-white">
@@ -10,7 +11,7 @@
                 @endif
             </div>
             <a href="/show/{{ $datas[$i]->slug }}">
-                <div class="card-img-overlay">
+                <div class="card-img-overlay" style="color: #fff;">
                     <h5 class="card-title">{!! $datas[$i]->nama !!}</h5>
                     <p class="card-text">{!! $datas[$i]->alamat !!}</p>
                 </div>

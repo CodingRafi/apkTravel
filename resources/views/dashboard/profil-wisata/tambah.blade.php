@@ -50,6 +50,37 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Urutan Tampil</label>
+                                        <div class="col-sm-10">
+                                            <div class="container m-0 p-0">
+                                                <div class="row" style="align-items: center;">
+                                                    <div class="col-9">
+                                                        <select name="urutan" class="form-control">
+                                                            <option value="" {{ (old('urutan')) ? '' : 'selected' }}>Urutan tampil</option>
+                                                            @for ($i = 1; $i <= 10; $i++)
+                                                            <option value="{{ $i }}" {{ (old('urutan') == $i) ? 'selected' : '' }}>{{ $i }}</option>
+                                                            @endfor
+                                                        </select>
+                                                        @error('urutan')   
+                                                        <div class="invalid-feedback d-block">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    <input type="hidden" class="hasil90" value="0">
+                                                    <div class="col-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input checkbox1" type="checkbox" value="1" id="flexCheckChecked" name="tetap" onclick="checkini(confirm('Apakah anda yakin?. jika urutan sudah dipakai maka urutan akan dihapus'))">
+                                                            <label class="form-check-label" for="flexCheckChecked">
+                                                              Tetap ini
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Logo</label>
                                         <div class="col-sm-10">
                                             <div class="container3Prev">
@@ -86,7 +117,7 @@
                                                     @endif
                                                 @endforeach
                                             </select>
-                                            @error('no_telp')   
+                                            @error('kecamatan_id')   
                                             <div class="invalid-feedback d-block">
                                                 {{ $message }}
                                             </div>
@@ -336,6 +367,29 @@
             imgPreview2.src = oFREvnet.target.result;
         }
     }
+</script>
+
+<script>
+    function checkini(hasil){
+        const hasil90 = document.querySelector('.hasil90');
+        let checkbox1 = $('.checkbox1:checkbox:checked');
+
+        if(hasil90.value == 0){
+            if(hasil == true){
+                $('.checkbox1').prop("checked", true)
+                hasil90.value = 1;
+                $('.checkbox1').attr('onclick', 'checkini()')
+            }else{
+                $('.checkbox1').prop("checked", false)
+                hasil90.value = 0;
+                $('.checkbox1').attr('onclick', `checkini(confirm('Apakah anda yakin?. jika urutan sudah dipakai maka urutan akan dihapus'))`)
+            }
+        }else{
+            hasil90.value = 0;
+            $('.checkbox1').attr('onclick', `checkini(confirm('Apakah anda yakin?. jika urutan sudah dipakai maka urutan akan dihapus'))`)
+        }
+    }
+    
 </script>
 
 @endsection

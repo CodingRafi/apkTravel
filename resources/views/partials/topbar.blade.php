@@ -5,10 +5,9 @@
     </div>
     <div class="topbar-body flex">
         <marquee behavior="scroll" direction="left">
-            @foreach ($beritas as $berita)
-            <a class="h6 font-weight-light" href="/berita/{{ $berita->slug }}"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{$berita->id}}</span> {{$berita->judul}}</a>
-            @endforeach
-          
+            @for ($i = 0; $i < 3; $i++)
+            <a class="h6 font-weight-light" href="{{ $rss[$i]['link'] }}"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{ $i+1 }} </span> {{$rss[$i]['title']}}</a>
+            @endfor
         </marquee>
     </div>
 </div>
