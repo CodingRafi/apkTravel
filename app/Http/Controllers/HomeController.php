@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
+
         $videoWelcome = Video::where('berita_id',3)->get();
         $beritas = DB::table('beritas')
         ->orderBy('updated_at', 'desc')
