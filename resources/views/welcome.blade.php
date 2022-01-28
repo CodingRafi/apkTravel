@@ -15,9 +15,6 @@
             </div>
            
             @endforeach
-            
-            
-
             {{-- <div class="carousel-item active">
                 <video class="d-block w-100" autoplay muted loop>
                     <source src="images/welcome-screen/covervid.mp4" type="video/mp4">
