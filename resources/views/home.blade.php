@@ -39,13 +39,62 @@
 
 {{-- detil wisata peta --}}
 @section('peta-detail')
-    <div id="Div0">
-        <img src="images/home-screen/clicking.png">
-        <center>
-            <p>Klik peta untuk menampilkan lokasi wisata kecamatan</p>
-        </center>
+    @foreach ($kecamatans as $data)
+    <div id="ex{{ $data->id }}" class="modal">
+        <div style="padding-bottom: 3rem">
+            <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab{{ $data->id }}" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-hotel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-hotel{{ $data->id }}" role="tab" aria-controls="v-pills-hotel{{ $data->id }}" aria-selected="true">Hotel</a>
+                    <a class="nav-link" id="v-pills-wisata-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-wisata{{ $data->id }}" role="tab" aria-controls="v-pills-wisata{{ $data->id }}" aria-selected="false">Wisata</a>
+                    <a class="nav-link" id="v-pills-restoran-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-restoran{{ $data->id }}" role="tab" aria-controls="v-pills-restoran{{ $data->id }}" aria-selected="false">Restoran</a>
+                    <a class="nav-link" id="v-pills-kuliner-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-kuliner{{ $data->id }}" role="tab" aria-controls="v-pills-kuliner{{ $data->id }}" aria-selected="false">Kuliner</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
+                    <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
+                        <ul>
+                            <li class="list-group-item list-group-item-light">A simple light list group item</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
+                            <li class="list-group-item list-group-item-light">Lorem ipsum dolor sit.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-wisata{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-wisata-tab{{ $data->id }}">
+                        <ul>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-restoran{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-restoran-tab{{ $data->id }}">
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                                <center>
+                                    <p class="lead">Restoran tidak tersedia</p>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-kuliner{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-kuliner-tab{{ $data->id }}">
+                        <ul>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
+                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="Div1" style="display: none;">
+    @endforeach
+    
+
+    {{-- <div id="Div1" style="display: none;">
         <div class="wisata-kecamatan flex">
             <div>
                 <h4><img src="/icon/home-screen/destinasi.svg"> Tapos</h4>
@@ -56,125 +105,5 @@
                 @endforeach
             </ul>
         </div>
-    </div>
-    <div id="Div2" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Cilodong</h4>
-            </div>
-            <ul>
-                @foreach ($cilodong as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div3" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Cipayung</h4>
-            </div>
-            <ul>
-                @foreach ($cipayung as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div4" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4> <img src="/icon/home-screen/destinasi.svg"> Sawangan</h4>
-            </div>
-            <ul>
-                @foreach ($sawangan as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div5" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Bojongsari</h4>
-            </div>
-            <ul>
-                @foreach ($bojongsari as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div6" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Sukmajaya</h4>
-            </div>
-            <ul>
-                @foreach ($sukmajaya as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div7" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Pancoranmas</h4>
-            </div>
-            <ul>
-                @foreach ($pancoranmas as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div8" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Cimanggis</h4>
-            </div>
-            <ul>
-                @foreach ($cimanggis as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div9" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Beji</h4>
-            </div>
-            <ul>
-                @foreach ($beji as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div10" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Limo</h4>
-            </div>
-            <ul>
-                @foreach ($limo as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div id="Div11" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Cinere</h4>
-            </div>
-            <ul>
-                @foreach ($cinere as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
+    </div>--}}
 @endsection
