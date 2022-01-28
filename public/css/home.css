@@ -56,7 +56,7 @@ body * {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
 }
 
 .topbar-head>*,
@@ -186,6 +186,27 @@ body * {
     width: 3rem;
 }
 
+.modal {
+    height: fit-content !important;
+    padding-bottom: 5rem !important;
+}
+
+.modal a.close-modal {
+    display: none !important;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link .active {
+    color: whitesmoke;
+}
+
+.tab-pane ul {
+    padding: 0;
+}
+
 .detail-default p {
     color: rgba(53, 53, 53, 0.7);
     text-align: center;
@@ -244,7 +265,10 @@ body * {
 
 /*** 2.4 - cuaca ***/
 .cuaca-frame {
-    background: var(--card-transparent-color);
+    background-blend-mode: overlay;
+    background-image: url(/images/home-screen/background-cuaca.jpg), linear-gradient(rgba(178, 205, 228, 1),rgba(255, 255, 255, 1));
+    background-position: center;
+    background-size: cover;
     flex-direction: column;
     font-size: 1.5rem;
     height: 100%;
@@ -301,7 +325,14 @@ body * {
     background: rgba(0, 0, 0, 0.616);
     border-radius: 10px;
     bottom: 0;
+    color: whitesmoke;
     top: auto;
+    transition: ease-in-out 250ms;
+}
+
+.card-img-overlay:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .card-img-overlay~img {

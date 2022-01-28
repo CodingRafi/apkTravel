@@ -26,6 +26,8 @@ class HomeController extends Controller
 
         $wisatas = DB::table('profil_wisatas')->whereNotNull('urutan')->get();
 
+        $kecamatans = DB::table('kecamatans')->get();
+
         $config = Configurasi::all();
 
         $foto = [];
@@ -45,6 +47,7 @@ class HomeController extends Controller
         $cinere=$this->homeWisataAlam('CINERE',3);
        
         return view("home",[
+            'kecamatans'=>$kecamatans,
             'videoWelcome'=>$videoWelcome,
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,

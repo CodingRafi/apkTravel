@@ -15,9 +15,6 @@
             </div>
            
             @endforeach
-            
-            
-
             {{-- <div class="carousel-item active">
                 <video class="d-block w-100" autoplay muted loop>
                     <source src="images/welcome-screen/covervid.mp4" type="video/mp4">
@@ -31,6 +28,10 @@
     <div class="flex-welcome">
         <div class="logo">
             <img src="images/home-screen/logo-depok.png">
+            <div class="flex">
+                <img src="images/welcome-screen/Smiling-west-java.png">
+                <img src="images/welcome-screen/logo-pesona-indonesia.png">
+            </div>
         </div>
         <div class="welcome">
             <h1>SELAMAT DATANG DI KOTA DEPOK</h1>
@@ -38,19 +39,16 @@
             <a href="/home"><button>Jelajahi Lebih Lanjut</button></a>
             <br>
             <br>
-            
-<audio id="myAudio" controls >
- 
-    <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg">
-   Your browser does not support the audio element.
- </audio> 
-<br>
+            <audio id="myAudio" controls >
+                <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio> 
+            <br>
             <p style="color:rgb(250, 203, 203)" id='myInfo' >* Tekan Dimana saja di layar Untuk Mendengarkan Background Music </p>
-
-
         </div>
     </div>
 </div>
+
 <script>
 function isPlaying(audio){ return true}
 function playAudioku(){
