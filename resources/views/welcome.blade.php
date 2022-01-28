@@ -1,6 +1,7 @@
 @extends('layouts.welcome')
 
 @section('container')
+
 <style></style>
 <div class="cover">
     <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
