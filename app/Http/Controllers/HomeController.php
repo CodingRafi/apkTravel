@@ -229,7 +229,39 @@ class HomeController extends Controller
     }
 
     public function loadMore(Request $request){
-        dd($request->jumlah);
+        $wisatas = [];
+        for ($i=0; $i < 10; $i++) { 
+            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            if(count($sementara) > 0){
+                $wisatas[] = $sementara[0];
+            }
+        }
+
+        // dd($wisatas);
+        for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
+            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $wisatas[] = $sementara1;
+        }
+
+        $wisatasLoadMore = [];
+
+        if(count($wisatas) <= $request->jumlah ){
+            $wisatasLoadMore = $wisatas;
+        }else{
+            for ($i=0; $i < intVal($request->jumlah); $i++) { 
+                $wisatasLoadMore[] = $wisatas[$i];
+            }
+        }
+
+        $foto = [];
+        foreach($wisatasLoadMore as $wisata){
+            $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
+        }
+
+        return response()->json([
+            'wisatas' => $wisatasLoadMore,
+            'fotos' => $foto
+        ]);
     }
   
 }

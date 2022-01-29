@@ -315,13 +315,49 @@
 
     <script>
         const loadMore = document.querySelector('.loadMore');
+        const bungcon12 = document.querySelector('.bungcon12');
         let jumlah = 10;
         loadMore.addEventListener('click', function(){
             let penjumlahan = parseInt(jumlah)+10;
             jumlah = penjumlahan;
             fetch('load-more?jumlah='+ penjumlahan)
             .then(response => response.json())
-            .then(data => slug.value = data.slug)
+            .then(data => {
+                bungcon12.innerHTML = '';
+                console.log(data);
+                data['fotos'].forEach((e,i) => {
+                    if(e.length > 0){
+                        // console.log();
+                        bungcon12.innerHTML += `
+                        <ul class="list-group">
+                            <a href="show/${data['wisatas'][i]['slug']}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div class="flex-column">
+                                <span class="badge badge-info badge-pill">${i+1}</span>
+                                ${data['wisatas'][i]['nama']}
+                            </div>
+                            <div class="image-parent">
+                                <img src="${'storage/'+e[0].filename}" class="img-fluid" alt="quixote">
+                            </div>
+                            </a>
+                        </ul>
+                        `;
+                    }else{
+                    bungcon12.innerHTML += `
+                    <ul class="list-group">
+                        <a href="show/${data['wisatas'][i]['slug']}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div class="flex-column">
+                            <span class="badge badge-info badge-pill">${i+1}</span>
+                            ${data['wisatas'][i]['nama']}
+                        </div>
+                        <div class="image-parent">
+                            <img src="/images/home-screen/berita.jpg" class="img-fluid" alt="quixote">  
+                        </div>
+                        </a>
+                    </ul>
+                    `;
+                    }
+                });
+            })
         })
     </script>
 </body>
