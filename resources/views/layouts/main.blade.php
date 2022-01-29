@@ -324,10 +324,8 @@
             .then(response => response.json())
             .then(data => {
                 bungcon12.innerHTML = '';
-                console.log(data);
                 data['fotos'].forEach((e,i) => {
                     if(e.length > 0){
-                        // console.log();
                         bungcon12.innerHTML += `
                         <ul class="list-group">
                             <a href="show/${data['wisatas'][i]['slug']}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
