@@ -56,20 +56,19 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
                     <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
-                        <ul>
-                            <li class="list-group-item list-group-item-light">A simple light list group item</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
-                            <li class="list-group-item list-group-item-light">Lorem ipsum dolor sit.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
-                        </ul>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">aaaaaaaaa</a>
+                            <a href="#" class="list-group-item list-group-item-action">bbbbbbbbbb</a>
+                            <a href="#" class="list-group-item list-group-item-action">cccccccc</a>
+                            <a href="#" class="list-group-item list-group-item-action">dddddddddd</a>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-wisata{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-wisata-tab{{ $data->id }}">
-                        <ul>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
-                        </ul>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">aaaaaaaaa</a>
+                            <a href="#" class="list-group-item list-group-item-action">bbbbbbbbbb</a>
+                            <a href="#" class="list-group-item list-group-item-action">cccccccc</a>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-restoran{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-restoran-tab{{ $data->id }}">
                         <div class="jumbotron jumbotron-fluid">
@@ -81,29 +80,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-kuliner{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-kuliner-tab{{ $data->id }}">
-                        <ul>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
-                            <li class="list-group-item list-group-item-light">Lorem, ipsum dolor.</li>
-                        </ul>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">aaaaaaaaa</a>
+                            <a href="#" class="list-group-item list-group-item-action">dddddddddd</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-    
-
-    {{-- <div id="Div1" style="display: none;">
-        <div class="wisata-kecamatan flex">
-            <div>
-                <h4><img src="/icon/home-screen/destinasi.svg"> Tapos</h4>
-            </div>
-            <ul>
-                @foreach ($tapos as $data)
-                <a href="show/{{ $data->slug }}"><li>{{ $data->nama }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>--}}
 @endsection

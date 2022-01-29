@@ -24,16 +24,29 @@ class HomeController extends Controller
         ->take(4)
         ->get();
 
-        $wisatas = DB::table('profil_wisatas')->whereNotNull('urutan')->get();
-
+        $wisatas = [];
+        for ($i=0; $i < 10; $i++) { 
+            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            if(count($sementara) > 0){
+                $wisatas[] = $sementara[0];
+            }
+        }
+        // $wisatas[] = DB::table('profil_wisatas')->whereNotNull('urutan')->get()[0];
+        // $wisatas[] = ProfilWisata::where('urutan', null)->get();
+        for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
+            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $wisatas[] = $sementara1;
+        }
+        
         $kecamatans = DB::table('kecamatans')->get();
-
+        
         $config = Configurasi::all();
-
+        
         $foto = [];
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
+        // dd($wisatas);
         $tapos=$this->homeWisataAlam('TAPOS',3);
         $cilodong=$this->homeWisataAlam('CILODONG',3);
         $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
