@@ -187,7 +187,7 @@ body * {
 }
 
 .modal {
-    height: fit-content !important;
+    overflow-y: auto !important;
     padding-bottom: 5rem !important;
 }
 
@@ -199,12 +199,9 @@ body * {
     color: black;
 }
 
-.nav-link .active {
+.col-3 .active {
     color: whitesmoke;
-}
-
-.tab-pane ul {
-    padding: 0;
+    background: rgb(42, 84, 131) !important;
 }
 
 .detail-default p {
@@ -263,6 +260,14 @@ body * {
     padding-inline: .5rem;
 }
 
+.image-parent {
+    width: 6rem;
+}
+
+.image-parent img {
+    object-fit: cover;
+}
+
 /*** 2.4 - cuaca ***/
 .cuaca-frame {
     background-blend-mode: overlay;
@@ -300,6 +305,10 @@ body * {
     padding: .5rem;
     width: 100%;
     justify-content: center;
+}
+
+.customer h5 {
+    text-align: center;
 }
 
 /* .kontak-frame img {
