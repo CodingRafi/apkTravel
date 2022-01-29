@@ -33,6 +33,7 @@ use App\Http\Controllers\ProfilWisataController;
 // });
 Route::get('/', [HomeController::class, 'indexWelcome']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/load-more', [HomeController::class, 'loadMore']);
 Route::get('/show/{slug}', [HomeController::class, 'show']);
 Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

@@ -29,7 +29,7 @@
               </div>
           @endfor
         @else
-          @for ($i = 0; $i < 10; $i++)
+          @for ($i = 0; $i < $jumlah; $i++)
           <div class="card mb-3" style="max-width: 540px;">
               <a href="show/{{ $wisatas[$i]->slug }}" style="color: #000;text-decoration: none;">   
                   <div class="row no-gutters">
@@ -70,7 +70,9 @@
                 </a>
               </div>
         @endfor --}}
-        <div class="footer">Load More ...</div>
+        <div class="footer">
+          <button type="button" class="btn btn-primary loadMore">Load More....</button>
+        </div>
     </div>
     
 </div>

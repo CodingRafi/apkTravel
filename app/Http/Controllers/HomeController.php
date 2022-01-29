@@ -77,7 +77,8 @@ class HomeController extends Controller
             'cinere'=>$cinere,
             'fotos' => $foto,
             'config' => $config,
-            'rss' => $rss
+            'rss' => $rss,
+            'jumlah' => 10
     ]);
     }
 
@@ -137,7 +138,7 @@ class HomeController extends Controller
             'videos' => $videos,
             "categories" => Category::all(),
             'urlBack' => $title->slug,
-            'rss' => $rss
+            'rss' => $rss,
         ]);
     }
 
@@ -169,7 +170,6 @@ class HomeController extends Controller
             if(count($foto1) == 0){
                 $fotoData[] = 'images/jika.jpg';
             }else{
-                // dd($foto1);
                 $fotoData[] = $foto1[0];
             }
         }
@@ -226,6 +226,10 @@ class HomeController extends Controller
         return view('welcome', [
             'video' => $video
         ]);
+    }
+
+    public function loadMore(Request $request){
+        dd($request->jumlah);
     }
   
 }

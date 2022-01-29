@@ -316,6 +316,18 @@
             }
         }
     </script>
+
+    <script>
+        const loadMore = document.querySelector('.loadMore');
+        let jumlah = 10;
+        loadMore.addEventListener('click', function(){
+            let penjumlahan = parseInt(jumlah)+10;
+            jumlah = penjumlahan;
+            fetch('load-more?jumlah='+ penjumlahan)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+        })
+    </script>
 </body>
 
 </html>
