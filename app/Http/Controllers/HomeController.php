@@ -47,39 +47,65 @@ class HomeController extends Controller
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
         // dd($wisatas);
-        $tapos=$this->homeWisataAlam('TAPOS',3);
-        $cilodong=$this->homeWisataAlam('CILODONG',3);
-        $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
-        $sawangan=$this->homeWisataAlam('SAWANGAN',3);
-        $bojongsari=$this->homeWisataAlam('BOJONGSARI',3);
-        $sukmajaya=$this->homeWisataAlam('SUKMAJAYA',3);
-        $pancoranmas=$this->homeWisataAlam('PANCORANMAS',3);
-        $cimanggis=$this->homeWisataAlam('CIMANGGIS',3);
-        $beji=$this->homeWisataAlam('BEJI',3);
-        $limo=$this->homeWisataAlam('LIMO',3);
-        $cinere=$this->homeWisataAlam('CINERE',3);
+        // $tapos=$this->homeWisataAlam('TAPOS',3);
+        // $cilodong=$this->homeWisataAlam('CILODONG',3);
+        // $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
+        // $sawangan=$this->homeWisataAlam('SAWANGAN',3);
+        // $bojongsari=$this->homeWisataAlam('BOJONGSARI',3);
+        // $sukmajaya=$this->homeWisataAlam('SUKMAJAYA',3);
+        // $pancoranmas=$this->homeWisataAlam('PANCORANMAS',3);
+        // $cimanggis=$this->homeWisataAlam('CIMANGGIS',3);
+        // $beji=$this->homeWisataAlam('BEJI',3);
+        // $limo=$this->homeWisataAlam('LIMO',3);
+        // $cinere=$this->homeWisataAlam('CINERE',3);
+
+        $semuaData = [
+            'Tapos' => ProfilWisata::where('kecamatan_id', 1)->get(),
+            'Cilodong' => ProfilWisata::where('kecamatan_id', 2)->get(),
+            'Cipayung' => ProfilWisata::where('kecamatan_id', 3)->get(),
+            'Sawangan' => ProfilWisata::where('kecamatan_id', 4)->get(),
+            'Bojongsari' => ProfilWisata::where('kecamatan_id', 5)->get(),
+            'Sukmajaya' => ProfilWisata::where('kecamatan_id', 6)->get(),
+            'Pancoranmas' => ProfilWisata::where('kecamatan_id', 7)->get(),
+            'Cimanggis' => ProfilWisata::where('kecamatan_id', 8)->get(),
+            'Beji' => ProfilWisata::where('kecamatan_id', 9)->get(),
+            'Limo' => ProfilWisata::where('kecamatan_id', 10)->get(),
+            'Cinere' => ProfilWisata::where('kecamatan_id', 11)->get()
+        ];
+        
        
-        return view("home",[
-            'kecamatans'=>$kecamatans,
-            'videoWelcome'=>$videoWelcome,
-            'beritas'=>$beritas,
-            'wisatas'=>$wisatas,
-            'tapos'=>$tapos,
-            'cilodong'=>$cilodong,
-            'cipayung'=>$cipayung,
-            'sawangan'=>$sawangan,
-            'bojongsari'=>$bojongsari,
-            'sukmajaya'=>$sukmajaya,
-            'pancoranmas'=>$pancoranmas,
-            'cimanggis'=>$cimanggis,
-            'beji'=>$beji,
-            'limo'=>$limo,
-            'cinere'=>$cinere,
-            'fotos' => $foto,
-            'config' => $config,
-            'rss' => $rss,
-            'jumlah' => 10
-    ]);
+            return view("home",[
+                'kecamatans'=>$kecamatans,
+                'videoWelcome'=>$videoWelcome,
+                'beritas'=>$beritas,
+                'wisatas'=>$wisatas,
+                'semuaData' => $semuaData,
+                'fotos' => $foto,
+                'config' => $config,
+                'rss' => $rss,
+                'jumlah' => 10
+        ]);
+        //     return view("home",[
+        //         'kecamatans'=>$kecamatans,
+        //         'videoWelcome'=>$videoWelcome,
+        //         'beritas'=>$beritas,
+        //         'wisatas'=>$wisatas,
+        //         'tapos'=>$tapos,
+        //         'cilodong'=>$cilodong,
+        //         'cipayung'=>$cipayung,
+        //         'sawangan'=>$sawangan,
+        //         'bojongsari'=>$bojongsari,
+        //         'sukmajaya'=>$sukmajaya,
+        //         'pancoranmas'=>$pancoranmas,
+        //         'cimanggis'=>$cimanggis,
+        //         'beji'=>$beji,
+        //         'limo'=>$limo,
+        //         'cinere'=>$cinere,
+        //         'fotos' => $foto,
+        //         'config' => $config,
+        //         'rss' => $rss,
+        //         'jumlah' => 10
+        // ]);
     }
 
     public function show(Request $request, $slug){
