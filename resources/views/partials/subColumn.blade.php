@@ -3,9 +3,10 @@
     @for ($i = 0; $i < count($datas); $i++)
     {{-- @dd() --}}
         <div class="card bg-dark text-white">
-            <div class="bung3" style="max-height: 43vh;overflow: hidden;">
+            <div class="bung3" style="max-height: 43vh;overflow: hidden; border-radius: 10px;">
                 @if ($fotoData[$i] == 'images/jika.jpg')
                     <img src="{{ $fotoData[$i] }}" class="card-img">
+                    {{-- <img src="/images/home-screen/capture.png" class="card-img"> --}}
                 @else
                     <img src="{{ asset('storage/'. $fotoData[$i]->filename ) }}" class="card-img">
                 @endif
