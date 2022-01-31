@@ -1,4 +1,4 @@
-{{-- @dd($data) --}}
+{{-- @dd($urlBack) --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,6 +103,7 @@
                     <pre>posted on 9 hours ago</pre>
                 </div>
                 {!! $data[0]->deskripsi !!}
+                <a href="/{{ $urlBack }}" class="btn btn-primary">Back</a>
             </div>
         </div>
 

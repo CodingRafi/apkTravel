@@ -72,18 +72,72 @@ class HomeController extends Controller
             'Limo' => ProfilWisata::where('kecamatan_id', 10)->get(),
             'Cinere' => ProfilWisata::where('kecamatan_id', 11)->get()
         ];
-        
+
+        $hotel = [];
+        $destinasi = [];
+        $makanan = [];
+        $oleh = [];
+        $travel = [];
+
+        foreach ($semuaData as $key => $value) {
+            $hotel[$key] = [];
+            foreach ($value as $key1 => $data) {
+                if ($data->category_id == 8) {
+                    $hotel[$key][] = $data;
+                } 
+            }
+        }
+
+        foreach ($semuaData as $key => $value) {
+            $destinasi[$key] = [];
+            foreach ($value as $key1 => $data) {
+                if ($data->category_id == 1 || $data->category_id == 2 || $data->category_id == 3) {
+                    $destinasi[$key][] = $data;
+                } 
+            }
+        }
+
+        foreach ($semuaData as $key => $value) {
+            $makanan[$key] = [];
+            foreach ($value as $key1 => $data) {
+                if ($data->category_id == 4 || $data->category_id == 5 || $data->category_id == 6) {
+                    $makanan[$key][] = $data;
+                } 
+            }
+        }
+
+        foreach ($semuaData as $key => $value) {
+            $oleh[$key] = [];
+            foreach ($value as $key1 => $data) {
+                if ($data->category_id == 7) {
+                    $oleh[$key][] = $data;
+                } 
+            }
+        }
+
+        foreach ($semuaData as $key => $value) {
+            $travel[$key] = [];
+            foreach ($value as $key1 => $data) {
+                if ($data->category_id == 9) {
+                    $travel[$key][] = $data;
+                } 
+            }
+        }
        
             return view("home",[
                 'kecamatans'=>$kecamatans,
                 'videoWelcome'=>$videoWelcome,
                 'beritas'=>$beritas,
                 'wisatas'=>$wisatas,
-                'semuaData' => $semuaData,
                 'fotos' => $foto,
                 'config' => $config,
                 'rss' => $rss,
-                'jumlah' => 10
+                'jumlah' => 10,
+                'hotel'=> $hotel,
+                'destinasi' => $destinasi,
+                'makanan' => $makanan,
+                'oleh' => $oleh,
+                'travel' => $travel
         ]);
         //     return view("home",[
         //         'kecamatans'=>$kecamatans,
@@ -185,6 +239,20 @@ class HomeController extends Controller
         ->take(4)
         ->get();
         
+
+        $wisatas = [];
+        for ($i=0; $i < 10; $i++) { 
+            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            if(count($sementara) > 0){
+                $wisatas[] = $sementara[0];
+            }
+        }
+
+        for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
+            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $wisatas[] = $sementara1;
+        }
+
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
@@ -208,7 +276,8 @@ class HomeController extends Controller
             'datas' => $datas,
             'fotoData' => $fotoData,
             'namaHal' => $category->nama,
-            'rss' => $rss                          
+            'rss' => $rss,
+            'jumlah' => 10,                          
         ]);
     }
 
@@ -263,7 +332,6 @@ class HomeController extends Controller
             }
         }
 
-        // dd($wisatas);
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
             $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
             $wisatas[] = $sementara1;

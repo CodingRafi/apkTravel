@@ -52,62 +52,96 @@
                     <a class="nav-link active modal-link" id="v-pills-hotel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-hotel{{ $data->id }}" role="tab" aria-controls="v-pills-hotel{{ $data->id }}" aria-selected="true" data-key="8">Hotel</a>
                     <a class="nav-link modal-link" id="v-pills-wisata-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-wisata{{ $data->id }}" role="tab" aria-controls="v-pills-wisata{{ $data->id }}" aria-selected="false" data-key="1,2,3">Destinasi</a>
                     <a class="nav-link modal-link" id="v-pills-restoran-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-restoran{{ $data->id }}" role="tab" aria-controls="v-pills-restoran{{ $data->id }}" aria-selected="false" data-key="4,5,6">Makanan</a>
-                    <a class="nav-link modal-link" id="v-pills-kuliner-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-kuliner{{ $data->id }}" role="tab" aria-controls="v-pills-kuliner{{ $data->id }}" aria-selected="false" data-key="9">Travel</a>
-                    <a class="nav-link modal-link" id="v-pills-kuliner-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-kuliner{{ $data->id }}" role="tab" aria-controls="v-pills-kuliner{{ $data->id }}" aria-selected="false" data-key="7">Oleh Oleh</a>
+                    <a class="nav-link modal-link" id="v-pills-travel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-travel{{ $data->id }}" role="tab" aria-controls="v-pills-travel{{ $data->id }}" aria-selected="false" data-key="9">Travel</a>
+                    <a class="nav-link modal-link" id="v-pills-oleh-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-oleh{{ $data->id }}" role="tab" aria-controls="v-pills-oleh{{ $data->id }}" aria-selected="false" data-key="7">Oleh Oleh</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
                     <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
                         <div class="list-group">
-                            @for ($i = 0; $i < count($semuaData[$data->nama]); $i++)
-                                @if ($semuaData[$data->nama][$i]['category_id'] == 8)
-                                <a href="show/{{ $semuaData[$data->nama][$i]['slug'] }}" class="list-group-item list-group-item-action">{{ $semuaData[$data->nama][$i]['nama'] }}</a>
-                                @endif
-                            @endfor
+                            @if (count($hotel[$data->nama]) > 0)
+                                @for ($i = 0; $i < count($hotel[$data->nama]); $i++)
+                                    <a href="show/{{ $hotel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->nama][$i]->nama }}</a>  
+                                @endfor
+                            @else
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <center>
+                                        <p class="lead">Hotel tidak tersedia</p>
+                                    </center>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-wisata{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-wisata-tab{{ $data->id }}">
                         <div class="list-group">
-                            @for ($i = 0; $i < count($semuaData[$data->nama]); $i++)
-                                @if ($semuaData[$data->nama][$i]['category_id'] == 1 || $semuaData[$data->nama][$i]['category_id'] == 2 ||$semuaData[$data->nama][$i]['category_id'] == 3)
-                                <a href="show/{{ $semuaData[$data->nama][$i]['slug'] }}" class="list-group-item list-group-item-action">{{ $semuaData[$data->nama][$i]['nama'] }}</a>
-                                @endif
-                            @endfor
+
+                            @if (count($destinasi[$data->nama]) > 0)
+                                @for ($i = 0; $i < count($destinasi[$data->nama]); $i++)
+                                    <a href="show/{{ $destinasi[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $destinasi[$data->nama][$i]->nama }}</a>  
+                                @endfor
+                            @else
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <center>
+                                        <p class="lead">Destinasi tidak tersedia</p>
+                                    </center>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-restoran{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-restoran-tab{{ $data->id }}">
-                        {{-- <div class="jumbotron jumbotron-fluid">
-                            <div class="container">
-                                <center>
-                                    <p class="lead">Restoran tidak tersedia</p>
-                                </center>
+                        <div class="list-group">
+                            @if (count($makanan[$data->nama]) > 0)
+                                @for ($i = 0; $i < count($makanan[$data->nama]); $i++)
+                                    <a href="show/{{ $makanan[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $makanan[$data->nama][$i]->nama }}</a>  
+                                @endfor
+                            @else
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <center>
+                                        <p class="lead">Makanan tidak tersedia</p>
+                                    </center>
+                                </div>
                             </div>
-                        </div> --}}
-                        <div class="list-group">
-                            @for ($i = 0; $i < count($semuaData[$data->nama]); $i++)
-                                @if ($semuaData[$data->nama][$i]['category_id'] == 4 || $semuaData[$data->nama][$i]['category_id'] == 5 ||$semuaData[$data->nama][$i]['category_id'] == 6)
-                                <a href="show/{{ $semuaData[$data->nama][$i]['slug'] }}" class="list-group-item list-group-item-action">{{ $semuaData[$data->nama][$i]['nama'] }}</a>
-                                @endif
-                            @endfor
+                            @endif
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-kuliner{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-kuliner-tab{{ $data->id }}">
+                    <div class="tab-pane fade" id="v-pills-travel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-travel-tab{{ $data->id }}">
                         <div class="list-group">
-                            @for ($i = 0; $i < count($semuaData[$data->nama]); $i++)
-                                @if ($semuaData[$data->nama][$i]['category_id'] == 9)
-                                <a href="show/{{ $semuaData[$data->nama][$i]['slug'] }}" class="list-group-item list-group-item-action">{{ $semuaData[$data->nama][$i]['nama'] }}</a>
-                                @endif
-                            @endfor
+                            @if (count($travel[$data->nama]) > 0)
+                                @for ($i = 0; $i < count($travel[$data->nama]); $i++)
+                                    <a href="show/{{ $travel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $travel[$data->nama][$i]->nama }}</a>  
+                                @endfor
+                            @else
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <center>
+                                        <p class="lead">Travel tidak tersedia</p>
+                                    </center>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-kuliner{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-kuliner-tab{{ $data->id }}">
+                    <div class="tab-pane fade" id="v-pills-oleh{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-oleh-tab{{ $data->id }}">
                         <div class="list-group">
-                            @for ($i = 0; $i < count($semuaData[$data->nama]); $i++)
-                                @if ($semuaData[$data->nama][$i]['category_id'] == 7)
-                                <a href="show/{{ $semuaData[$data->nama][$i]['slug'] }}" class="list-group-item list-group-item-action">{{ $semuaData[$data->nama][$i]['nama'] }}</a>
-                                @endif
-                            @endfor
+                            @if (count($oleh[$data->nama]) > 0)
+                                @for ($i = 0; $i < count($oleh[$data->nama]); $i++)
+                                    <a href="show/{{ $oleh[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $oleh[$data->nama][$i]->nama }}</a>  
+                                @endfor
+                            @else
+                            <div class="jumbotron jumbotron-fluid">
+                                <div class="container">
+                                    <center>
+                                        <p class="lead">Oleh oleh tidak tersedia</p>
+                                    </center>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
