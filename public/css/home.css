@@ -325,7 +325,6 @@ body * {
 .sub>.card {
     border-radius: 10px;
     box-shadow: var(--box-shadow-header);
-    height: 257px;
     margin: 0;
     padding: 0;
     width: 48%;
@@ -334,6 +333,8 @@ body * {
 .card-img {
     border-radius: 10px;
     object-fit: cover;
+    height: 257px;
+    width: auto;
 }
 
 .card-img-overlay {
