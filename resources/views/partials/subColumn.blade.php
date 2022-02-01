@@ -19,27 +19,4 @@
             </a>
         </div>
     @endfor
-    <div class="card bg-dark text-white">
-        <div class="bung3" style="border-radius: 10px;">
-                <img src="/images/home-screen/capture.png" class="card-img">
-        </div>
-        <a href="/show/aaaaaaaaaaaaaaaaaa">
-            <div class="card-img-overlay" style="color: #fff;">
-                <h5 class="card-title">aaaaaaaaaaaaaaaaaa</h5>
-                <p class="card-text">aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa</p>
-            </div>
-        </a>
-    </div>
-    <div class="card bg-dark text-white">
-        <div class="bung3" style="border-radius: 10px;">
-                <img src="/images/home-screen/clicking.png" class="card-img">
-        </div>
-        <a href="/show/aaaaaaaaaaaaaaaaaa">
-            <div class="card-img-overlay" style="color: #fff;">
-                <h5 class="card-title">aaaaaaaaaaaaaaaaaa</h5>
-                <p class="card-text">aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa</p>
-            </div>
-        </a>
-    </div>
-
 </div>

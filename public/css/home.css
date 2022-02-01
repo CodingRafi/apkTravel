@@ -190,6 +190,9 @@ body * {
     overflow-y: auto !important;
     padding-bottom: 5rem !important;
 }
+.modal-berita {
+    max-width: none !important;
+}
 
 .modal a.close-modal {
     display: none !important;

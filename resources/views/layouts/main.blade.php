@@ -73,6 +73,7 @@
                                 </video>
                             </div>
                             @endforeach
+                            
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
                             data-slide="prev">
