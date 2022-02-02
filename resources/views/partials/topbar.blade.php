@@ -10,14 +10,14 @@
             @endfor --}}
 
             @for ($i = 0; $i < 3; $i++)
-            <a class="h6 font-weight-light" href="#ez{{ $i+1 }}" rel="modal:open"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{ $i+1 }} </span> {{$rss[$i]['title']}}</a>
+            <a class="h6 font-weight-light" href="#ez{{ $i }}" rel="modal:open"><span class="position-relative mx-2 badge badge-primary rounded-0">Berita {{ $i+1 }} </span> {{$rss[$i]['title']}}</a>
             @endfor
         </marquee>
     </div>
 </div>
 
 @for ($i = 0; $i < 3; $i++)
-<div id="ez{{ $i+1 }}" class="modal">
-    {{-- <iframe src="{{ $rss[$i]['link'] }}" title="#" style="width: 100%; height: 100%;"></iframe> --}}
+<div id="ez{{ $i }}" class="modal" style="max-width: 85%">
+    <iframe src="{{ $rss[$i]['link'] }}" title="#" style="width: 100%; height: 100%;"></iframe>
 </div>
 @endfor
