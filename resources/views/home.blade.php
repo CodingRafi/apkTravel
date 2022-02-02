@@ -148,7 +148,7 @@
             </div>
         </div>
     </div>
-    @endforeach
+@endforeach
 
     {{-- <script>
         const modalLink = document.querySelectorAll('.modal-link');
