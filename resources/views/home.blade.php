@@ -43,6 +43,10 @@
 {{-- @dd($data) --}}
 {{-- @dd(count($hotel[$data->nama])) --}}
 {{-- @dd($semuaData) --}}
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
 <div id="ex{{ $data->id }}" class="modal">
     <div style="padding-bottom: 3rem">
@@ -64,7 +68,12 @@
                         <div class="list-group">
                             @if (count($hotel[$data->slug]) > 0)
                                 @for ($i = 0; $i < count($hotel[$data->slug]); $i++)
+<<<<<<< HEAD
+                                    <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>  
+
+=======
                                     <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>
+>>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -150,7 +159,12 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+
+    @endforeach
+=======
 @endforeach
+>>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
 
     {{-- <script>
         const modalLink = document.querySelectorAll('.modal-link');

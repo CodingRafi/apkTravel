@@ -31,7 +31,6 @@
 
     @include('partials.topbar')
 
-
     {{-- Konten --}}
     <div class="main detail">
         <h2>Profil Wisata</h2>
