@@ -123,7 +123,6 @@ class HomeController extends Controller
                 } 
             }
         }
-       
             return view("home",[
                 'kecamatans'=>$kecamatans,
                 'videoWelcome'=>$videoWelcome,

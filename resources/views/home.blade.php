@@ -1,12 +1,11 @@
 @extends('layouts.main')
-
 {{-- cuaca --}}
 @section('cuaca')
 
 {{-- @dd($foto[0][0]->filename) --}}
 {{-- @dd($foto) --}}
-    <div class="cuaca">
-        <?php
+<div class="cuaca">
+    <?php
         $city_name = 'Depok';
         $api_key = 'baf203be46efb79bfadbcd96c9e58ecd';
         $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$api_key;
@@ -34,32 +33,36 @@
         <br>
         <p style="font-size: 9px; color: red">* Tidak Interaksi Layar selama 1 menit akan berpindah ke Tampilan Video</p>
     </p>
-    </div>
+</div>
 @endsection
 
 {{-- detil wisata peta --}}
 @section('peta-detail')
 @foreach ($kecamatans as $data)
 {{-- @dd($data) --}}
+{{-- @dd(count($hotel[$data->nama])) --}}
+{{-- @dd($semuaData) --}}
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
-    <div id="ex{{ $data->id }}" class="modal">
-        <div style="padding-bottom: 3rem">
-            <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="nav flex-column nav-pills" id="v-pills-tab{{ $data->id }}" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active modal-link" id="v-pills-hotel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-hotel{{ $data->id }}" role="tab" aria-controls="v-pills-hotel{{ $data->id }}" aria-selected="true" data-key="8">Hotel</a>
-                    <a class="nav-link modal-link" id="v-pills-wisata-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-wisata{{ $data->id }}" role="tab" aria-controls="v-pills-wisata{{ $data->id }}" aria-selected="false" data-key="1,2,3">Destinasi</a>
-                    <a class="nav-link modal-link" id="v-pills-restoran-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-restoran{{ $data->id }}" role="tab" aria-controls="v-pills-restoran{{ $data->id }}" aria-selected="false" data-key="4,5,6">Makanan</a>
-                    <a class="nav-link modal-link" id="v-pills-travel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-travel{{ $data->id }}" role="tab" aria-controls="v-pills-travel{{ $data->id }}" aria-selected="false" data-key="9">Travel</a>
-                    <a class="nav-link modal-link" id="v-pills-oleh-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-oleh{{ $data->id }}" role="tab" aria-controls="v-pills-oleh{{ $data->id }}" aria-selected="false" data-key="7">Oleh Oleh</a>
-                </div>
+<div id="ex{{ $data->id }}" class="modal">
+    <div style="padding-bottom: 3rem">
+        {{-- <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center> --}}
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab{{ $data->id }}" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active modal-link" id="v-pills-hotel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-hotel{{ $data->id }}" role="tab" aria-controls="v-pills-hotel{{ $data->id }}" aria-selected="true" data-key="8">Hotel</a>
+                <a class="nav-link modal-link" id="v-pills-wisata-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-wisata{{ $data->id }}" role="tab" aria-controls="v-pills-wisata{{ $data->id }}" aria-selected="false" data-key="1,2,3">Destinasi</a>
+                <a class="nav-link modal-link" id="v-pills-restoran-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-restoran{{ $data->id }}" role="tab" aria-controls="v-pills-restoran{{ $data->id }}" aria-selected="false" data-key="4,5,6">Makanan</a>
+                <a class="nav-link modal-link" id="v-pills-travel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-travel{{ $data->id }}" role="tab" aria-controls="v-pills-travel{{ $data->id }}" aria-selected="false" data-key="9">Travel</a>
+                <a class="nav-link modal-link" id="v-pills-oleh-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-oleh{{ $data->id }}" role="tab" aria-controls="v-pills-oleh{{ $data->id }}" aria-selected="false" data-key="7">Oleh Oleh</a>
             </div>
-            <div class="col-9">
-                <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
-                    <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
-                        <div class="list-group">
+        </div>
+        <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
+                <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
+                    
+                    <div class="list-group">
+                            
                             @if (count($hotel[$data->nama]) > 0)
                                 @for ($i = 0; $i < count($hotel[$data->nama]); $i++)
                                     <a href="show/{{ $hotel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->nama][$i]->nama }}</a>  
