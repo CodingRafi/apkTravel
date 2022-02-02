@@ -46,7 +46,7 @@
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
 <div id="ex{{ $data->id }}" class="modal">
     <div style="padding-bottom: 3rem">
-        {{-- <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center> --}}
+        <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center>
     </div>
     <div class="row">
         <div class="col-3">
