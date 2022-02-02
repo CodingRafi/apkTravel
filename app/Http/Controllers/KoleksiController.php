@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Video;
 use App\Models\koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorekoleksiRequest;
@@ -33,7 +34,8 @@ class KoleksiController extends Controller
     {
         return view("dashboard.koleksi.tambah", [
             "categories" => Category::all(),
-            "title" => "Tambah Koleksi"
+            "title" => "Tambah Koleksi",
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -110,7 +112,8 @@ class KoleksiController extends Controller
                 'title' => 'Koleksi Foto',
                 'next' => $koleksi->nama,
                 "categories" => Category::all(),
-                'slug' => $koleksi->slug
+                'slug' => $koleksi->slug,
+                "kecamatans" => Kecamatan::all(),
             ]);
         }else{
             $koleksinya = $koleksi->video;
@@ -119,7 +122,8 @@ class KoleksiController extends Controller
                 'title' => 'Koleksi Video',
                 'next' => $koleksi->nama,
                 "categories" => Category::all(),
-                'slug' => $koleksi->slug
+                'slug' => $koleksi->slug,
+                "kecamatans" => Kecamatan::all(),
             ]);
         }
 
@@ -137,7 +141,8 @@ class KoleksiController extends Controller
             'koleksi' => $koleksi,
             "categories" => Category::all(),
             'title' => 'koleksi',
-            'next' => 'Edit Koleksi'
+            'next' => 'Edit Koleksi',
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
