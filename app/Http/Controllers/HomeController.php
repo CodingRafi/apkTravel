@@ -60,17 +60,17 @@ class HomeController extends Controller
         // $cinere=$this->homeWisataAlam('CINERE',3);
 
         $semuaData = [
-            'Tapos' => ProfilWisata::where('kecamatan_id', 1)->get(),
-            'Cilodong' => ProfilWisata::where('kecamatan_id', 2)->get(),
-            'Cipayung' => ProfilWisata::where('kecamatan_id', 3)->get(),
-            'Sawangan' => ProfilWisata::where('kecamatan_id', 4)->get(),
-            'Bojongsari' => ProfilWisata::where('kecamatan_id', 5)->get(),
-            'Sukmajaya' => ProfilWisata::where('kecamatan_id', 6)->get(),
-            'Pancoranmas' => ProfilWisata::where('kecamatan_id', 7)->get(),
-            'Cimanggis' => ProfilWisata::where('kecamatan_id', 8)->get(),
-            'Beji' => ProfilWisata::where('kecamatan_id', 9)->get(),
-            'Limo' => ProfilWisata::where('kecamatan_id', 10)->get(),
-            'Cinere' => ProfilWisata::where('kecamatan_id', 11)->get()
+            'tapos' => ProfilWisata::where('kecamatan_id', 1)->get(),
+            'cilodong' => ProfilWisata::where('kecamatan_id', 2)->get(),
+            'cipayung' => ProfilWisata::where('kecamatan_id', 3)->get(),
+            'sawangan' => ProfilWisata::where('kecamatan_id', 4)->get(),
+            'bojongsari' => ProfilWisata::where('kecamatan_id', 5)->get(),
+            'sukmajaya' => ProfilWisata::where('kecamatan_id', 6)->get(),
+            'pancoran-mas' => ProfilWisata::where('kecamatan_id', 7)->get(),
+            'cimanggis' => ProfilWisata::where('kecamatan_id', 8)->get(),
+            'beji' => ProfilWisata::where('kecamatan_id', 9)->get(),
+            'limo' => ProfilWisata::where('kecamatan_id', 10)->get(),
+            'cinere' => ProfilWisata::where('kecamatan_id', 11)->get()
         ];
 
         $hotel = [];
