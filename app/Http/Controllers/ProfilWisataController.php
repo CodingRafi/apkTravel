@@ -150,7 +150,8 @@ class ProfilWisataController extends Controller
             'urlBack' => $data->category->slug,
             'koleksis' => $koleksi,
             'fotos' => $foto,
-            'kecamatan' => Kecamatan::where('id', $data->kecamatan_id)->get()
+            'kecamatan' => Kecamatan::where('id', $data->kecamatan_id)->get(),
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -349,5 +350,58 @@ class ProfilWisataController extends Controller
     public function checkSlug(Request $request){
         $slug = SlugService::createSlug(ProfilWisata::class, 'slug', $request->nama);
         return response()->json(['slug' => $slug]);
+    }
+
+    public function kecamatan(Request $request, $kecamatan){
+        $kecamatan1 = Kecamatan::where('nama', $kecamatan)->first();
+        $dataWisata = $kecamatan1->profilwisata;
+        $hotel = [];
+        $destinasi = [];
+        $makanan = [];
+        $travel = [];
+        $oleh = [];
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 8) {
+                $hotel[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 1 || $data->category_id == 2 || $data->category_id == 3) {
+                $destinasi[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 4 || $data->category_id == 5 || $data->category_id == 6) {
+                $makanan[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 7) {
+                $oleh[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 9) {
+                $travel[] = $data;
+            } 
+        }
+
+
+        return view('dashboard.kecamatan.index', [
+            'datas' => $dataWisata,
+            'title' => $kecamatan,
+            "kecamatans" => Kecamatan::all(),
+            "categories" => Category::all(),
+            'hotel' => $hotel,
+            'destinasi' => $destinasi,
+            'makanan' => $makanan,
+            'oleh' => $oleh,
+            'travel' => $travel
+        ]);
     }
 }

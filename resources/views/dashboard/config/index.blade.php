@@ -82,7 +82,7 @@
                                       <button type="button" class="btn buttonModalKoleksi btn-outline-primary" data-toggle="modal" data-target="#koleksi" style="padding: 5px 15px;margin: 10px 0;border-radius: 5px;width: 100%;">
                                         Buat koleksi baru
                                     </button>
-                                    <a href="" class="btn btn-outline-primary" style="padding: 5px 15px;border-radius: 5px;width: 100%;">Tambah urutan</a>
+                                    {{-- <a href="" class="btn btn-outline-primary" style="padding: 5px 15px;border-radius: 5px;width: 100%;">Tambah urutan</a> --}}
                                 </div>
                               </div>
                         </div>
