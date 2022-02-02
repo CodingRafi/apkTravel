@@ -18,6 +18,6 @@
 
 @for ($i = 0; $i < 3; $i++)
 <div id="ez{{ $i+1 }}" class="modal">
-    <iframe src="{{ $rss[$i]['link'] }}" title="#" style="width: 100%; height: 100%;"></iframe>
+    {{-- <iframe src="{{ $rss[$i]['link'] }}" title="#" style="width: 100%; height: 100%;"></iframe> --}}
 </div>
 @endfor

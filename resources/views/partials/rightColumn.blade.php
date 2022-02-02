@@ -2,6 +2,7 @@
 
 <div class="column flex" >
     {{-- berita --}}
+    {{-- @dd($wisatas) --}}
     {{-- <div class="header">
        
     </div> --}}

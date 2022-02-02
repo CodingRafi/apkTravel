@@ -40,16 +40,14 @@
 @section('peta-detail')
 {{-- @dd($hotel) --}}
 @foreach ($kecamatans as $data)
-<<<<<<< HEAD
 {{-- @dd($data) --}}
 {{-- @dd(count($hotel[$data->nama])) --}}
 {{-- @dd($semuaData) --}}
-=======
->>>>>>> ee28d86a6b6dc8fe97a2c5ba184e03323d6c741b
+
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
 <div id="ex{{ $data->id }}" class="modal">
     <div style="padding-bottom: 3rem">
-        {{-- <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center> --}}
+        <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center>
     </div>
     <div class="row">
         <div class="col-3">
@@ -60,18 +58,7 @@
                 <a class="nav-link modal-link" id="v-pills-travel-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-travel{{ $data->id }}" role="tab" aria-controls="v-pills-travel{{ $data->id }}" aria-selected="false" data-key="9">Travel</a>
                 <a class="nav-link modal-link" id="v-pills-oleh-tab{{ $data->id }}" data-toggle="pill" href="#v-pills-oleh{{ $data->id }}" role="tab" aria-controls="v-pills-oleh{{ $data->id }}" aria-selected="false" data-key="7">Oleh Oleh</a>
             </div>
-<<<<<<< HEAD
         </div>
-        <div class="col-9">
-            <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
-                <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
-                    
-                    <div class="list-group">
-                            
-                            @if (count($hotel[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($hotel[$data->nama]); $i++)
-                                    <a href="show/{{ $hotel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->nama][$i]->nama }}</a>  
-=======
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
                     <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
@@ -79,7 +66,7 @@
                             @if (count($hotel[$data->slug]) > 0)
                                 @for ($i = 0; $i < count($hotel[$data->slug]); $i++)
                                     <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>  
->>>>>>> ee28d86a6b6dc8fe97a2c5ba184e03323d6c741b
+
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -165,6 +152,7 @@
             </div>
         </div>
     </div>
+
     @endforeach
 
     {{-- <script>
