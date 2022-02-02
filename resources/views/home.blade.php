@@ -39,8 +39,8 @@
 
 {{-- detil wisata peta --}}
 @section('peta-detail')
+{{-- @dd($hotel) --}}
 @foreach ($kecamatans as $data)
-{{-- @dd($data) --}}
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
     <div id="ex{{ $data->id }}" class="modal">
         <div style="padding-bottom: 3rem">
@@ -60,9 +60,9 @@
                 <div class="tab-content" id="v-pills-tabContent{{ $data->id }}">
                     <div class="tab-pane fade show active" id="v-pills-hotel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-hotel-tab{{ $data->id }}">
                         <div class="list-group">
-                            @if (count($hotel[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($hotel[$data->nama]); $i++)
-                                    <a href="show/{{ $hotel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->nama][$i]->nama }}</a>  
+                            @if (count($hotel[$data->slug]) > 0)
+                                @for ($i = 0; $i < count($hotel[$data->slug]); $i++)
+                                    <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>  
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -78,9 +78,9 @@
                     <div class="tab-pane fade" id="v-pills-wisata{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-wisata-tab{{ $data->id }}">
                         <div class="list-group">
 
-                            @if (count($destinasi[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($destinasi[$data->nama]); $i++)
-                                    <a href="show/{{ $destinasi[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $destinasi[$data->nama][$i]->nama }}</a>  
+                            @if (count($destinasi[$data->slug]) > 0)
+                                @for ($i = 0; $i < count($destinasi[$data->slug]); $i++)
+                                    <a href="show/{{ $destinasi[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $destinasi[$data->slug][$i]->nama }}</a>  
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -95,9 +95,9 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-restoran{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-restoran-tab{{ $data->id }}">
                         <div class="list-group">
-                            @if (count($makanan[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($makanan[$data->nama]); $i++)
-                                    <a href="show/{{ $makanan[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $makanan[$data->nama][$i]->nama }}</a>  
+                            @if (count($makanan[$data->slug]) > 0)
+                                @for ($i = 0; $i < count($makanan[$data->slug]); $i++)
+                                    <a href="show/{{ $makanan[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $makanan[$data->slug][$i]->nama }}</a>  
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -112,9 +112,9 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-travel{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-travel-tab{{ $data->id }}">
                         <div class="list-group">
-                            @if (count($travel[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($travel[$data->nama]); $i++)
-                                    <a href="show/{{ $travel[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $travel[$data->nama][$i]->nama }}</a>  
+                            @if (count($travel[$data->slug]) > 0)
+                                @for ($i = 0; $i < count($travel[$data->slug]); $i++)
+                                    <a href="show/{{ $travel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $travel[$data->slug][$i]->nama }}</a>  
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -129,9 +129,9 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-oleh{{ $data->id }}" role="tabpanel" aria-labelledby="v-pills-oleh-tab{{ $data->id }}">
                         <div class="list-group">
-                            @if (count($oleh[$data->nama]) > 0)
-                                @for ($i = 0; $i < count($oleh[$data->nama]); $i++)
-                                    <a href="show/{{ $oleh[$data->nama][$i]->slug }}" class="list-group-item list-group-item-action">{{ $oleh[$data->nama][$i]->nama }}</a>  
+                            @if (count($oleh[$data->slug]) > 0)
+                                @for ($i = 0; $i < count($oleh[$data->slug]); $i++)
+                                    <a href="show/{{ $oleh[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $oleh[$data->slug][$i]->nama }}</a>  
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
