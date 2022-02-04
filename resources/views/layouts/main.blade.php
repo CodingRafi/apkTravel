@@ -44,6 +44,10 @@
         transform-style: preserve-3d;
         margin: 10px 5px;
     }
+    .header {
+        padding:5px;
+    }
+   
     </style>
     <title>Kota Depok</title>
 </head>
@@ -62,7 +66,7 @@
             <div class="column flex">
 
                 {{-- sambutan --}}
-                <div class="wrapper">
+                <div  class="wrapper">
                     <div class="header">Video</div>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
@@ -84,18 +88,17 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </button>
+                      <div class="container">  <a href="/">[   ] Klik untuk video fullscreen</a></div>
                     </div>
-                    <div class="footer">
-                       <a href="/">[   ] Klik untuk video fullscreen</a>
-                    </div>
-                </div>
-
-                {{-- cuaca --}}
+                   {{-- cuaca --}}
                 <div class="cuaca-frame flex">
 
                     @yield('cuaca')
                     
                 </div>
+                </div>
+
+                
             </div>
 
             {{-- kolum tengah --}}
@@ -157,10 +160,10 @@
                 </div>
 
                 {{-- kontak --}}
-                <div class="kontak-frame flex">
+                <div class="kontak-frame flex container">
                     <div class="kontak flex">
                         <h5>Contact Center</h5>
-                        <h1>{{ $config[0]->contact }}</h1>
+                        <h3>{{ $config[0]->contact }}</h3>
                     </div>
                     <div class="customer flex">
                         <h5>Alamat</h5>

@@ -1,7 +1,8 @@
 <div class="topbar">
     <div class="topbar-head flex">
         <img src="/images/home-screen/logo-depok.png" alt="logo-kota-depok">
-        <h2>Kota Depok</h2>
+        <h4>Anjungan <span>Wisata Depok</span></h4>
+       
     </div>
     <div class="topbar-body flex">
         <marquee behavior="scroll" direction="left">

@@ -43,14 +43,12 @@
 {{-- @dd($data) --}}
 {{-- @dd(count($hotel[$data->nama])) --}}
 {{-- @dd($semuaData) --}}
-<<<<<<< HEAD
-
-=======
->>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
 {{-- @dd($semuaData[$data->nama][0]['slug']) --}}
-<div id="ex{{ $data->id }}" class="modal">
+<div id="ex{{ $data->id }}" role="dialog" class="modal">
+    
     <div style="padding-bottom: 3rem">
         <center><img src="/images/home-screen/kecamatan.png" style="width: 4rem; display: inline-block; padding-block: 1rem;"><h2>{{ $data->nama }}</h2></center>
+       
     </div>
     <div class="row">
         <div class="col-3">
@@ -68,12 +66,8 @@
                         <div class="list-group">
                             @if (count($hotel[$data->slug]) > 0)
                                 @for ($i = 0; $i < count($hotel[$data->slug]); $i++)
-<<<<<<< HEAD
-                                    <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>  
 
-=======
                                     <a href="show/{{ $hotel[$data->slug][$i]->slug }}" class="list-group-item list-group-item-action">{{ $hotel[$data->slug][$i]->nama }}</a>
->>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
                                 @endfor
                             @else
                             <div class="jumbotron jumbotron-fluid">
@@ -156,18 +150,20 @@
                         </div>
                     </div>
                 </div>
+                
+            </div>
+            <div class="modal-footer">
+* Tekan di luar area kotak dialog untuk menutup kotak dialog ini
+            
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
+    
     @endforeach
-=======
-@endforeach
->>>>>>> 2988d113a3a354d943d4abbdd2d287d1e67358ed
-
+    
     {{-- <script>
-        const modalLink = document.querySelectorAll('.modal-link');
-        console.log(modalLink);
+        $('close').click(function(){
+            alert('close');
+        });
     </script> --}}
 @endsection
