@@ -32,7 +32,8 @@
     </div> --}}
     <div id="list-wisata" class="berita-frame" >
         <h4 class="header">Wisata Kota Depok</h4>
-        <div class="">
+        @if (count($wisatas) > 0) 
+        <div class="bungcon12">
           @if (count($wisatas) <= 10)
             {{-- @for ($i = 0; $i < count($wisatas); $i++)
               <ul class="list-group">
@@ -94,6 +95,13 @@
         <div class="footer">
           <button type="button" class="btn btn-primary loadMore">Load More....</button>
         </div>
+        @else
+        <div class="bungkus" style="height: 90%;display: flex;justify-content: center;align-items: center;">
+          <div class="alert alert-success" role="alert">
+            Maaf tidak ada data yang ditemukan
+          </div>
+        </div>
+        @endif
     </div>
     
 </div>

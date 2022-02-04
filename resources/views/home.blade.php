@@ -150,20 +150,14 @@
                         </div>
                     </div>
                 </div>
-                
-            </div>
-            <div class="modal-footer">
-* Tekan di luar area kotak dialog untuk menutup kotak dialog ini
-            
             </div>
         </div>
     </div>
     
     @endforeach
-    
+   
     {{-- <script>
-        $('close').click(function(){
-            alert('close');
-        });
+        const modalLink = document.querySelectorAll('.modal-link');
+        console.log(modalLink);
     </script> --}}
 @endsection
