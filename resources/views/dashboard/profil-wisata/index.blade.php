@@ -41,7 +41,7 @@
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $berita->judul }}</td>
                                             <td>
-                                                <a href="/dashboard/berita/{{ $berita->slug }}" class="btn btn-info">See</a>
+                                                <a href="/dashboard/berita/{{ $berita->slug }}" class="btn btn-info">Lihat</a>
                                                 <a href="/dashboard/berita/{{ $berita->slug }}/edit" class="btn btn-warning">Edit</a>
                                                 <form action="/dashboard/berita/{{ $berita->slug }}" method="post" class="d-inline">
                                                     @method('delete')

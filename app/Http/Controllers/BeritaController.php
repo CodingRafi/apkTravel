@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Video;
 use App\Models\Berita;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,7 +35,8 @@ class BeritaController extends Controller
     {
         return view("dashboard.berita.tambah", [
             "categories" => Category::all(),
-            "title" => "Tambah Berita"
+            "title" => "Tambah Berita",
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -95,7 +97,8 @@ class BeritaController extends Controller
             "categories" => Category::all(),
             'foto' => $data->foto,
             'video' => $data->video,
-            'urlBack' => $data->category->slug
+            'urlBack' => $data->category->slug,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -114,7 +117,8 @@ class BeritaController extends Controller
             'title' => $title->nama,
             "categories" => Category::all(),
             'foto' => $data->foto,
-            'video' => $data->video
+            'video' => $data->video,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 

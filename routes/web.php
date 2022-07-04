@@ -3,6 +3,7 @@
 use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\HomeController;
@@ -27,11 +28,13 @@ use App\Http\Controllers\ProfilWisataController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     // return view('welcome');
+//    // Route::get('/')
+// });
+Route::get('/', [HomeController::class, 'indexWelcome']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/load-more', [HomeController::class, 'loadMore']);
 Route::get('/show/{slug}', [HomeController::class, 'show']);
 Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
@@ -66,9 +69,11 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
         "profilWisatas" => $category->profilWisata,
         "beritas" => $category->berita,
         "title" => $category->nama,
-        "slug" => $category->slug
+        "slug" => $category->slug,
+        "kecamatans" => Kecamatan::all(),
     ]);
 })->middleware('auth');
+Route::get('/dashboard/kecamatan/{kecamatan:nama}', [ProfilWisataController::class, 'kecamatan'])->middleware('auth');
 
 Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');

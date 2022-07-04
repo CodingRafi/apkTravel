@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -44,7 +45,8 @@ class FotoController extends Controller
             "koleksies" => $koleksi,
             "fotos" => $foto,
             "profilwisatas" => $profilWisata,
-            "beritas" => $berita
+            "beritas" => $berita,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -60,7 +62,8 @@ class FotoController extends Controller
             'next' => 'Uploads',
             "categories" => Category::all(),
             'kategori' => session()->get( 'kategori' ),
-            'urlBack' => session()->get('urlBack')
+            'urlBack' => session()->get('urlBack'),
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -71,7 +74,8 @@ class FotoController extends Controller
             'next' => 'Uploads',
             "categories" => Category::all(),
             'kategori' => session()->get( 'kategori' ),
-            'slug' => $slug
+            'slug' => $slug,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 

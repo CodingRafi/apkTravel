@@ -49,7 +49,7 @@ class ProfilWisataController extends Controller
      */
     public function store(StoreProfilWisataRequest $request)
     {
-       
+        // dd($request);
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'slug' => 'required|unique:profil_wisatas',
@@ -65,14 +65,30 @@ class ProfilWisataController extends Controller
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
             'website' => 'max:500',
-            'kecamatan_id' => 'required' 
+            'kecamatan_id' => 'required',
         ]);
-        
         
         $validatedFilename = $request->validate([
             'filename' => 'mimes:jpg,jpeg,png,mp4,mp3|file|max:501760'
         ]);
-        
+
+        if($request->urutan){
+            $data = ProfilWisata::where('urutan', $request->urutan)->get();
+            if(count($data) > 0){
+                if($request->tetap){
+                    $affected = ProfilWisata::where('id', $data[0]->id)
+                    ->update(['urutan' => null]);
+                    $validatedData['urutan'] = $request->urutan;
+                }else{
+                    $validateData = $request->validate([
+                        'urutan' => 'max:10|unique:profil_wisatas' 
+                    ]);
+                }
+            }else{
+                $validatedData['urutan'] = $request->urutan;
+            }
+        }
+
         if($request->file('logo')){
             $validatedData['logo'] = $request->file('logo')->store('logos');
         }
@@ -134,7 +150,8 @@ class ProfilWisataController extends Controller
             'urlBack' => $data->category->slug,
             'koleksis' => $koleksi,
             'fotos' => $foto,
-            'kecamatan' => Kecamatan::where('id', $data->kecamatan_id)->get()
+            'kecamatan' => Kecamatan::where('id', $data->kecamatan_id)->get(),
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -205,6 +222,27 @@ class ProfilWisataController extends Controller
         $validatedFilename = $request->validate([
             'filename' => 'mimes:jpg,jpeg,png,mp4,mp3|file|max:501760'
         ]);
+
+        if($request->urutan){
+            $dataUrutan = ProfilWisata::where('urutan', $request->urutan)->get();
+            if(count($dataUrutan) > 0){
+                if($data->id != $dataUrutan[0]->id){
+                    if($request->tetap){
+                        $affected = ProfilWisata::where('id', $dataUrutan[0]->id)
+                        ->update(['urutan' => null]);
+                        $validateData['urutan'] = $request->urutan;
+                    }else{
+                        $validateData = $request->validate([
+                            'urutan' => 'max:10|unique:profil_wisatas' 
+                        ]);
+                    }
+                }else{
+                    $validateData['urutan'] = $request->urutan;
+                }
+            }else{
+                $validateData['urutan'] = $request->urutan;
+            }
+        }
 
         ProfilWisata::where('id', $data->id)
             ->update($validateData);
@@ -312,5 +350,58 @@ class ProfilWisataController extends Controller
     public function checkSlug(Request $request){
         $slug = SlugService::createSlug(ProfilWisata::class, 'slug', $request->nama);
         return response()->json(['slug' => $slug]);
+    }
+
+    public function kecamatan(Request $request, $kecamatan){
+        $kecamatan1 = Kecamatan::where('nama', $kecamatan)->first();
+        $dataWisata = $kecamatan1->profilwisata;
+        $hotel = [];
+        $destinasi = [];
+        $makanan = [];
+        $travel = [];
+        $oleh = [];
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 8) {
+                $hotel[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 1 || $data->category_id == 2 || $data->category_id == 3) {
+                $destinasi[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 4 || $data->category_id == 5 || $data->category_id == 6) {
+                $makanan[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 7) {
+                $oleh[] = $data;
+            } 
+        }
+
+        foreach ($dataWisata as $key => $data) {
+            if ($data->category_id == 9) {
+                $travel[] = $data;
+            } 
+        }
+
+
+        return view('dashboard.kecamatan.index', [
+            'datas' => $dataWisata,
+            'title' => $kecamatan,
+            "kecamatans" => Kecamatan::all(),
+            "categories" => Category::all(),
+            'hotel' => $hotel,
+            'destinasi' => $destinasi,
+            'makanan' => $makanan,
+            'oleh' => $oleh,
+            'travel' => $travel
+        ]);
     }
 }

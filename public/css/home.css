@@ -56,7 +56,7 @@ body * {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
 }
 
 .topbar-head>*,
@@ -103,7 +103,7 @@ body * {
     width: 1024px;
 }
 
-.main img {
+#gambarPeta {
     border-radius: 10px;
     width: 100%;
 }
@@ -186,6 +186,24 @@ body * {
     width: 3rem;
 }
 
+.modal {
+    overflow-y: auto !important;
+    padding-bottom: 5rem !important;
+}
+
+.modal a.close-modal {
+    display: none !important;
+}
+
+.nav-link {
+    color: black;
+}
+
+.col-3 .active {
+    color: whitesmoke;
+    background: rgb(42, 84, 131) !important;
+}
+
 .detail-default p {
     color: rgba(53, 53, 53, 0.7);
     text-align: center;
@@ -242,9 +260,20 @@ body * {
     padding-inline: .5rem;
 }
 
+.image-parent {
+    width: 6rem;
+}
+
+.image-parent img {
+    object-fit: cover;
+}
+
 /*** 2.4 - cuaca ***/
 .cuaca-frame {
-    background: var(--card-transparent-color);
+    background-blend-mode: overlay;
+    background-image: url(/images/home-screen/background-cuaca.jpg), linear-gradient(rgba(178, 205, 228, 1),rgba(255, 255, 255, 1));
+    background-position: center;
+    background-size: cover;
     flex-direction: column;
     font-size: 1.5rem;
     height: 100%;
@@ -278,6 +307,10 @@ body * {
     justify-content: center;
 }
 
+.customer h5 {
+    text-align: center;
+}
+
 /* .kontak-frame img {
     margin-inline: auto;
     width: 2.5rem;
@@ -290,23 +323,41 @@ body * {
 }
 
 .sub>.card {
+    border-radius: 10px;
     box-shadow: var(--box-shadow-header);
-    height: fit-content;
     margin: 0;
     padding: 0;
     width: 48%;
 }
 
+.card-img {
+    border-radius: 10px;
+    object-fit: cover;
+    height: 257px;
+    width: 100%;
+}
+
 .card-img-overlay {
     background: rgba(0, 0, 0, 0.616);
-    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     bottom: 0;
+    color: whitesmoke;
     top: auto;
+    transition: ease-in-out 250ms;
+}
+
+.card-img-overlay:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .card-img-overlay~img {
-    object-fit: scale-down;
+    /* object-fit: scale-down; */
     width: 100%;
+    border-radius: 10px;
 }
 
 /*** 2.7 - detail item ***/
@@ -536,7 +587,49 @@ body * {
         width: 100%;
     }
 }
+.header{
+	border-bottom:1px solid #ebeff2;
+	padding:10px 0;
+	text-align:center;
+	color:#59687f;
+	font-size:600;
+	font-size:19px;	
+	position:relative;
+}
+div.footer {
+	text-align: right;
+	position: relative;
+	margin: 20px 5px;
+}
 
+div.footer a.Cbtn{
+	padding: 10px 25px;
+	background-color: #DADADA;
+	color: #666;
+	margin: 10px 2px;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 3px;
+}
+
+div.footer a.Cbtn-primary{
+	background-color: #5AADF2;
+	color: #FFF;
+}
+
+div.footer a.Cbtn-primary:hover{
+	background-color: #7dbef5;
+}
+
+div.footer a.Cbtn-danger{
+	background-color: #fc5a5a;
+	color: #FFF;
+}
+
+div.footer a.Cbtn-danger:hover{
+	background-color: #fd7676;
+}
 /*** 4.3 - large screen ***/
 @media (min-width: 1600px) {
     :root {

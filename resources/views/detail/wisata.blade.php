@@ -1,4 +1,4 @@
-{{-- @dd($data) --}}
+{{-- @dd($urlBack) --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +20,7 @@
     {{-- css --}}
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.css" integrity="sha512-JP49dvydjvdq6qd31grbdqIeExUyLFFIIneoetY/cJ+eQeJ6ok5HhaM4kQfIeQV4maAMGQ5kf4In3T7VKwMufg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Kota Depok</title>
 </head>
@@ -29,7 +30,6 @@
 
 
     @include('partials.topbar')
-
 
     {{-- Konten --}}
     <div class="main detail">
@@ -58,30 +58,42 @@
                             <th scope="row">Pengelola</th>
                             <td>{!! $data[0]->pengelola !!}</td>
                         </tr>
+                        @isset($data[0]->instagram)      
                         <tr>
                             <th scope="row">Instagram</th>
                             <td>{{$data[0]->instagram}}</td>
                         </tr>
+                        @endisset
+                        @isset($data[0]->youtube)    
                         <tr>
                             <th scope="row">youtube</th>
                             <td>{{$data[0]->youtube}}</td>
                         </tr>
+                        @endisset
+                        @isset($data[0]->twitter) 
                         <tr>
                             <th scope="row">twitter</th>
                             <td>{{$data[0]->twitter}}</td>
                         </tr>
+                        @endisset
+                        @isset($data[0]->facebook)  
                         <tr>
                             <th scope="row">Facebook</th>
                             <td>{{$data[0]->facebook}}</td>
                         </tr>
+                        @endisset
+                        @isset($data[0]->whatsapp) 
                         <tr>
                             <th scope="row">Whatsapp</th>
                             <td>{{$data[0]->whatsapp}}</td>
                         </tr>
+                        @endisset
+                        @isset($data[0]->website)  
                         <tr>
                             <th scope="row">Website</th>
                             <td>{{$data[0]->website}}</td>
                         </tr>
+                        @endisset
                     </tbody>
                 </table>
             </div>
@@ -91,6 +103,7 @@
                     <pre>posted on 9 hours ago</pre>
                 </div>
                 {!! $data[0]->deskripsi !!}
+                <a href="/{{ $urlBack }}" class="btn btn-primary">Back</a>
             </div>
         </div>
 
@@ -98,25 +111,44 @@
 
         @if (count($koleksis) > 0)
         @if ($koleksiFoto)
+       {{-- {{ dd($koleksiFoto)}} --}}
         <div class="gallery-frame">
             <h2>Gallery foto</h2>
             <div class="gallery-scroll flex">
-                @for ($i = 0; $i < count($koleksiFoto); $i++)
-                <a href="{{ asset('storage/'. $fotos[$i][0]->filename) }}" class="fancybox" data-fancybox="gallery1">
-                    <img src="{{ asset('storage/'. $fotos[$i][0]->filename) }}">
-                </a>
-                @endfor
+                @foreach ($koleksiFoto as $item)
+                    @for ($i = 0; $i < count($koleksiFoto[0]->foto); $i++)
+                    {{-- {{ dd(count($koleksiFoto[0]->foto)) }} --}}
+                    <a href="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}" class="fancybox" data-fancybox="gallery1">
+                        <img id="video{{$koleksiFoto[0]->foto[$i]->id}}" src="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}">
+                        <h5 class="card-title" for="foto{{$koleksiFoto[0]->foto[$i]->id}}">Foto {{ $i+1 }}</h5>
+                    </a>
+                
+                    
+                    @endfor
+                @endforeach
             </div>
         </div>
         @else
+       
         <div class="gallery-frame">
             <h2>Gallery video</h2>
             <div class="gallery-scroll flex">
-                @for ($i = 0; $i < count($koleksiVideo); $i++)
-                <a href="{{ asset('storage'. $koleksiVideo[$i]) }}" class="fancybox" data-fancybox="gallery2">
-                    <video src="{{ asset('storage'. $koleksiVideo[$i]) }}" autoplay="false"></video>
-                </a>
+                @for ($i = 0; $i < count($koleksiVideo[0]->video); $i++)
+                
+                {{-- {{$koleksiVideo[$i]}} --}}
+                   
+                    <a href="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" class="fancybox" data-fancybox="gallery2">
+                        <video id="video{{$koleksiVideo[0]->video[$i]->id}}" src="{{ asset('storage/'.$koleksiVideo[0]->video[$i]->filename) }}" autoplay="false"></video>
+                        <h5 class="card-title" for="video{{$koleksiVideo[0]->video[$i]->id}}">Video {{ $i+1 }}</h5>
+                    </a>
+                    
+                 
+                {{-- <a href="{{ asset('storage/'. $koleksiVideo[$i][0]->filename) }}" class="fancybox" data-fancybox="gallery2">
+                    <video src="{{ asset('storage/'. $koleksiVideo[$i][0]->filename) }}" autoplay="false"></video>
+                    
+                </a> --}}
                 @endfor
+                
             </div>
         </div>
         @endif
@@ -130,6 +162,9 @@
 
     {{-- javascript --}}
     <script src="js/home-screen.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js" integrity="sha512-ztxZscxb55lKL+xmWGZEbBHekIzy+1qYKHGZTWZYH1GUwxy0hiA18lW6ORIMj4DHRgvmP/qGcvqwEyFFV7OYVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imageMapResizer.min.js"></script>
     <script type="text/javascript">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProfilWisata;
+use App\Models\Kecamatan;
 use App\Models\Category;
 use App\Models\Berita;
 use App\Models\Foto;
@@ -31,6 +32,7 @@ class DashboardController extends Controller
             "beritaEkonomi" => count(Berita::where('category_id', 11)->get()),
             "beritaKesos" => count(Berita::where('category_id', 12)->get()),
             "beritaPemerintahan" => count(Berita::where('category_id', 13)->get()),
+            "kecamatans" => Kecamatan::all()
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\video;
 use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -45,7 +46,8 @@ class VideoController extends Controller
             "koleksies" => $koleksi,
             "videos" => $video,
             "profilwisatas" => $profilWisata,
-            "beritas" => $berita
+            "beritas" => $berita,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -60,7 +62,8 @@ class VideoController extends Controller
             'title' => 'Koleksi',
             'next' => 'Uploads',
             "categories" => Category::all(),
-            'kategori' => session()->get( 'kategori' )
+            'kategori' => session()->get( 'kategori' ),
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 
@@ -71,7 +74,8 @@ class VideoController extends Controller
             'next' => 'Uploads',
             "categories" => Category::all(),
             'kategori' => session()->get( 'kategori' ),
-            'slug' => $slug
+            'slug' => $slug,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 

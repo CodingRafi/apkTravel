@@ -17,6 +17,7 @@
 
     {{-- css --}}
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.css" integrity="sha512-JP49dvydjvdq6qd31grbdqIeExUyLFFIIneoetY/cJ+eQeJ6ok5HhaM4kQfIeQV4maAMGQ5kf4In3T7VKwMufg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Kota Depok</title>
 </head>
@@ -39,6 +40,9 @@
 
     {{-- javascript --}}
     <script src="js/home-screen.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js" integrity="sha512-ztxZscxb55lKL+xmWGZEbBHekIzy+1qYKHGZTWZYH1GUwxy0hiA18lW6ORIMj4DHRgvmP/qGcvqwEyFFV7OYVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../js/imageMapResizer.min.js"></script>
     <script type="text/javascript">
@@ -51,6 +55,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
+
+<script>
+    const loadMore = document.querySelector('.loadMore');
+    const bungcon12 = document.querySelector('.bungcon12');
+    let jumlah = 10;
+    loadMore.addEventListener('click', function(){
+        let penjumlahan = parseInt(jumlah)+10;
+        jumlah = penjumlahan;
+        fetch('load-more?jumlah='+ penjumlahan)
+        .then(response => response.json())
+        .then(data => {
+            bungcon12.innerHTML = '';
+            data['fotos'].forEach((e,i) => {
+                if(e.length > 0){
+                    bungcon12.innerHTML += `
+                    <ul class="list-group">
+                        <a href="show/${data['wisatas'][i]['slug']}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div class="flex-column">
+                            <span class="badge badge-info badge-pill">${i+1}</span>
+                            ${data['wisatas'][i]['nama']}
+                        </div>
+                        <div class="image-parent">
+                            <img src="${'storage/'+e[0].filename}" class="img-fluid" alt="quixote">
+                        </div>
+                        </a>
+                    </ul>
+                    `;
+                }else{
+                bungcon12.innerHTML += `
+                <ul class="list-group">
+                    <a href="show/${data['wisatas'][i]['slug']}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <div class="flex-column">
+                        <span class="badge badge-info badge-pill">${i+1}</span>
+                        ${data['wisatas'][i]['nama']}
+                    </div>
+                    <div class="image-parent">
+                        <img src="/images/home-screen/berita.jpg" class="img-fluid" alt="quixote">  
+                    </div>
+                    </a>
+                </ul>
+                `;
+                }
+            });
+        })
+    })
+</script>
 </body>
 
 </html>

@@ -1,5 +1,4 @@
 
-
 <nav class="pcoded-navbar">
     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
     <div class="pcoded-inner-navbar main-menu">
@@ -91,6 +90,47 @@
                     <span class="pcoded-mtext">Konfigurasi</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
+            </li>
+        </ul>
+
+        <div class="pcoded-navigation-label">Detail Wisata Kota</div>
+        <ul class="pcoded-item pcoded-left-item mengelolaPcoded" style="padding: 0 0 6px;">
+            <li class="pcoded-hasmenu {{ Request::is('dashboard/kecamatan*') ? 'active' : '' }}">
+                <a href="javascript:void(0)" class="waves-effect waves-dark" style="height: 45px">
+                    <span class="pcoded-micon"><svg class="ti-layout-grid2-alt svg-hotel" version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        width="32.000000pt" height="32.000000pt" viewBox="0 0 32.000000 32.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                       
+                       <g transform="translate(0.000000,32.000000) scale(0.100000,-0.100000)"
+                        stroke="none">
+                       <path d="M10 301 c-5 -11 -10 -74 -10 -140 0 -152 -1 -151 125 -151 95 0 125
+                       5 125 21 0 5 -49 9 -110 9 l-110 0 0 130 0 131 103 -3 102 -3 3 -67 c2 -38 7
+                       -68 12 -68 15 0 12 134 -2 148 -8 8 -49 12 -120 12 -96 0 -108 -2 -118 -19z"/>
+                       <path d="M50 240 c0 -6 30 -10 70 -10 40 0 70 4 70 10 0 6 -30 10 -70 10 -40
+                       0 -70 -4 -70 -10z"/>
+                       <path d="M50 170 c0 -6 30 -10 70 -10 40 0 70 4 70 10 0 6 -30 10 -70 10 -40
+                       0 -70 -4 -70 -10z"/>
+                       <path d="M182 138 c-17 -17 -15 -63 2 -78 8 -6 24 -10 35 -8 11 2 32 -9 49
+                       -25 39 -38 55 -16 17 23 -15 16 -24 33 -20 40 4 6 -1 22 -9 35 -18 27 -54 33
+                       -74 13z m56 -32 c5 -24 -10 -38 -31 -30 -17 6 -23 35 -10 48 12 12 38 1 41
+                       -18z"/>
+                       </g>
+                       </svg>
+                       <b>BC</b></span>
+                    <span class="pcoded-mtext">Wisata Kota</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    @foreach ($kecamatans as $kecamatan)
+                    <li class="{{ Request::is('dashboard/kecamatan/'. $kecamatan->nama) ? 'active' : '' }}">
+                        <a href="/dashboard/kecamatan/{{ $kecamatan->nama }}" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">{{ $kecamatan->nama }}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
             </li>
         </ul>
 

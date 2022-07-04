@@ -6,6 +6,7 @@ use App\Models\Foto;
 use App\Models\Video;
 use App\Models\Koleksi;
 use App\Models\Category;
+use App\Models\Kecamatan;
 use App\Models\Configurasi;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreConfigurasiRequest;
@@ -49,7 +50,8 @@ class ConfigurasiController extends Controller
             'fotos' => $fotos,
             'videos' => $videos,
             'koleksifoto' => $koleksiFoto,
-            'koleksivideo' => $koleksiVideo
+            'koleksivideo' => $koleksiVideo,
+            "kecamatans" => Kecamatan::all(),
         ]);
     }
 

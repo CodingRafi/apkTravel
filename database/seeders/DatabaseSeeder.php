@@ -25,47 +25,58 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Kecamatan::create([
-            'nama' => 'Tapos'
+            'nama' => 'Tapos',
+            'slug' => 'tapos'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Cilodong'
+            'nama' => 'Cilodong',
+            'slug' => 'cilodong'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Cipayung'
+            'nama' => 'Cipayung',
+            'slug' => 'cipayung'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Sawangan'
+            'nama' => 'Sawangan',
+            'slug' => 'sawangan'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Bojongsari'
+            'nama' => 'Bojongsari',
+            'slug' => 'bojongsari'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Sukmajaya'
+            'nama' => 'Sukmajaya',
+            'slug' => 'sukmajaya'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Pancoranmas'
+            'nama' => 'Pancoran Mas',
+            'slug' => 'pancoran-mas'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Cimanggis'
+            'nama' => 'Cimanggis',
+            'slug' => 'cimanggis'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Beji'
+            'nama' => 'Beji',
+            'slug' => 'beji'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Limo'
+            'nama' => 'Limo',
+            'slug' => 'limo'
         ]);
 
         Kecamatan::create([
-            'nama' => 'Cinere'
+            'nama' => 'Cinere',
+            'slug' => 'cinere'
         ]);
 
         Configurasi::create([
