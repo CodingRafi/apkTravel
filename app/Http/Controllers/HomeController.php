@@ -287,6 +287,7 @@ class HomeController extends Controller
         ->get();
         return $city;
     }
+    
     public function listHotel(){
         $wisatas = DB::table('profil_wisatas')
         ->orderBy('updated_at', 'desc')
@@ -313,8 +314,8 @@ class HomeController extends Controller
             'rss' => $rss                             
         ]);
     }
-     public function indexWelcome(){
-       
+
+    public function indexWelcome(){
         $video = Video::where('berita_id',3)->get();
       
         return view('welcome', [
@@ -356,6 +357,5 @@ class HomeController extends Controller
             'fotos' => $foto
         ]);
     }
-  
 }
 ?>
