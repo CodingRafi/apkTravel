@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
-use App\Models\Video;
+use App\Models\video;
 use App\Models\Koleksi;
 use App\Models\Category;
 use App\Models\Kecamatan;

@@ -84,5 +84,7 @@ class DatabaseSeeder extends Seeder
             "alamat" => 'Jl. Margonda Raya, Depok, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431'
         ]);
 
+        $this->call(CategorySeeder::class);
+
     }
 }

@@ -7,23 +7,22 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
 
-            @foreach ($video as $item)
+            {{-- @foreach ($video as $item)
             <div class="carousel-item active">
                 <source src="{{ asset("storage/".$item->filename) }}" type="video/webm">
                 <video id="myVideo" class="d-block w-100" autoplay muted loop>
                     <source src="{{ asset("storage/".$item->filename) }}" type="video/mp4">
                 </video>
             </div>
-           
-            @endforeach
-            {{-- <div class="carousel-item active">
+            @endforeach --}}
+            <div class="carousel-item active">
                 <video class="d-block w-100" autoplay muted loop>
                     <source src="images/welcome-screen/covervid.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="carousel-item">
                 <img src="images/home-screen/w01.jpg" class="d-block w-100" alt="...">
-            </div> --}}
+            </div>
         </div>
     </div>
     <div class="flex-welcome">
@@ -41,7 +40,7 @@
             <br>
             <br>
             <audio id="myAudio" controls >
-                <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg">
+                {{-- <source src="{{ asset("storage/".$item->filename) }}" type="audio/mpeg"> --}}
             Your browser does not support the audio element.
             </audio> 
             <br>
