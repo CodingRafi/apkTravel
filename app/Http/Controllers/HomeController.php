@@ -26,15 +26,13 @@ class HomeController extends Controller
 
         $wisatas = [];
         for ($i=0; $i < 10; $i++) { 
-            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', $i+1)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get();
             if(count($sementara) > 0){
                 $wisatas[] = $sementara[0];
             }
         }
-        // $wisatas[] = DB::table('profil_wisatas')->whereNotNull('urutan')->get()[0];
-        // $wisatas[] = ProfilWisata::where('urutan', null)->get();
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
-            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $sementara1 = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', null)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get()[$i];
             $wisatas[] = $sementara1;
         }
         
@@ -46,18 +44,6 @@ class HomeController extends Controller
         foreach($wisatas as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
         }
-        // dd($wisatas);
-        // $tapos=$this->homeWisataAlam('TAPOS',3);
-        // $cilodong=$this->homeWisataAlam('CILODONG',3);
-        // $cipayung=$this->homeWisataAlam('CIPAYUNG',3);
-        // $sawangan=$this->homeWisataAlam('SAWANGAN',3);
-        // $bojongsari=$this->homeWisataAlam('BOJONGSARI',3);
-        // $sukmajaya=$this->homeWisataAlam('SUKMAJAYA',3);
-        // $pancoranmas=$this->homeWisataAlam('PANCORANMAS',3);
-        // $cimanggis=$this->homeWisataAlam('CIMANGGIS',3);
-        // $beji=$this->homeWisataAlam('BEJI',3);
-        // $limo=$this->homeWisataAlam('LIMO',3);
-        // $cinere=$this->homeWisataAlam('CINERE',3);
 
         $semuaData = [
             'tapos' => ProfilWisata::where('kecamatan_id', 1)->get(),
@@ -123,20 +109,21 @@ class HomeController extends Controller
                 } 
             }
         }
-            return view("home",[
-                'kecamatans'=>$kecamatans,
-                'videoWelcome'=>$videoWelcome,
-                'beritas'=>$beritas,
-                'wisatas'=>$wisatas,
-                'fotos' => $foto,
-                'config' => $config,
-                'rss' => $rss,
-                'jumlah' => 10,
-                'hotel'=> $hotel,
-                'destinasi' => $destinasi,
-                'makanan' => $makanan,
-                'oleh' => $oleh,
-                'travel' => $travel
+
+        return view("test",[
+            'kecamatans'=>$kecamatans,
+            'videoWelcome'=>$videoWelcome,
+            'beritas'=>$beritas,
+            'wisatas'=>$wisatas,
+            'fotos' => $foto,
+            'config' => $config,
+            'rss' => $rss,
+            'jumlah' => 10,
+            'hotel'=> $hotel,
+            'destinasi' => $destinasi,
+            'makanan' => $makanan,
+            'oleh' => $oleh,
+            'travel' => $travel
         ]);
         //     return view("home",[
         //         'kecamatans'=>$kecamatans,

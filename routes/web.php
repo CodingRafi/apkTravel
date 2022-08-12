@@ -83,7 +83,3 @@ Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'creat
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/{category:slug}/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/{category:slug}', [HomeController::class, 'show2']);
-
-
-
-

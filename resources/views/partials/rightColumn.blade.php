@@ -35,7 +35,7 @@
         @if (count($wisatas) > 0) 
         <div class="bungcon12">
           @if (count($wisatas) <= 10)
-            {{-- @for ($i = 0; $i < count($wisatas); $i++)
+            @for ($i = 0; $i < count($wisatas); $i++)
               <ul class="list-group">
                 <a href="show/{{ $wisatas[$i]->slug }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                   <div class="flex-column">
@@ -51,7 +51,7 @@
                   </div>
                 </a>
               </ul>
-            @endfor --}}
+            @endfor
           @else
             @for ($i = 0; $i < $jumlah; $i++)
             <ul class="list-group">
