@@ -12,6 +12,7 @@ use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -316,19 +317,20 @@ class HomeController extends Controller
     public function loadMore(Request $request){
         $wisatas = [];
         for ($i=0; $i < 10; $i++) { 
-            $sementara = ProfilWisata::where('urutan', $i+1)->get();
-            if(count($sementara) > 0){
-                $wisatas[] = $sementara[0];
+            $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama as jenis')->where('profil_wisatas.urutan', $i+1)->leftJoin('categories', 'categories.id', 'profil_wisatas.category_id')->first();
+            // ! maslahnya ada di loopingnya
+            if($sementara){
+                $wisatas[] = $sementara;
             }
         }
-
+        
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
-            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $sementara1 = ProfilWisata::select('profil_wisatas.*', 'categories.nama as jenis')->where('urutan', null)->leftJoin('categories', 'categories.id', 'profil_wisatas.category_id')->get()[$i];
             $wisatas[] = $sementara1;
         }
-
+        
         $wisatasLoadMore = [];
-
+        
         if(count($wisatas) <= $request->jumlah ){
             $wisatasLoadMore = $wisatas;
         }else{
@@ -336,7 +338,7 @@ class HomeController extends Controller
                 $wisatasLoadMore[] = $wisatas[$i];
             }
         }
-
+        
         $foto = [];
         foreach($wisatasLoadMore as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
