@@ -209,11 +209,11 @@ class HomeController extends Controller
     }
 
     public function show2($slug){
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
-        $foto = [];
+        if(count(ProfilWisata::where('slug', $slug)->get()) > 0){
+            $data = ProfilWisata::where('slug', $slug)->get();
+        }else{
+            $data = Berita::where('slug', $slug)->get();
+        }
         
         $rss = app('App\Http\Controllers\RssController')->rss();
 
@@ -228,14 +228,14 @@ class HomeController extends Controller
 
         $wisatas = [];
         for ($i=0; $i < 10; $i++) { 
-            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', $i+1)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get();
             if(count($sementara) > 0){
                 $wisatas[] = $sementara[0];
             }
         }
 
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
-            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $sementara1 = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', null)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get()[$i];
             $wisatas[] = $sementara1;
         }
 
@@ -253,6 +253,9 @@ class HomeController extends Controller
                 $fotoData[] = $foto1[0];
             }
         }
+
+        // $liat=ProfilWisata::all();
+        // @dd($liat);
         
         return view('category',[
             "categories" => Category::all(),
