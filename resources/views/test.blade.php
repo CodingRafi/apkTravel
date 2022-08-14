@@ -104,12 +104,12 @@
                         $temperature_c_w_icon = $weather_data['weather'][0]['icon'];
                         echo "<img src='http://openweathermap.org/img/wn/".$temperature_c_w_icon."@2x.png' style='width: 100px' />";
                         echo "<div>";
-                            echo "<h3 id='jam'></h3>";
-                            echo "<h2>";
-                                echo round ($temperature_in_celc).'℃';
-                                echo "</h2>";
-                                echo "</div>";
-                                ?>
+                        echo "<h3 id='jam'></h3>";
+                        echo "<h2>";
+                        echo round ($temperature_in_celc).'°C';
+                        echo "</h2>";
+                        echo "</div>";
+                        ?>
                         <h3 id="date"></h3>
                         <p class="timertext mt-4 text-success">Tidak Interaksi Selama <span id="idle"
                             class="secs"></span> Detik</p>
@@ -192,31 +192,33 @@
                     <div class="card-body">
                         <h5 class="card-title">Wisata Kota Depok</h5>
                         <hr>
-                        @if(count($wisatas) <= 10)
-                        <ol class="list-group list-group bungcon12">
-                            @for($i = 0; $i < count($wisatas); $i++)
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <a class="fw-bold d-block text-decoration-none text-dark" href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
-                                    {{ $wisatas[$i]->jenis }}
-                                </div>
-                                <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
-                            </li>
-                            @endfor
-                        </ol>
-                        @else
-                        <ol class="list-group list-group bungcon12">
-                            @for($i = 0; $i < $jumlah; $i++)
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto">
-                                    <a class="fw-bold d-block text-decoration-none text-dark" href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
-                                    {{ $wisatas[$i]->jenis }}
-                                </div>
-                                <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
-                            </li>
-                            @endfor
-                        </ol>
-                        @endif
+                        <div class="overflow-auto" style="height: 580px">
+                            @if(count($wisatas) <= 10)
+                            <ol class="list-group list-group bungcon12">
+                                @for($i = 0; $i < count($wisatas); $i++)
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <a class="fw-bold d-block text-decoration-none text-dark" href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
+                                        {{ $wisatas[$i]->jenis }}
+                                    </div>
+                                    <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+                                </li>
+                                @endfor
+                            </ol>
+                            @else
+                            <ol class="list-group list-group bungcon12">
+                                @for($i = 0; $i < $jumlah; $i++)
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                    <div class="ms-2 me-auto">
+                                        <a class="fw-bold d-block text-decoration-none text-dark" href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
+                                        {{ $wisatas[$i]->jenis }}
+                                    </div>
+                                    <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+                                </li>
+                                @endfor
+                            </ol>
+                            @endif
+                        </div>
                         <button class="btn btn-primary w-100 mt-2 loadMore" type="button">lainnya</button>
                     </div>
                 </div>
@@ -524,7 +526,7 @@
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
-
+e
         today = yyyy + '/' + mm + '/' + dd;
 
         var parts = today.split('/');
