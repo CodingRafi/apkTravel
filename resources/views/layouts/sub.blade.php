@@ -256,7 +256,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <a class="fw-bold d-block text-decoration-none text-dark" href="show/${data['wisatas'][i]['slug']}">${data['wisatas'][i]['nama']}</a>
-                                ${data['wisatas']['jenis']}
+                                ${data['wisatas'][i]['jenis']}
                             </div>
                             <span class="badge @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-success @endif rounded-pill">${i+1}</span>
                         </li>
@@ -266,7 +266,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <a class="fw-bold d-block text-decoration-none text-dark" href="show/${data['wisatas'][i]['slug']}">${data['wisatas'][i]['nama']}</a>
-                                ${data['wisatas']['jenis']}
+                                ${data['wisatas'][i]['jenis']}
                             </div>
                             <span class="badge @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-success @endif rounded-pill">${i+1}</span>
                         </li>

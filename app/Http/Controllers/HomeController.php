@@ -256,7 +256,7 @@ class HomeController extends Controller
         }
 
         // $liat=ProfilWisata::all();
-        // @dd($liat);
+        // dd($wisatas);
         
         return view('category',[
             "categories" => Category::all(),
