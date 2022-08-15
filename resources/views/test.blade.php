@@ -197,35 +197,34 @@
                     <div class="card-body">
                         <h5 class="card-title">Wisata Kota Depok</h5>
                         <hr>
-                        @if(count($wisatas) <= 10) <ol class="list-group list-group bungcon12">
-                            @for($i = 0; $i < count($wisatas); $i++) <li
-                                class="list-group-item d-flex justify-content-between align-items-start">
+                        @if(count($wisatas) <= 10)
+                        <ol class="list-group list-group bungcon12" style="overflow: auto !important; height: 500px !important;">
+                            @for($i = 0; $i < count($wisatas); $i++)
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <a class="fw-bold d-block text-decoration-none text-dark"
                                         href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
                                     {{ $wisatas[$i]->jenis }}
                                 </div>
-                                <span
-                                    class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
-                                </li>
-                                @endfor
-                                </ol>
-                                @else
-                                <ol class="list-group list-group bungcon12">
-                                    @for($i = 0; $i < $jumlah; $i++) <li
-                                        class="list-group-item d-flex justify-content-between align-items-start">
-                                        <div class="ms-2 me-auto">
-                                            <a class="fw-bold d-block text-decoration-none text-dark"
-                                                href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
-                                            {{ $wisatas[$i]->jenis }}
-                                        </div>
-                                        <span
-                                            class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
-                                        </li>
-                                        @endfor
-                                </ol>
-                                @endif
-                                <button class="btn btn-primary w-100 mt-2 loadMore" type="button">lainnya</button>
+                                <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+                            </li>
+                            @endfor
+                        </ol>
+                        @else
+                        <ol class="list-group list-group bungcon12" style="overflow: auto !important; height: 500px !important;">
+                            @for($i = 0; $i < $jumlah; $i++)
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <a class="fw-bold d-block text-decoration-none text-dark"
+                                        href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
+                                    {{ $wisatas[$i]->jenis }}
+                                </div>
+                                <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+                            </li>
+                            @endfor
+                        </ol>
+                        @endif
+                        <button class="btn btn-primary w-100 mt-2 loadMore" type="button">lainnya</button>
                     </div>
                 </div>
             </div>
@@ -614,6 +613,7 @@
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
+
         today = yyyy + '/' + mm + '/' + dd;
 
         var parts = today.split('/');
