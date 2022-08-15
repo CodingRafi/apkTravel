@@ -86,7 +86,7 @@
         </div>
     </nav>
     <!-- ========================================================= /NAVBAR ========================================================= -->
-
+    
     <div class="container" style="padding-block: 65px;">
         <div class="row g-2">
             <div class="col-md-3">
@@ -95,8 +95,8 @@
                         <a href="/" class="text-dark">klik untuk video fullscreen</a>
                     </div>
                     <div class="card-body text-center d-flex flex-column align-items-center justify-content-end"
-                        style="background-image: url(/images/home-screen/background-cuaca.jpg), linear-gradient(rgba(178, 205, 228, 1),rgba(255, 255, 255, 1)); background-size: cover; background-position: center; background-blend-mode: overlay;">
-                        <?php
+                    style="background-image: url(/images/home-screen/background-cuaca.jpg), linear-gradient(rgba(178, 205, 228, 1),rgba(255, 255, 255, 1)); background-size: cover; background-position: center; background-blend-mode: overlay;">
+                    <?php
                         $city_name = 'Depok';
                         $api_key = 'baf203be46efb79bfadbcd96c9e58ecd';
                         $api_url = 'http://api.openweathermap.org/data/2.5/weather?q='.$city_name.'&appid='.$api_key;
@@ -108,22 +108,22 @@
                         echo "<div>";
                         echo "<h3 id='jam'></h3>";
                         echo "<h2>";
-                        echo round ($temperature_in_celc).'℃';
+                        echo round ($temperature_in_celc).'°C';
                         echo "</h2>";
                         echo "</div>";
                         ?>
                         <h3 id="date"></h3>
                         <p class="timertext mt-4 text-success">Tidak Interaksi Selama <span id="idle"
-                                class="secs"></span> Detik</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <small> tidak interaksi layar selama 1 menit akan berpindah ke tampilan video</small>
+                            class="secs"></span> Detik</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <small> tidak interaksi layar selama 1 menit akan berpindah ke tampilan video</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card bg-light bg-grandient border border-5 shadow">
-                    <img src="/images/home-screen/depok-map-select.jpg" class="card-img-top map" id="gambarPeta"
+                <div class="col-md-6">
+                    <div class="card bg-light bg-grandient border border-5 shadow">
+                        <img src="/images/home-screen/depok-map-select.jpg" class="card-img-top map" id="gambarPeta"
                         usemap="#image-map">
                     <map id="peta-depok" name="image-map" class="map" style="overflow: hidden;">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#modal1"><area data-key="tapos"
@@ -170,17 +170,17 @@
                                 data-key="cinere" alt="cinere"
                                 coords="506,263,524,247,529,252,543,238,550,215,542,203,547,177,558,176,570,156,574,138,586,122,606,66,588,66,582,71,507,74,496,64,489,77,453,79,449,74,428,81,430,107,420,118,428,122,426,141,415,137,421,149,413,164,402,192,392,203,392,238,402,242,397,252,400,263,407,261,416,263,418,270,432,273,447,273,456,264,471,268,476,264,483,263,487,254,494,254,496,264"
                                 shape="poly"></a>
-                    </map>
-                    <div class="card-body text-center pb-1">
-                        <img class="mb-2" src="/images/home-screen/clicking.png" width="30">
-                        <h5 class="card-title">Klik peta untuk menampilkan lokasi wisata kecamatan</h5>
-                    </div>
-                </div>
-                <div class="card bg-light bg-grandient border-0 shadow mt-2">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <h5 class="card-title">Contact Center</h5>
+                            </map>
+                            <div class="card-body text-center pb-1">
+                                <img class="mb-2" src="/images/home-screen/clicking.png" width="30">
+                                <h5 class="card-title">Klik peta untuk menampilkan lokasi wisata kecamatan</h5>
+                            </div>
+                        </div>
+                        <div class="card bg-light bg-grandient border-0 shadow mt-2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        <h5 class="card-title">Contact Center</h5>
                                 <p class="card-text display-6">{{ $config[0]->contact }}</p>
                             </div>
                             <hr>
@@ -231,7 +231,7 @@
             </div>
         </div>
     </div>
-
+    
 
     <!-- ========================================================= MENU ========================================================= -->
     <nav class="navbar fixed-bottom bg-light bg-gradient shadow">
@@ -614,7 +614,6 @@
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
-
         today = yyyy + '/' + mm + '/' + dd;
 
         var parts = today.split('/');
@@ -690,7 +689,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <a class="fw-bold d-block text-decoration-none text-dark" href="show/${data['wisatas'][i]['slug']}">${data['wisatas'][i]['nama']}</a>
-                                ${data['wisatas']['jenis']}
+                                ${data['wisatas'][i]['jenis']}
                             </div>
                             <span class="badge @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-success @endif rounded-pill">${i+1}</span>
                         </li>

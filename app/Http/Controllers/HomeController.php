@@ -12,6 +12,7 @@ use App\Models\ProfilWisata;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -202,11 +203,11 @@ class HomeController extends Controller
     }
 
     public function show2($slug){
-        $wisatas = DB::table('profil_wisatas')
-        ->orderBy('updated_at', 'desc')
-        ->take(4)
-        ->get();
-        $foto = [];
+        if(count(ProfilWisata::where('slug', $slug)->get()) > 0){
+            $data = ProfilWisata::where('slug', $slug)->get();
+        }else{
+            $data = Berita::where('slug', $slug)->get();
+        }
         
         $rss = app('App\Http\Controllers\RssController')->rss();
 
@@ -221,14 +222,14 @@ class HomeController extends Controller
 
         $wisatas = [];
         for ($i=0; $i < 10; $i++) { 
-            $sementara = ProfilWisata::where('urutan', $i+1)->get();
+            $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', $i+1)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get();
             if(count($sementara) > 0){
                 $wisatas[] = $sementara[0];
             }
         }
 
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
-            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $sementara1 = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', null)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get()[$i];
             $wisatas[] = $sementara1;
         }
 
@@ -246,6 +247,9 @@ class HomeController extends Controller
                 $fotoData[] = $foto1[0];
             }
         }
+
+        // $liat=ProfilWisata::all();
+        // dd($wisatas);
         
         return view('category',[
             "categories" => Category::all(),
@@ -306,19 +310,20 @@ class HomeController extends Controller
     public function loadMore(Request $request){
         $wisatas = [];
         for ($i=0; $i < 10; $i++) { 
-            $sementara = ProfilWisata::where('urutan', $i+1)->get();
-            if(count($sementara) > 0){
-                $wisatas[] = $sementara[0];
+            $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama as jenis')->where('profil_wisatas.urutan', $i+1)->leftJoin('categories', 'categories.id', 'profil_wisatas.category_id')->first();
+            // ! maslahnya ada di loopingnya
+            if($sementara){
+                $wisatas[] = $sementara;
             }
         }
-
+        
         for ($i=0; $i < count(ProfilWisata::where('urutan', null)->get()); $i++) { 
-            $sementara1 = ProfilWisata::where('urutan', null)->get()[$i];
+            $sementara1 = ProfilWisata::select('profil_wisatas.*', 'categories.nama as jenis')->where('urutan', null)->leftJoin('categories', 'categories.id', 'profil_wisatas.category_id')->get()[$i];
             $wisatas[] = $sementara1;
         }
-
+        
         $wisatasLoadMore = [];
-
+        
         if(count($wisatas) <= $request->jumlah ){
             $wisatasLoadMore = $wisatas;
         }else{
@@ -326,7 +331,7 @@ class HomeController extends Controller
                 $wisatasLoadMore[] = $wisatas[$i];
             }
         }
-
+        
         $foto = [];
         foreach($wisatasLoadMore as $wisata){
             $foto[] = Foto::where('profil_wisata_id', $wisata->id)->get();
