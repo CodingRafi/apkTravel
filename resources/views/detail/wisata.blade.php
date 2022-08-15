@@ -58,7 +58,7 @@
                             <th scope="row">Pengelola</th>
                             <td>{!! $data[0]->pengelola !!}</td>
                         </tr>
-                        @isset($data[0]->instagram)      
+                        @isset($data[0]->instagram) 
                         <tr>
                             <th scope="row">Instagram</th>
                             <td>{{$data[0]->instagram}}</td>
@@ -67,7 +67,7 @@
                         @isset($data[0]->youtube)    
                         <tr>
                             <th scope="row">youtube</th>
-                            <td>{{$data[0]->youtube}}</td>
+                            <td>{!! $data[0]->pengelola !!}</td>
                         </tr>
                         @endisset
                         @isset($data[0]->twitter) 
@@ -100,7 +100,6 @@
             <div class="detail-columns-right">
                 <div class="berita-header">
                     <h2>{{ $data[0]->nama }}</h2>
-                    <pre>posted on 9 hours ago</pre>
                 </div>
                 {!! $data[0]->deskripsi !!}
                 <a href="/{{ $urlBack }}" class="btn btn-primary">Back</a>
@@ -116,11 +115,11 @@
             <h2>Gallery foto</h2>
             <div class="gallery-scroll flex">
                 @foreach ($koleksiFoto as $item)
-                    @for ($i = 0; $i < count($koleksiFoto[0]->foto); $i++)
+                    @for ($i = 0; $i < count($item->foto); $i++)
                     {{-- {{ dd(count($koleksiFoto[0]->foto)) }} --}}
-                    <a href="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}" class="fancybox" data-fancybox="gallery1">
-                        <img id="video{{$koleksiFoto[0]->foto[$i]->id}}" src="{{ asset('storage/'. $koleksiFoto[0]->foto[$i]->filename) }}">
-                        <h5 class="card-title" for="foto{{$koleksiFoto[0]->foto[$i]->id}}">Foto {{ $i+1 }}</h5>
+                    <a href="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="fancybox" data-fancybox="gallery1">
+                        <img id="video{{$item->foto[$i]->id}}" src="{{ asset('storage/'. $item->foto[$i]->filename) }}">
+                        <h5 class="card-title" for="foto{{$item->foto[$i]->id}}">Foto {{ $i+1 }}</h5>
                     </a>
                 
                     

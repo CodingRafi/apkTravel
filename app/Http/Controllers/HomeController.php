@@ -46,17 +46,17 @@ class HomeController extends Controller
         }
 
         $semuaData = [
-            'tapos' => ProfilWisata::where('kecamatan_id', 1)->get(),
-            'cilodong' => ProfilWisata::where('kecamatan_id', 2)->get(),
-            'cipayung' => ProfilWisata::where('kecamatan_id', 3)->get(),
-            'sawangan' => ProfilWisata::where('kecamatan_id', 4)->get(),
-            'bojongsari' => ProfilWisata::where('kecamatan_id', 5)->get(),
-            'sukmajaya' => ProfilWisata::where('kecamatan_id', 6)->get(),
-            'pancoran-mas' => ProfilWisata::where('kecamatan_id', 7)->get(),
-            'cimanggis' => ProfilWisata::where('kecamatan_id', 8)->get(),
-            'beji' => ProfilWisata::where('kecamatan_id', 9)->get(),
-            'limo' => ProfilWisata::where('kecamatan_id', 10)->get(),
-            'cinere' => ProfilWisata::where('kecamatan_id', 11)->get()
+            'tapos' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 1)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'cilodong' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 2)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'cipayung' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 3)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'sawangan' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 4)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'bojongsari' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 5)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'sukmajaya' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 6)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'pancoran-mas' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 7)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'cimanggis' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 8)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'beji' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 9)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'limo' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 10)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get(),
+            'cinere' => ProfilWisata::select('profil_wisatas.*', 'fotos.filename')->where('kecamatan_id', 11)->leftJoin('fotos','profil_wisatas.id','fotos.profil_wisata_id')->get()
         ];
 
         $hotel = [];
@@ -110,6 +110,19 @@ class HomeController extends Controller
             }
         }
 
+        $datas = ProfilWisata::all();
+
+        $fotoData = [];
+        
+        for ($i=0; $i < count($datas); $i++) { 
+            $foto1 = Foto::where('profil_wisata_id', $datas[$i]->id)->get();
+            if(count($foto1) == 0){
+                $fotoData[] = 'images/jika.jpg';
+            }else{
+                $fotoData[] = $foto1[0];
+            }
+        }
+
         return view("test",[
             'kecamatans'=>$kecamatans,
             'videoWelcome'=>$videoWelcome,
@@ -123,29 +136,9 @@ class HomeController extends Controller
             'destinasi' => $destinasi,
             'makanan' => $makanan,
             'oleh' => $oleh,
-            'travel' => $travel
+            'travel' => $travel,
+            'fotoData' => $fotoData
         ]);
-        //     return view("home",[
-        //         'kecamatans'=>$kecamatans,
-        //         'videoWelcome'=>$videoWelcome,
-        //         'beritas'=>$beritas,
-        //         'wisatas'=>$wisatas,
-        //         'tapos'=>$tapos,
-        //         'cilodong'=>$cilodong,
-        //         'cipayung'=>$cipayung,
-        //         'sawangan'=>$sawangan,
-        //         'bojongsari'=>$bojongsari,
-        //         'sukmajaya'=>$sukmajaya,
-        //         'pancoranmas'=>$pancoranmas,
-        //         'cimanggis'=>$cimanggis,
-        //         'beji'=>$beji,
-        //         'limo'=>$limo,
-        //         'cinere'=>$cinere,
-        //         'fotos' => $foto,
-        //         'config' => $config,
-        //         'rss' => $rss,
-        //         'jumlah' => 10
-        // ]);
     }
 
     public function show(Request $request, $slug){
@@ -189,7 +182,7 @@ class HomeController extends Controller
         if($data[0]->category_id >= 10){
             $halaman = 'detail.berita';
         }else{
-            $halaman = 'detail.wisata';
+            $halaman = 'detil';
         }
         return view($halaman, [
             'beritas'=>$beritas,
