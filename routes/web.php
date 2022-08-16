@@ -39,9 +39,13 @@ Route::get('/show/{slug}', [HomeController::class, 'show']);
 Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/test', function () {
-    return view('layouts.coba');
-});
+// Route::get('/test', function () {
+//     return view('test');
+// });
+
+// Route::get('/detil', function () {
+//     return view('detil');
+// });
 
 // require __DIR__.'/auth.php';
 
