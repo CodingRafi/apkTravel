@@ -94,7 +94,7 @@
             <div class="col-md-7">
                 <div class="card h-100">
                     <div class="card-header">
-                        <a class="btn btn-outline-secondary" href="/{{ $urlBack }}" role="button">Liat hotel lainnya..</a>
+                        <a class="btn btn-outline-secondary" href="/{{ $urlBack }}" role="button">Liat {{ $title }} lainnya..</a>
                     </div>
                     @if (count($foto))
                     <img src="{{asset("storage/".$foto[0]->filename)}}"
@@ -108,8 +108,15 @@
             <div class="col-md-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $data[0]->nama }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $title }}</h6>
+                        <div class="d-flex align-items-center gap-3">
+                            <div>
+                                <img class="rounded-circle" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" width="40" height="40" style="object-fit: cover;">
+                            </div>
+                            <div>
+                                <h5 class="card-title">{{ $data[0]->nama }}</h5>
+                                <h6 class="card-subtitle text-muted">{{ $title }}</h6>
+                            </div>
+                        </div>
                         <hr>
                         <dl class="row">
                             <dt class="col-sm-5">No. Telp</dt>
