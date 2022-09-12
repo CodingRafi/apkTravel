@@ -92,6 +92,7 @@
                                                     @endisset
                                                 
                                                 </div>
+                                                @dd($koleksies[$i]->profilwisata)
                                                 <div class="card-body d-flex" style="padding: 10px 0 0 0;">
                                                     <div class="bagkiri" style="width: 77%;">
                                                         <h5 class="card-title" style="font-size: 15px;margin-bottom: 3px;">{{ $koleksies[$i]->nama }}</h5>

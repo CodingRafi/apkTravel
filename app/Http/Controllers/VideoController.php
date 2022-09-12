@@ -103,7 +103,7 @@ class VideoController extends Controller
                 if ($file->isValid()) {
                     $filename = $file->store('videoUploads');    
                     // dd('oke');
-                    Video::create([
+                    video::create([
                         'koleksi_id' => $koleksi->id,
                         'filename' => $filename
                     ]); 
@@ -158,7 +158,7 @@ class VideoController extends Controller
     public function destroy(video $video, Request $request)
     {
         Storage::delete($video->filename);
-        Video::destroy($video->id);
+        video::destroy($video->id);
         return redirect('/dashboard/koleksi/' . $request->slug);
     }
 }

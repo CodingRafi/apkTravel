@@ -122,8 +122,8 @@ class ProfilWisataController extends Controller
      */
     public function show(ProfilWisata $profilWisata, $slug)
     {
-        $data = ProfilWisata::where('slug', $slug)->get()[0];
-        $title =  Category::where('id', $data->category_id)->get()[0];
+        $data = ProfilWisata::where('slug', $slug)->first();
+        $title =  Category::where('id', $data->category_id)->first();
         $koleksi = $data->koleksi;
 
         $foto = [];
