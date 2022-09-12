@@ -22,7 +22,7 @@ class FotoController extends Controller
      */
     public function index()
     {
-        $koleksi = Koleksi::where('jenis', 'koleksifoto')->get();
+        $koleksi = Koleksi::select('koleksis.*', 'profil_wisatas.nama as nama_profil', 'beritas.judul as nama_berita')->where('jenis', 'koleksifoto')->join('profil_wisatas', 'profil_wisatas.id', 'koleksis.profil_wisata_id')->leftJoin('beritas', 'beritas.id', 'koleksis.berita_id')->get();
             $foto = [];
             for($i = 0; $i < count($koleksi); $i++){
                 if(count($koleksi[$i]->foto) == 0){
@@ -36,6 +36,7 @@ class FotoController extends Controller
                 }
             }
         
+
             $profilWisata = ProfilWisata::all();
             $berita = Berita::all();
 

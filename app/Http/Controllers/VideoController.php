@@ -22,7 +22,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $koleksi = Koleksi::where('jenis', 'koleksivideo')->get();
+        $koleksi = Koleksi::select('koleksis.*', 'profil_wisatas.nama as nama_profil', 'beritas.judul as nama_berita')->where('jenis', 'koleksivideo')->join('profil_wisatas', 'profil_wisatas.id', 'koleksis.profil_wisata_id')->leftJoin('beritas', 'beritas.id', 'koleksis.berita_id')->get();
 
         $video = [];
         for($i = 0; $i < count($koleksi); $i++){
@@ -103,7 +103,7 @@ class VideoController extends Controller
                 if ($file->isValid()) {
                     $filename = $file->store('videoUploads');    
                     // dd('oke');
-                    Video::create([
+                    video::create([
                         'koleksi_id' => $koleksi->id,
                         'filename' => $filename
                     ]); 
@@ -158,7 +158,7 @@ class VideoController extends Controller
     public function destroy(video $video, Request $request)
     {
         Storage::delete($video->filename);
-        Video::destroy($video->id);
+        video::destroy($video->id);
         return redirect('/dashboard/koleksi/' . $request->slug);
     }
 }

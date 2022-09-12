@@ -96,32 +96,58 @@
                                         <div class="bungkusContainer3" style="position: absolute;width: 95%; overflow: auto;height: 35vh;">
                                             <div class="bungkusContainer" style="display: flex;position: absolute">
                                                 @for ($i = 0; $i < count($koleksis); $i++)
-                                                <div class="card" style="width: 180px;margin: 0 10px;">
-                                                    @isset($fotos[$i]['fotoAda'])
-                                                        <div class="hiden" style="height: 90px;overflow: hidden;">
-                                                            <img src="{{ asset('storage/'.$fotos[$i]['fotoAda'][0]->filename) }}" class="card-img-top" style="overflow: hidden;">
+                                                    @if ($koleksis[$i]->jenis == 'koleksifoto')           
+                                                        <div class="card" style="width: 180px;margin: 0 10px;">
+                                                            @isset($fotos[$i]['fotoAda'])
+                                                                <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                                    <img src="{{ asset('storage/'.$fotos[$i]['fotoAda'][0]->filename) }}" class="card-img-top" style="overflow: hidden;">
+                                                                </div>
+                                                            @endisset
+                                                                
+                                                            @isset($fotos[$i]['fotoGada'])
+                                                                <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                                    <img src="{{ $fotos[$i]['fotoGada']}}" class="card-img-top" >
+                                                                </div>
+                                                            @endisset
+                                                            <div class="card-body">
+                                                                <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">{{ $koleksis[$i]->nama }}</h5>
+                                                                <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">Total : 
+                                                                @isset($fotos[$i]['fotoAda'])
+                                                                    <span>{{ count($fotos[$i]['fotoAda']) }}</span>
+                                                                @endisset
+                                                                    
+                                                                @isset($fotos[$i]['fotoGada'])
+                                                                    <span>0</span>
+                                                                @endisset
+                                                                </h5>
+                                                                <span>Kategori: Foto</span>
+                                                                <br>
+                                                                <a href="/dashboard/koleksi/{{ $koleksis[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
+                                                            </div>
                                                         </div>
-                                                    @endisset
-                                                        
-                                                    @isset($fotos[$i]['fotoGada'])
-                                                        <div class="hiden" style="height: 90px;overflow: hidden;">
-                                                            <img src="{{ $fotos[$i]['fotoGada']}}" class="card-img-top" >
+                                                    @else
+                                                    <div class="card" style="width: 180px;margin: 0 10px;">
+                                                        @if (count($koleksis[$i]->video) > 0)
+                                                            <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                                <video src="{{ asset('storage/'. $koleksis[$i]->video[0]->filename) }}" class="card-img-top"></video>
+                                                            </div>
+                                                        @else   
+                                                            <div class="hiden" style="height: 90px;overflow: hidden;">
+                                                                <img src="/images/jika.jpg" class="card-img-top" style="overflow: hidden;">
+                                                            </div>
+                                                        @endif
+
+                                                        <div class="card-body">
+                                                            <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">{{ $koleksis[$i]->nama }}</h5>
+                                                            <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">Total : 
+                                                                <span>{{ count($koleksis[$i]->video) }}</span>
+                                                            </h5>
+                                                            <span>Kategori: Video</span>
+                                                            <br>
+                                                            <a href="/dashboard/koleksi/{{ $koleksis[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
                                                         </div>
-                                                    @endisset
-                                                    <div class="card-body">
-                                                        <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">{{ $koleksis[$i]->nama }}</h5>
-                                                        <h5 class="card-title" style="font-size: 13px;margin-bottom: 3px;">Total : 
-                                                        @isset($fotos[$i]['fotoAda'])
-                                                            <span>{{ count($fotos[$i]['fotoAda']) }}</span>
-                                                        @endisset
-                                                            
-                                                        @isset($fotos[$i]['fotoGada'])
-                                                            <span>0</span>
-                                                        @endisset
-                                                        </h5>
-                                                        <a href="/dashboard/koleksi/{{ $koleksis[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
                                                     </div>
-                                                </div>
+                                                    @endif
                                                 @endfor
                                             </div>
                                         </div>

@@ -96,6 +96,11 @@
                                             <div class="card-body d-flex" style="padding: 10px 0 0 0;">
                                                 <div class="bagkiri" style="width: 77%;">
                                                     <h5 class="card-title" style="font-size: 15px;margin-bottom: 3px;">{{ $koleksies[$i]->nama }}</h5>
+                                                    @if ($koleksies[$i]->nama_profil)
+                                                        Profil Wisata: <span>{{ $koleksies[$i]->nama_profil }}</span>
+                                                    @else
+                                                        Berita :<span>{{ $koleksies[$i]->nama_berita }}</span>
+                                                    @endif
                                                     <a href="/dashboard/koleksi/{{ $koleksies[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
                                                 </div>
                                                 <div class="bagkanan" style="width: 17%">

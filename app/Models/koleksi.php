@@ -24,7 +24,7 @@ class koleksi extends Model
     }
 
     public function video(){
-        return $this->hasMany(Video::class);
+        return $this->hasMany(video::class);
     }
 
     public function profilwisata(){

@@ -107,7 +107,7 @@ class KoleksiController extends Controller
         // dd($koleksi->nama);
         if($koleksi->jenis == 'koleksifoto'){
             $koleksinya = $koleksi->foto;
-            return view('dashboard.koleksi.koleksifoto.show', [
+            return view('dashboard.koleksi.koleksiFoto.show', [
                 'koleksinya' => $koleksinya,
                 'title' => 'Koleksi Foto',
                 'next' => $koleksi->nama,
@@ -117,7 +117,7 @@ class KoleksiController extends Controller
             ]);
         }else{
             $koleksinya = $koleksi->video;
-            return view('dashboard.koleksi.koleksivideo.show', [
+            return view('dashboard.koleksi.koleksiVideo.show', [
                 'koleksinya' => $koleksinya,
                 'title' => 'Koleksi Video',
                 'next' => $koleksi->nama,

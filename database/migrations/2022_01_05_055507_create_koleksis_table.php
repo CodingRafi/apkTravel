@@ -15,7 +15,7 @@ class CreateKoleksisTable extends Migration
     {
         Schema::create('koleksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profil_wisata_id')->nullable();
+            $table->foreignId('profil_wisata_id')->nullable()->constrained();
             $table->foreignId('berita_id')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('nama');

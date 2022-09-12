@@ -70,12 +70,15 @@
                 <h4 class="m-0 pe-5">Anjungan Wisata Depok</h4>
             </div>
             <div class="col-md-12 bg-light h-75 p-0 d-flex align-items-center" style="--bs-bg-opacity: .5;">
+                @if (count($rss) > 0)
                 <marquee class="d-flex" behavior="scroll" direction="Left">
-                    @for ($i = 0; $i < 3; $i++)
+                    @for ($i = 0; $i < 3; $i++) 
                     <a class="link-light text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
-                        href="{{ $rss[$i]['link'] }}"><span class="badge text-bg-light m-0 me-2">Berita {{ $i+1 }}</span>{{ $rss[$i]['title'] }}</a>
+                        href="{{ $rss[$i]['link'] }}"><span class="badge text-bg-light m-0 me-2">Berita
+                            {{ $i+1 }}</span>{{ $rss[$i]['title'] }}</a>
                     @endfor
                 </marquee>
+                @endif
             </div>
         </div>
     </nav>
