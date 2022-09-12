@@ -204,7 +204,7 @@
                                     <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
                                         @for ($i = 0; $i < count($item->video); $i++)
                                         <div class="carousel-item @if ($i == 0) active @endif">
-                                            <a href="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"><video src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100" alt="..." style="height: 150px; object-fit: scale-down;"></a>
+                                            <a href="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"><video src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100" alt="..." style="margin: auto; object-fit: scale-down;" controls></a>
                                         </div>
                                         @endfor
                                     </div>
