@@ -58,7 +58,7 @@ class FotoController extends Controller
      */
     public function create(Request $request)
     {
-        return view('dashboard.koleksi.koleksifoto.tambah', [
+        return view('dashboard.koleksi.koleksiFoto.tambah', [
             'title' => 'Koleksi',
             'next' => 'Uploads',
             "categories" => Category::all(),
@@ -70,7 +70,7 @@ class FotoController extends Controller
 
     public function buat($slug)
     {
-        return view('dashboard.koleksi.koleksifoto.tambah', [
+        return view('dashboard.koleksi.koleksiFoto.tambah', [
             'title' => 'Koleksi',
             'next' => 'Uploads',
             "categories" => Category::all(),

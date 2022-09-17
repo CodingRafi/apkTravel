@@ -24,6 +24,7 @@ class CreateProfilWisatasTable extends Migration
             $table->text('alamat');
             $table->text('deskripsi');
             $table->text('pengelola');
+            $table->text('iframe');
             $table->text('logo')->nullable();
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();

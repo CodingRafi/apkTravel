@@ -66,6 +66,7 @@ class ProfilWisataController extends Controller
             'whatsapp' => 'max:255',
             'website' => 'max:500',
             'kecamatan_id' => 'required',
+            'iframe' => 'required'
         ]);
         
         $validatedFilename = $request->validate([
@@ -203,7 +204,8 @@ class ProfilWisataController extends Controller
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
             'website' => 'max:500',
-            'kecamatan_id' => 'required'
+            'kecamatan_id' => 'required',
+            'iframe' => 'required'
         ]);
 
         if($request->slug != $data->slug){
