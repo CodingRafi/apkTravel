@@ -2,6 +2,12 @@
 
 @section('container')
 
+<style>
+    .pcoded-main-container{
+        margin-top: 70.9907px !important;
+    }
+</style>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     
 <div class="pcoded-inner-content">

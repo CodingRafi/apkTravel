@@ -205,6 +205,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Iframe Lokasi</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('iframe') is-invalid @enderror" placeholder="Iframe Lokasi" name="iframe" id="iframe" value="{{ old('iframe') }}">
+                                            @error('iframe')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Instagram</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control @error('instagram') is-invalid @enderror" placeholder="Instagram" name="instagram" id="instagram" value="{{ old('instagram') }}">
