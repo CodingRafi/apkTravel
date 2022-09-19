@@ -41,6 +41,17 @@
             background-color: #a8bbbf;
         }
 
+        iframe {
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            height: 360px !important;
+            width: 100% !important;
+        }
+
+        nav.fixed-bottom span.text-dark {
+            display: none;
+        }
+
         @media (min-width: 768px) {
             nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center {
                 border-radius: 0 0 100px 0 !important;
@@ -48,6 +59,10 @@
 
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
                 border-radius: 30% 30% 0 0 !important;
+            }
+
+            nav.fixed-bottom span.text-dark {
+                display: inline;
             }
 
             nav .accordion {
@@ -62,7 +77,7 @@
     </style>
 </head>
 
-<body
+<body class="border border-danger"
     style="min-height: 100vh; background-image: url(/images/home-screen/background.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
 
     <!-- ========================================================= NAVBAR ========================================================= -->
@@ -106,7 +121,14 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="card h-100">
+                @isset($data->first()->iframe)
+                <div class="card mb-2">
+                    <div class="card-body">
+                        {!! $data->first()->iframe !!}
+                    </div>
+                </div>
+                @endisset
+                <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center gap-3">
                             <div>

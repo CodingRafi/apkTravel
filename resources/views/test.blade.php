@@ -39,6 +39,10 @@
             background-color: #a8bbbf;
         }
 
+        nav.fixed-bottom span.text-dark {
+                display: none;
+        }
+
         @media (min-width: 768px) {
             nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center {
                 border-radius: 0 0 100px 0 !important;
@@ -46,6 +50,10 @@
 
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
                 border-radius: 30% 30% 0 0 !important;
+            }
+
+            nav.fixed-bottom span.text-dark {
+                display: inline;
             }
 
             nav .accordion {
@@ -347,7 +355,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <div class="card-body" style="height: 123px;">
+                                                        <div class="card-body" style="min-height: 123px;">
                                                             <a href="show/{{ $hotel[$data->slug][$i]->slug }}"
                                                                 class="card-title h5 text-decoration-none text-dark">{{ $hotel[$data->slug][$i]->nama }}</a>
                                                             <p class="card-text"><small class="text-muted">{!!
@@ -388,7 +396,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <div class="card-body" style="height: 123px;">
+                                                        <div class="card-body" style="min-height: 123px;">
                                                             <a href="show/{{ $destinasi[$data->slug][$i]->slug }}"
                                                                 class="card-title h5 text-decoration-none text-dark">{{ $destinasi[$data->slug][$i]->nama }}</a>
                                                             <p class="card-text"><small class="text-muted">{!!
@@ -429,7 +437,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <div class="card-body" style="height: 123px;">
+                                                        <div class="card-body" style="min-height: 123px;">
                                                             <a href="show/{{ $makanan[$data->slug][$i]->slug }}"
                                                                 class="card-title h5 text-decoration-none text-dark">{{ $makanan[$data->slug][$i]->nama }}</a>
                                                             <p class="card-text"><small class="text-muted">{!!
@@ -470,7 +478,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <div class="card-body" style="height: 123px;">
+                                                        <div class="card-body" style="min-height: 123px;">
                                                             <a href="show/{{ $travel[$data->slug][$i]->slug }}"
                                                                 class="card-title h5 text-decoration-none text-dark">{{ $travel[$data->slug][$i]->nama }}</a>
                                                             <p class="card-text"><small class="text-muted">{!!
@@ -511,7 +519,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <div class="card-body" style="height: 123px;">
+                                                        <div class="card-body" style="min-height: 123px;">
                                                             <a href="show/{{ $oleh[$data->slug][$i]->slug }}"
                                                                 class="card-title h5 text-decoration-none text-dark">{{ $oleh[$data->slug][$i]->nama }}</a>
                                                             <p class="card-text"><small class="text-muted">{!!

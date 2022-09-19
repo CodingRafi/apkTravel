@@ -41,6 +41,13 @@
             display: none;
         }
 
+        iframe {
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            height: 360px !important;
+            width: 100% !important;
+        }
+
         .videoContainer{
             display: none;
         }

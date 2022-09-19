@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="flex-welcome">
+    <div class="flex-welcome pt-2">
         <div class="logo">
             <img src="images/home-screen/logo-depok.png">
             <div class="flex">
