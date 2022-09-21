@@ -1,62 +1,94 @@
 @extends('main')
 
 @section('content')
-
-<div class="container-fluid p-0 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="container">
-        <div class="main detail d-flex justify-content-center align-items-center">
-            <div class="card" style="max-height: 75vh;overflow: auto;">
-                <div class="card-body">
-                    @if ($data[0]->category_id >= 10)
-                    <h2>{{ $data[0]->category->nama }}</h2>
-                    <div class="detail-columns flex">
-                        @if (count($foto) > 0)
-                        <div class="detail-columns-left">
-                            <img src="{{asset("storage/".$foto[0]->filename)}}" alt="feature image" class="sticky-item" style="width: 100%;">
-                        </div>
-                        @else 
-                        <div class="detail-columns-left">
-                            <img src="../images/home-screen/depok-map-select.jpg" alt="">
-                        </div>
-                        @endif
-                
-                        @endif
-                        
-                        <div class="detail-columns-right">
-                            <div class="berita-header">
-                                <h2 class="mt-3">{{$data[0]->judul}}</h2>
-                                <pre>Tanggal posting {{$data[0]->created_at}}</pre>
-                            </div>
-                            <p>{!! $data[0]->body !!}</p>
-                        </div>
-                    </div>
-                
-                        @if (count($koleksiFoto) > 0)
-                        <div class="gallery-frame">
-                            <h2>Gallery foto</h2>
-                            <div class="gallery-scroll flex">
-                                @foreach ($koleksiFoto as $item)
-                                <a href="{{ asset('storage/'. $fotos[0]['fotoAda'][0]->filename) }}" class="fancybox" data-fancybox="gallery1">
-                                    <img src="{{ asset('storage/'. $fotos[0]['fotoAda'][0]->filename) }}">
-                                </a>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
-                        @if (count($koleksiVideo) > 0)
-                        <div class="gallery-frame">
-                            <h2>Gallery video</h2>
-                            <div class="gallery-scroll flex">
-                                @foreach ($koleksiVideo as $item)
-                                <a href="{{ asset('storage/'. $fotos[0]['fotoAda'][0]->filename) }}" class="fancybox" data-fancybox="gallery2">
-                                    <video src="{{ asset('storage/'. $videos[0]['videoAda'][0]->filename) }}" autoplay="false"></video>
-                                </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
+<div class="container" style="padding-block: 65px;">
+    <div class="card h-100 mb-3">
+        <div class="card-header">
+            <a class="btn btn-outline-secondary" href="/{{ $urlBack }}" role="button">Liat {{ $title }}
+                lainnya..</a>
+        </div>
+        @if (count($foto))
+        <img src="{{asset("storage/".$foto[0]->filename)}}" class="img-fluid rounded" alt="..." style="height: 360px; object-fit: cover;">
+        @endif
+        <div class="card-body">
+            <div class="h3 mb-3">{{ $data->first()->judul }}</div>
+            {!! $data[0]->body !!}
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex align-items-center gap-3">
+                <div>
+                    <h6 class="card-subtitle text-muted">{{ $title }}</h6>
                 </div>
             </div>
+            @if (count($koleksis))
+                @if ($koleksiFoto)
+                    @foreach ($koleksiFoto as $item)
+                    <hr>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
+                    <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-indicators">
+                            @for ($i = 0; $i < count($item->foto); $i++)
+                                <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}"
+                                    data-bs-slide-to="{{ $i }}" @if ($i==0) class="active" @endif" aria-current="true"
+                                    aria-label="Slide {{ $i+1 }}"></button>
+                                @endfor
+                        </div>
+                        <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
+                            @for ($i = 0; $i < count($item->foto); $i++)
+                                <div class="carousel-item @if ($i == 0) active @endif">
+                                    <a href="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"><img
+                                            src="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"
+                                            alt="..." style="height: 250px; object-fit: scale-down;"></a>
+                                </div>
+                                @endfor
+                        </div>
+                        <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    @endforeach
+                @endif
+                @if ($koleksiVideo)
+                    @foreach ($koleksiVideo as $item)
+                    <hr>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
+                    <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-indicators">
+                            @for ($i = 0; $i < count($item->video); $i++)
+                            <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide-to="{{ $i }}"
+                            @if ($i == 0) class="active" @endif" aria-current="true" aria-label="Slide {{ $i+1 }}"></button>
+                            @endfor
+                        </div>
+                        <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
+                            @for ($i = 0; $i < count($item->video); $i++)
+                            <div class="carousel-item @if ($i == 0) active @endif">
+                                <a href="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"><video src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100" alt="..." style="height: 250px;margin: auto; object-fit: scale-down;" controls></a>
+                            </div>
+                            @endfor
+                        </div>
+                        <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    @endforeach
+                @endif
+            @endif
         </div>
     </div>
 </div>
