@@ -81,7 +81,7 @@
                 @if (count($rss) > 0)
                 <marquee class="d-flex" behavior="scroll" direction="Left">
                     @for ($i = 0; $i < 3; $i++) 
-                    <a class="link-light text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
+                    <a class="link-dark text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
                         href="{{ $rss[$i]['link'] }}"><span class="badge text-bg-light m-0 me-2">Berita
                             {{ $i+1 }}</span>{{ $rss[$i]['title'] }}</a>
                     @endfor
