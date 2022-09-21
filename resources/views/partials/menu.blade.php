@@ -1,52 +1,60 @@
-<div class="menu">
-    <ul class="menu-frame flex">
-        <li>
-            <a href="/home" class="menu-icon flex">
-                <img src="/icon/home-screen/rumah.svg">
-                Home
-            </a>
-        </li>
-        <li>
-            <a href="/hotel" class="menu-icon flex">
-                <img src="/icon/home-screen/hotel.svg">
-                Hotel
-            </a>
-        </li>
-        <li>
-            <label class="menu-icon flex" for="destinasi-check">
-                <img src="/icon/home-screen/destinasi.svg">
-                Destinasi
-            </label>
-            <input type="checkbox" id="destinasi-check" class="destinasi-check" name="check" onclick="onlyOne(this)">
-            <ul class="dropdown">
-                <li><a href="/wisata-alam">Wisata Alam</a></li>
-                <li><a href="/wisata-buatan">Wisata Buatan</a></li>
-                <li><a href="/wisata-budaya">Wisata Budaya</a></li>
-            </ul>
-        </li>
-        <li>
-            <label class="menu-icon flex" for="makanan-check">
-                <img src="/icon/home-screen/makanan.svg">
-                Makanan
-            </label>
-            <input type="checkbox" id="makanan-check" class="makanan-check" name="check" onclick="onlyOne(this)">
-            <ul class="dropdown">
-                <li><a href="/resto">Restoran</a></li>
-                <li><a href="/kafe">Kafe</a></li>
-                <li><a href="/kuliner">Kuliner</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="/travel" class="menu-icon flex">
-                <img src="/icon/home-screen/travel.svg">
-                Travel
-            </a>
-        </li>
-        <li>
-            <a href="/oleh-oleh" class="menu-icon flex">
-                <img src="/icon/home-screen/oleh-oleh.svg">
-                Oleh-Oleh
-            </a>
-        </li>
-    </ul>
-</div>
+<nav class="navbar fixed-bottom bg-light bg-gradient shadow">
+    <div class="accordion m-auto w-100" id="accordionExample">
+        <div class="row">
+            <div class="col-2 p-0">
+                <a class="d-flex flex-column align-items-center text-decoration-none" href="/home">
+                    <img src="/icon/home-screen/rumah.svg" width="24">
+                    <span class="text-dark">Home</span>
+                </a>
+            </div>
+            <div class="col-2 p-0">
+                <a class="d-flex flex-column align-items-center text-decoration-none" href="/hotel">
+                    <img src="/icon/home-screen/hotel.svg" width="24">
+                    <span class="text-dark">Hotel</span>
+                </a>
+            </div>
+            <div class="col-2 p-0">
+                <div class="d-flex flex-column align-items-center collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <img src="/icon/home-screen/destinasi.svg" width="24">
+                    <span class="text-dark">Destinasi</span>
+                </div>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body d-flex flex-column align-items-center" style="gap: 2rem;">
+                        <a href="/wisata-alam" class="text-decoration-none text-dark">Wisata Alam</a>
+                        <a href="/wisata-buatan" class="text-decoration-none text-dark">Wisata Buatan</a>
+                        <a href="/wisata-budaya" class="text-decoration-none text-dark">Wisata Budaya</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 p-0">
+                <div class="d-flex flex-column align-items-center collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <img src="/icon/home-screen/makanan.svg" width="24">
+                    <span class="text-dark">Makanan</span>
+                </div>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body d-flex flex-column align-items-center" style="gap: 2rem;">
+                        <a href="/resto" class="text-decoration-none text-dark">Restoran</a>
+                        <a href="/kafe" class="text-decoration-none text-dark">Kafe</a>
+                        <a href="/kuliner" class="text-decoration-none text-dark">Kuliner</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 p-0">
+                <a class="d-flex flex-column align-items-center text-decoration-none" href="/travel">
+                    <img src="/icon/home-screen/travel.svg" width="24">
+                    <span class="text-dark">Travel</span>
+                </a>
+            </div>
+            <div class="col-2 p-0">
+                <a class="d-flex flex-column align-items-center text-decoration-none" href="/oleh-oleh">
+                    <img src="/icon/home-screen/oleh-oleh.svg" width="24">
+                    <span class="text-dark">Oleh-Oleh</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

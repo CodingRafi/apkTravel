@@ -1,109 +1,57 @@
-
-<style>
-  
-.img-user{
-  border-top-right-radius: 10%;
-  border-bottom-right-radius: 10%;
-    height:70px;
-    width:70px;
-
-}
-
-.prj-name{
-    font-weight:bold;
-    color:#5bc0de;
-}
-
-.user-item img, .user-item h3 {
-    display:inline-block;    
-}
-.list-group-item {
-  padding: 0%;
-}
-#list-wisata {
-  padding:0%;
-}
-
-</style>
-<div class="column flex" >
-    {{-- berita --}}
-    {{-- <div class="header">
-       
-    </div> --}}
-    <div id="list-wisata" class="berita-frame" >
-        <h4 class="header">Wisata Kota Depok</h4>
-        @if (count($wisatas) > 0) 
-        <div class="bungcon12">
-          @if (count($wisatas) <= 10)
-            @for ($i = 0; $i < count($wisatas); $i++)
-              <ul class="list-group">
-                <a href="show/{{ $wisatas[$i]->slug }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                  <div class="flex-column">
-                    <span style="font-size: 14px" class="badge badge-info badge-pill">{{$i+1}}</span>
-                   <h5> {{ $wisatas[$i]->nama }}</h5>
+<div class="col-md-3">
+  <div class="card bg-light bg-grandient border-0 shadow h-100">
+      <div class="card-body">
+          <h5 class="card-title">Wisata Kota Depok</h5>
+          <hr>
+          @if(count($wisatas) <= 10)
+          <ol class="list-group list-group bungcon12" style="overflow: auto !important; height: 500px !important;">
+              @for($i = 0; $i < count($wisatas); $i++)
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <a class="fw-bold d-block text-decoration-none text-dark"
+                          href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
+                      {{ $wisatas[$i]->jenis }}
                   </div>
-                  <div class="image-parent">
-                      @if (count($fotos[$i]) > 0)
-                          <img src="{{ asset("storage/".$fotos[$i][0]->filename) }}" class="img-user" alt="quixote">
-                      @else
-                          <img src="/images/home-screen/berita.jpg" class="img-fluid" alt="quixote">  
-                      @endif
-                  </div>
-                </a>
-              </ul>
-            @endfor
+                  <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+              </li>
+              @endfor
+          </ol>
           @else
-            @for ($i = 0; $i < $jumlah; $i++)
-            <ul class="list-group">
-              <a href="show/{{ $wisatas[$i]->slug }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                <div class="flex-column container">
-                  <span class="badge badge-info badge-pill">{{$i+1}}</span>
-                 <h5> {{ $wisatas[$i]->nama }}</h5>
-                </div>
-                <div class="">
-                    @if (count($fotos[$i]) > 0)
-                        <img src="{{ asset("storage/".$fotos[$i][0]->filename) }}" class="img-circle img-user" alt="quixote">
-                    @else
-                        <img src="/images/home-screen/berita.jpg" class="img-fluid" alt="quixote">  
-                    @endif
-                </div>
-              </a>
-            </ul>
-            {{-- <div class="card mb-3" style="max-width: 540px;">
-                <a href="show/{{ $wisatas[$i]->slug }}" style="color: #000;text-decoration: none;">   
-                    <div class="row no-gutters">
-                      <div class="col-md-4">
-                        @if (count($fotos[$i]) > 0)
-                        <img src="{{ asset("storage/".$fotos[$i][0]->filename) }}" class="card-img-top" alt="..." style="margin-top: 3px;">
-                        @else
-                            <img src="/images/home-screen/berita.jpg" class="card-img-top" alt="..." style="margin-top: 3px;">    
-                        @endif
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">{{ $wisatas[$i]->nama }}</h5>
-                        </div>
-                      </div>
-                    </div>
-                </a>
-              </div> --}}
-  
-            @endfor
+          <ol class="list-group list-group bungcon12" style="overflow: auto !important; height: 500px !important;">
+              @for($i = 0; $i < $jumlah; $i++)
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto">
+                      <a class="fw-bold d-block text-decoration-none text-dark"
+                          href="show/{{ $wisatas[$i]->slug }}">{{ $wisatas[$i]->nama }}</a>
+                      {{ $wisatas[$i]->jenis }}
+                  </div>
+                  <span class="badge text-dark @if($i==0) bg-warning @elseif ($i == 1) bg-secondary bg-opacity-50 @else bg-light @endif rounded-pill">{{ $i+1 }}</span>
+              </li>
+              @endfor
+          </ol>
           @endif
-        </div>
-
-        <div class="footer">
-          <button type="button" class="btn btn-primary loadMore">Load More....</button>
-        </div>
-        @else
-        <div class="bungkus" style="height: 90%;display: flex;justify-content: center;align-items: center;">
-          <div class="alert alert-success" role="alert">
-            Maaf tidak ada data yang ditemukan
-          </div>
-        </div>
-        @endif
-    </div>
-    
+          <button class="btn btn-primary w-100 mt-2 loadMore" type="button">lainnya</button>
+      </div>
+      <button type="button" class="btn btn-download-mobile-app" data-bs-toggle="modal" data-bs-target="#modalApp" style="border: none;">
+          <img src="/images/unknown.png" alt="" style="width: 100%;">
+      </button>
+  </div>
 </div>
 
-      
+<!-- Modal -->
+<div class="modal fade" id="modalApp" tabindex="-1" aria-labelledby="modalAppLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="modalAppLabel">Download Mobile App</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="row align-items-center justify-content-center">
+              <img src="/images/qrcode-1663598215.png" alt="" style="width: 15rem;">
+          </div>
+          <h4 class="text-center mt-3">Silahkan scan menggunakan handphone anda</h4>
+      </div>
+      </div>
+  </div>
+  </div>
