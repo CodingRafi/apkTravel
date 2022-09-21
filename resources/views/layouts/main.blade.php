@@ -47,7 +47,11 @@
     .header {
         padding:5px;
     }
-   
+    @media (min-width: 768px) {
+        nav.fixed-bottom span.text-dark {
+            display: inline;
+        }
+    }
     </style>
     <title>Kota Depok</title>
 </head>

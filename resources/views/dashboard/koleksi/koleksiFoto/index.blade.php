@@ -51,11 +51,11 @@
                                         <div class="col-xl-3 col-md-6">
                                             <div class="card" style="box-shadow: 0 0 0;">
                                                 <div class="tampilanAwal" style="height: 19vh;overflow: hidden;">
-                                                    <div class="bag2" style="width: 45%;margin-left: 55%;position: absolute;height: 68%;">
+                                                    <div class="bag2" style="width: 45%;margin-left: 55%;position: absolute;height: 19vh;">
                                                         <div class="bag1" style="background: #000;opacity: .6;height: 100%;width: 100%;"></div>
                                                     </div>
                                                     <div class="bag2" style="width: 45%;margin-left: 55%;position: absolute;height: 68%;">
-                                                        <a href="/dashboard/koleksi/{{ $koleksies[$i]->slug }}/edit" class="btn btn-warning editKoleksi" style="padding: 5px;display: flex;justify-content: center;align-items: center;margin-left: 66%;position: absolute;">
+                                                        <a href="/dashboard/koleksi/{{ $koleksies[$i]->slug }}/edit" class="btn btn-warning editKoleksi" style="padding: 5px;display: flex;justify-content: center;align-items: center;right: 0;position: absolute;">
                                                             <svg style="width: 20px;" version="1.0" xmlns="http://www.w3.org/2000/svg"
                                                             viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
 

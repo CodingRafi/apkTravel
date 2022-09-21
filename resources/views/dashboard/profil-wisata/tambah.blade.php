@@ -207,6 +207,9 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Iframe Lokasi</label>
                                         <div class="col-sm-10">
+                                            <div class="iframe-preview">
+
+                                            </div>
                                             <input type="text" class="form-control @error('iframe') is-invalid @enderror" placeholder="Iframe Lokasi" name="iframe" id="iframe" value="{{ old('iframe') }}">
                                             @error('iframe')   
                                             <div class="invalid-feedback d-block">
@@ -401,6 +404,17 @@
         }
     }
     
+</script>
+
+<script>
+    const input = document.querySelector('#iframe');
+    const preview = document.querySelector('.iframe-preview');
+
+    input.addEventListener ('change', function () {
+        if (input.value.includes('<iframe src="https://www.google.com/maps/embed?')) {
+            preview.innerHTML = input.value;
+        }
+    });
 </script>
 
 @endsection
