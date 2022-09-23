@@ -6,7 +6,7 @@
         <div class="card-header position-relative p-3">
             <div class="row">
                 <div class="col">
-                <h4 style="text-transform: capitalize;">{{ (request('search') || request('kategori')) ? (request('search') ?? str_replace("-", " ", request('kategori'))) : 'All Destinasi' }}</h5>
+                <h4 style="text-transform: capitalize;">{{ (request('search') || request('kategori')) ? (request('search') ?? str_replace("-", " ", request('kategori'))) : 'Semua Wisata' }} ({{ count($profils) }})</h5>
                 </div>
                 <div class="col-5">
                     <div class="container-fluid p-0 d-flex" style="right: 0">
@@ -16,7 +16,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <form action="/destinasi/show" method="get">
-                                    <button type="submit" class="dropdown-item">All Destinasi</button>
+                                    <button type="submit" class="dropdown-item">Semua Wisata</button>
                                 </form>
                                 @foreach ($categories as $key => $categori)
                                     @if ($key < 9)
@@ -46,13 +46,9 @@
                     @foreach ($profils as $profil)
                         <div class="col-md-6" style="margin: .5rem 0">
                             <div class="card">
-                                @if (count($profil->koleksi) > 0)
-                                    @if (count($profil->koleksi[0]->foto) > 0)
-                                        <img src="{{ asset('storage/'. $profil->koleksi[0]->foto[0]->filename) }}"
-                                        class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
-                                    @else
-                                        <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
-                                    @endif
+                                @if (count($profil->foto) > 0)
+                                    <img src="{{ asset('storage/'. $profil->foto[0]->filename) }}"
+                                    class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
                                 @else
                                     <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
                                 @endif

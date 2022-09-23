@@ -42,6 +42,10 @@
             border-radius: 30% 30% 0 0 !important;
         }
 
+        .body-category::-webkit-scrollbar {
+            display: none;
+        }
+
         nav.fixed-bottom span.text-dark {
             display: inline;
         }

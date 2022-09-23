@@ -30,7 +30,9 @@
               @endfor
           </ol>
           @endif
-          <a href="/destinasi/show" class="btn btn-primary w-100 mt-2">Lainnya</a>
+          @if (($jml_all_wisata - 10) > 0)
+          <a href="/destinasi/show" class="btn btn-primary w-100 mt-2">Lainnya ({{ $jml_all_wisata - 10 }})</a>
+          @endif
       </div>
       <button type="button" class="btn btn-download-mobile-app" data-bs-toggle="modal" data-bs-target="#modalApp" style="border: none;">
           <img src="/images/unknown.png" alt="" style="width: 100%;">

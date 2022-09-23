@@ -32,6 +32,7 @@ class CreateProfilWisatasTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('website')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

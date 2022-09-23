@@ -2,7 +2,7 @@
     <div class="row m-0 h-100" style="width: 100%;">
         <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center"
             style="height: 60px; z-index: 1;">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="/images/home-screen/logo-depok.png" alt="" width="30"
                     class="d-inline-block align-text-top" style="object-fit: cover;">
             </a>

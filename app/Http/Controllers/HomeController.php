@@ -138,7 +138,8 @@ class HomeController extends Controller
             'makanan' => $makanan,
             'oleh' => $oleh,
             'travel' => $travel,
-            'fotoData' => $fotoData
+            'fotoData' => $fotoData,
+            'jml_all_wisata' => ProfilWisata::count()
         ]);
     }
 
@@ -181,12 +182,15 @@ class HomeController extends Controller
 
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
         $beritaLainnya = [];
+        $beritaTerkait = [];
         if($data[0]->category_id >= 10){
             $halaman = 'detail.berita';
             $beritaLainnya = Berita::where('id', '!=', $data[0]->id)
             ->orderBy('updated_at', 'desc')
             ->take(4)
             ->get();
+
+            $beritaTerkait = Berita::select('beritas.*')->where('categories.id', $data[0]->category_id)->join('categories', 'categories.id', 'beritas.category_id')->take(4)->orderBy('beritas.created_at', 'desc')->where('beritas.id', '!=', $data[0]->id)->get();
         }else{
             $halaman = 'detil';
         }
@@ -205,6 +209,8 @@ class HomeController extends Controller
             'urlBack' => $title->slug,
             'rss' => $rss,
             'beritaLainnya' => $beritaLainnya,
+            'beritaTerkait' => $beritaTerkait,
+            'jml_all_wisata' => ProfilWisata::count()
         ]);
     }
 
@@ -268,7 +274,8 @@ class HomeController extends Controller
             'fotoData' => $fotoData,
             'namaHal' => $category->nama,
             'rss' => $rss,
-            'jumlah' => 10,                          
+            'jumlah' => 10,      
+            'jml_all_wisata' => ProfilWisata::count()                    
         ]);
     }
    
@@ -302,7 +309,8 @@ class HomeController extends Controller
             'beritas'=>$beritas,
             'wisatas'=>$wisatas,
             'hotels'=>$hotel,
-            'rss' => $rss                             
+            'rss' => $rss,
+            'jml_all_wisata' => ProfilWisata::count()                             
         ]);
     }
 
@@ -310,7 +318,8 @@ class HomeController extends Controller
         $video = Video::where('berita_id',3)->get();
       
         return view('welcome', [
-            'video' => $video
+            'video' => $video,
+            'jml_all_wisata' => ProfilWisata::count()
         ]);
     }
 

@@ -51,6 +51,10 @@
                 border-radius: 0 0 100px 0 !important;
             }
 
+            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center.col-3 h4{
+                display: block !important;
+            }
+
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
                 border-radius: 30% 30% 0 0 !important;
             }
