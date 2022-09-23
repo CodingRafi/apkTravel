@@ -75,73 +75,12 @@
                 </div>
                 @if (count($foto))
                 <img src="{{asset("storage/".$foto[0]->filename)}}"
-                class="img-fluid rounded" alt="..." style="height: 300px; object-fit: cover;">
+                class="img-fluid    rounded" alt="..." style="height: 300px; object-fit: cover;">
                 @endif
                 <div class="card-body">
                     {!! $data[0]->deskripsi !!}
                 </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            @isset($data->first()->iframe)
-            <div class="card mb-2">
-                <div class="card-body">
-                    {!! $data->first()->iframe !!}
-                </div>
-            </div>
-            @endisset
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center gap-3">
-                        <div>
-                            <img class="rounded-circle" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" width="40" height="40" style="object-fit: cover;">
-                        </div>
-                        <div>
-                            <h5 class="card-title">{{ $data[0]->nama }}</h5>
-                            <h6 class="card-subtitle text-muted">{{ $title }}</h6>
-                        </div>
-                    </div>
-                    <hr>
-                    <dl class="row">
-                        <dt class="col-sm-5">No. Telp</dt>
-                        <dd class="col-sm-7">{{$data[0]->no_telp}}</dd>
-
-                        <dt class="col-sm-5">Alamat <i class="bi bi-geo-alt-fill ms-2"></i></dt>
-                        <dd class="col-sm-7">{!! $data[0]->alamat !!}</dd>
-
-                        <dt class="col-sm-5">Pengelola</dt>
-                        <dd class="col-sm-7">{!! $data[0]->pengelola !!}</dd>
-
-                        @isset($data[0]->instagram) 
-                        <dt class="col-sm-5 text-truncate">Instagram</dt>
-                        <dd class="col-sm-7">{{$data[0]->instagram}}</dd>
-                        @endisset
-                        
-                        @isset($data[0]->youtube) 
-                        <dt class="col-sm-5">youtube <i class="bi bi-youtube ms-2"></i></dt>
-                        <dd class="col-sm-7">{{ $data[0]->youtube }}</dd>
-                        @endisset
-                        
-                        @isset($data[0]->twitter) 
-                        <dt class="col-sm-5">twitter <i class="bi bi-twitter ms-2"></i></dt>
-                        <dd class="col-sm-7">{{$data[0]->twitter}}</dd>
-                        @endisset
-                        
-                        @isset($data[0]->facebook) 
-                        <dt class="col-sm-5">Facebook <i class="bi bi-facebook ms-2"></i></dt>
-                        <dd class="col-sm-7">{{$data[0]->facebook}}</dd>
-                        @endisset
-                        
-                        @isset($data[0]->whatsapp) 
-                        <dt class="col-sm-5">Whatsapp <i class="bi bi-whatsapp ms-2"></i></dt>
-                        <dd class="col-sm-7">{{$data[0]->whatsapp}}</dd>
-                        @endisset
-                        
-                        @isset($data[0]->website) 
-                        <dt class="col-sm-5">Website</dt>
-                        <dd class="col-sm-7">{{$data[0]->website}}</dd>
-                        @endisset
-                    </dl>
+                <div class="container" style="padding-bottom: 1rem;">
                     @if (count($koleksis))
                         @if ($koleksiFoto)
                             @foreach ($koleksiFoto as $item)
@@ -208,6 +147,66 @@
                     @endif
                 </div>
             </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-3">
+                        <div>
+                            <img class="rounded-circle" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" width="40" height="40" style="object-fit: cover;">
+                        </div>
+                        <div>
+                            <h5 class="card-title">{{ $data[0]->nama }}</h5>
+                            <h6 class="card-subtitle text-muted">{{ $title }}</h6>
+                        </div>
+                    </div>
+                    <hr>
+                    <dl class="row">
+                        <dt class="col-sm-5">No. Telp</dt>
+                        <dd class="col-sm-7">{{$data[0]->no_telp}}</dd>
+
+                        <dt class="col-sm-5">Alamat <i class="bi bi-geo-alt-fill ms-2"></i></dt>
+                        <dd class="col-sm-7">{!! $data[0]->alamat !!}</dd>
+
+                        <dt class="col-sm-5">Pengelola</dt>
+                        <dd class="col-sm-7">{!! $data[0]->pengelola !!}</dd>
+
+                        @isset($data[0]->instagram) 
+                        <dt class="col-sm-5 text-truncate">Instagram</dt>
+                        <dd class="col-sm-7">{{$data[0]->instagram}}</dd>
+                        @endisset
+                        
+                        @isset($data[0]->youtube) 
+                        <dt class="col-sm-5">youtube <i class="bi bi-youtube ms-2"></i></dt>
+                        <dd class="col-sm-7">{{ $data[0]->youtube }}</dd>
+                        @endisset
+                        
+                        @isset($data[0]->twitter) 
+                        <dt class="col-sm-5">twitter <i class="bi bi-twitter ms-2"></i></dt>
+                        <dd class="col-sm-7">{{$data[0]->twitter}}</dd>
+                        @endisset
+                        
+                        @isset($data[0]->facebook) 
+                        <dt class="col-sm-5">Facebook <i class="bi bi-facebook ms-2"></i></dt>
+                        <dd class="col-sm-7">{{$data[0]->facebook}}</dd>
+                        @endisset
+                        
+                        @isset($data[0]->whatsapp) 
+                        <dt class="col-sm-5">Whatsapp <i class="bi bi-whatsapp ms-2"></i></dt>
+                        <dd class="col-sm-7">{{$data[0]->whatsapp}}</dd>
+                        @endisset
+                        
+                        @isset($data[0]->website) 
+                        <dt class="col-sm-5">Website</dt>
+                        <dd class="col-sm-7">{{$data[0]->website}}</dd>
+                        @endisset
+                    </dl>
+                    @isset($data->first()->iframe)
+                    {!! $data->first()->iframe !!}
+                    @endisset
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

@@ -1,12 +1,9 @@
 @extends('main')
 
 @section('content')
+{{-- @dd($beritaLainnya) --}}
 <div class="container" style="padding-block: 65px;">
     <div class="card h-100 mb-3">
-        <div class="card-header">
-            <a class="btn btn-outline-secondary" href="/{{ $urlBack }}" role="button">Liat {{ $title }}
-                lainnya..</a>
-        </div>
         @if (count($foto))
         <img src="{{asset("storage/".$foto[0]->filename)}}" class="img-fluid rounded" alt="..." style="height: 360px; object-fit: cover;">
         @endif
@@ -15,6 +12,7 @@
             {!! $data[0]->body !!}
         </div>
     </div>
+    @if (count($koleksis))
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center gap-3">
@@ -22,7 +20,6 @@
                     <h6 class="card-subtitle text-muted">{{ $title }}</h6>
                 </div>
             </div>
-            @if (count($koleksis))
                 @if ($koleksiFoto)
                     @foreach ($koleksiFoto as $item)
                     <hr>
@@ -88,8 +85,56 @@
                     </div>
                     @endforeach
                 @endif
+            </div>
+        </div>
+    @endif
+    
+    <div class="card">
+        <div class="card-body">
+            @if (count($data[0]->category->berita) > 0)    
+            <h5>Berita Terkait</h5>
+            <div class="container-fluid p-0 d-flex">
+                @foreach ($data[0]->category->berita as $berita)  
+                <div class="card m-2" style="width: 18rem;">
+                    @if (count($berita->koleksi) > 0)
+                        @if (count($berita->koleksi[0]->foto) > 0)
+                            <img src="{{ asset('storage/'. $berita->koleksi[0]->foto[0]->filename) }}"
+                            class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                        @else
+                            <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                        @endif
+                    @else
+                        <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                    @endif
+                    <div class="card-body">
+                      <a class="card-title" href="/berita/{{ $berita->slug }}">{{ $berita->judul }}</a>
+                    </div>
+                  </div>
+                @endforeach
+            </div>
             @endif
+            <h5 class="mt-3">Berita Lainnya</h5>
+            <div class="container-fluid p-0 d-flex">
+                @foreach ($beritaLainnya as $berita)  
+                <div class="card m-2" style="width: 18rem;">
+                    @if (count($berita->koleksi) > 0)
+                        @if (count($berita->koleksi[0]->foto) > 0)
+                            <img src="{{ asset('storage/'. $berita->koleksi[0]->foto[0]->filename) }}"
+                            class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                        @else
+                            <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                        @endif
+                    @else
+                        <img src="/images/jika.jpg" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                    @endif
+                    <div class="card-body">
+                        <a class="card-title" href="/berita/{{ $berita->slug }}">{{ $berita->judul }}</a>
+                    </div>
+                  </div>
+                @endforeach
+            </div>
         </div>
     </div>
+    
 </div>
 @endsection

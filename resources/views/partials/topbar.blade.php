@@ -9,14 +9,16 @@
             <h4 class="m-0 pe-5">Anjungan Wisata Depok</h4>
         </div>
         <div class="col-md-12 bg-light h-75 p-0 d-flex align-items-center" style="--bs-bg-opacity: .5;">
-            @if (count($beritas) > 0)
-            <marquee class="d-flex" behavior="scroll" direction="Left">
-                @foreach ($beritas as $key => $berita)
-                <a class="link-light text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
-                    href="/berita/{{ $berita->slug }}" style="color: #222425!important;"><span class="badge text-bg-light m-0 me-2">Berita
-                        {{ $key+1 }}</span>{{ $berita->judul }}</a>
-                @endforeach
-            </marquee>
+            @if (isset($beritas))    
+                @if (count($beritas) > 0)
+                <marquee class="d-flex" behavior="scroll" direction="Left">
+                    @foreach ($beritas as $key => $berita)
+                    <a class="link-light text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
+                        href="/berita/{{ $berita->slug }}" style="color: #222425!important;"><span class="badge text-bg-light m-0 me-2">Berita
+                            {{ $key+1 }}</span>{{ $berita->judul }}</a>
+                    @endforeach
+                </marquee>
+                @endif
             @endif
         </div>
     </div>

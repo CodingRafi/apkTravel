@@ -50,4 +50,16 @@ class ProfilWisata extends Model
             ]
         ];
     }
+
+    public function scopeFilter($query, array $filter){
+        $query->when($filter['kategori'] ?? false, function($query, $filter){
+            return $query->where('categories.nama', $filter)
+                        ->orWhere('categories.slug', $filter);
+        });
+
+        $query->when($filter['search'] ?? false, function($query, $filter){
+            return $query->where('profil_wisatas.nama', 'like', '%' . $filter . '%')
+                        ->orWhere('profil_wisatas.slug', 'like', '%' . $filter . '%');
+        });
+    }
 }

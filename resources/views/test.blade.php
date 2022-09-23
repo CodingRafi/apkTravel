@@ -478,44 +478,5 @@
             pindah();
         }
     }
-
-
-    /*** 4.0 - LoadMore ***/
-    const loadMore = document.querySelector('.loadMore');
-    const bungcon12 = document.querySelector('.bungcon12');
-    let jumlah = 10;
-    loadMore.addEventListener('click', function () {
-        let penjumlahan = parseInt(jumlah) + 10;
-        jumlah = penjumlahan;
-        fetch('load-more?jumlah=' + penjumlahan)
-            .then(response => response.json())
-            .then(data => {
-                bungcon12.innerHTML = '';
-                data['fotos'].forEach((e, i) => {
-                    if (e.length > 0) {
-                        bungcon12.innerHTML += `
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <a class="fw-bold d-block text-decoration-none text-dark" href="show/${data['wisatas'][i]['slug']}">${data['wisatas'][i]['nama']}</a>
-                            ${data['wisatas'][i]['jenis']}
-                        </div>
-                        <span class="badge @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-success @endif rounded-pill">${i+1}</span>
-                    </li>
-                    `;
-                    } else {
-                        bungcon12.innerHTML += `
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <a class="fw-bold d-block text-decoration-none text-dark" href="show/${data['wisatas'][i]['slug']}">${data['wisatas'][i]['nama']}</a>
-                            ${data['wisatas']['jenis']}
-                        </div>
-                        <span class="badge @if($i==0) bg-warning @elseif ($i == 1) bg-secondary @else bg-success @endif rounded-pill">${i+1}</span>
-                    </li>
-                    `;
-                    }
-                });
-            })
-    })
-
 </script>
 @endsection

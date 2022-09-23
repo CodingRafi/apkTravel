@@ -30,7 +30,7 @@
               @endfor
           </ol>
           @endif
-          <button class="btn btn-primary w-100 mt-2 loadMore" type="button">lainnya</button>
+          <a href="/destinasi/show" class="btn btn-primary w-100 mt-2">Lainnya</a>
       </div>
       <button type="button" class="btn btn-download-mobile-app" data-bs-toggle="modal" data-bs-target="#modalApp" style="border: none;">
           <img src="/images/unknown.png" alt="" style="width: 100%;">

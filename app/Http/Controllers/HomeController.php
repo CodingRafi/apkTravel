@@ -180,8 +180,13 @@ class HomeController extends Controller
         }
 
         $title =  Category::where('id', $data[0]->category_id)->get()[0];
+        $beritaLainnya = [];
         if($data[0]->category_id >= 10){
             $halaman = 'detail.berita';
+            $beritaLainnya = Berita::where('id', '!=', $data[0]->id)
+            ->orderBy('updated_at', 'desc')
+            ->take(4)
+            ->get();
         }else{
             $halaman = 'detil';
         }
@@ -199,6 +204,7 @@ class HomeController extends Controller
             "categories" => Category::all(),
             'urlBack' => $title->slug,
             'rss' => $rss,
+            'beritaLainnya' => $beritaLainnya,
         ]);
     }
 
@@ -221,6 +227,8 @@ class HomeController extends Controller
         
 
         $wisatas = [];
+        $foto = [];
+
         for ($i=0; $i < 10; $i++) { 
             $sementara = ProfilWisata::select('profil_wisatas.*', 'categories.nama AS jenis')->where('urutan', $i+1)->leftJoin('categories', 'profil_wisatas.category_id', 'categories.id')->get();
             if(count($sementara) > 0){
@@ -263,7 +271,6 @@ class HomeController extends Controller
             'jumlah' => 10,                          
         ]);
     }
-
    
     public function homeWisataAlam($kecamatan,$category){
         $city = DB::table('profil_wisatas')
@@ -340,6 +347,28 @@ class HomeController extends Controller
         return response()->json([
             'wisatas' => $wisatasLoadMore,
             'fotos' => $foto
+        ]);
+    }
+
+    public function showAll(Request $request){
+
+        if (request('kategori') || request('search')) {
+            $profils = ProfilWisata::select('profil_wisatas.*')->filter(request(['search', 'kategori']))->join('categories', 'categories.id', 'profil_wisatas.category_id')->get();
+        }else{
+            $profils = ProfilWisata::orderBy('created_at', 'desc')->get();
+        }
+
+        $beritas = DB::table('beritas')
+        ->orderBy('updated_at', 'desc')
+        ->take(4)
+        ->get();
+
+        $categories = Category::all();
+
+        return view('show_all', [
+            'profils' => $profils,
+            'categories' => $categories,
+            'beritas' => $beritas,
         ]);
     }
 }

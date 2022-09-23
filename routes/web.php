@@ -37,6 +37,7 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/load-more', [HomeController::class, 'loadMore']);
 Route::get('/show/{slug}', [HomeController::class, 'show']);
 Route::get('/berita/{berita:slug}', [HomeController::class, 'show']);
+Route::get('/destinasi/show', [HomeController::class, 'showAll']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // Route::get('/test', function () {
