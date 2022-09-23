@@ -39,13 +39,17 @@
             background-color: #a8bbbf;
         }
 
+        .body-category::-webkit-scrollbar {
+            display: none;
+        }
+
         nav.fixed-bottom span.text-dark {
             display: none;
         }
 
         @media (min-width: 768px) {
-            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center {
-                border-radius: 0 0 100px 0 !important;
+            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center.col-3 h4{
+                display: block !important;
             }
 
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
@@ -59,7 +63,6 @@
             nav .accordion {
                 width: 75% !important;
             }
-
         }
     </style>
 </head>
@@ -69,13 +72,13 @@
     {{-- @include('partials.topbar') --}}
     <nav class="navbar fixed-top p-0" style="height: 60px;">
         <div class="row m-0 h-100" style="width: 100%;">
-            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center"
-                style="height: 60px; z-index: 1;">
+            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center col-3"
+                style="height: 60px; z-index: 1; border-radius: 0 0 100px 0;">
                 <a class="navbar-brand" href="#">
                     <img src="/images/home-screen/logo-depok.png" alt="" width="30"
                         class="d-inline-block align-text-top" style="object-fit: cover;">
                 </a>
-                <h4 class="m-0 pe-5">Anjungan Wisata Depok</h4>
+                <h4 class="m-0 pe-5" style="display: none">Anjungan Wisata Depok</h4>
             </div>
             <div class="col-md-12 bg-light h-75 p-0 d-flex align-items-center" style="--bs-bg-opacity: .5;">
                 @if (count($rss) > 0)
@@ -99,32 +102,31 @@
             {{-- @include('partials.subColumn') --}}
             <div class="col-md-9">
                 <div class="card border-0 shadow h-100" >
-                    <h1 style="background: none;box-shadow: none;margin-top: 10px;margin-left: 20px;">{{ $namaHal }}
-                    </h1>
+                    <div class="card-header">
+                        <h1>{{ $namaHal }}</h1>
+                    </div>
                     
-                    <div class="card-body">
-                        <div class="overflow-auto" style="height: 520px;">
-                            <div class="row g-2" >
-                                @if (count($datas) > 0)
-                                    @for ($i = 0; $i < count($datas); $i++)
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            @if ($fotoData[$i] == 'images/jika.jpg')
-                                                <img src="{{ $fotoData[$i] }}" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
-                                            @else
-                                                <img src="{{ asset('storage/'. $fotoData[$i]->filename ) }}" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
-                                            @endif
-                                            <div class="card-body">
-                                                <a href="/show/{{ $datas[$i]->slug }}" style="text-decoration: none;color:black;">
-                                                    <h5 class="card-title">{!! $datas[$i]->nama !!}</h5>
-                                                    <p class="card-text">{!! $datas[$i]->alamat !!}</p>
-                                                </a>
-                                            </div>
+                    <div class="card-body body-category" style="max-height: 520px; overflow-y: auto;">
+                        <div class="row g-2" >
+                            @if (count($datas) > 0)
+                                @for ($i = 0; $i < count($datas); $i++)
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        @if ($fotoData[$i] == 'images/jika.jpg')
+                                            <img src="{{ $fotoData[$i] }}" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                                        @else
+                                            <img src="{{ asset('storage/'. $fotoData[$i]->filename ) }}" class="card-img-top mh-100" style="height: 133px;object-fit:cover;">
+                                        @endif
+                                        <div class="card-body">
+                                            <a href="/show/{{ $datas[$i]->slug }}" style="text-decoration: none;color:black;">
+                                                <h5 class="card-title">{!! $datas[$i]->nama !!}</h5>
+                                                <p class="card-text">{!! $datas[$i]->alamat !!}</p>
+                                            </a>
                                         </div>
                                     </div>
-                                    @endfor
-                                @endif
-                            </div>
+                                </div>
+                                @endfor
+                            @endif
                         </div>
                     </div>
                 </div>

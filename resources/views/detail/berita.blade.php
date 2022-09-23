@@ -41,6 +41,25 @@
             background-color: #a8bbbf;
         }
 
+        .berita-terkait::-webkit-scrollbar {
+            height: 20px;
+        }
+
+        .berita-terkait::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        .berita-terkait::-webkit-scrollbar-thumb {
+            background-color: #92929291;
+            border-radius: 20px;
+            border: 6px solid transparent;
+            background-clip: content-box;
+        }
+
+        .berita-terkait::-webkit-scrollbar-thumb:hover {
+            background-color: #a8bbbf;
+        }
+
         iframe {
             border-radius: 10px;
             border: 1px solid lightgray;
@@ -53,8 +72,8 @@
         }
 
         @media (min-width: 768px) {
-            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center {
-                border-radius: 0 0 100px 0 !important;
+            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center.col-3 h4{
+                display: block !important;
             }
 
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
@@ -83,22 +102,24 @@
     <!-- ========================================================= NAVBAR ========================================================= -->
     <nav class="navbar fixed-top p-0" style="height: 60px;">
         <div class="row m-0 h-100" style="width: 100%;">
-            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center"
-                style="height: 60px; z-index: 1;">
+            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center col-3"
+                style="height: 60px; z-index: 1; border-radius: 0 0 100px 0;">
                 <a class="navbar-brand" href="#">
                     <img src="/images/home-screen/logo-depok.png" alt="" width="30"
                         class="d-inline-block align-text-top" style="object-fit: cover;">
                 </a>
-                <h4 class="m-0 pe-5">Anjungan Wisata Depok</h4>
+                <h4 class="m-0 pe-5" style="display: none">Anjungan Wisata Depok</h4>
             </div>
             <div class="col-md-12 bg-light h-75 p-0 d-flex align-items-center" style="--bs-bg-opacity: .5;">
+                @if (count($rss) > 0)
                 <marquee class="d-flex" behavior="scroll" direction="Left">
-                    @for ($i = 0; $i < 3; $i++) <a
-                        class="link-dark text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
+                    @for ($i = 0; $i < 3; $i++) 
+                    <a class="link-dark text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
                         href="{{ $rss[$i]['link'] }}"><span class="badge text-bg-light m-0 me-2">Berita
                             {{ $i+1 }}</span>{{ $rss[$i]['title'] }}</a>
-                        @endfor
+                    @endfor
                 </marquee>
+                @endif
             </div>
         </div>
     </nav>
@@ -118,238 +139,157 @@
                 {!! $data[0]->body !!}
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex align-items-center gap-3">
-                    <div>
-                        <h6 class="card-subtitle text-muted">{{ $title }}</h6>
+        @if (count($koleksis))
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-3">
+                        <div>
+                            <h6 class="card-subtitle text-muted">{{ $title }}</h6>
+                        </div>
                     </div>
-                </div>
-                @if (count($koleksis))
-                    @if ($koleksiFoto)
-                        @foreach ($koleksiFoto as $item)
-                        <hr>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
-                        <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
-                            <div class="carousel-indicators">
-                                @for ($i = 0; $i < count($item->foto); $i++)
-                                    <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}"
-                                        data-bs-slide-to="{{ $i }}" @if ($i==0) class="active" @endif" aria-current="true"
-                                        aria-label="Slide {{ $i+1 }}"></button>
-                                    @endfor
+                    @if (count($koleksis))
+                        @if ($koleksiFoto)
+                            @foreach ($koleksiFoto as $item)
+                            <hr>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
+                            <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
+                                <div class="carousel-indicators">
+                                    @for ($i = 0; $i < count($item->foto); $i++)
+                                        <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}"
+                                            data-bs-slide-to="{{ $i }}" @if ($i==0) class="active" @endif" aria-current="true"
+                                            aria-label="Slide {{ $i+1 }}"></button>
+                                        @endfor
+                                </div>
+                                <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
+                                    @for ($i = 0; $i < count($item->foto); $i++)
+                                        <div class="carousel-item @if ($i == 0) active @endif">
+                                            <a href="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"><img
+                                                    src="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"
+                                                    alt="..." style="height: 250px; object-fit: scale-down;"></a>
+                                        </div>
+                                        @endfor
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
-                                @for ($i = 0; $i < count($item->foto); $i++)
+                            @endforeach
+                        @endif
+                        @if ($koleksiVideo)
+                            @foreach ($koleksiVideo as $item)
+                            <hr>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
+                            <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
+                                <div class="carousel-indicators">
+                                    @for ($i = 0; $i < count($item->video); $i++)
+                                    <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide-to="{{ $i }}"
+                                    @if ($i == 0) class="active" @endif" aria-current="true" aria-label="Slide {{ $i+1 }}"></button>
+                                    @endfor
+                                </div>
+                                <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
+                                    @for ($i = 0; $i < count($item->video); $i++)
                                     <div class="carousel-item @if ($i == 0) active @endif">
-                                        <a href="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"><img
-                                                src="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"
-                                                alt="..." style="height: 250px; object-fit: scale-down;"></a>
+                                        <a href="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"><video src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100" alt="..." style="height: 250px;margin: auto; object-fit: scale-down;" controls></a>
                                     </div>
                                     @endfor
-                            </div>
-                            <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        @endforeach
-                    @endif
-                    @if ($koleksiVideo)
-                        @foreach ($koleksiVideo as $item)
-                        <hr>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
-                        <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
-                            <div class="carousel-indicators">
-                                @for ($i = 0; $i < count($item->video); $i++)
-                                <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide-to="{{ $i }}"
-                                @if ($i == 0) class="active" @endif" aria-current="true" aria-label="Slide {{ $i+1 }}"></button>
-                                @endfor
-                            </div>
-                            <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
-                                @for ($i = 0; $i < count($item->video); $i++)
-                                <div class="carousel-item @if ($i == 0) active @endif">
-                                    <a href="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"><video src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100" alt="..." style="height: 250px;margin: auto; object-fit: scale-down;" controls></a>
                                 </div>
-                                @endfor
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-                            <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        @endforeach
+                            @endforeach
+                        @endif
                     @endif
-                @endif
+                </div>
             </div>
-        </div>
-    </div>
+        @endif
 
-    {{-- <div class="container" style="padding-block: 65px;">
-        <div class="row g-2">
-            <div class="col-md-7">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <a class="btn btn-outline-secondary" href="/{{ $urlBack }}" role="button">Liat {{ $title }}
-    lainnya..</a>
-    </div>
-    @if (count($foto))
-    <img src="{{asset("storage/".$foto[0]->filename)}}" class="img-fluid rounded" alt="..."
-        style="height: 300px; object-fit: cover;">
-    @endif
-    <div class="card-body">
-        {!! $data[0]->deskripsi !!}
-    </div>
-    </div>
-    </div>
-    <div class="col-md-5">
-        @isset($data->first()->iframe)
-        <div class="card mb-2">
-            <div class="card-body">
-                {!! $data->first()->iframe !!}
-            </div>
-        </div>
-        @endisset
         <div class="card">
-            <div class="card-body">
-                <div class="d-flex align-items-center gap-3">
-                    <div>
-                        <img class="rounded-circle" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" width="40"
-                            height="40" style="object-fit: cover;">
-                    </div>
-                    <div>
-                        <h5 class="card-title">{{ $data[0]->nama }}</h5>
-                        <h6 class="card-subtitle text-muted">{{ $title }}</h6>
+            <div class="card-header">
+                <h3 class="card-title">Berita Terkait</h3>
+            </div>
+            <div class="card-body berita-terkait" style="display: flex; overflow: auto; gap: 1rem;">
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
                     </div>
                 </div>
-                <hr>
-                <dl class="row">
-                    <dt class="col-sm-5">No. Telp</dt>
-                    <dd class="col-sm-7">{{$data[0]->no_telp}}</dd>
 
-                    <dt class="col-sm-5">Alamat <i class="bi bi-geo-alt-fill ms-2"></i></dt>
-                    <dd class="col-sm-7">{!! $data[0]->alamat !!}</dd>
-
-                    <dt class="col-sm-5">Pengelola</dt>
-                    <dd class="col-sm-7">{!! $data[0]->pengelola !!}</dd>
-
-                    @isset($data[0]->instagram)
-                    <dt class="col-sm-5 text-truncate">Instagram</dt>
-                    <dd class="col-sm-7">{{$data[0]->instagram}}</dd>
-                    @endisset
-
-                    @isset($data[0]->youtube)
-                    <dt class="col-sm-5">youtube <i class="bi bi-youtube ms-2"></i></dt>
-                    <dd class="col-sm-7">{{ $data[0]->youtube }}</dd>
-                    @endisset
-
-                    @isset($data[0]->twitter)
-                    <dt class="col-sm-5">twitter <i class="bi bi-twitter ms-2"></i></dt>
-                    <dd class="col-sm-7">{{$data[0]->twitter}}</dd>
-                    @endisset
-
-                    @isset($data[0]->facebook)
-                    <dt class="col-sm-5">Facebook <i class="bi bi-facebook ms-2"></i></dt>
-                    <dd class="col-sm-7">{{$data[0]->facebook}}</dd>
-                    @endisset
-
-                    @isset($data[0]->whatsapp)
-                    <dt class="col-sm-5">Whatsapp <i class="bi bi-whatsapp ms-2"></i></dt>
-                    <dd class="col-sm-7">{{$data[0]->whatsapp}}</dd>
-                    @endisset
-
-                    @isset($data[0]->website)
-                    <dt class="col-sm-5">Website</dt>
-                    <dd class="col-sm-7">{{$data[0]->website}}</dd>
-                    @endisset
-                </dl>
-                @if (count($koleksis))
-                @if ($koleksiFoto)
-                @foreach ($koleksiFoto as $item)
-                <hr>
-                <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
-                <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        @for ($i = 0; $i < count($item->foto); $i++)
-                            <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}"
-                                data-bs-slide-to="{{ $i }}" @if ($i==0) class="active" @endif" aria-current="true"
-                                aria-label="Slide {{ $i+1 }}"></button>
-                            @endfor
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
                     </div>
-                    <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
-                        @for ($i = 0; $i < count($item->foto); $i++)
-                            <div class="carousel-item @if ($i == 0) active @endif">
-                                <a href="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"><img
-                                        src="{{ asset('storage/'. $item->foto[$i]->filename) }}" class="d-block w-100"
-                                        alt="..." style="height: 150px; object-fit: scale-down;"></a>
-                            </div>
-                            @endfor
-                    </div>
-                    <button class="carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-                @endforeach
-                @endif
-                @if ($koleksiVideo)
-                @foreach ($koleksiVideo as $item)
-                <hr>
-                <h6 class="card-subtitle mb-2 text-muted">{{ $item->nama }}</h6>
-                <div id="carouselExampleIndicators{{ $item->id }}" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        @for ($i = 0; $i < count($item->video); $i++)
-                            <button type="button" data-bs-target="#carouselExampleIndicators{{ $item->id }}"
-                                data-bs-slide-to="{{ $i }}" @if ($i==0) class="active" @endif" aria-current="true"
-                                aria-label="Slide {{ $i+1 }}"></button>
-                            @endfor
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
                     </div>
-                    <div class="carousel-inner rounded gallery" style="background: rgba(0, 0, 0, 0.25);">
-                        @for ($i = 0; $i < count($item->video); $i++)
-                            <div class="carousel-item @if ($i == 0) active @endif">
-                                <a href="{{ asset('storage/'. $item->video[$i]->filename) }}"
-                                    class="d-block w-100"><video
-                                        src="{{ asset('storage/'. $item->video[$i]->filename) }}" class="d-block w-100"
-                                        alt="..." style="margin: auto; object-fit: scale-down;" controls></a>
-                            </div>
-                            @endfor
-                    </div>
-                    <button class="carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleIndicators{{ $item->id }}" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
-                @endforeach
-                @endif
-                @endif
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
+                    </div>
+                </div>
+
+                <!-- ========================================================= Berita Terkait ========================================================= -->
+                <div class="card bg-light" style="width: 23rem; flex-shrink: 0;">
+                    <img src="/images/aaa.png" class="card-img-top" style="object-fit: cover; height: 180px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Berita Lorem ipsum</h5>
+                        <a href="#" class="text-decoration-none text-dark"><strong>read more..</strong></a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    </div>
-    </div> --}}
 
     <!-- ========================================================= MENU ========================================================= -->
     <nav class="navbar fixed-bottom bg-light bg-gradient shadow">
