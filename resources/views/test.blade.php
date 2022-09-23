@@ -44,8 +44,8 @@
         }
 
         @media (min-width: 768px) {
-            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center {
-                border-radius: 0 0 100px 0 !important;
+            nav .col-md-auto.bg-light.bg-gradient.shadow.position-absolute.d-flex.align-items-center.col-3 h4{
+                display: block !important;
             }
 
             nav.navbar.fixed-bottom.bg-light.bg-gradient.shadow {
@@ -59,10 +59,6 @@
             nav .accordion {
                 width: 75% !important;
             }
-
-            .container .col-md-6 hr {
-                display: none !important;
-            }
         }
 
     </style>
@@ -74,22 +70,22 @@
     <!-- ========================================================= NAVBAR ========================================================= -->
     <nav class="navbar fixed-top p-0" style="height: 60px;">
         <div class="row m-0 h-100" style="width: 100%;">
-            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center"
-                style="height: 60px; z-index: 1;">
+            <div class="col-md-auto bg-light bg-gradient shadow position-absolute d-flex align-items-center col-3"
+                style="height: 60px; z-index: 1; border-radius: 0 0 100px 0;">
                 <a class="navbar-brand" href="#">
                     <img src="/images/home-screen/logo-depok.png" alt="" width="30"
                         class="d-inline-block align-text-top" style="object-fit: cover;">
                 </a>
-                <h4 class="m-0 pe-5">Anjungan Wisata Depok</h4>
+                <h4 class="m-0 pe-5" style="display: none">Anjungan Wisata Depok</h4>
             </div>
             <div class="col-md-12 bg-light h-75 p-0 d-flex align-items-center" style="--bs-bg-opacity: .5;">
                 @if (count($rss) > 0)
                 <marquee class="d-flex" behavior="scroll" direction="Left">
-                    @for ($i = 0; $i < 3; $i++) <a
-                        class="link-dark text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
+                    @for ($i = 0; $i < 3; $i++) 
+                    <a class="link-dark text-decoration-none d-inline-flex align-items-center me-5" target="_blank"
                         href="{{ $rss[$i]['link'] }}"><span class="badge text-bg-light m-0 me-2">Berita
                             {{ $i+1 }}</span>{{ $rss[$i]['title'] }}</a>
-                        @endfor
+                    @endfor
                 </marquee>
                 @endif
             </div>
