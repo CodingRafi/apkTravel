@@ -83,6 +83,7 @@ Route::get('/dashboard/{category:slug}', function(Category $category){
     ]);
 })->middleware('auth');
 Route::get('/dashboard/kecamatan/{kecamatan:nama}', [ProfilWisataController::class, 'kecamatan'])->middleware('auth');
+Route::get('/dashboard/get_data/{kategori}', [ProfilWisataController::class, 'get_data'])->middleware('auth');
 
 Route::get('/dashboard/destinasi/create', [ProfilWisataController::class, 'create'])->middleware('auth');
 Route::get('/dashboard/makanan/create', [ProfilWisataController::class, 'create'])->middleware('auth');

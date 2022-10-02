@@ -1,14 +1,29 @@
 @extends('main')
 
+@section('tambahcss')
+<style>
+    @media (max-width:810px){
+        .row-title-show-all{
+            display: block;
+        }
+
+        .col-1-show-all,
+        .col-2-show-all{
+            width: 100% !important;
+        }
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container" style="padding-block: 65px;">
     <div class="card h-100 mb-3">
         <div class="card-header position-relative p-3">
-            <div class="row">
-                <div class="col">
+            <div class="row row-title-show-all">
+                <div class="col col-1-show-all">
                 <h4 style="text-transform: capitalize;">{{ (request('search') || request('kategori')) ? (request('search') ?? str_replace("-", " ", request('kategori'))) : 'Semua Wisata' }} ({{ count($profils) }})</h5>
                 </div>
-                <div class="col-5">
+                <div class="col-5 col-2-show-all">
                     <div class="container-fluid p-0 d-flex" style="right: 0">
                         <div class="dropdown" style="margin-right: 1rem;">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

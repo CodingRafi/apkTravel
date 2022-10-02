@@ -219,6 +219,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" id="email" value="{{ old('email') }}">
+                                            @error('email')   
+                                            <div class="invalid-feedback d-block">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Instagram</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control @error('instagram') is-invalid @enderror" placeholder="Instagram" name="instagram" id="instagram" value="{{ old('instagram') }}">

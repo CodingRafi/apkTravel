@@ -1,5 +1,14 @@
 @extends('main')
 
+@section('tambahcss')
+    <style>
+        iframe{
+            width: 100% !important;
+            height: 20rem;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container" style="padding-block: 65px;">
     <div class="row g-2">
@@ -87,9 +96,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center gap-3">
+                        @if ($data[0]->logo)
                         <div>
-                            <img class="rounded-circle" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" width="40" height="40" style="object-fit: cover;">
+                            <img class="" src="{{ asset("storage/".$data[0]->logo) }}" alt="logo" height="50" style="object-fit: cover;">
                         </div>
+                        @endif
                         <div>
                             <h5 class="card-title">{{ $data[0]->nama }}</h5>
                             <h6 class="card-subtitle text-muted">{{ $title }}</h6>
@@ -105,6 +116,11 @@
 
                         <dt class="col-sm-5">Pengelola</dt>
                         <dd class="col-sm-7">{!! $data[0]->pengelola !!}</dd>
+
+                        @isset($data[0]->email) 
+                        <dt class="col-sm-5 text-truncate">Email</dt>
+                        <dd class="col-sm-7">{{$data[0]->email}}</dd>
+                        @endisset
 
                         @isset($data[0]->instagram) 
                         <dt class="col-sm-5 text-truncate">Instagram</dt>

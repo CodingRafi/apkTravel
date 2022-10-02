@@ -2,6 +2,12 @@
 
 @section('container')
 
+<style>
+    .chosen-container{
+        width: 100% !important;
+    }
+</style>
+
 {{-- @dd($videos[2]['videoAda'][0]->filename) --}}
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
@@ -96,11 +102,11 @@
                                             <div class="card-body d-flex" style="padding: 10px 0 0 0;">
                                                 <div class="bagkiri" style="width: 77%;">
                                                     <h5 class="card-title" style="font-size: 15px;margin-bottom: 3px;">{{ $koleksies[$i]->nama }}</h5>
-                                                    @if ($koleksies[$i]->nama_profil)
-                                                        Profil Wisata: <span>{{ $koleksies[$i]->nama_profil }}</span>
+                                                    {{-- @if ($koleksies[$i]->profil_wisata_id)
+                                                        Profil Wisata: <span>{{ $koleksies[$i]->profilwisata }}</span>
                                                     @else
-                                                        Berita :<span>{{ $koleksies[$i]->nama_berita }}</span>
-                                                    @endif
+                                                        Berita :<span>{{ $koleksies[$i]->berita->judul }}</span>
+                                                    @endif --}}
                                                     <a href="/dashboard/koleksi/{{ $koleksies[$i]->slug }}" class="card-subtitle mb-2 text-muted">Lihat Selengkapnya</a>
                                                 </div>
                                                 <div class="bagkanan" style="width: 17%">
@@ -183,16 +189,26 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="parentKategori">Kategori</label>
+                <select class="form-control" name="parentKategori" id="parentKategori">
+                    <option value="" selected>Pilih Kategori</option>
+                    <option value="profilWisata">Profil Wisata</option>
+                    <option value="berita">Berita</option>
+                  </select>
+                @error('parentKategori')   
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group div-kepemilikan" style="display: none;">
                 <label for="kepemilikan">Kepemilikan</label>
-                <input type="hidden" name="parentKategori" class="parentKategori">
                 <select id="kepemilikan" name="kepemilikasi" style="width: 100%">
                     <option></option>
-                    @foreach ($profilwisatas as $profilwisata)
-                        <option value="{{ $profilwisata->id }}" class="option1" data-kategori="profilwisata">{{ $profilwisata->nama }}</option>
-                    @endforeach
-                    @foreach ($beritas as $item)
-                        <option value="{{ $item->id }}" class="option1" data-kategori="berita">{{ $item->judul }}</option>
-                    @endforeach
+                    <option value="profilWisata">Profil Wisata</option>
+                    <option value="profilWisata">Profil Wisata</option>
+                    <option value="profilWisata">Profil Wisata</option>
+                    <option value="profilWisata">Profil Wisata</option>
                 </select>
                 @error('kepemilikasi')   
                     <div class="invalid-feedback d-block">
@@ -218,7 +234,6 @@
   </div>
  
   <script>
-
           const slug = document.querySelector("#slug");
           const nama = document.querySelector("#nama");
           const close = document.querySelector('.close');
@@ -229,7 +244,6 @@
           const modalContent = document.querySelector('.modal-content');
           const profilWisata = document.querySelector('.profilwisata');
           const dropdownToggle = document.querySelector('.dropdown-toggle');
-          const parentKategori = document.querySelector('.parentKategori');
           const berita = document.querySelector('.berita');
           const option = document.querySelectorAll('option.option1');
     
@@ -248,123 +262,39 @@
             fetch('/dashboard/koleksi/checkSlug?nama='+nama.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
-        })
-      
-        $(document).ready(function() {
-            $('#kepemilikan').chosen();
-            const chosencontainersingle = document.querySelector('.chosen-container-single');
-            const kepemilikan = document.querySelector('#kepemilikan');
-            const chosensingle = document.querySelector('.chosen-single span');
-            const chosensearchinput = document.querySelector('.chosen-search-input');
-            chosencontainersingle.style.width = "100%";
-            chosencontainersingle.style.marginTop = "8px";
-            // chosencontainersingle.style.display = "none";
-
-            // dropdownToggle.addEventListener('click', function(){
-            //     chosencontainersingle.style.display = "none";
-            // })
-
-            // profilWisata.addEventListener('click', function(){
-            //     chosencontainersingle.style.display = "none";
-            //     chosencontainersingle.style.display = "block";
-            //     kepemilikan.value = "";
-            //     chosensingle.innerHTML = 'Select an Option';
-            //     parentKategori.value = "";
-            //     parentKategori.value = "profilwisata";
-            // })
-            
-
-            // berita.addEventListener('click', function(){
-            //     chosencontainersingle.style.display = "none";
-            //     chosencontainersingle.style.display = "block";
-            //     kepemilikan.value = "";
-            //     chosensingle.innerHTML = 'Select an Option';
-            //     parentKategori.value = "";
-            //     parentKategori.value = "berita";
-            // })
-
-            chosencontainersingle.addEventListener('click', function(){
-                const activeresult = document.querySelectorAll('li.active-result.option1');
-                activeresult.forEach((e,i) => {
-                    e.addEventListener('click', function(){
-                        if(e.textContent == option[i].textContent){
-                            parentKategori.value = "";
-                            parentKategori.value = option[i].getAttribute('data-kategori');
-                        }
-                    })
-                })
-                // option.forEach((e,i) => {
-                //     if(e.getAttribute('data-kategori') != parentKategori.value){
-                //         if(activeresult[i].textContent == e.textContent){
-                //             activeresult[i].classList.add('d-none')
-                //         }
-                //     }else{
-                //         activeresult[i].classList.add('d-block')
-                //     }
-                // })
             })
 
-            // chosensearchinput.addEventListener('change', function(){
-            //     console.log('oke')
-            // })
+            function removeOption(){
+                $('#kepemilikan').remove();
+                $('.chosen-container').remove();
 
-        });
+                const select = document.createElement("select");
+                select.classList.add('form-control');
+                select.setAttribute('name', 'kepemilikan')
+                select.setAttribute('id', 'kepemilikan')
+                document.querySelector(".div-kepemilikan").appendChild(select);
+            }
 
-    // editKoleksi.forEach( (e,i) => {
-    //     e.addEventListener("click", function(){
-    //         modal.classList.add('show');
-    //         modal.style.display = 'block';
-    //         modal.style.background = 'rgba(69,90,100, .5)';
-    //         modalContent.innerHTML = '';
-    //         modalContent.innerHTML = `<form action="/dashboard/koleksi/update" method="post">
-    //                                     @csrf
-    //                                     @method('patch')
-    //                                 <div class="modal-header">
-    //                                 <h5 class="modal-title" id="exampleModalLabel">Tambah Koleksi</h5>
-    //                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    //                                     <span aria-hidden="true">&times;</span>
-    //                                 </button>
-    //                                 </div>
-    //                                 <div class="modal-body">
-    //                                     <div class="form-group">
-    //                                         <label for="nama">Nama koleksi</label>
-    //                                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama">
-    //                                         @error('nama')   
-    //                                             <div class="invalid-feedback d-block">
-    //                                                 {{ $message }}
-    //                                             </div>
-    //                                         @enderror
-    //                                     </div>
-    //                                     <div class="form-group">
-    //                                         <label for="slug">Slug</label>
-    //                                         <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug">
-    //                                         @error('slug')   
-    //                                             <div class="invalid-feedback d-block">
-    //                                                 {{ $message }}
-    //                                             </div>
-    //                                         @enderror
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="modal-footer">
-    //                                 <button type="button" class="btn btn-secondary tombolClose" data-dismiss="modal">Close</button>
-    //                                 <button type="submit" class="btn btn-primary">Buat</button>
-    //                                 </div>
-    //                             </form>`;
-
-    //         const slug = document.querySelector("#slug");
-    //         const nama = document.querySelector("#nama");
-    //         fetch('/dashboard/koleksi/checkKoleksi?slug='+slugKoleksi[i].value)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             nama.value = data.data.nama,
-    //             slug.value = data.data.slug   
-    //         })
-
-    //     })
-    // });
-    
-    // slug();
-
+        $('#parentKategori').on('change', function(){
+            if(this.value == ''){
+                $('.div-kepemilikan').css('display', 'none');
+            }else{
+                removeOption();
+                $.ajax({
+                    url: `/dashboard/get_data/${this.value}`,
+                    dataType: 'json',
+                    type: "GET",
+                    async: false,
+                    success: function(response) {
+                        response.data.forEach(e => {
+                            document.querySelector('#kepemilikan').innerHTML += `<option value="${e.id}">${e.nama ?? e.judul}</option>`;
+                        });
+                        $('#kepemilikan').chosen();
+                    }
+                })
+                $('.div-kepemilikan').css('display', 'block');
+            }
+        })
   </script>
   
 @endsection

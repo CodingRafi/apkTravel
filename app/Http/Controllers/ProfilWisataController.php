@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use App\Models\video;
+use App\Models\Berita;
 use App\Models\Koleksi;
 use App\Models\Category;
 use App\Models\Kecamatan;
@@ -65,8 +66,9 @@ class ProfilWisataController extends Controller
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
             'website' => 'max:500',
+            'email' => 'max:500',
             'kecamatan_id' => 'required',
-            'iframe' => 'required'
+            'iframe' => 'nullable'
         ]);
         
         $validatedFilename = $request->validate([
@@ -204,8 +206,9 @@ class ProfilWisataController extends Controller
             'facebook' => 'max:255',
             'whatsapp' => 'max:255',
             'website' => 'max:500',
+            'email' => 'max:500',
             'kecamatan_id' => 'required',
-            'iframe' => 'required'
+            'iframe' => 'nullable'
         ]);
 
         if($request->slug != $data->slug){
@@ -405,5 +408,21 @@ class ProfilWisataController extends Controller
             'oleh' => $oleh,
             'travel' => $travel
         ]);
+    }
+
+    public function get_data(Request $request, $kategori){
+        if ($kategori == 'profilWisata') {
+            $profils = ProfilWisata::all();
+
+            return response()->json([
+                'data' => $profils
+            ], 200);
+        }else{
+            $berita = Berita::all();
+
+            return response()->json([
+                'data' => $berita
+            ], 200);
+        }
     }
 }

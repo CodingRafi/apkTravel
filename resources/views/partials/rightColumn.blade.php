@@ -1,4 +1,14 @@
-<div class="col-md-3">
+@section('tambahcss')
+    <style>
+        @media (max-width:481px){
+            .colom-kanan{
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+@endsection
+
+<div class="col-md-3 colom-kanan">
   <div class="card bg-light bg-grandient border-0 shadow h-100">
       <div class="card-body">
           <h5 class="card-title">Wisata Kota Depok</h5>

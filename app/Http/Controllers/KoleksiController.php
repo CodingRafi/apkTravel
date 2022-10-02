@@ -52,13 +52,14 @@ class KoleksiController extends Controller
             'slug' => 'required|unique:koleksis',
             'jenis' => 'required',
             'parentKategori' => 'required',
-            'kepemilikasi' => 'required'
+            'kepemilikan' => 'required'
         ]);
 
-        if($request->parentKategori == 'profilwisata'){
-            $validatedData['profil_wisata_id'] = $request->kepemilikasi;
+        
+        if($request->parentKategori == 'profilWisata'){
+            $validatedData['profil_wisata_id'] = $request->kepemilikan;
         }else if($request->parentKategori == 'berita'){
-            $validatedData['berita_id'] = $request->kepemilikasi;
+            $validatedData['berita_id'] = $request->kepemilikan;
         }
     
         Koleksi::create($validatedData);

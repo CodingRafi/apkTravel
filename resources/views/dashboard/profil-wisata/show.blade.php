@@ -164,10 +164,13 @@
 
                                 <span class="d-block mt-4"><strong style="font-weight: 700">No telepon yang dapat dihubungi :</strong> {!! $profilWisata->no_telp !!}</span>
 
-                                @if (isset($profilWisata->whatsapp) || isset($profilWisata->facebook) || isset($profilWisata->instagram) || isset($profilWisata->twitter) || isset($profilWisata->youtube) || isset($profilWisata->website))
+                                @if (isset($profilWisata->whatsapp) || isset($profilWisata->facebook) || isset($profilWisata->instagram) || isset($profilWisata->twitter) || isset($profilWisata->youtube) || isset($profilWisata->website) || isset($profilWisata->email))
                                 <h5 class="mt-4">Sosial Media</h5>
                                 
                                 @endif
+                                @isset($profilWisata->email)
+                                <span class="d-block mt-3"><strong style="font-weight: 700">Email : </strong> {!! $profilWisata->email !!}</span>
+                                @endisset
                                 @isset($profilWisata->whatsapp)
                                 <span class="d-block mt-3"><strong style="font-weight: 700">Whatsapp : </strong> {!! $profilWisata->whatsapp !!}</span>
                                 @endisset

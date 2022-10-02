@@ -333,7 +333,7 @@
   @if (Request::is('dashboard/foto') || Request::is('dashboard/video'))
       ""
   @else
-  <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
+    <script type="text/javascript" src="/js/jquery/jquery.min.js "></script>
   @endif
     <script type="text/javascript" src="/js/jquery-ui/jquery-ui.min.js "></script>
     <script type="text/javascript" src="/js/popper.js/popper.min.js"></script>

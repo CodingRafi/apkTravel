@@ -22,7 +22,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        $koleksi = Koleksi::select('koleksis.*', 'profil_wisatas.nama as nama_profil', 'beritas.judul as nama_berita')->where('jenis', 'koleksivideo')->join('profil_wisatas', 'profil_wisatas.id', 'koleksis.profil_wisata_id')->leftJoin('beritas', 'beritas.id', 'koleksis.berita_id')->get();
+        $koleksi = Koleksi::where('jenis', 'koleksivideo')->get();
 
         $video = [];
         for($i = 0; $i < count($koleksi); $i++){
