@@ -91,7 +91,7 @@
     @endif
 
     @if (count($beritaTerkait) > 0) 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
             <h3 class="card-title">Berita Terkait</h3>
         </div>
@@ -118,7 +118,7 @@
     @endif
 
     @if (count($beritaLainnya) > 0) 
-    <div class="card mt-4">
+    <div class="card mt-3">
         <div class="card-header">
             <h3 class="card-title">Berita Lainnya</h3>
         </div>
